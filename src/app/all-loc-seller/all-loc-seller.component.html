@@ -1,0 +1,70 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Orders
+    <button class="btn btn-success pull-right" (click)="createInvoice()">Create Invoice</button>
+  </div>
+  <div class="panel-body">
+    <div class="grid grid-pad">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Order Ref</th>
+            <th>Buyer</th>
+            <th>Advising Bank</th>
+            <th>Amount</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let loc of locs">
+            <tr *ngIf="loc.status != 'Shipped'">
+              <td hidden>
+                <a>{{loc}}</a>
+              </td>
+              <td hidden>
+                <a>{{loc.id}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.orderRef}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.applicant}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.advisory}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.amount + " " + loc.currency}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.quantity}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
+              </td>
+              <td>
+                <button class="btn btn-info btn-sm" role="button" (click)="addBol(loc)">Add Bill of Lading</button>
+              </td>
+              <td>
+                <button class="btn btn-info btn-sm" role="button" (click)="addPl(loc)">Add Packing List</button>
+              </td>
+              <td>
+                <button class="btn btn-success btn-sm" role="button" (click)="shipGoods(loc)">Ship</button>
+              </td>
+              <td hidden>
+                <button class="btn btn-danger btn-sm" role="button" (click)="rejectOrder(loc)">Reject</button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+  <form (ngSubmit)="onSubmit()" #ApplyForLoc="ngForm">
+
+  <div class="row">
+
+      <div class="col-md-6">
+          <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing">
+              </div>
+
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="beneficiary" [(ngModel)]="loc.beneficiary" name="beneficiary" placeholder="Seller">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="applicant" [(ngModel)]="loc.applicant" name="applicant" placeholder="Applicant">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising">
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-success pull-right" id="autoComplete" (click)="autoComplete()">Autocomplete</button>
+        </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="form-inline">
+            <label for="typeCredit">Id</label>
+            <input type="text" class="form-control" id="applicationID" placeholder="Application Id" required [(ngModel)]="loc.applicationId" name="applicationId">
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="typeCredit">Letter of Credit Type</label>
+      <input type="text" class="form-control" id="typeCredit" placeholder="Credit Type" required [(ngModel)]="loc.typeCredit" name="typeCredit">
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="expiryDate">Expiry</label>
+      <input type="text" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" placeholder="dd/mm/yyyy">
+    </div>
+  </div>
+</div>
+
+    <div class="form-group">
+      <label>Value</label>
+      <div class="form-inline">
+        <input type="text" class="form-control" id="amount" placeholder="Amount" required [(ngModel)]="loc.amount" name="amount">
+        <div class="form-group">
+          <input type="text" class="form-control" id="currency" [(ngModel)]="loc.currency" name="currency" placeholder="USD">
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6">
+    <div class="form-group">
+      <label>Loading Details</label>
+      <input type="text" class="form-control" id="portLoadingAddress" placeholder="Address" required [(ngModel)]="loc.portLoadingAddress" name="portLoadingAddress">
+      <div class="form-inline">
+      <input type="text" class="form-control" id="portLoadingCountry" placeholder="Country" required [(ngModel)]="loc.portLoadingCountry" name="portLoadingCountry">
+      <input type="text" class="form-control" id="portLoadingCity" placeholder="City" required [(ngModel)]="loc.portLoadingCity" name="portLoadingCity">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Discharge Details</label>
+      <input type="text" class="form-control" id="portDischargeAddress" placeholder="Address" required [(ngModel)]="loc.portDischargeAddress" name="portDischargeAddress">
+      <div class="form-inline">
+        <input type="text" class="form-control" id="portDischargeCountry" placeholder="Country" required [(ngModel)]="loc.portDischargeCountry" name="portDischargeCountry">
+        <input type="text" class="form-control" id="portDischargeCity" placeholder="City" required [(ngModel)]="loc.portDischargeCity" name="portDischargeCity">
+      </div>
+    </div>
+    </div>
+  </div>
+
+    <div class="form-group">
+      <label>Product</label>
+      <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="loc.goodsDescription" name="goodsDescription">
+
+      <div class="form-inline">
+        <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="loc.goodsQuantity" name="goodsQuantity">
+        <input type="text" class="form-control" id="goodsWeight" placeholder="Weight" [(ngModel)]="loc.goodsWeight" name="goodsWeight">
+        <input type="text" class="form-control" id="goodsWeightUnit" placeholder="Unit of Weight" [(ngModel)]="loc.goodsWeightUnit" name="goodsWeightUnit">
+        <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Price per Unit" [(ngModel)]="loc.goodsUnitPrice" name="goodsUnitPrice">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Presentation</label>
+      <div class="form-inline">
+        <input type="text" class="form-control" id="placePresentationCountry" placeholder="Country" [(ngModel)]="loc.placePresentationCountry" name="placePresentationCountry">
+        <input type="text" class="form-control" id="placePresentationCity" placeholder="City" [(ngModel)]="loc.placePresentationCity" name="placePresentationCity">
+        <input type="text" class="form-control" id="placePresentationState" placeholder="State" [(ngModel)]="loc.placePresentationState" name="placePresentationState">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastShipmentDate">Last Shipment Date</label>
+      <input type="text" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipment|">
+    </div>
+
+    <div class="form-group">
+      <label for="periodPresentation">Period Presentation</label>
+      <input type="text" class="form-control" id="periodPresentation" [(ngModel)]="loc.periodPresentation" name="periodPresentation">
+    </div>
+
+    <input type="submit" class="submit button" id="one" value="Submit Application">
+
+  </form>

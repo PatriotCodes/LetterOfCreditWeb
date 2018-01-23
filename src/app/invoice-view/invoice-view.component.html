@@ -1,0 +1,77 @@
+<div *ngIf="inv">
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Date</label>
+      <input type="text" class="form-control" id="invoiceDate" [(ngModel)]="inv.invoiceDate" name="invoiceDate" disabled>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label>ID</label>
+      <input type="text" class="form-control" id="invoiceId" placeholder="Invoice Id" required [(ngModel)]="inv.invoiceId" name="invoiceId"
+        disabled>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Seller Name</label>
+      <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="inv.sellerName" name="sellerName"
+        disabled>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Seller Address</label>
+      <input type="text" class="form-control" id="sellerAddress" placeholder="Address" [(ngModel)]="inv.sellerAddress" name="sellerAddress"
+        disabled>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Buyer Name</label>
+      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" disabled>
+    </div>
+
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Address</label>
+      <input type="text" class="form-control" id="buyerAddress" placeholder="Address" [(ngModel)]="inv.buyerAddress" name="buyerAddress"
+        disabled>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Goods</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Description</label>
+      <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="inv.goodsDescription"
+        name="goodsDescription" disabled>
+    </div>
+
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Quantity</label>
+      <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="inv.goodsQuantity" name="goodsQuantity"
+        disabled>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Unit Price</label>
+      <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="inv.goodsUnitPrice" name="goodsUnitPrice"
+        disabled>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Gross Weight</label>
+      <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="inv.goodsGrossWeight"
+        name="goodsGrossWeight" disabled>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Term</label>
+      <input type="text" class="form-control" id="term" placeholder="term" [(ngModel)]="inv.term" name="term" disabled>
+    </div>
+  </div>
+</div>

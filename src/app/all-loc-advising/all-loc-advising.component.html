@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Letters of Credit</div>
+    <div class="panel-body">
+      <div class="grid grid-pad">
+        <table class="table table-condensed table-hover">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Applicant</th>
+            <th>Beneficiary</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let loc of locs">
+                <tr *ngIf="loc.status != 'Live'">
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.orderRef}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.applicant}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.beneficiary}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.amount + " " + loc.currency}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
+              </td>
+              <td>
+                <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm" (click)="openBol(loc.orderRef)">Bill of Lading</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm" (click)="openPackingList(loc.orderRef)">Packing List</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="payBeneficiary(loc.orderRef)" [disabled]="loc.beneficiaryPaid == true">Pay Beneficiary</button>
+              </td>
+              <td>
+                  <button type="button" class="btn btn-success btn-sm" (click)="claimFunds(loc.orderRef)">Claim Funds</button>
+              </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

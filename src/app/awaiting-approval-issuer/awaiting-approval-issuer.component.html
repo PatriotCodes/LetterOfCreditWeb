@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Applications awaiting approval</div>
+    <div class="panel-body">
+      <div class="grid grid-pad">
+        <table class="table table-condensed">
+          <thead>
+          <tr>
+            <th>Applicant</th>
+            <th>Beneficiary</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let loc of locs">
+              <td hidden>
+                <a (click)="openLocModal(loc.id)">{{loc.id}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.applicant}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.beneficiary}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.amount + " " + loc.currency}}</a>
+              </td>
+              <td>
+                  <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
+              </td>
+              <td>
+                  <button class="btn btn-info pull-right" (click)="openLocModal(loc.id)">View Application</button>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

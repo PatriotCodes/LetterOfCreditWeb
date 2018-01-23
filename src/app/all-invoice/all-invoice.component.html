@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Invoices</div>
+  <div class="panel-body">
+    <div class="grid grid-pad">
+      <table class="table table-condensed">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Id</th>
+          <th>Counterparty</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let invoice of invoices">
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceDate | date}}</a>
+            </td>
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceId}}</a>
+            </td>
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.sellerName}}</a>
+            </td>
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsDescription}}</a>
+            </td>
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsQuantity}}</a>
+            </td>
+            <td>
+                <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsUnitPrice}}</a>
+            </td>
+            <td>
+                <button type="button" ng-disabled="invoice.assigned" class="btn btn-primary btn-sm" (click)="openModalWithComponent(invoice.invoiceId)">Apply for LOC</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

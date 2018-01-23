@@ -1,0 +1,48 @@
+<form (ngSubmit)="onSubmit()" #Invoice="ngForm">
+    <div class="form-group">
+      <button type="button" class="btn btn-success pull-right" id="autoComplete" (click)="autoComplete()">Autocomplete</button>
+      <br>
+      <br>
+      <div class="form-inline">
+          <input type="text" class="form-control" id="invoiceDate" [(ngModel)]="inv.invoiceDate" name="invoiceDate" placeholder="Date">
+      </div>
+      <div class="form-inline">
+        <input type="text" class="form-control" id="invoiceId" placeholder="Invoice Id" required [(ngModel)]="inv.invoiceId" name="invoiceId">
+      </div>
+      <div class="form-inline">
+          <input type="text" class="form-control" id="term" placeholder="Term" [(ngModel)]="inv.term" name="term">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Seller</label>
+        <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="inv.sellerName" name="sellerName">
+        <div class="form-inline">
+          <input type="text" class="form-control" id="sellerAddress" placeholder="Address" [(ngModel)]="inv.sellerAddress" name="sellerAddress">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Buyer</label>
+        <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName">
+        <div class="form-inline">
+          <input type="text" class="form-control" id="buyerAddress" placeholder="Address" [(ngModel)]="inv.buyerAddress" name="buyerAddress">
+        </div>
+    </div>
+
+      <div class="form-group">
+          <label>Goods</label>
+          <div class="form-inline">
+            <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="inv.goodsDescription" name="goodsDescription">
+            <input type="text" class="form-control" id="goodsPurchaseOrderRef" placeholder="Purchase Order Ref" [(ngModel)]="inv.goodsPurchaseOrderRef" name="goodsPurchaseOrderRef">
+            <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="inv.goodsQuantity" name="goodsQuantity">
+            <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="inv.goodsUnitPrice" name="goodsUnitPrice">
+            <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="inv.goodsGrossWeight" name="goodsGrossWeight">
+          </div>
+      </div>
+
+    <input type="file">
+
+    <input type="submit" class="submit" value="Create Invoice">
+
+  </form>

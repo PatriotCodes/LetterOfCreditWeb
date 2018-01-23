@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Letters of Credit</div>
+    <div class="panel-body">
+      <div class="grid grid-pad">
+        <table class="table table-condensed table-hover">
+          <thead>
+          <tr>
+            <th>Applicant</th>
+            <th>Beneficiary</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let loc of locs">
+              <td>
+                  <a [routerLink]="['/approve', loc.id]">{{loc.applicant}}</a>
+              </td>
+              <td>
+                  <a [routerLink]="['/approve', loc.id]">{{loc.beneficiary}}</a>
+              </td>
+              <td>
+                  <a [routerLink]="['/approve', loc.id]">{{loc.amount + " " + loc.currency}}</a>
+              </td>
+              <td>
+                  <a [routerLink]="['/approve', loc.id]">{{loc.description}}</a>
+              </td>
+              <td>
+                <a [routerLink]="['/approve', loc.id]">{{loc.status}}</a>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
