@@ -1,8 +1,8 @@
-<div class="panel panel-default">
+<div class="component">
   <div class="panel-heading">Invoices</div>
   <div class="panel-body">
     <div class="grid grid-pad">
-      <table class="table table-condensed">
+      <table class="table table-condensed table-striped">
         <thead>
         <tr>
           <th>Date</th>
@@ -11,7 +11,7 @@
           <th>Description</th>
           <th>Quantity</th>
           <th>Unit Price</th>
-          <th></th>
+          <th>Actions</th>
         </thead>
         <tbody>
           <tr *ngFor="let invoice of invoices">

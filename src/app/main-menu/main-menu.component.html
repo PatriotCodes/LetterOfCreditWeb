@@ -3,4 +3,15 @@
   <a routerLink="/issuing" class="btn {{issuing}}">Issuing Bank</a>
   <a routerLink="/advising" class="btn {{advising}}">Advising Bank</a>
   <a routerLink="/seller" class="btn {{seller}}">Seller</a>
+
+  <div class="form-group">
+    <label for="power">Peers</label>
+    <select class="form-control" id="nodes" required>
+      <option *ngFor="let node of nodes" [value]="node">{{node}}</option>
+    </select>
+  </div>
+
+  <div class="col-md-6" id="identity">
+    <p>{{me}} Port: {{port}}</p>
+  </div>
 </div>

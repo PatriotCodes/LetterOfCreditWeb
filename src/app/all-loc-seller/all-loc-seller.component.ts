@@ -31,7 +31,7 @@ export class AllLocSellerComponent implements OnInit {
 
   createInvoice() {
     this.bsModalRef = this.modalService.show(CreateInvoiceModalComponent);
-    this.bsModalRef.content.title = 'Create';
+    this.bsModalRef.content.title = 'Create Invoice';
   }
 
   shipGoods(loc: LocStateSummary) {
