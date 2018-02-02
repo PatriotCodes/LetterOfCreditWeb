@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PackingList } from './../packinglist'
-import { DocsService } from './../services/docs.service'
-import { CreatePlModalComponent } from './../modals/create-pl-modal.component'
+import { PackingList } from './../packinglist';
+import { DocsService } from './../services/docs.service';
+import { CreatePlModalComponent } from './../modals/create-pl-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component'
-import { LocStateSummary } from './../loc-state-summary'
+import { LocStateSummary } from './../loc-state-summary';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'packing-list',
@@ -21,7 +21,8 @@ export class PackingListComponent implements OnInit {
     constructor(
       private docsService: DocsService,
       private modalComponent: CreatePlModalComponent,
-      private modalService: BsModalService) { }
+      private modalService: BsModalService,
+      public statusService: StatusService) { }
 
     createpl(): void {
       this.pl.advisingBank = this.loc[0].advisory;
@@ -50,9 +51,7 @@ export class PackingListComponent implements OnInit {
     }
 
     callResponse(result: String): void {
-      this.bsModalRef = this.modalService.show(ResponseModalComponent);
-      this.bsModalRef.content.title = 'Response';
-      this.bsModalRef.content.body = result;
+      this.statusService.status = status;
     }
 
     close(): void {

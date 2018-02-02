@@ -11,6 +11,8 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { ResponseModalComponent } from './../modals/response-modal.component';
 import { RefreshService } from './../services/refresh.service';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
+import { StatusService } from '../services/status.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'active-loc',
@@ -25,7 +27,8 @@ export class ActiveLocComponent implements OnInit {
   constructor(private modalService: BsModalService,
               private locService: LocService,
               private refreshService: RefreshService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public statusService: StatusService) {
                 refreshService.missionConfirmed$.subscribe(
                   result => {
                     this.update();
@@ -57,9 +60,8 @@ export class ActiveLocComponent implements OnInit {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent);
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
+    Observable.timer(2000).subscribe(timer => this.statusService.status = '');
   }
 
   update() {

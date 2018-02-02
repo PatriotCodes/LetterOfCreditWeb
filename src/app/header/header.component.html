@@ -1,8 +1,12 @@
 <div class="col-md-12">
 
-  <div class="col-md-2">
-    <img [src]="cordaImage" height="40px">
-  </div>
+<div class="col-md-2">
+  <img [src]="cordaImage" height="40px">
+</div>
+
+<div id="status">
+  <app-feedback></app-feedback>
+</div>
 
 <div class="col-md-4 pull-right">
   <cash-balance [node]=[me]></cash-balance>

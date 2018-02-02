@@ -12,8 +12,9 @@ import { DatepickerModule } from 'ngx-bootstrap';
 import { ApplyModalComponent } from './../modals/apply-modal.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component'
 import './../../assets/modal.js'
+import { StatusService } from '../services/status.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'apply-for-loc',
@@ -40,7 +41,8 @@ export class ApplyForLocComponent implements OnInit {
     private commonService: CommonService,
     private locService: LocService,
     private modalComponent: ApplyModalComponent,
-    private modalService: BsModalService) {
+    private modalService: BsModalService,
+    public statusService: StatusService) {
     }
 
   getCreditTypes(): void {
@@ -69,9 +71,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent);
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
   }
 
   close(): void {

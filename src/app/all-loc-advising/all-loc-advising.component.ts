@@ -9,6 +9,8 @@ import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
 import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
 import { ResponseModalComponent } from './../modals/response-modal.component';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
+import { StatusService } from '../services/status.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'all-loc-advising',
@@ -21,7 +23,8 @@ export class AllLocAdvisingComponent implements OnInit {
   bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,
-              private locService: LocService) { }
+              private locService: LocService,
+              public statusService: StatusService) { }
 
   public openModalWithComponent() {
     this.bsModalRef = this.modalService.show(DocsModalComponent);
@@ -48,9 +51,7 @@ export class AllLocAdvisingComponent implements OnInit {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent);
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
   }
 
   public payBeneficiary(id: string) {

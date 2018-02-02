@@ -40,7 +40,6 @@ import { ViewLocStateModalComponent } from './modals/view-loc-state-modal.compon
 import { ViewLocAppModalComponent } from './modals/view-loc-app-modal.component';
 import { ViewBolModalComponent } from './modals/view-bol-modal.component';
 import { ViewPlModalComponent } from './modals/view-pl-modal.component';
-import { ResponseModalComponent } from './modals/response-modal.component';
 import { FinancesComponent } from './finances/finances.component';
 import { CashBalanceComponent } from './cash-balance/cash-balance.component';
 import { ChartsModule } from 'ng2-charts';
@@ -77,6 +76,8 @@ import { IdentityService } from './services/identity.service'
 import { Ng2OdometerModule } from 'ng2-odometer';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.component'
+import { FeedbackComponent } from './feedback/feedback.component';
+import { StatusService } from './services/status.service';
 
 @NgModule({
   imports: [
@@ -114,7 +115,6 @@ import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.c
     ViewLocAppModalComponent,
     ViewPlModalComponent,
     ViewBolModalComponent,
-    ResponseModalComponent,
     CashBalanceComponent,
     AllLocComponent,
     AllLocSellerComponent,
@@ -148,6 +148,8 @@ import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.c
     CommaSeperatedNumberPipe,
     TimelineComponent,
     ViewBolTimelineModalComponent
+,
+    FeedbackComponent
 ],
   providers: [
     LocService,
@@ -157,10 +159,11 @@ import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.c
     IssuingBankService,
     AdvisingBankService,
     RefreshService,
-    IdentityService
+    IdentityService,
+    StatusService
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
-                    CreateBolModalComponent, CreateInvoiceModalComponent, ResponseModalComponent, ViewInvoiceModalComponent,
+                    CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
                     ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Invoice } from './../invoice'
-import { DocsService } from './../services/docs.service'
-import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component'
+import { Invoice } from './../invoice';
+import { DocsService } from './../services/docs.service';
+import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component';
+import { StatusService } from '../services/status.service';
+
 
 @Component({
   selector: 'create-invoice',
@@ -19,7 +20,8 @@ export class InvoiceCreateComponent implements OnInit {
     constructor(
       private docsService: DocsService,
       private modalComponent: CreateInvoiceModalComponent,
-      private modalService: BsModalService) { }
+      private modalService: BsModalService,
+      public statusService: StatusService) { }
 
     createInvoice(): void {
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
@@ -46,10 +48,8 @@ export class InvoiceCreateComponent implements OnInit {
       this.modalComponent.close();
     }
 
-    callResponse(result: String): void {
-      this.bsModalRef = this.modalService.show(ResponseModalComponent);
-      this.bsModalRef.content.title = 'Response';
-      this.bsModalRef.content.body = result;
+    callResponse(result: string): void {
+      this.statusService.status = result;
     }
 
     ngOnInit() {

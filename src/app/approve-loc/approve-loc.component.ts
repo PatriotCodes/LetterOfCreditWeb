@@ -11,7 +11,7 @@ import { DatepickerModule } from 'ngx-bootstrap';
 import { ApproveLocModalComponent } from './../modals/approve-loc-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component'
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'approve-loc',
@@ -31,7 +31,8 @@ export class ApproveLocComponent implements OnChanges {
     private commonService: CommonService,
     private locService: LocService,
     private modalComponent: ApproveLocModalComponent,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    public statusService: StatusService) { }
 
   approveLoc(): void {
     this.locService.approveLoc(this.loc.txRef).then(result => this.callResponse(result));
@@ -39,9 +40,7 @@ export class ApproveLocComponent implements OnChanges {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent, Object.assign({}, {class: 'gray'}));
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
   }
 
   close(): void {

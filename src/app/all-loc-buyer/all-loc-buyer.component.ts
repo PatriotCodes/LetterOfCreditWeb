@@ -4,10 +4,10 @@ import { LocService } from './../loc.service';
 import { CurrencyPipe } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
-import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
-import { ResponseModalComponent } from './../modals/response-modal.component';
-import { RefreshService } from './../services/refresh.service';
+import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
+import { ViewPlModalComponent } from './../modals/view-pl-modal.component';
+import { RefreshService } from '../services/refresh.service';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'all-loc-buyer',
@@ -21,7 +21,8 @@ export class AllLocBuyerComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
               private locService: LocService,
-              private refreshService: RefreshService) {
+              private refreshService: RefreshService,
+              public statusService: StatusService) {
                 refreshService.missionConfirmed$.subscribe(
                   result => {
                     this.update();
@@ -45,9 +46,7 @@ export class AllLocBuyerComponent implements OnInit {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent);
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
   }
 
   update() {

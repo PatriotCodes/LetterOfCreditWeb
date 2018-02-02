@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Bol } from './../bol'
-import { Party } from './../party'
-import { DocsService } from './../services/docs.service'
-import { CreateBolModalComponent } from './../modals/create-bol-modal.component'
+import { Bol } from './../bol';
+import { Party } from './../party';
+import { DocsService } from './../services/docs.service';
+import { CreateBolModalComponent } from './../modals/create-bol-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component'
-import { LocStateSummary } from './../loc-state-summary'
+import { LocStateSummary } from './../loc-state-summary';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'bill-of-lading',
@@ -22,7 +22,8 @@ export class BillOfLadingComponent implements OnInit {
   constructor(
     private docsService: DocsService,
     private modalComponent: CreateBolModalComponent,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    public statusService: StatusService) { }
 
   createBol(): void {
     this.bol.advisingBank = this.loc[0].advisory;
@@ -70,9 +71,7 @@ export class BillOfLadingComponent implements OnInit {
   }
 
   callResponse(result: String): void {
-    this.bsModalRef = this.modalService.show(ResponseModalComponent);
-    this.bsModalRef.content.title = 'Response';
-    this.bsModalRef.content.body = result;
+    this.statusService.status = status;
   }
 
   close(): void {
