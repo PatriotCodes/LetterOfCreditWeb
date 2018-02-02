@@ -14,12 +14,12 @@
 
 h1 {
   color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Exo 2", "Open Sans";
   font-size: 250%;
 }
 h2, h3 {
   color: #444;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Exo 2", "Open Sans";
   font-weight: lighter;
 }
 h4 {
@@ -35,7 +35,7 @@ body {
 }
 body, button {
   color: #888;
-  font-family: Open Sans, Cambria, Georgia;
+  font-family: Roboto, "Open Sans";
 }
 
 input {
@@ -47,10 +47,8 @@ input {
   @include disable;
   border:1px solid rgba(0,0,0,1) !important;
   margin-bottom:10px !important;
-  color:#6E6E6E !important;
-  text-shadow:#000 0px 1px 5px  !important;
+  color:#000 !important;
 }
-
 input:focus{
   box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.7), 0 1px 1px -1px rgba(255,255,255,0.3);
   background:rgba(0,0,0,0.3);
@@ -58,7 +56,6 @@ input:focus{
 }
 
 button {
-  font-family: Arial;
   background-color: #eee;
   border: none;
   padding: 5px 10px;
@@ -76,32 +73,45 @@ button:disabled {
 }
 
 input[type="submit"] {
-  width:100% !important;
-  padding:15px !important;
+  width: 120px !important;
+  height: 40px !important;
+  padding: 0 10px !important;
   border-radius:5px !important;
   @include disable;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F)) !important;
-  background-image: -webkit-linear-gradient(#28D2DE 0%, #1A878F 100%) !important;
-  background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%) !important;
-  background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%) !important;
-  background-image: linear-gradient(#28D2DE 0%, #1A878F 100%) !important;
+  background-color: #5dcf9c;
   font-size:14px;
-  font-family: "Exo 2";
-  color:#FFF !important;
-  text-transform:uppercase !important;
-  text-shadow:#000 0px 1px 5px !important;
-  border:1px solid #000 !important;
-  opacity:0.7 !important;
-	-webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7) !important;
-  -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7) !important;
-	box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7) !important;
-  border-top:1px solid rgba(255,255,255,0.8)!important;
-  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2))) !important;
+  font-family: "Roboto";
+  color:#fff !important;
+  float: right;
 }
-
 input[type="submit"]:hover{
-  opacity:1 !important;
+  opacity:0.95 !important;
   cursor:pointer !important;
+}
+#autoComplete {
+  color: #fff;
+  background-color: #000;
+}
+#autoComplete:hover {
+  background-color: #1d1d1d;
+}
+.cancel {
+  position: relative;
+  color: #f5f5f5;
+  margin-right: 20px;
+  top: 10px;
+}
+.cancel:hover {
+  color: #fff;
+  cursor: pointer;
+}
+.modal-actions {
+  float: right;
+  margin: 0 10px 20px 0;
+  height: 100px;
+}
+.fix {
+  height: 50px;
 }
 
 a {
@@ -137,10 +147,11 @@ nav a.active {
 .component {
   background-color: #000;
   border-radius: 4px;
+  margin-bottom: 30px;
 }
 
 .panel-heading {
-  font-size:20px;
+  font-size:25px;
   font-family: "Exo 2";
   color: #f5f5f5 !important;
 }
@@ -152,12 +163,25 @@ nav a.active {
   color: #fff;
 }
 
+.modal-header {
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.modal-hr {
+  border-color: #4d4d4d;
+}
+
 .table-striped>tbody>tr:nth-of-type(odd) {
   background-color: #141414;
 }
-
 th {
   color: #4d4d4d;
+}
+.table>thead>tr>th {
+  border-bottom: 1px solid #4d4d4d;
+}
+.table>tbody>tr>td {
+  border-top: 1px solid #4d4d4d;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -929,7 +953,6 @@ html,body {
    opacity: 1;
  }
 }
-
 .owner {
     -moz-box-shadow: 0px 0px 10px Red !important;
     -webkit-box-shadow: 0px 0px 10px Red !important;

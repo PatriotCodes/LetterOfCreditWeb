@@ -15,9 +15,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
     <div class="modal-body">
     <create-invoice></create-invoice>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-    </div>
   </div>
   `
 })

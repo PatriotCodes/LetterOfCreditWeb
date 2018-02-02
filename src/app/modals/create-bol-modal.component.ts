@@ -17,7 +17,7 @@ import { LocStateSummary } from './../loc-state-summary'
     <bill-of-lading [loc]="[locSummary]"></bill-of-lading>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+    <span class="cancel" (click)="bsModalRef.hide()">Cancel</span>
     </div>
   </div>
   `

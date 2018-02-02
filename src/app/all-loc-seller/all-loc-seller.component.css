@@ -1,3 +1,8 @@
 .panel-body {
   min-height: 250px;
 }
+
+.invoice-btn {
+  background-color: #e11c1b;
+  color: #fff;
+}

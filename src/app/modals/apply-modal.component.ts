@@ -16,7 +16,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
     <apply-for-loc [orderRef]="[id]"></apply-for-loc>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+    <span class="cancel" (click)="bsModalRef.hide()">Cancel</span>
     </div>
     </div>
   `
