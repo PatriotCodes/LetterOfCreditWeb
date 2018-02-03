@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit()" #PackingList="ngForm">
     <div class="form-group">
-        <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">Auto</button>
+        <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
         <br>
         <br>
       <div class="form-inline">
@@ -48,6 +48,14 @@
       </div>
 
       <input type="file">
-      <input type="submit" class="submit button" id="one" value="Submit">
+
+      <hr class="modal-hr">
+
+      <div class="modal-actions">
+        <span class="cancel" (click)="close()">Cancel</span>
+        <input type="submit" class="submit" value="Submit">
+      </div>
+
+  <div class="fix"></div>
 
   </form>

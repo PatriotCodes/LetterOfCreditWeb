@@ -9,7 +9,7 @@ import { LocSummary } from './../loc-summary'
   template: `
   <div class="modal-main">
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{title}}</h4>
+      <h4 class="modal-title pull-left">Bill of Lading Timeline</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>

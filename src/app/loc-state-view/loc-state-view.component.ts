@@ -11,7 +11,6 @@ import { DatepickerModule } from 'ngx-bootstrap';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ResponseModalComponent } from './../modals/response-modal.component'
 
 @Component({
   selector: 'loc-state-view',

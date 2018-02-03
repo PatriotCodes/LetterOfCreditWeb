@@ -37,13 +37,13 @@
                 <a [routerLink]="['/approve', loc.id]">{{loc.status}}</a>
               </td>
               <td>
-                <button type="button" class="btn btn-info btn-sm" (click)="openBol(loc.orderRef)">Bill of Lading</button>
+                <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
               </td>
               <td>
-                <button type="button" class="btn btn-info btn-sm" (click)="openPackingList(loc.orderRef)">Packing List</button>
+                <span (click)="openPackingList(loc.orderRef)" class="action"><img src="assets/box.png" height="20px" class="action-img">Packing List</span>
               </td>
               <td>
-                <button class="btn btn-success btn-sm" role="button" (click)="payIssuer(loc.orderRef)" [disabled]="loc.status == 'Issuer Paid'">Settle</button>
+                <span (click)="payIssuer(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.status == 'Issuer Paid'}"><img src="assets/hand.png" height="20px" class="action-img">Settle</span>
               </td>
             </tr>
           </ng-container>

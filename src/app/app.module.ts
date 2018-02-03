@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { MatToolbarModule } from '@angular/material';
+
 import { AppRoutingModule } from './app-routing.module'
 
 // Imports for loading & configuring the in-memory web api
@@ -92,7 +94,8 @@ import { StatusService } from './services/status.service';
     DatepickerModule.forRoot(),
     ModalModule.forRoot(),
     ChartsModule,
-    Ng2OdometerModule.forRoot()
+    Ng2OdometerModule.forRoot(),
+    MatToolbarModule,
   ],
   declarations: [
     AppComponent,

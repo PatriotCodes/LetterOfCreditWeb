@@ -15,9 +15,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
     <div class="modal-body">
     <approve-loc [ref]="[locId]"></approve-loc>
     </div>
-    <div class="modal-footer">
-    <span class="cancel" (click)="bsModalRef.hide()">Cancel</span>
-    </div>
     </div>
   `
 })

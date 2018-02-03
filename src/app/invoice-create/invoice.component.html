@@ -1,7 +1,8 @@
 <form (ngSubmit)="onSubmit()" #Invoice="ngForm">
-  <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">Auto</button>
+    <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
+    <br>
+    <br>
   <h4>Basic details</h4>
-
   <div class="form-inline">
     <div class="form-group">
       <label for="invoiceDate">Date</label>
@@ -16,7 +17,6 @@
       <input type="text" class="form-control" id="term" placeholder="Term" [(ngModel)]="inv.term" name="term">
     </div>
   </div>
-
 
 
   <h4>Seller details</h4>
@@ -78,7 +78,7 @@
   <hr class="modal-hr">
 
     <div class="modal-actions">
-      <span class="cancel" (click)="bsModalRef.hide()">Cancel</span>
+      <span class="cancel" (click)="close()">Cancel</span>
       <input type="submit" class="submit" value="Create Invoice">
     </div>
 

@@ -127,13 +127,13 @@ img { border: 0; max-width: 100%; }
   top: 23px;
   left: 50%;
   text-align: center;
-  background: #6a8db3;
+  background: #5dcf9c;
   color: #fff;
   width: 35px;
   height: 35px;
   line-height: 35px;
   margin-left: -16px;
-  border: 3px solid #90acc7;
+  border: 3px solid #fff;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
@@ -146,7 +146,8 @@ img { border: 0; max-width: 100%; }
 
 .tl-heading h4 {
   margin: 0;
-  color: #c25b4e;
+  color: #000;
+  font-size: 16px;
 }
 
 .tl-body p, .tl-body ul {

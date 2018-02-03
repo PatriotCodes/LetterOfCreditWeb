@@ -8,7 +8,6 @@ import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { ResponseModalComponent } from './../modals/response-modal.component';
 import { RefreshService } from './../services/refresh.service';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
@@ -61,7 +60,6 @@ export class ActiveLocComponent implements OnInit {
 
   callResponse(result: String): void {
     this.statusService.status = status;
-    Observable.timer(2000).subscribe(timer => this.statusService.status = '');
   }
 
   update() {

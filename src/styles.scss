@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /* Master Styles */
 @mixin disable{
   outline:none;
@@ -38,6 +40,17 @@ body, button {
   font-family: Roboto, "Open Sans";
 }
 
+mat-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+}
+
+.body-wrapper {
+  margin-top: 100px;
+}
+
 input {
   width:98% !important;
   padding:15px 0px 15px 8px !important;
@@ -52,6 +65,7 @@ input {
 input:focus{
   box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.7), 0 1px 1px -1px rgba(255,255,255,0.3);
   background:rgba(0,0,0,0.3);
+  color: #fff !important;
   @include easeme;
 }
 
@@ -71,9 +85,14 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
+.disabled {
+  color: #4d4d4d;
+  cursor: not-allowed;
+  text-decoration-line: #4d4d4d;
+}
 
 input[type="submit"] {
-  width: 120px !important;
+  width: auto !important;
   height: 40px !important;
   padding: 0 10px !important;
   border-radius:5px !important;
@@ -91,9 +110,10 @@ input[type="submit"]:hover{
 #autoComplete {
   color: #fff;
   background-color: #000;
+  border: 1px solid #816823;
 }
 #autoComplete:hover {
-  background-color: #1d1d1d;
+  border: 1px solid #ffffff;
 }
 .cancel {
   position: relative;
@@ -117,6 +137,18 @@ input[type="submit"]:hover{
 a {
   cursor: pointer;
   cursor: hand;
+  color: #f1f1f1 !important;
+}
+
+.action {
+  cursor: pointer;
+  cursor: hand;
+  color: #f1f1f1 !important;
+  text-decoration: underline;
+  text-decoration-color: #f00;
+}
+.action-img {
+  margin-right: 5px;
 }
 
 /* Navigation link styles */

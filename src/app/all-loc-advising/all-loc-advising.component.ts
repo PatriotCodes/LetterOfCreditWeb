@@ -7,7 +7,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { DocsModalComponent } from './../modals/docs-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
 import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
-import { ResponseModalComponent } from './../modals/response-modal.component';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';

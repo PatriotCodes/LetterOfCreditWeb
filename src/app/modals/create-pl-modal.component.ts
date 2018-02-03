@@ -16,9 +16,6 @@ import { LocStateSummary } from './../loc-state-summary'
     <div class="modal-body">
     <packing-list [loc]="[locSummary]"></packing-list>
     </div>
-    <div class="modal-footer">
-    <span class="cancel" (click)="bsModalRef.hide()">Cancel</span>
-    </div>
   </div>
   `
 })

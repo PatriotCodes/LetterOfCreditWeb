@@ -8,6 +8,7 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
   cordaImage: string;
   me: string;

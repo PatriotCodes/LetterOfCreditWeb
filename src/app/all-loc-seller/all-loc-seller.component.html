@@ -50,13 +50,13 @@
                 <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
               </td>
               <td>
-                <button class="btn btn-info btn-sm" role="button" (click)="addBol(loc)">Add Bill of Lading</button>
+                <span (click)="addBol(loc)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Add Bill of Lading</span>
               </td>
               <td>
-                <button class="btn btn-info btn-sm" role="button" (click)="addPl(loc)">Add Packing List</button>
+                <span (click)="addPl(loc)" class="action"><img src="assets/box.png" height="20px" class="action-img">Add Packing List</span>
               </td>
               <td>
-                <button class="btn btn-success btn-sm" role="button" (click)="shipGoods(loc)">Ship</button>
+                <span (click)="shipGoods(loc)" class="action"><img src="assets/ship.png" height="20px" class="action-img">Ship</span>
               </td>
               <td hidden>
                 <button class="btn btn-danger btn-sm" role="button" (click)="rejectOrder(loc)">Reject</button>

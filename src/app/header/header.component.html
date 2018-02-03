@@ -1,15 +1,15 @@
-<div class="col-md-12">
+<mat-toolbar color="primary" class="toolbar mat-elevation-z5">
 
-<div class="col-md-2">
-  <img [src]="cordaImage" height="40px">
-</div>
+<img [src]="cordaImage" height="40px">
 
 <div id="status">
   <app-feedback></app-feedback>
 </div>
 
-<div class="col-md-4 pull-right">
+<span class="toolbar-spacer"></span>
+
+<div>
   <cash-balance [node]=[me]></cash-balance>
 </div>
 
-</div>
+</mat-toolbar>
