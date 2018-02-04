@@ -5,7 +5,7 @@ export class Tx implements Serializable<Tx> {
   public txResponse: string;
 
   deserialize(input: any) {
-    this.txResponse = input;
+    this.txResponse = input._body;
     return this;
   }
 
