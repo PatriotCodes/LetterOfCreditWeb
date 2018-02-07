@@ -15,6 +15,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import './../../assets/modal.js'
 import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'apply-for-loc',
@@ -42,7 +43,8 @@ export class ApplyForLocComponent implements OnInit {
     private locService: LocService,
     private modalComponent: ApplyModalComponent,
     private modalService: BsModalService,
-    public statusService: StatusService) {
+    public statusService: StatusService,
+    public refreshService: RefreshService) {
     }
 
   getCreditTypes(): void {
@@ -70,8 +72,9 @@ export class ApplyForLocComponent implements OnInit {
     this.close()
   }
 
-  callResponse(result: String): void {
-    this.statusService.status = status;
+  callResponse(result: string): void {
+    this.statusService.status = result;
+    this.refreshService.confirmMission();
   }
 
   close(): void {

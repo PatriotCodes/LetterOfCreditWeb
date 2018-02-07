@@ -12,6 +12,7 @@ import { ApproveLocModalComponent } from './../modals/approve-loc-modal.componen
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { StatusService } from '../services/status.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'approve-loc',
@@ -32,15 +33,17 @@ export class ApproveLocComponent implements OnChanges {
     private locService: LocService,
     private modalComponent: ApproveLocModalComponent,
     private modalService: BsModalService,
-    public statusService: StatusService) { }
+    public statusService: StatusService,
+    public refreshService: RefreshService) { }
 
   approveLoc(): void {
     this.locService.approveLoc(this.loc.txRef).then(result => this.callResponse(result));
     this.close()
   }
 
-  callResponse(result: String): void {
-    this.statusService.status = status;
+  callResponse(result: string): void {
+    this.statusService.status = result;
+    this.refreshService.confirmMission();
   }
 
   close(): void {

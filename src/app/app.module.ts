@@ -62,8 +62,8 @@ import { GoodsShippedComponent } from './goods-shipped/goods-shipped.component';
 import { AllLocBuyerComponent } from './all-loc-buyer/all-loc-buyer.component';
 import { DocsComponent } from './docs/docs.component';
 import { AllLocAdvisingComponent } from './all-loc-advising/all-loc-advising.component';
-import { DocumentUploadComponent } from './document-upload/document-upload.component';
-import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload';
+//import { DocumentUploadComponent } from './document-upload/document-upload.component';
+//import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload';
 import { AllInvoiceComponent } from './all-invoice/all-invoice.component';
 import { AllInvoiceSellerComponent } from './all-invoice-seller/all-invoice-seller.component';
 import { LocStateViewComponent } from './loc-state-view/loc-state-view.component';
@@ -136,9 +136,9 @@ import { StatusService } from './services/status.service';
     AllLocBuyerComponent,
     DocsComponent,
     AllLocAdvisingComponent,
-    DocumentUploadComponent,
-    FileSelectDirective,
-    FileDropDirective,
+    //DocumentUploadComponent,
+    //FileSelectDirective,
+    //FileDropDirective,
     AllInvoiceComponent,
     AllInvoiceSellerComponent,
     LocStateViewComponent,

@@ -5,6 +5,7 @@ import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.co
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { StatusService } from '../services/status.service';
+import { RefreshService } from '../services/refresh.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class InvoiceCreateComponent implements OnInit {
       private docsService: DocsService,
       private modalComponent: CreateInvoiceModalComponent,
       private modalService: BsModalService,
-      public statusService: StatusService) { }
+      public statusService: StatusService,
+      public refreshService: RefreshService) { }
 
     createInvoice(): void {
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
@@ -50,6 +52,7 @@ export class InvoiceCreateComponent implements OnInit {
 
     callResponse(result: string): void {
       this.statusService.status = result;
+      this.refreshService.confirmMission();
     }
 
     ngOnInit() {

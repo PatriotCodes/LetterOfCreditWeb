@@ -237,7 +237,7 @@ export class LocService {
     return this.http
     .post(this.createLocUrl, JSON.stringify(loc), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res.json()).txResponse as string)
+    .then(res => new Tx().deserialize(res).txResponse)
     .catch(this.handleError);
   }
 
@@ -245,7 +245,7 @@ export class LocService {
     const url = `${this.approveLocUrl}?ref=${ref}`;
     return this.http.get(url)
               .toPromise()
-              .then(res => new Tx().text(res).txResponse as string)
+              .then(res => new Tx().deserialize(res).txResponse)
               .catch(this.handleError);
   }
 
@@ -253,7 +253,7 @@ export class LocService {
     const url = `${this.paySellerUrl}?locId=${ref}`;
     return this.http.get(url)
                .toPromise()
-               .then(res => new Tx().text(res).txResponse as string)
+               .then(res => new Tx().deserialize(res).txResponse)
                .catch(this.handleError)
   }
 
@@ -261,7 +261,7 @@ export class LocService {
     const url = `${this.payAdvisoryUrl}?locId=${ref}`;
     return this.http.get(url)
                .toPromise()
-               .then(res => new Tx().text(res).txResponse as string)
+               .then(res => new Tx().deserialize(res).txResponse)
                .catch(this.handleError)
   }
 
@@ -269,7 +269,7 @@ export class LocService {
     const url = `${this.payIssuerUrl}?locId=${ref}`;
     return this.http.get(url)
                .toPromise()
-               .then(res => new Tx().text(res).txResponse as string)
+               .then(res => new Tx().deserialize(res).txResponse)
                .catch(this.handleError)
   }
 

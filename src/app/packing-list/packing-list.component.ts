@@ -6,6 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { LocStateSummary } from './../loc-state-summary';
 import { StatusService } from '../services/status.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'packing-list',
@@ -22,7 +23,8 @@ export class PackingListComponent implements OnInit {
       private docsService: DocsService,
       private modalComponent: CreatePlModalComponent,
       private modalService: BsModalService,
-      public statusService: StatusService) { }
+      public statusService: StatusService,
+      public refreshService: RefreshService) { }
 
     createpl(): void {
       this.pl.advisingBank = this.loc[0].advisory;
@@ -50,8 +52,9 @@ export class PackingListComponent implements OnInit {
       this.pl.goodsGrossWeight = 1000;
     }
 
-    callResponse(result: String): void {
-      this.statusService.status = status;
+    callResponse(result: string): void {
+      this.statusService.status = result;
+      this.refreshService.confirmMission();
     }
 
     close(): void {

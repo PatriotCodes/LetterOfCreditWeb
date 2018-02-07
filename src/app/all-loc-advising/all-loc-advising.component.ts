@@ -10,6 +10,7 @@ import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'all-loc-advising',
@@ -23,7 +24,8 @@ export class AllLocAdvisingComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
               private locService: LocService,
-              public statusService: StatusService) { }
+              public statusService: StatusService,
+              public refreshService: RefreshService) { }
 
   public openModalWithComponent() {
     this.bsModalRef = this.modalService.show(DocsModalComponent);
@@ -49,8 +51,9 @@ export class AllLocAdvisingComponent implements OnInit {
     this.bsModalRef.content.title = 'Packing List';
   }
 
-  callResponse(result: String): void {
-    this.statusService.status = status;
+  callResponse(result: string): void {
+    this.statusService.status = result;
+    this.refreshService.confirmMission();
   }
 
   public payBeneficiary(id: string) {

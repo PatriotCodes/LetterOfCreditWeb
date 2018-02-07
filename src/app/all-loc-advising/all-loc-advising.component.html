@@ -46,9 +46,6 @@
               <td>
                 <span (click)="payBeneficiary(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Beneficiary</span>
               </td>
-              <td>
-                <button type="button" class="btn btn-success btn-sm" (click)="claimFunds(loc.orderRef)">Claim Funds</button>
-              </td>
             </tr>
           </ng-container>
           </tbody>

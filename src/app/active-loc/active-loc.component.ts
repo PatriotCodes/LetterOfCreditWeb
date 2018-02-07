@@ -58,8 +58,9 @@ export class ActiveLocComponent implements OnInit {
     this.bsModalRef.content.locId = ref;
   }
 
-  callResponse(result: String): void {
-    this.statusService.status = status;
+  callResponse(result: string): void {
+    this.statusService.status = result;
+    this.refreshService.confirmMission();
   }
 
   update() {

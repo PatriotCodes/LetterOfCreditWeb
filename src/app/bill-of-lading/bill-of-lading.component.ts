@@ -7,6 +7,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { LocStateSummary } from './../loc-state-summary';
 import { StatusService } from '../services/status.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'bill-of-lading',
@@ -23,7 +24,8 @@ export class BillOfLadingComponent implements OnInit {
     private docsService: DocsService,
     private modalComponent: CreateBolModalComponent,
     private modalService: BsModalService,
-    public statusService: StatusService) { }
+    public statusService: StatusService,
+    public refreshService: RefreshService) { }
 
   createBol(): void {
     this.bol.advisingBank = this.loc[0].advisory;
@@ -70,8 +72,9 @@ export class BillOfLadingComponent implements OnInit {
     this.bol.advisingBank = this.loc[0].advisingBank;
   }
 
-  callResponse(result: String): void {
-    this.statusService.status = status;
+  callResponse(result: string): void {
+    this.statusService.status = result;
+    this.refreshService.confirmMission();
   }
 
   close(): void {

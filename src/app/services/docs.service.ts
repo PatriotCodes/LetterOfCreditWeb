@@ -50,7 +50,7 @@ export class DocsService {
     return this.http
     .post(this.createBolUrl, JSON.stringify(bol), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse as string)
+    .then(res => new Tx().deserialize(res).txResponse)
     .catch(this.handleError);
   }
 
@@ -58,7 +58,7 @@ export class DocsService {
     return this.http
     .post(this.createPackingListUrl, JSON.stringify(packingList), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse as string)
+    .then(res => new Tx().deserialize(res).txResponse)
     .catch(this.handleError);
   }
 
@@ -66,7 +66,7 @@ export class DocsService {
     return this.http
     .post(this.createInvoiceUrl, JSON.stringify(invoice), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse as string)
+    .then(res => new Tx().deserialize(res).txResponse)
     .catch(this.handleError);
   }
 
