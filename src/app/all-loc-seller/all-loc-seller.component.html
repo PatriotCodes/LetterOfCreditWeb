@@ -5,7 +5,7 @@
   </div>
   <div class="panel-body">
     <div class="grid grid-pad">
-      <table class="table table-condensed table-striped table-hover">
+      <table class="table table-condensed table-striped">
         <thead>
           <tr>
             <th>Order Ref</th>
@@ -53,7 +53,7 @@
                 <span (click)="addBol(loc)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Add Bill of Lading</span>
               </td>
               <td>
-                <span (click)="addPl(loc)" class="action"><img src="assets/box.png" height="20px" class="action-img">Add Packing List</span>
+                <span (click)="addPl(loc); isClickedOnce = true" class="action"><img src="assets/box.png" height="20px" class="action-img">Add Packing List</span>
               </td>
               <td>
                 <span (click)="shipGoods(loc)" class="action"><img src="assets/ship.png" height="20px" class="action-img">Ship</span>

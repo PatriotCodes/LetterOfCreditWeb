@@ -18,7 +18,7 @@ import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.co
 export class AllLocSellerComponent implements OnInit {
   @Input() getAllUrl: string;
   bsModalRef: BsModalRef;
-  locs: LocStateSummary[] = []
+  locs: LocStateSummary[] = [];
 
   constructor(private locService: LocService,
               private modalService: BsModalService) { }

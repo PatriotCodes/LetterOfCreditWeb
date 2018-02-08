@@ -6,6 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ApplyModalComponent } from './../modals/apply-modal.component';
 import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component'
 import { CommaSeperatedNumberPipe } from './../comma-seperated-number.pipe';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'all-invoice',
@@ -17,7 +18,13 @@ export class AllInvoiceComponent implements OnInit {
   invoices: Invoice[] = []
 
   constructor(private docService: DocsService,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private refreshService: RefreshService) {
+                refreshService.missionConfirmed$.subscribe(
+                  result => {
+                    this.update();
+                  });
+              }
 
   public openModalWithComponent(ref: string) {
     this.bsModalRef = this.modalService.show(ApplyModalComponent);
@@ -31,8 +38,12 @@ export class AllInvoiceComponent implements OnInit {
     this.bsModalRef.content.invoiceId = ref;
   }
 
-  ngOnInit() {
+  update() {
     this.docService.getInvoices().then(invoices => this.invoices = invoices)
+  }
+
+  ngOnInit() {
+    this.update();
   }
 
 }

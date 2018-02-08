@@ -17,6 +17,8 @@ export class LocStateSummary implements Serializable<LocStateSummary> {
   orderRef: string;
   description: string;
   status: string;
+  bolAdded: boolean;
+  plAdded: boolean;
 
   deserialize(input: any) {
     this.id = input.first;

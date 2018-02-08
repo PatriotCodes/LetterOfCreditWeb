@@ -4,6 +4,7 @@ import { LocService } from './../loc.service';
 import { CurrencyPipe } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
 import { ViewPlModalComponent } from './../modals/view-pl-modal.component';
 import { RefreshService } from '../services/refresh.service';
@@ -20,14 +21,20 @@ export class AllLocBuyerComponent implements OnInit {
   bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,
-              private locService: LocService,
-              private refreshService: RefreshService,
-              public statusService: StatusService) {
-                refreshService.missionConfirmed$.subscribe(
-                  result => {
-                    this.update();
-                  });
-               }
+    private locService: LocService,
+    private refreshService: RefreshService,
+    public statusService: StatusService) {
+    refreshService.missionConfirmed$.subscribe(
+      result => {
+        this.update();
+      });
+  }
+
+  public openLocModal(ref: string) {
+    this.bsModalRef = this.modalService.show(ViewLocStateModalComponent, Object.assign({}, { class: 'gray modal-lg' }));
+    this.bsModalRef.content.title = 'Letter of Credit';
+    this.bsModalRef.content.locId = ref;
+  }
 
   public openBol(id: string) {
     this.bsModalRef = this.modalService.show(ViewBolModalComponent);
