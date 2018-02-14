@@ -80,6 +80,9 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { StatusService } from './services/status.service';
+import { ShepherdService } from './services/shepherd.service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { TourService } from './services/tour.service';
 
 @NgModule({
   imports: [
@@ -163,7 +166,10 @@ import { StatusService } from './services/status.service';
     AdvisingBankService,
     RefreshService,
     IdentityService,
-    StatusService
+    StatusService,
+    ShepherdService,
+    CookieService,
+    TourService
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,

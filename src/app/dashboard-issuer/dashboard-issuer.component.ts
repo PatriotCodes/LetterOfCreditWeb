@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'dashboard-issuer',
@@ -8,9 +9,12 @@ declare var $: any;
 })
 export class DashboardIssuerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService: CookieService, private tourService: TourService) { }
 
   ngOnInit() {
-    $('.panel').addClass('module');
+    let demoDone = this.cookieService.get('issuerDemoDone');
+    if (demoDone != 'true') {
+      this.tourService.issuerTour.start
+    }
   }
 }

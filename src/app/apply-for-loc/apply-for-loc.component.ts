@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Loc } from './../loc';
 import { Party } from './../party'
 import { CreditType } from './../services/credit-types/credit-type';
@@ -16,6 +16,7 @@ import './../../assets/modal.js'
 import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
 import { RefreshService } from '../services/refresh.service';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'apply-for-loc',
@@ -44,8 +45,9 @@ export class ApplyForLocComponent implements OnInit {
     private modalComponent: ApplyModalComponent,
     private modalService: BsModalService,
     public statusService: StatusService,
-    public refreshService: RefreshService) {
-    }
+    public refreshService: RefreshService,
+    private tourService: TourService) {
+  }
 
   getCreditTypes(): void {
     this.creditTypesService.getCreditTypes().then(creditTypes => this.creditTypes = creditTypes);
@@ -75,6 +77,7 @@ export class ApplyForLocComponent implements OnInit {
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.tourService.buyerTour.show('application-created');
   }
 
   close(): void {

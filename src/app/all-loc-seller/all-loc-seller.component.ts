@@ -9,6 +9,7 @@ import { CreateBolModalComponent } from './../modals/create-bol-modal.component'
 import { CreatePlModalComponent } from './../modals/create-pl-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component'
 import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'all-loc-seller',
@@ -21,7 +22,8 @@ export class AllLocSellerComponent implements OnInit {
   locs: LocStateSummary[] = [];
 
   constructor(private locService: LocService,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private tourService: TourService) { }
 
   /*shipGoods(loc: LocSummary): void {
     if (confirm('Confirm you want to ship ' + loc.id)) {

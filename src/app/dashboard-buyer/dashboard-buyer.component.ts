@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ApplyModalComponent } from './../modals/apply-modal.component';
-declare var $: any;
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { ShepherdService } from '../services/shepherd.service';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'dashboard-buyer',
@@ -12,15 +14,18 @@ declare var $: any;
 export class DashboardBuyerComponent implements OnInit {
   bsModalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService, private cookieService: CookieService,
+    private tourService: TourService) { }
 
   public openModalWithComponent() {
-    this.bsModalRef = this.modalService.show(ApplyModalComponent, Object.assign({}, {class: 'gray modal-lg'}));
+    this.bsModalRef = this.modalService.show(ApplyModalComponent, Object.assign({}, { class: 'gray modal-lg' }));
     this.bsModalRef.content.title = 'Apply';
   }
 
   ngOnInit() {
-    $('.panel').addClass('module');
+    let demoDone = this.cookieService.get('buyerDemoDone');
+    if (demoDone != 'true') {
+      this.tourService.buyerTour.start();
+    }
   }
-
 }

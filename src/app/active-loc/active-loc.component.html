@@ -1,5 +1,5 @@
 <div class="component">
-  <div class="panel-heading">Active</div>
+  <div class="panel-heading">Active Letters of Credit</div>
   <div class="panel-body">
     <div class="grid grid-pad">
       <table class="table table-condensed table-striped">
@@ -9,8 +9,9 @@
             <th>Beneficiary</th>
             <th>Amount</th>
             <th>Description</th>
+            <th>Seller Paid</th>
             <th>Advisory Paid</th>
-            <th>Payment from Buyer</th>
+            <th>Issuer Paid</th>
             <th>Actions</th>
             <th></th>
             <th></th>
@@ -33,8 +34,13 @@
               <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
             </td>
             <td>
+              <div *ngIf="loc.beneficiaryPaid;else not_paid">
+                <a (click)="openLocModal(loc.id)" class="paid">True</a>
+              </div>
+            </td>
+            <td>
               <div *ngIf="loc.advisoryPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)">True</a>
+                <a (click)="openLocModal(loc.id)" class="paid">True</a>
               </div>
             </td>
             <td>

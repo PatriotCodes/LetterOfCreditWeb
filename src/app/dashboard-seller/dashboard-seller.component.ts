@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
-declare var $: any;
+import { IShepherdTourOptions } from '../interfaces';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'dashboard-seller',
@@ -12,10 +14,11 @@ declare var $: any;
 export class DashboardSellerComponent implements OnInit {
   bsModalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService, public tourService: TourService,
+    private cookieService: CookieService) { }
 
   ngOnInit() {
-    $('.panel').addClass('module');
+    let demoDone = this.cookieService.get('sellerDemoDone');
+    this.tourService.sellerTour.start();
   }
-
 }

@@ -38,7 +38,6 @@ export class AllLocAdvisingComponent implements OnInit {
     this.bsModalRef.content.locId = ref;
   }
 
-
   public openBol(id: string) {
     this.bsModalRef = this.modalService.show(ViewBolModalComponent);
     this.bsModalRef.content.id = id;

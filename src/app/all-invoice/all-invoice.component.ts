@@ -7,6 +7,7 @@ import { ApplyModalComponent } from './../modals/apply-modal.component';
 import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component'
 import { CommaSeperatedNumberPipe } from './../comma-seperated-number.pipe';
 import { RefreshService } from '../services/refresh.service';
+import { ShepherdService } from '../services/shepherd.service';
 
 @Component({
   selector: 'all-invoice',
@@ -18,13 +19,14 @@ export class AllInvoiceComponent implements OnInit {
   invoices: Invoice[] = []
 
   constructor(private docService: DocsService,
-              private modalService: BsModalService,
-              private refreshService: RefreshService) {
-                refreshService.missionConfirmed$.subscribe(
-                  result => {
-                    this.update();
-                  });
-              }
+    private modalService: BsModalService,
+    private refreshService: RefreshService,
+    private shepService: ShepherdService) {
+    refreshService.missionConfirmed$.subscribe(
+      result => {
+        this.update();
+      });
+  }
 
   public openModalWithComponent(ref: string) {
     this.bsModalRef = this.modalService.show(ApplyModalComponent);
@@ -45,5 +47,4 @@ export class AllInvoiceComponent implements OnInit {
   ngOnInit() {
     this.update();
   }
-
 }

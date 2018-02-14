@@ -18,7 +18,7 @@ export class RefreshService {
   }
 
 constructor() {
-    let timer = TimerObservable.create(1000, 5000);
+    let timer = TimerObservable.create(100, 6000);
     this.subscription = timer.subscribe(t => {
       this.confirmMission();
     });

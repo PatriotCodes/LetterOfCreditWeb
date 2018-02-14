@@ -42,6 +42,7 @@
     "@angular/tsc-wrapped": "~4.3.1",
     "@angular/upgrade": "~4.3.1",
     "angular-in-memory-web-api": "^0.3.2",
+    "angular2-cookie": "^1.2.6",
     "angular2-fontawesome": "^0.9.3",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.6.0",
@@ -56,6 +57,7 @@
     "ngx-bootstrap": "^1.9.1",
     "rxjs": "^5.1.0",
     "systemjs": "0.19.39",
+    "tether-shepherd": "^1.8.1",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {

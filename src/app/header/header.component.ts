@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Party } from './../party'
 import { LocService } from './../loc.service'
 import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ShepherdService } from '../services/shepherd.service';
+import { IShepherdTourOptions, IShepherdTourStep } from '../interfaces';
 
 @Component({
   selector: 'header',
@@ -13,8 +15,11 @@ export class HeaderComponent implements OnInit {
   cordaImage: string;
   me: string;
   port: number;
+  options: IShepherdTourOptions;
+  step: IShepherdTourStep;
 
-  constructor(private locService: LocService, private route: ActivatedRoute) {
+  constructor(private locService: LocService, private route: ActivatedRoute,
+              private shepherdService: ShepherdService) {
     this.cordaImage = 'assets/corda.png'
    }
 

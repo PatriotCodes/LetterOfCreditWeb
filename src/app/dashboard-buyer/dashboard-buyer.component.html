@@ -11,19 +11,19 @@
 
   <div class="row">
     <div class="col-md-10">
-        <all-invoice></all-invoice>
+        <all-invoice id="invoices"></all-invoice>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-10">
-        <awaiting-approval></awaiting-approval>
+        <awaiting-approval id="applications"></awaiting-approval>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-10">
-      <all-loc-buyer [getAllUrl]="'buyer'"></all-loc-buyer>
+      <all-loc-buyer [getAllUrl]="'buyer'" id="live"></all-loc-buyer>
     </div>
   </div>
 </div>

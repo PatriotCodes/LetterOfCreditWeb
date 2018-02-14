@@ -20,6 +20,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ActiveLocComponent implements OnInit {
   bsModalRef: BsModalRef;
+  disabled = false;
 
   locs: LocStateSummary[] = []
 
@@ -36,6 +37,7 @@ export class ActiveLocComponent implements OnInit {
 
   public payAdvisory(id: string) {
     this.locService.payAdviser(id).then(response => this.callResponse(response));
+    this.disabled = true;
   }
 
   public openBol(id: string) {
@@ -61,6 +63,7 @@ export class ActiveLocComponent implements OnInit {
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.disabled = false;
   }
 
   update() {
