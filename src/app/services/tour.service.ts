@@ -19,6 +19,12 @@ export class TourService {
       showCancelLink: true
     }
 
+    let defaultOptionsNoScroll = {
+      classes: 'shepherd-theme-arrows',
+      scrollTo: true,
+      showCancelLink: true
+    }
+
     this.sellerTour = this.shepherdService.addTour("seller", {
       defaults: defaultOptions
     });
@@ -29,7 +35,7 @@ export class TourService {
       defaults: defaultOptions
     });
     this.advisingTour = this.shepherdService.addTour("advising", {
-      defaults: defaultOptions
+      defaults: defaultOptionsNoScroll
     });
 
     let sellerTour = this.sellerTour;
@@ -55,7 +61,7 @@ export class TourService {
       }]
     })
     this.sellerTour.addStep('invoice-created', {
-      text: "So what just happened?<br>The seller created a new invoice state on Corda and sent this to the buyer node as part of a signed transaction.<br>The buyer, happy with the terms, agrees and signs.<br>This is now stored as a shared fact across both nodes",
+      text: "<b>So what just happened</b>?<br><br>The seller created a new invoice state on Corda and sent this to the buyer node as part of a signed transaction.<br>The buyer, happy with the terms, agrees and signs.<br>This is now stored as a shared fact across both nodes",
       buttons: [{
         text: 'next', action: function () {
           sellerTour.next();
@@ -64,6 +70,7 @@ export class TourService {
       }]
     })
     this.sellerTour.addStep('status', { text: 'The transaction id you see here is a unique hash of the transaction we just created', attachTo: '#status top' })
+    this.sellerTour.addStep('switch', { text: "Let's switch to the buyer node and see what they see" })
 
     /*
     * Buyer tour

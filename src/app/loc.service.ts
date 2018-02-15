@@ -57,18 +57,20 @@ export class LocService {
   private payAdvisoryUrl = 'http://localhost:' + this.issuer + '/api/loc/pay-adviser';
   private payIssuerUrl = 'http://localhost:' + this.buyer + '/api/loc/pay-issuer';
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private shipGoodsUrl = 'http://localhost:' + this.seller + '/api/loc/ship';
 
-  constructor(private http: Http) {}
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+
+  constructor(private http: Http) { }
 
   getLocApp(id: string): Promise<Loc> {
     let trimmedId = id[0];
     trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocAppUrl}?ref=${trimmedId}`;
     return this.http.get(url)
-              .toPromise()
-              .then(response => response.json() as Loc)
-              .catch(this.handleError);
+      .toPromise()
+      .then(response => response.json() as Loc)
+      .catch(this.handleError);
   }
 
   getLoc(id: string): Promise<LocState> {
@@ -76,9 +78,9 @@ export class LocService {
     trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocUrl}?ref=${trimmedId}`;
     return this.http.get(url)
-              .toPromise()
-              .then(response => response.json() as LocState)
-              .catch(this.handleError);
+      .toPromise()
+      .then(response => response.json() as LocState)
+      .catch(this.handleError);
   }
 
   getAllLocApps(node: string): Promise<LocSummary[]> {
@@ -101,51 +103,51 @@ export class LocService {
     }
 
     return this.http.get(getAllUrl)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getAwaitingApprovalLocs(): Promise<LocSummary[]> {
     return this.http.get(this.awaitingApprovalLocUrl)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getAwaitingApprovalLocsIssuer(): Promise<LocSummary[]> {
     return this.http.get(this.awaitingApprovalLocUrlIssuer)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getActiveLocsApps(): Promise<LocSummary[]> {
     return this.http.get(this.activeLocUrl)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getActiveLocs(): Promise<LocStateSummary[]> {
     return this.http.get(this.allLocUrl)
-               .toPromise()
-               .then(response => this.createLocStateSummaryArray(response.json()) as LocStateSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocStateSummaryArray(response.json()) as LocStateSummary[])
+      .catch(this.handleError)
   }
 
   getAllLocs(): Promise<LocSummary[]> {
     return this.http.get(this.allLocUrl)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getAwaitingPaymentLocs(): Promise<LocSummary[]> {
     return this.http.get(this.awaitingPaymentLocUrl)
-               .toPromise()
-               .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
+      .catch(this.handleError)
   }
 
   getCashBalances(node: string): Promise<Cash> {
@@ -167,9 +169,9 @@ export class LocService {
         url = this.cashBalancesIssuerUrl
     }
     return this.http.get(url)
-               .toPromise()
-               .then(response => new Cash().deserialize(response.json()) as Cash)
-               .catch(this.handleError)
+      .toPromise()
+      .then(response => new Cash().deserialize(response.json()) as Cash)
+      .catch(this.handleError)
   }
 
   getMe(id: string): Promise<Party> {
@@ -192,9 +194,9 @@ export class LocService {
     }
 
     return this.http.get(url)
-              .toPromise()
-              .then(response => new Party().deserialize(response.json()) as Party)
-              .catch(this.handleError);
+      .toPromise()
+      .then(response => new Party().deserialize(response.json()) as Party)
+      .catch(this.handleError);
   }
 
   getPort(id: string): number {
@@ -221,65 +223,66 @@ export class LocService {
 
   getPeers(): Promise<Party[]> {
     return this.http.get(this.peersUrl)
-              .toPromise()
-              .then(response => this.createPartyArray(response.json()) as Party[])
-              .catch(this.handleError);
+      .toPromise()
+      .then(response => this.createPartyArray(response.json()) as Party[])
+      .catch(this.handleError);
   }
 
   getStats(): Promise<Stats> {
     return this.http.get(this.statsUrl)
-              .toPromise()
-              .then(response => new Stats().deserialize(response.json()) as Stats)
-              .catch(this.handleError);
+      .toPromise()
+      .then(response => new Stats().deserialize(response.json()) as Stats)
+      .catch(this.handleError);
   }
 
   createLoc(loc: Loc): Promise<string> {
     return this.http
-    .post(this.createLocUrl, JSON.stringify(loc), { headers: this.headers })
-    .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse)
-    .catch(this.handleError);
+      .post(this.createLocUrl, JSON.stringify(loc), { headers: this.headers })
+      .toPromise()
+      .then(res => new Tx().deserialize(res).txResponse)
+      .catch(this.handleError);
   }
 
   approveLoc(ref: string): Promise<string> {
     const url = `${this.approveLocUrl}?ref=${ref}`;
     return this.http.get(url)
-              .toPromise()
-              .then(res => new Tx().deserialize(res).txResponse)
-              .catch(this.handleError);
+      .toPromise()
+      .then(res => new Tx().deserialize(res).txResponse)
+      .catch(this.handleError);
   }
 
   paySeller(ref: string): Promise<string> {
     const url = `${this.paySellerUrl}?locId=${ref}`;
     return this.http.get(url)
-               .toPromise()
-               .then(res => new Tx().deserialize(res).txResponse)
-               .catch(this.handleError)
+      .toPromise()
+      .then(res => new Tx().deserialize(res).txResponse)
+      .catch(this.handleError)
   }
 
   payAdviser(ref: string): Promise<string> {
     const url = `${this.payAdvisoryUrl}?locId=${ref}`;
     return this.http.get(url)
-               .toPromise()
-               .then(res => new Tx().deserialize(res).txResponse)
-               .catch(this.handleError)
+      .toPromise()
+      .then(res => new Tx().deserialize(res).txResponse)
+      .catch(this.handleError)
   }
 
   payIssuer(ref: string): Promise<string> {
     const url = `${this.payIssuerUrl}?locId=${ref}`;
     return this.http.get(url)
-               .toPromise()
-               .then(res => new Tx().deserialize(res).txResponse)
-               .catch(this.handleError)
+      .toPromise()
+      .then(res => new Tx().deserialize(res).txResponse)
+      .catch(this.handleError)
   }
 
   claimFunds(ref: string) {
     this.getMe('issuing').then(result => {
-    let claimFund = new ClaimFund(ref, result.name);
-    this.http.post(this.claimFundsUrl, JSON.stringify(claimFund), { headers: this.headers })
-               .toPromise()
-               .then(res => new Tx().text(res).txResponse as string)
-               .catch(this.handleError) })
+      let claimFund = new ClaimFund(ref, result.name);
+      this.http.post(this.claimFundsUrl, JSON.stringify(claimFund), { headers: this.headers })
+        .toPromise()
+        .then(res => new Tx().text(res).txResponse as string)
+        .catch(this.handleError)
+    })
   }
 
   private createPartyArray(input: any): Party[] {
@@ -317,18 +320,16 @@ export class LocService {
   /// MOCK DATA STUFF
   getDummySummary(): Promise<LocSummary[]> {
     return this.http.get(this.mockSummary)
-    .toPromise()
-    .then(response => this.createLocSummaryArray(response.json().data) as LocSummary[])
-    .catch(this.handleError)
+      .toPromise()
+      .then(response => this.createLocSummaryArray(response.json().data) as LocSummary[])
+      .catch(this.handleError)
   }
 
-  shipGoods(loc: LocSummary): Promise<LocSummary> {
-    const url = `${this.mockSummary}/${loc.id}`;
-    loc.status = 'Shipped';
-    return this.http
-      .put(url, JSON.stringify(loc), {headers: this.headers})
+  shipGoods(ref: string): Promise<LocSummary> {
+    const url = `${this.shipGoodsUrl}?ref=${ref}`;
+    return this.http.get(url)
       .toPromise()
-      .then(() => loc)
+      .then(res => new Tx().deserialize(res).txResponse)
       .catch(this.handleError);
   }
 }

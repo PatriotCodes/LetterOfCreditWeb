@@ -14,7 +14,8 @@ export class DashboardIssuerComponent implements OnInit {
   ngOnInit() {
     let demoDone = this.cookieService.get('issuerDemoDone');
     if (demoDone != 'true') {
-      this.tourService.issuerTour.start
+      this.tourService.sellerTour.start();
+      this.cookieService.put('issuerDemoDone', 'true');
     }
   }
 }

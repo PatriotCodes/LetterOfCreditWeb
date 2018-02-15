@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <ng-container *ngFor="let loc of locs">
-            <tr *ngIf="loc.status != 'Shipped'">
+            <tr *ngIf="loc.status != 'Terminated'" [class.shipped]="loc.status == 'Shipped'">
               <td hidden>
                 <a>{{loc}}</a>
               </td>
@@ -56,7 +56,7 @@
                 <span (click)="addPl(loc); isClickedOnce = true" class="action"><img src="assets/box.png" height="20px" class="action-img">Add Packing List</span>
               </td>
               <td>
-                <span (click)="shipGoods(loc)" class="action"><img src="assets/ship.png" height="20px" class="action-img">Ship</span>
+                <span (click)="shipGoods(loc.orderRef)" class="action"><img src="assets/ship.png" height="20px" class="action-img">Ship</span>
               </td>
               <td hidden>
                 <button class="btn btn-danger btn-sm" role="button" (click)="rejectOrder(loc)">Reject</button>

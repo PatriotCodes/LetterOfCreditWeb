@@ -5,6 +5,7 @@ import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.co
 import { IShepherdTourOptions } from '../interfaces';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { TourService } from '../services/tour.service';
+import { StatusService } from '../services/status.service';
 
 @Component({
   selector: 'dashboard-seller',
@@ -15,10 +16,13 @@ export class DashboardSellerComponent implements OnInit {
   bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService, public tourService: TourService,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService, public statusService: StatusService) { }
 
   ngOnInit() {
     let demoDone = this.cookieService.get('sellerDemoDone');
-    this.tourService.sellerTour.start();
+    if (demoDone != 'true') {
+      this.tourService.sellerTour.start();
+      this.cookieService.put('sellerDemoDone', 'true');
+    }
   }
 }

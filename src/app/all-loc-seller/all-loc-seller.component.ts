@@ -36,10 +36,10 @@ export class AllLocSellerComponent implements OnInit {
     this.bsModalRef.content.title = 'Create Invoice';
   }
 
-  shipGoods(loc: LocStateSummary) {
+  shipGoods(id: string) {
     this.bsModalRef = this.modalService.show(ShipModalComponent);
-    this.bsModalRef.content.title = 'Upload trade documents';
-    this.bsModalRef.content.locSummary = loc;
+    this.bsModalRef.content.title = 'Confirm Shipped - ' + this.locs.filter(x => x.orderRef == id)[0].description;
+    this.bsModalRef.content.orderId = id;
   }
 
   addBol(loc: LocStateSummary) {

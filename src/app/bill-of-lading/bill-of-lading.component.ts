@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Bol } from './../bol';
 import { Party } from './../party';
 import { DocsService } from './../services/docs.service';
@@ -14,10 +14,9 @@ import { RefreshService } from '../services/refresh.service';
   templateUrl: './bill-of-lading.component.html',
   styleUrls: ['./bill-of-lading.component.css']
 })
-export class BillOfLadingComponent implements OnInit {
+export class BillOfLadingComponent {
   bol = new Bol();
   submitted = false;
-  bsModalRef: BsModalRef;
   @Input() loc: LocStateSummary;
 
   constructor(
@@ -79,9 +78,6 @@ export class BillOfLadingComponent implements OnInit {
 
   close(): void {
     this.modalComponent.close();
-  }
-
-  ngOnInit() {
   }
 
   onSubmit() {

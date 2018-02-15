@@ -83,6 +83,7 @@ import { StatusService } from './services/status.service';
 import { ShepherdService } from './services/shepherd.service';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { TourService } from './services/tour.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -153,9 +154,9 @@ import { TourService } from './services/tour.service';
     LoginComponent,
     CommaSeperatedNumberPipe,
     TimelineComponent,
-    ViewBolTimelineModalComponent
-,
-    FeedbackComponent
+    ViewBolTimelineModalComponent,
+    FeedbackComponent,
+    FooterComponent
 ],
   providers: [
     LocService,

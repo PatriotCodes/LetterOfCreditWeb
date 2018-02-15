@@ -14,8 +14,8 @@ export class DashboardAdvisingComponent implements OnInit {
   ngOnInit() {
     let demoDone = this.cookieService.get('advisingDemoDone');
     if (demoDone != 'true') {
-      this.tourService.advisingTour.start
+      this.tourService.advisingTour.start();
+      this.cookieService.put('advisingDemoDone', 'true');
     }
   }
-
 }

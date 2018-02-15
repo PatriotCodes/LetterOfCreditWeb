@@ -1,27 +1,27 @@
-import { Component, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { LocSummary } from './../loc-summary'
+import { LocStateSummary } from './../loc-state-summary'
 
 @Component({
   selector: 'modal-content',
-  templateUrl: './ship-modal-nested.html'
+  template: `
+  <div class="modal-main">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{title}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    <ship [id]="[orderId]"></ship>
+    </div>
+  </div>
+  `
 })
 export class ShipModalComponent {
   public title: string;
-  public locSummary: LocSummary
-  public modalRef: BsModalRef;
-  public modalRef2: BsModalRef;
-  constructor(public bsModalRef: BsModalRef,
-              private modalService: BsModalService) {}
-
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'second'});
-  }
-
-  public openModal2(template: TemplateRef<any>) {
-    this.modalRef2 = this.modalService.show(template, {class: 'second'});
-  }
+  public orderId: string;
+  constructor(public bsModalRef: BsModalRef) {}
 
   public close() {
     this.bsModalRef.hide();
