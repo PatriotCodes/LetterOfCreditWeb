@@ -11,57 +11,52 @@ import { Stats } from './stats'
 import { Invoice } from './invoice'
 import { Tx } from './tx'
 import 'rxjs/add/operator/toPromise';
+import { PortProviderService } from './services/port-provider.service';
 
 @Injectable()
 export class LocService {
 
-  public buyer = 10013;
-  public issuer = 10007;
-  public advisory = 10010;
-  public seller = 10016;
-  current = this.issuer;
-
   // mock data
   private mockSummary = 'api/locsummary';
 
-  private meBuyerUrl = 'http://localhost:' + this.buyer + '/api/loc/me';
-  private meIssueUrl = 'http://localhost:' + this.issuer + '/api/loc/me';
-  private meAdvisoryUrl = 'http://localhost:' + this.advisory + '/api/loc/me';
-  private meSellerUrl = 'http://localhost:' + this.seller + '/api/loc/me';
-  private peersUrl = 'http://localhost:' + this.current + '/api/loc/peers';
+  private meBuyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/me';
+  private meIssueUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/me';
+  private meAdvisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/me';
+  private meSellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/me';
+  private peersUrl = 'http://localhost:' + this.portService.current + '/api/loc/peers';
 
-  private getLocUrl = 'http://localhost:' + this.current + '/api/loc/get-loc';
-  private getLocAppUrl = 'http://localhost:' + this.current + '/api/loc/get-loc-app';
-  private awaitingApprovalLocUrl = 'http://localhost:' + this.buyer + '/api/loc/awaiting-approval';
-  private awaitingApprovalLocUrlIssuer = 'http://localhost:' + this.current + '/api/loc/awaiting-approval';
-  private activeLocUrl = 'http://localhost:' + this.current + '/api/loc/active';
-  private awaitingPaymentLocUrl = 'http://localhost:' + this.current + '/api/loc/awaiting-payment';
-  private createLocUrl = 'http://localhost:' + this.buyer + '/api/loc/apply-for-loc';
-  private approveLocUrl = 'http://localhost:' + this.current + '/api/loc/approve-loc';
-  private statsUrl = 'http://localhost:' + this.current + '/api/loc/loc-stats';
-  private allLocUrl = 'http://localhost:' + this.current + '/api/loc/all';
+  private getLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/get-loc';
+  private getLocAppUrl = 'http://localhost:' + this.portService.current + '/api/loc/get-loc-app';
+  private awaitingApprovalLocUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/awaiting-approval';
+  private awaitingApprovalLocUrlIssuer = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-approval';
+  private activeLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/active';
+  private awaitingPaymentLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-payment';
+  private createLocUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/apply-for-loc';
+  private approveLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/approve-loc';
+  private statsUrl = 'http://localhost:' + this.portService.current + '/api/loc/loc-stats';
+  private allLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/all';
 
-  private cashBalancesBuyerUrl = 'http://localhost:' + this.buyer + '/api/loc/cash-balances';
-  private cashBalancesSellerUrl = 'http://localhost:' + this.seller + '/api/loc/cash-balances';
-  private cashBalancesIssuerUrl = 'http://localhost:' + this.issuer + '/api/loc/cash-balances';
-  private cashBalancesAdvisoryUrl = 'http://localhost:' + this.advisory + '/api/loc/cash-balances';
+  private cashBalancesBuyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/cash-balances';
+  private cashBalancesSellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/cash-balances';
+  private cashBalancesIssuerUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/cash-balances';
+  private cashBalancesAdvisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/cash-balances';
 
-  private allLocAppUrlIssuer = 'http://localhost:' + this.issuer + '/api/loc/all-app'
-  private allLocAppUrlBuyer = 'http://localhost:' + this.buyer + '/api/loc/all-app';
-  private allLocUrlSeller = 'http://localhost:' + this.seller + '/api/loc/all';
-  private allLocUrlAdviser = 'http://localhost:' + this.advisory + '/api/loc/all';
+  private allLocAppUrlIssuer = 'http://localhost:' + this.portService.issuer + '/api/loc/all-app'
+  private allLocAppUrlBuyer = 'http://localhost:' + this.portService.buyer + '/api/loc/all-app';
+  private allLocUrlSeller = 'http://localhost:' + this.portService.seller + '/api/loc/all';
+  private allLocUrlAdviser = 'http://localhost:' + this.portService.advisory + '/api/loc/all';
 
-  private claimFundsUrl = 'http://localhost:' + this.advisory + '/api/loc/claim-funds';
+  private claimFundsUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/claim-funds';
 
-  private paySellerUrl = 'http://localhost:' + this.advisory + '/api/loc/pay-seller';
-  private payAdvisoryUrl = 'http://localhost:' + this.issuer + '/api/loc/pay-adviser';
-  private payIssuerUrl = 'http://localhost:' + this.buyer + '/api/loc/pay-issuer';
+  private paySellerUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/pay-seller';
+  private payAdvisoryUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/pay-adviser';
+  private payIssuerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/pay-issuer';
 
-  private shipGoodsUrl = 'http://localhost:' + this.seller + '/api/loc/ship';
+  private shipGoodsUrl = 'http://localhost:' + this.portService.seller + '/api/loc/ship';
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private portService: PortProviderService) { }
 
   getLocApp(id: string): Promise<Loc> {
     let trimmedId = id[0];
@@ -203,16 +198,16 @@ export class LocService {
     let port: number;
     switch (id) {
       case 'buyer':
-        port = this.buyer;
+        port = this.portService.buyer;
         break;
       case 'seller':
-        port = this.seller;
+        port = this.portService.seller;
         break;
       case 'issuing':
-        port = this.issuer;
+        port = this.portService.issuer;
         break;
       case 'advising':
-        port = this.advisory;
+        port = this.portService.advisory;
         break;
       default:
         port = 0;

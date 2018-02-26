@@ -82,6 +82,9 @@ button {
 button:hover {
   background-color: #cfd8dc;
 }
+button:active {
+  background-color: #fff;
+}
 button:disabled {
   background-color: #eee;
   color: #aaa;
@@ -1271,10 +1274,13 @@ html,body {
   60% { box-shadow: 0 0 20px #c4a300; }
   100% { box-shadow: 0 0 -10px #c4a300; }
 }
-
 .button-glow {
   animation: glowing 5000ms infinite;
 }
 .shipped {
   border-bottom: solid 1px rgba(93,207,156, 1) !important;
+}
+.toura {
+  color: #000 !important;
+  text-decoration: #000 underline;
 }

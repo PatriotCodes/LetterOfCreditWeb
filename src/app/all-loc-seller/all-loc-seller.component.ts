@@ -10,6 +10,7 @@ import { CreatePlModalComponent } from './../modals/create-pl-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component'
 import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
 import { TourService } from '../services/tour.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'all-loc-seller',
@@ -21,9 +22,13 @@ export class AllLocSellerComponent implements OnInit {
   bsModalRef: BsModalRef;
   locs: LocStateSummary[] = [];
 
-  constructor(private locService: LocService,
-              private modalService: BsModalService,
-              private tourService: TourService) { }
+  constructor(private locService: LocService, private modalService: BsModalService,
+    public tourService: TourService, private refreshService: RefreshService) {
+    refreshService.missionConfirmed$.subscribe(
+      result => {
+        this.update();
+      });
+  }
 
   /*shipGoods(loc: LocSummary): void {
     if (confirm('Confirm you want to ship ' + loc.id)) {
@@ -55,7 +60,7 @@ export class AllLocSellerComponent implements OnInit {
   }
 
   public openLocModal(ref: string) {
-    this.bsModalRef = this.modalService.show(ViewLocStateModalComponent, Object.assign({}, {class: 'gray modal-lg'}));
+    this.bsModalRef = this.modalService.show(ViewLocStateModalComponent, Object.assign({}, { class: 'gray modal-lg' }));
     this.bsModalRef.content.title = 'Letter of Credit';
     this.bsModalRef.content.locId = ref;
   }
@@ -63,8 +68,11 @@ export class AllLocSellerComponent implements OnInit {
   rejectOrder(loc: LocStateSummary) {
   }
 
-  ngOnInit(): void {
+  update() {
     this.locService.getActiveLocs().then(locs => this.locs = locs);
-    // this.locService.getDummySummary().then(locs => this.locs = locs);
+  }
+
+  ngOnInit(): void {
+    this.update();
   }
 }

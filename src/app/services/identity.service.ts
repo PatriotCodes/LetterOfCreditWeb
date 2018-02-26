@@ -2,26 +2,22 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http'
 import { Party } from './../party';
 import 'rxjs/add/operator/toPromise';
+import { PortProviderService } from './port-provider.service';
 
 @Injectable()
 export class IdentityService {
 
-  public buyer = 10013;
-  public issuer = 10007;
-  public advisory = 10010;
-  public seller = 10016;
-
-  private buyerUrl = 'http://localhost:' + this.buyer + '/api/loc/me';
-  private issuerUrl = 'http://localhost:' + this.issuer + '/api/loc/me';
-  private advisoryUrl = 'http://localhost:' + this.advisory + '/api/loc/me';
-  private sellerUrl = 'http://localhost:' + this.seller + '/api/loc/me';
+  private buyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/me';
+  private issuerUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/me';
+  private advisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/me';
+  private sellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/me';
 
   public buyerId: string;
   public issuerId: string;
   public advisoryId: string;
   public sellerId: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private portService: PortProviderService) { }
 
   getAll() {
     this.getBuyer();

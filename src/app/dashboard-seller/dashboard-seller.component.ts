@@ -3,7 +3,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
 import { IShepherdTourOptions } from '../interfaces';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 import { StatusService } from '../services/status.service';
 

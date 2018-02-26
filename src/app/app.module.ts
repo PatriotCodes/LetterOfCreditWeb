@@ -81,9 +81,10 @@ import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.c
 import { FeedbackComponent } from './feedback/feedback.component';
 import { StatusService } from './services/status.service';
 import { ShepherdService } from './services/shepherd.service';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from './services/tour.service';
 import { FooterComponent } from './footer/footer.component';
+import { PortProviderService } from './services/port-provider.service';
 
 @NgModule({
   imports: [
@@ -170,7 +171,9 @@ import { FooterComponent } from './footer/footer.component';
     StatusService,
     ShepherdService,
     CookieService,
-    TourService
+    TourService,
+    PortProviderService,
+    { provide: CookieOptions, useValue: {} }
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,

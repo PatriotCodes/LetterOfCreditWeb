@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieService, CookieOptions } from 'angular2-cookie/core';
 
 @Component({
   selector: 'app-footer',

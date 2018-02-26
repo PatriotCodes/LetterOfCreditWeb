@@ -25,7 +25,12 @@ export class AllLocAdvisingComponent implements OnInit {
   constructor(private modalService: BsModalService,
               private locService: LocService,
               public statusService: StatusService,
-              public refreshService: RefreshService) { }
+              public refreshService: RefreshService) {
+                refreshService.missionConfirmed$.subscribe(
+                  result => {
+                    this.update();
+                  });
+               }
 
   public openModalWithComponent() {
     this.bsModalRef = this.modalService.show(DocsModalComponent);
@@ -63,8 +68,12 @@ export class AllLocAdvisingComponent implements OnInit {
     this.locService.claimFunds(id);
   }
 
-  ngOnInit() {
+  update() {
     this.locService.getActiveLocs().then(locs => this.locs = locs);
+  }
+
+  ngOnInit() {
+    this.update();
   }
 
 }
