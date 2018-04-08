@@ -3,21 +3,26 @@ import { Headers, Http } from '@angular/http'
 import { Party } from './../party';
 import 'rxjs/add/operator/toPromise';
 import { PortProviderService } from './port-provider.service';
+import { UrlProviderService } from './url-provider.service';
 
 @Injectable()
 export class IdentityService {
 
-  private buyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/me';
-  private issuerUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/me';
-  private advisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/me';
-  private sellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/me';
+  private buyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/me';
+  private issuerUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/me';
+  private advisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/me';
+  private sellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/me';
+
+  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
   public buyerId: string;
   public issuerId: string;
   public advisoryId: string;
   public sellerId: string;
 
-  constructor(private http: Http, private portService: PortProviderService) { }
+  public peers: string[];
+
+  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) { }
 
   getAll() {
     this.getBuyer();
@@ -25,6 +30,14 @@ export class IdentityService {
     this.getAdvisory();
     this.getSeller();
   }
+
+  getPeers() {
+    return this.http.get(this.peersUrl)
+        .map(data => {
+            data.json();
+            return data.json();
+    })
+  };
 
   getBuyer() {
     if (this.buyerId === undefined) {

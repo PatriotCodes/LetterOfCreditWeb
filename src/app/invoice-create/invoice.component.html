@@ -36,7 +36,10 @@
   <div class="form-inline">
     <div class="form-group">
       <label for="buyerName">Name</label>
-      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName">
+      <ng-select [allowClear]="true"
+              [items]="getPeers()"
+              placeholder="Name">
+      </ng-select>
     </div>
     <div class="form-group">
       <label for="buyerAddress">Address</label>

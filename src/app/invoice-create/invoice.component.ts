@@ -7,6 +7,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
+import { IdentityService } from '../services/identity.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class InvoiceCreateComponent implements OnInit {
       private modalService: BsModalService,
       public statusService: StatusService,
       public refreshService: RefreshService,
-      private tourService: TourService) { }
+      private tourService: TourService,
+      private identityService: IdentityService) { }
 
      createInvoice(): void {
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
@@ -36,10 +38,10 @@ export class InvoiceCreateComponent implements OnInit {
       let d = new Date()
       this.inv.invoiceDate = d,
       this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
-      this.inv.sellerName = 'Seller',
-      this.inv.sellerAddress = '123 Main St. Awesome Town, ZZ 11111',
-      this.inv.buyerName = 'Buyer',
-      this.inv.buyerAddress = '555 Elm St. Little Town, VV, 22222',
+      this.inv.sellerName = 'Startek Technologies',
+      this.inv.sellerAddress = '123 Main St. Shenzhen, China',
+      this.inv.buyerName = 'Visual Electronica Importers',
+      this.inv.buyerAddress = '123 Street. Iowa, US',
       this.inv.term = 5,
       this.inv.goodsDescription = 'OLED 6" Screens',
       this.inv.goodsPurchaseOrderRef = 'Mock1',
@@ -50,6 +52,10 @@ export class InvoiceCreateComponent implements OnInit {
 
     close(): void {
       this.modalComponent.close();
+    }
+
+    getPeers() {
+      return this.identityService.getPeers();
     }
 
     callResponse(result: string): void {

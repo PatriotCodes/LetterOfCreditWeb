@@ -19,7 +19,6 @@ import { LoginComponent } from './login/login.component';
 import { TimelineComponent } from'./timeline/timeline.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/seller', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardOverallComponent },
   { path: 'approve/:id', component: ApproveLocComponent },
   { path: 'activeloc', component: ActiveLocComponent },

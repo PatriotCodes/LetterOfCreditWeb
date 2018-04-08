@@ -85,6 +85,8 @@ import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from './services/tour.service';
 import { FooterComponent } from './footer/footer.component';
 import { PortProviderService } from './services/port-provider.service';
+import { UrlProviderService } from './services/url-provider.service';
+import { SelectModule } from 'ng2-select';
 
 @NgModule({
   imports: [
@@ -101,6 +103,7 @@ import { PortProviderService } from './services/port-provider.service';
     ChartsModule,
     Ng2OdometerModule.forRoot(),
     MatToolbarModule,
+    SelectModule
   ],
   declarations: [
     AppComponent,
@@ -173,6 +176,7 @@ import { PortProviderService } from './services/port-provider.service';
     CookieService,
     TourService,
     PortProviderService,
+    UrlProviderService,
     { provide: CookieOptions, useValue: {} }
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,

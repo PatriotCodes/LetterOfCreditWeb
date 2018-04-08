@@ -90,32 +90,32 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.applicationId = this.orderRef[0];
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = 30000;
-    this.loc.issuer = 'Issuing';
+    this.loc.issuer = 'Issuing Bank of London';
     this.loc.currency = 'USD';
     let year = d.getFullYear() + 1;
     let month = d.getMonth();
     let day = d.getDay();
     this.loc.expiryDate = new Date(year, month, day)
-    this.loc.portLoadingAddress = '1 Silicon Way';
-    this.loc.portLoadingCity = 'San Francisco';
-    this.loc.portLoadingCountry = 'US'
+    this.loc.portLoadingAddress = 'The Port';
+    this.loc.portLoadingCity = 'Shenzhen';
+    this.loc.portLoadingCountry = 'CH'
     this.loc.portDischargeAddress = '3 Sea Way';
-    this.loc.portDischargeCity = 'Dover';
-    this.loc.portDischargeCountry = 'UK';
+    this.loc.portDischargeCity = 'Des Moines';
+    this.loc.portDischargeCountry = 'US';
     this.loc.goodsDescription = 'OLED 6" Screens';
     this.loc.goodsQuantity = 10000;
     this.loc.goodsWeight = 1000;
     this.loc.goodsWeightUnit = 'KG';
     this.loc.goodsUnitPrice = 400;
     this.loc.goodsPurchaseOrderRef = this.orderRef[0];
-    this.loc.placePresentationCountry = 'UK';
-    this.loc.placePresentationCity = 'Dover';
-    this.loc.placePresentationState = 'Dover';
+    this.loc.placePresentationCountry = 'US';
+    this.loc.placePresentationCity = 'Des Moines';
+    this.loc.placePresentationState = 'Des Moines';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
-    this.loc.beneficiary = 'Seller'
+    this.loc.beneficiary = 'Startek Technologies'
     this.loc.applicant = this.applicant;
-    this.loc.advisingBank = 'Advising'
+    this.loc.advisingBank = 'Advising Bank of New York'
   }
 
   ngOnInit() {

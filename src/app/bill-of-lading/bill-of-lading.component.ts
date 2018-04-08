@@ -37,7 +37,7 @@ export class BillOfLadingComponent {
     let d = new Date()
     this.bol.billOfLadingId = this.loc[0].orderRef;
     this.bol.issueDate = d;
-    this.bol.carrierOwner = 'Alice';
+    this.bol.carrierOwner = 'Alice Shipping';
 
     this.bol.nameOfVessel = 'SurfRider';
     this.bol.goodsDescription = this.loc[0].description;
@@ -45,7 +45,7 @@ export class BillOfLadingComponent {
     this.bol.dateOfShipment = d;
 
     this.bol.portOfLoadingCountry = 'China'
-    this.bol.portOfLoadingCity = 'Beijing'
+    this.bol.portOfLoadingCity = 'Shenzhen'
     this.bol.portOfLoadingAddress = '123 Street'
 
     this.bol.portOfDischargeCountry = 'USA'
