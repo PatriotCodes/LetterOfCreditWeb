@@ -6,7 +6,7 @@ export class UrlProviderService {
 
   public url = "http://localhost";
 
-  production = false;
+  production = true;
 
   constructor() {
     if (this.production) {

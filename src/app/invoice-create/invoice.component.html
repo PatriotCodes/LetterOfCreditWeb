@@ -34,11 +34,13 @@
 
   <h4>Buyer details</h4>
   <div class="form-inline">
-    <div class="form-group">
+    <div class="form-group" id="dropdown">
       <label for="buyerName">Name</label>
-      <ng-select [allowClear]="true"
+      <ng-select
+              [allowClear]="false"
               [items]="getPeers()"
-              placeholder="Name">
+              placeholder="Name"
+              [(ngModel)]="buyerNameArray" name="buyerName">
       </ng-select>
     </div>
     <div class="form-group">

@@ -1,4 +1,5 @@
 import { Serializable } from './serializable';
+import { SelectItem } from 'ng2-select';
 
 export class Invoice implements Serializable<Invoice> {
 

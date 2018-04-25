@@ -8,6 +8,7 @@ import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
 import { IdentityService } from '../services/identity.service';
+import { SelectItem } from 'ng2-select';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class InvoiceCreateComponent implements OnInit {
     inv = new Invoice();
     submitted = false;
     bsModalRef: BsModalRef;
+    buyerNameArray: SelectItem[];
 
     constructor(
       private docsService: DocsService,
@@ -30,6 +32,7 @@ export class InvoiceCreateComponent implements OnInit {
       private identityService: IdentityService) { }
 
      createInvoice(): void {
+      this.inv.buyerName = this.buyerNameArray[0].id;
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
       this.close()
     }
@@ -54,8 +57,9 @@ export class InvoiceCreateComponent implements OnInit {
       this.modalComponent.close();
     }
 
-    getPeers() {
-      return this.identityService.getPeers();
+    getPeers(): Array<string> {
+      //return this.identityService.getPeers();
+      return ['Issuing Bank of London', 'Advising Bank of New York', 'Visual Electronica Importers'];
     }
 
     callResponse(result: string): void {

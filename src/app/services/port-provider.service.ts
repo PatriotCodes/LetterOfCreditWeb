@@ -10,7 +10,7 @@ export class PortProviderService {
   public seller = 10016;
   public current = this.issuer;
 
-  production = false;
+  production = true;
 
   constructor() {
     if (this.production) {
