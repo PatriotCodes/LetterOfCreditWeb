@@ -12,7 +12,6 @@ import { IShepherdTourOptions, IShepherdTourStep } from '../interfaces';
 })
 
 export class HeaderComponent implements OnInit {
-  cordaImage: string;
   me: string;
   port: number;
   options: IShepherdTourOptions;
@@ -20,7 +19,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private locService: LocService, private route: ActivatedRoute,
               private shepherdService: ShepherdService) {
-    this.cordaImage = 'assets/corda.png'
    }
 
   getMe(): void {

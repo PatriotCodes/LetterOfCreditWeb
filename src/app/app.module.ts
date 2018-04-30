@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { MatToolbarModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module'
 
@@ -56,7 +57,6 @@ import { DashboardIssuerComponent } from './dashboard-issuer/dashboard-issuer.co
 import { DashboardAdvisingComponent } from './dashboard-advising/dashboard-advising.component';
 import { DashboardBuyerComponent } from './dashboard-buyer/dashboard-buyer.component';
 import { DashboardSellerComponent } from './dashboard-seller/dashboard-seller.component';
-import { DashboardOverallComponent } from './dashboard-overall/dashboard-overall.component';
 import { ShipComponent } from './ship/ship.component';
 import { GoodsShippedComponent } from './goods-shipped/goods-shipped.component';
 import { AllLocBuyerComponent } from './all-loc-buyer/all-loc-buyer.component';
@@ -88,6 +88,8 @@ import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { SelectModule } from 'ng2-select';
 import { LaunchComponent } from './launch/launch.component';
+import { PeersComponent } from './peers/peers.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   imports: [
@@ -104,6 +106,7 @@ import { LaunchComponent } from './launch/launch.component';
     ChartsModule,
     Ng2OdometerModule.forRoot(),
     MatToolbarModule,
+    MatDialogModule,
     SelectModule
   ],
   declarations: [
@@ -139,7 +142,6 @@ import { LaunchComponent } from './launch/launch.component';
     DashboardAdvisingComponent,
     DashboardBuyerComponent,
     DashboardSellerComponent,
-    DashboardOverallComponent,
     ShipComponent,
     GoodsShippedComponent,
     AllLocBuyerComponent,
@@ -161,8 +163,11 @@ import { LaunchComponent } from './launch/launch.component';
     TimelineComponent,
     ViewBolTimelineModalComponent,
     FeedbackComponent,
-    FooterComponent,
-    LaunchComponent
+    FooterComponent,
+    LaunchComponent,
+    PeersComponent
+,
+    LogoComponent
 ],
   providers: [
     LocService,
@@ -184,7 +189,7 @@ import { LaunchComponent } from './launch/launch.component';
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent,
+                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
   bootstrap: [ AppComponent ]

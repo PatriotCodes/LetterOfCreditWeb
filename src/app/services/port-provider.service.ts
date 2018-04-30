@@ -10,10 +10,9 @@ export class PortProviderService {
   public seller = 10016;
   public current = this.issuer;
 
-  production = true;
-
   constructor() {
-    if (this.production) {
+    if(location.port != '4200')
+    {
       let port = Number(location.port);
 
       this.buyer = port;

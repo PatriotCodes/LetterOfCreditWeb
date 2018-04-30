@@ -18,7 +18,6 @@
     </div>
   </div>
 
-
   <h4>Seller details</h4>
   <div class="form-inline">
     <div class="form-group">
@@ -31,17 +30,11 @@
     </div>
   </div>
 
-
   <h4>Buyer details</h4>
   <div class="form-inline">
-    <div class="form-group" id="dropdown">
+    <div class="form-group">
       <label for="buyerName">Name</label>
-      <ng-select
-              [allowClear]="false"
-              [items]="getPeers()"
-              placeholder="Name"
-              [(ngModel)]="buyerNameArray" name="buyerName">
-      </ng-select>
+      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()">
     </div>
     <div class="form-group">
       <label for="buyerAddress">Address</label>

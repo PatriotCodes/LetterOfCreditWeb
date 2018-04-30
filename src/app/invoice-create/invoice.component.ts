@@ -9,7 +9,8 @@ import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
 import { IdentityService } from '../services/identity.service';
 import { SelectItem } from 'ng2-select';
-
+import { PeersComponent } from '../peers/peers.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'create-invoice',
@@ -24,26 +25,33 @@ export class InvoiceCreateComponent implements OnInit {
 
     constructor(
       private docsService: DocsService,
-      private modalComponent: CreateInvoiceModalComponent,
+      private invoiceModalComponent: CreateInvoiceModalComponent,
+      private dialog: MatDialog,
       private modalService: BsModalService,
       public statusService: StatusService,
       public refreshService: RefreshService,
-      private tourService: TourService,
-      private identityService: IdentityService) { }
+      public identityService: IdentityService,
+      private tourService: TourService) { }
 
-     createInvoice(): void {
-      this.inv.buyerName = this.buyerNameArray[0].id;
+    lookupBuyer() {
+      let dialogRef = this.dialog.open(PeersComponent)
+      dialogRef.afterClosed().subscribe(result => {
+        this.inv.buyerName = this.identityService.peer;
+      })
+    }
+
+    createInvoice(): void {
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
       this.close()
     }
 
     autoComplete(): void {
+      this.identityService.getMe().then(response => this.inv.sellerName = response.json().me);
       let d = new Date()
       this.inv.invoiceDate = d,
       this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
-      this.inv.sellerName = 'Startek Technologies',
       this.inv.sellerAddress = '123 Main St. Shenzhen, China',
-      this.inv.buyerName = 'Visual Electronica Importers',
+      this.inv.buyerName = '',
       this.inv.buyerAddress = '123 Street. Iowa, US',
       this.inv.term = 5,
       this.inv.goodsDescription = 'OLED 6" Screens',
@@ -54,12 +62,7 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
     close(): void {
-      this.modalComponent.close();
-    }
-
-    getPeers(): Array<string> {
-      //return this.identityService.getPeers();
-      return ['Issuing Bank of London', 'Advising Bank of New York', 'Visual Electronica Importers'];
+      this.invoiceModalComponent.close();
     }
 
     callResponse(result: string): void {
@@ -77,4 +80,3 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
   }
-

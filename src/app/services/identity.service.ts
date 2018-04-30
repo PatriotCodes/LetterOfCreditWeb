@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http'
 import { Party } from './../party';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Rx';
 import { PortProviderService } from './port-provider.service';
 import { UrlProviderService } from './url-provider.service';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 @Injectable()
 export class IdentityService {
@@ -14,15 +16,19 @@ export class IdentityService {
   private sellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/me';
 
   private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
+  private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
 
   public buyerId: string;
   public issuerId: string;
   public advisoryId: string;
   public sellerId: string;
+  public peer: string;
+  public me: string;
 
   public peers: string[];
 
-  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) { }
+  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {
+  }
 
   getAll() {
     this.getBuyer();
@@ -31,12 +37,14 @@ export class IdentityService {
     this.getSeller();
   }
 
+  getMe() {
+    return this.http.get(this.meUrl)
+      .toPromise()
+  }
+
   getPeers() {
     return this.http.get(this.peersUrl)
-        .map(data => {
-            data.json();
-            return data.json();
-    })
+      .toPromise()
   };
 
   getBuyer() {
