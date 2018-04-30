@@ -41,10 +41,10 @@ export class PackingListComponent implements OnInit {
       this.pl.transportMethod = 'Ship';
       this.pl.nameOfVessel = 'SurfRider';
       this.pl.billOfLadingNumber = this.loc[0].orderRef;
-      this.pl.sellerName = 'Seller';
-      this.pl.sellerAddress = '123 Street. Beijing, China';
-      this.pl.buyerName = 'Buyer';
-      this.pl.buyerAddress = '123 Main St. Awesome Town, ZZ 11111';
+      this.pl.sellerName = 'Startek Technologies';
+      this.pl.sellerAddress = '123 Street. Shenzhen, China';
+      this.pl.buyerName = 'Visual Electronica Importers';
+      this.pl.buyerAddress = '123 Main St. Iowa, US';
       this.pl.goodsDescription = this.loc[0].description;
       this.pl.goodsPurchaseOrderRef = this.loc[0].orderRef;
       this.pl.goodsQuantity = 10000;

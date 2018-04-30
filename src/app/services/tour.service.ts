@@ -46,11 +46,11 @@ export class TourService {
     */
     this.sellerTour.addStep('welcome1', { text: '<b>Welcome to the Corda Letter of Credit demo</b><br><br> This demonstrates a simplified letter of credit scenario between four nodes<br> A buyer, seller, issuing bank and advising bank.<br><br><img src="assets/tf.jpg" width="800px" height="222px">' })
     this.sellerTour.addStep('welcome2', { text: "<b>The flow between nodes is as follows</b><br><br><img src='assets/flow.jpg' width='900px' height='450px'>" })
-    this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used <a href='https://docs.corda.net/' class='toura'>here</a>" })
-    this.sellerTour.addStep('wallet', { text: 'This is your cash balance', attachTo: '#cash-balance right' })
-    this.sellerTour.addStep('orders', { text: 'Here you will find all the sellers orders that have <br> been funded through a letter of credit.', attachTo: '#orders right' })
-    this.sellerTour.addStep('invoices', { text: 'Invoices raised that are still awaiting funding appear here', attachTo: '#invoices right' })
-    this.sellerTour.addStep('goods', { text: 'Finally, goods shipped are added here', attachTo: '#goods-shipped right' })
+    this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used at https://docs.corda.net/" })
+    //this.sellerTour.addStep('wallet', { text: 'This is your cash balance', attachTo: '#cash-balance right' })
+    //this.sellerTour.addStep('orders', { text: 'Here you will find all the sellers orders that have <br> been funded through a letter of credit.', attachTo: '#orders right' })
+    //this.sellerTour.addStep('invoices', { text: 'Invoices raised that are still awaiting funding appear here', attachTo: '#invoices right' })
+    //this.sellerTour.addStep('goods', { text: 'Finally, goods shipped are added here', attachTo: '#goods-shipped right' })
     this.sellerTour.addStep('invoice', {
       text: 'Lets begin the demo by creating an invoice to the buyer', attachTo: '#create-invoice top',
       buttons: [{
@@ -79,34 +79,35 @@ export class TourService {
     /*
     * Buyer tour
     */
-    this.buyerTour.addStep('invoices', { text: 'The unconsumed invoices in our vault appear here<br><br><img src="assets/vault.jpg" width="400px" height="190px">', attachTo: '#invoices right' })
-    this.buyerTour.addStep('applications', { text: 'Applications submitted to the issuing bank but still awaiting approval appear here', attachTo: '#applications right' })
-    this.buyerTour.addStep('live', { text: 'Letters of credit approved by the issuing bank appear here', attachTo: '#live right' })
-    this.buyerTour.addStep('apply', {
-      text: "Let's apply for a letter of credit with the issuing bank", attachTo: '.action-img right',
-      buttons: [{ text: 'ready', action: this.buyerTour.hide }]
-    })
-    this.buyerTour.addStep('application-created', { text: "So what just happened?<br>The buyer created a new linear state on Corda representing the letter of credit application and sent this to the issuing bank node." })
-    this.buyerTour.addStep('application-created', { text: "Let's switch to the issuing bank node and see what they see." })
+    //this.buyerTour.addStep('invoices', { text: 'The unconsumed invoices in our vault appear here<br><br><img src="assets/vault.jpg" width="400px" height="190px">', attachTo: '#invoices right' })
+    //this.buyerTour.addStep('applications', { text: 'Applications submitted to the issuing bank but still awaiting approval appear here', attachTo: '#applications right' })
+    //this.buyerTour.addStep('live', { text: 'Letters of credit approved by the issuing bank appear here', attachTo: '#live right' })
+    //this.buyerTour.addStep('apply', {
+//      text: "Let's apply for a letter of credit with the issuing bank", attachTo: '.action-img right',
+      //buttons: [{ text: 'ready', action: this.buyerTour.hide }]
+    //})
+    //this.buyerTour.addStep('application-created', { text: "So what just happened?<br>The buyer created a new linear state on Corda representing the letter of credit application and sent this to the issuing bank node." })
+    //this.buyerTour.addStep('application-created', { text: "Let's switch to the issuing bank node and see what they see." })
 
     /*
     * Advising tour
-    */
+
     this.advisingTour.addStep('live', { text: 'These are the live orders funded by a letter of credit that this bank is party to', attachTo: '#loc right' });
     this.advisingTour.addStep('action1', { text: 'Once the key documents have been added, the onus is on the advising bank to pay the beneficiary<br>We can check the status by clicking the relevent action', attachTo: '.action bottom' });
     this.advisingTour.addStep('inspect', { text: "Let's inspect the documents that have been added beginning with the Bill of Lading" });
     this.advisingTour.addStep('title', { text: "Here we see the seller still has title to the goods" });
     this.advisingTour.addStep('action1', { text: 'Once the key documents have been added, the onus is on the advising bank to pay the beneficiary<br>We can check the status by clicking the relevent action' });
-
+    */
 
     /*
     * Issuer tour
-    */
+    *
     this.issuerTour.addStep('active', { text: 'All letters of credit approved can be found here', attachTo: '#active right' });
     this.issuerTour.addStep('awaiting', { text: 'Letters of credit that are still awaiting approval can be found here', attachTo: '#awaiting right' });
     this.issuerTour.addStep('approve', { text: "Let's go ahead and approve the letter of credit application we currently have",   buttons: [{ text: 'ready', action: this.issuerTour.hide }]});
     this.issuerTour.addStep('application-created', { text: "So what just happened?<br>The issuing bank created a new state that is a copy of the previous state but in an approved state. This is because on Corda states are immutable and the previous unapproved state is used as an input into the transaction creating the new state leaving behind an audit trail.<br>" +
     "These states are only shared between the buyer and issuing bank, no other nodes see these states. After approving the application, the issuing node creates a new state that represents a live Letter of Credit and shares this with all participants in the scenario" })
     this.issuerTour.addStep('switch', { text: "Let's switch to the issuing bank node and see what they see." })
+    */
   }
 }

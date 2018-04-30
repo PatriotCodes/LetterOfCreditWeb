@@ -7,7 +7,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
-
+import { IdentityService } from '../services/identity.service';
+import { SelectItem } from 'ng2-select';
+import { PeersComponent } from '../peers/peers.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'create-invoice',
@@ -18,28 +21,38 @@ export class InvoiceCreateComponent implements OnInit {
     inv = new Invoice();
     submitted = false;
     bsModalRef: BsModalRef;
+    buyerNameArray: SelectItem[];
 
     constructor(
       private docsService: DocsService,
-      private modalComponent: CreateInvoiceModalComponent,
+      private invoiceModalComponent: CreateInvoiceModalComponent,
+      private dialog: MatDialog,
       private modalService: BsModalService,
       public statusService: StatusService,
       public refreshService: RefreshService,
+      public identityService: IdentityService,
       private tourService: TourService) { }
 
-     createInvoice(): void {
+    lookupBuyer() {
+      let dialogRef = this.dialog.open(PeersComponent)
+      dialogRef.afterClosed().subscribe(result => {
+        this.inv.buyerName = this.identityService.peer;
+      })
+    }
+
+    createInvoice(): void {
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
       this.close()
     }
 
     autoComplete(): void {
+      this.identityService.getMe().then(response => this.inv.sellerName = response.json().me);
       let d = new Date()
       this.inv.invoiceDate = d,
       this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
-      this.inv.sellerName = 'Seller',
-      this.inv.sellerAddress = '123 Main St. Awesome Town, ZZ 11111',
-      this.inv.buyerName = 'Buyer',
-      this.inv.buyerAddress = '555 Elm St. Little Town, VV, 22222',
+      this.inv.sellerAddress = '123 Main St. Shenzhen, China',
+      this.inv.buyerName = '',
+      this.inv.buyerAddress = '123 Street. Iowa, US',
       this.inv.term = 5,
       this.inv.goodsDescription = 'OLED 6" Screens',
       this.inv.goodsPurchaseOrderRef = 'Mock1',
@@ -49,7 +62,7 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
     close(): void {
-      this.modalComponent.close();
+      this.invoiceModalComponent.close();
     }
 
     callResponse(result: string): void {
@@ -67,4 +80,3 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
   }
-

@@ -143,7 +143,7 @@ input[type="submit"]:hover{
 a {
   cursor: pointer;
   cursor: hand;
-  color: #f1f1f1 !important;
+  color: #f1f1f1;
 }
 
 .action {
@@ -1283,4 +1283,22 @@ html,body {
 .toura {
   color: #000 !important;
   text-decoration: #000 underline;
+}
+a.dropdown-item {
+  color: #333;
+}
+#dropdown {
+  width: 195px;
+  margin-top: -10px;
+  margin-right: 5px;
+}
+.ui-select-toggle {
+  width: 195px !important;
+  overflow: hidden !important;
+}
+.cdk-overlay-container {
+  z-index: 999999;
+}
+.mat-dialog-container {
+  background-color: #000;
 }
