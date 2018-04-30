@@ -9,37 +9,38 @@ import { Party } from './../party'
 import { Tx } from './../tx'
 import 'rxjs/add/operator/toPromise';
 import { PortProviderService } from './port-provider.service';
+import { UrlProviderService } from './url-provider.service';
 
 @Injectable()
 export class DocsService {
 
-  private allLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/all';
-  private awaitingApprovalLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-approval';
-  private activeLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/active';
-  private awaitingPaymentLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-payment';
-  private peersUrl = 'http://localhost:' + this.portService.current + '/api/loc/peers';
+  private allLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all';
+  private awaitingApprovalLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
+  private activeLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/active';
+  private awaitingPaymentLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-payment';
+  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
-  private createBolUrl = 'http://localhost:' + this.portService.seller + '/api/loc/submit-bol';
-  private createPackingListUrl = 'http://localhost:' + this.portService.seller + '/api/loc/submit-pl';
-  private createInvoiceUrl = 'http://localhost:' + this.portService.seller + '/api/loc/create-trade';
+  private createBolUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/submit-bol';
+  private createPackingListUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/submit-pl';
+  private createInvoiceUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/create-trade';
 
-  private invoicesUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/invoices';
-  private invoiceUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/get-invoice';
+  private invoicesUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/invoices';
+  private invoiceUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-invoice';
 
-  private bolUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/get-bol';
-  private bolUrlIssuer = 'http://localhost:' + this.portService.issuer + '/api/loc/get-bol';
-  private bolUrlBuyer = 'http://localhost:' + this.portService.buyer + '/api/loc/get-bol';
-  private packingListUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/get-packing-list';
-  private packingListUrlIssuer = 'http://localhost:' + this.portService.issuer + '/api/loc/get-packing-list';
-  private packingListUrlBuyer = 'http://localhost:' + this.portService.buyer + '/api/loc/get-packing-list';
+  private bolUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-bol';
+  private bolUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-bol';
+  private bolUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-bol';
+  private packingListUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-packing-list';
+  private packingListUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-packing-list';
+  private packingListUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-packing-list';
 
-  private bolEventsUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/get-bol-events';
-  private bolEventsUrlIssuer = 'http://localhost:' + this.portService.issuer + '/api/loc/get-bol-events';
-  private bolEventsUrlBuyer = 'http://localhost:' + this.portService.buyer + '/api/loc/get-bol-events';
+  private bolEventsUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-bol-events';
+  private bolEventsUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-bol-events';
+  private bolEventsUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-bol-events';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http, private portService: PortProviderService) {}
+  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {}
 
   createBol(bol: Bol): Promise<string> {
     return this.http

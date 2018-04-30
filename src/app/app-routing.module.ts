@@ -5,7 +5,6 @@ import { DashboardIssuerComponent }   from './dashboard-issuer/dashboard-issuer.
 import { DashboardAdvisingComponent }   from './dashboard-advising/dashboard-advising.component';
 import { DashboardBuyerComponent }   from './dashboard-buyer/dashboard-buyer.component';
 import { DashboardSellerComponent }   from './dashboard-seller/dashboard-seller.component';
-import { DashboardOverallComponent }   from './dashboard-overall/dashboard-overall.component';
 import { ActiveLocComponent }      from './active-loc/active-loc.component';
 import { ApplyForLocComponent }  from './apply-for-loc/apply-for-loc.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
@@ -19,8 +18,6 @@ import { LoginComponent } from './login/login.component';
 import { TimelineComponent } from'./timeline/timeline.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/seller', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardOverallComponent },
   { path: 'approve/:id', component: ApproveLocComponent },
   { path: 'activeloc', component: ActiveLocComponent },
   { path: 'buyer', component: DashboardBuyerComponent },

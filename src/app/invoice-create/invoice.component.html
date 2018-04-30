@@ -18,7 +18,6 @@
     </div>
   </div>
 
-
   <h4>Seller details</h4>
   <div class="form-inline">
     <div class="form-group">
@@ -31,12 +30,11 @@
     </div>
   </div>
 
-
   <h4>Buyer details</h4>
   <div class="form-inline">
     <div class="form-group">
       <label for="buyerName">Name</label>
-      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName">
+      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()">
     </div>
     <div class="form-group">
       <label for="buyerAddress">Address</label>

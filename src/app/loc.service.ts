@@ -12,6 +12,7 @@ import { Invoice } from './invoice'
 import { Tx } from './tx'
 import 'rxjs/add/operator/toPromise';
 import { PortProviderService } from './services/port-provider.service';
+import { UrlProviderService } from './services/url-provider.service';
 
 @Injectable()
 export class LocService {
@@ -19,44 +20,44 @@ export class LocService {
   // mock data
   private mockSummary = 'api/locsummary';
 
-  private meBuyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/me';
-  private meIssueUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/me';
-  private meAdvisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/me';
-  private meSellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/me';
-  private peersUrl = 'http://localhost:' + this.portService.current + '/api/loc/peers';
+  private meBuyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/me';
+  private meIssueUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/me';
+  private meAdvisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/me';
+  private meSellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/me';
+  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
-  private getLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/get-loc';
-  private getLocAppUrl = 'http://localhost:' + this.portService.current + '/api/loc/get-loc-app';
-  private awaitingApprovalLocUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/awaiting-approval';
-  private awaitingApprovalLocUrlIssuer = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-approval';
-  private activeLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/active';
-  private awaitingPaymentLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/awaiting-payment';
-  private createLocUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/apply-for-loc';
-  private approveLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/approve-loc';
-  private statsUrl = 'http://localhost:' + this.portService.current + '/api/loc/loc-stats';
-  private allLocUrl = 'http://localhost:' + this.portService.current + '/api/loc/all';
+  private getLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc';
+  private getLocAppUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc-app';
+  private awaitingApprovalLocUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/awaiting-approval';
+  private awaitingApprovalLocUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
+  private activeLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/active';
+  private awaitingPaymentLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-payment';
+  private createLocUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/apply-for-loc';
+  private approveLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/approve-loc';
+  private statsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/loc-stats';
+  private allLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all';
 
-  private cashBalancesBuyerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/cash-balances';
-  private cashBalancesSellerUrl = 'http://localhost:' + this.portService.seller + '/api/loc/cash-balances';
-  private cashBalancesIssuerUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/cash-balances';
-  private cashBalancesAdvisoryUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/cash-balances';
+  private cashBalancesBuyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/cash-balances';
+  private cashBalancesSellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/cash-balances';
+  private cashBalancesIssuerUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/cash-balances';
+  private cashBalancesAdvisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/cash-balances';
 
-  private allLocAppUrlIssuer = 'http://localhost:' + this.portService.issuer + '/api/loc/all-app'
-  private allLocAppUrlBuyer = 'http://localhost:' + this.portService.buyer + '/api/loc/all-app';
-  private allLocUrlSeller = 'http://localhost:' + this.portService.seller + '/api/loc/all';
-  private allLocUrlAdviser = 'http://localhost:' + this.portService.advisory + '/api/loc/all';
+  private allLocAppUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/all-app'
+  private allLocAppUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/all-app';
+  private allLocUrlSeller = this.urlService.url + ':' + this.portService.seller + '/api/loc/all';
+  private allLocUrlAdviser = this.urlService.url + ':' + this.portService.advisory + '/api/loc/all';
 
-  private claimFundsUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/claim-funds';
+  private claimFundsUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/claim-funds';
 
-  private paySellerUrl = 'http://localhost:' + this.portService.advisory + '/api/loc/pay-seller';
-  private payAdvisoryUrl = 'http://localhost:' + this.portService.issuer + '/api/loc/pay-adviser';
-  private payIssuerUrl = 'http://localhost:' + this.portService.buyer + '/api/loc/pay-issuer';
+  private paySellerUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/pay-seller';
+  private payAdvisoryUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/pay-adviser';
+  private payIssuerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/pay-issuer';
 
-  private shipGoodsUrl = 'http://localhost:' + this.portService.seller + '/api/loc/ship';
+  private shipGoodsUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/ship';
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http, private portService: PortProviderService) { }
+  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) { }
 
   getLocApp(id: string): Promise<Loc> {
     let trimmedId = id[0];
