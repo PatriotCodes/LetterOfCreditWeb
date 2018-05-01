@@ -26,13 +26,7 @@ export class HeaderComponent implements OnInit {
     this.locService.getMe(id).then(me => this.me = me.name)
   }
 
-  getPort(): void {
-    let id = this.route.snapshot.url[0].toString();
-    this.port = this.locService.getPort(id);
-  }
-
   ngOnInit() {
     this.getMe();
-    this.getPort();
   }
 }

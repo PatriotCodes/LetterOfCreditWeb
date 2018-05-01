@@ -22,6 +22,7 @@ export class InvoiceCreateComponent implements OnInit {
     submitted = false;
     bsModalRef: BsModalRef;
     buyerNameArray: SelectItem[];
+    error: boolean;
 
     constructor(
       private docsService: DocsService,
@@ -41,6 +42,11 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
     createInvoice(): void {
+      if(this.inv.buyerName == "") {
+        this.error = true;
+        return;
+      }
+      this.error = false;
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
       this.close()
     }

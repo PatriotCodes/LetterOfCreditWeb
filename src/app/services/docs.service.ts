@@ -20,23 +20,23 @@ export class DocsService {
   private awaitingPaymentLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-payment';
   private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
-  private createBolUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/submit-bol';
-  private createPackingListUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/submit-pl';
-  private createInvoiceUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/create-trade';
+  private createBolUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/submit-bol';
+  private createPackingListUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/submit-pl';
+  private createInvoiceUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/create-trade';
 
-  private invoicesUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/invoices';
-  private invoiceUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-invoice';
+  private invoicesUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/invoices';
+  private invoiceUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-invoice';
 
-  private bolUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-bol';
-  private bolUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-bol';
-  private bolUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-bol';
-  private packingListUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-packing-list';
-  private packingListUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-packing-list';
-  private packingListUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-packing-list';
+  private bolUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
+  private bolUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
+  private bolUrlBuyer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
+  private packingListUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
+  private packingListUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
+  private packingListUrlBuyer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
 
-  private bolEventsUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/get-bol-events';
-  private bolEventsUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/get-bol-events';
-  private bolEventsUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/get-bol-events';
+  private bolEventsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol-events';
+  private bolEventsUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol-events';
+  private bolEventsUrlBuyer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol-events';
 
   private headers = new Headers({'Content-Type': 'application/json'});
 

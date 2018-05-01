@@ -17,6 +17,10 @@ import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
+import { IdentityService } from '../services/identity.service';
+import { Invoice } from '../invoice';
+import { MatDialog } from '@angular/material';
+import { PeersComponent } from '../peers/peers.component';
 
 @Component({
   selector: 'apply-for-loc',
@@ -29,13 +33,13 @@ export class ApplyForLocComponent implements OnInit {
   creditTypes: CreditType[];
   currencies: Currency[];
   weightunits: WeightUnit[];
-  advisingBanks: Party[];
   applicant: string;
   today: number = Date.now();
   bsModalRef: BsModalRef;
 
   loc = new Loc();
   @Input() orderRef: string;
+  @Input() invoice: Invoice;
   submitted = false;
 
   constructor(
@@ -44,8 +48,10 @@ export class ApplyForLocComponent implements OnInit {
     private locService: LocService,
     private modalComponent: ApplyModalComponent,
     private modalService: BsModalService,
+    private dialog: MatDialog,
     public statusService: StatusService,
     public refreshService: RefreshService,
+    private identityService: IdentityService,
     private tourService: TourService) {
   }
 
@@ -59,10 +65,6 @@ export class ApplyForLocComponent implements OnInit {
 
   getWeightUnits(): void {
     this.commonService.getWeightUnits().then(weightunits => this.weightunits = weightunits);
-  }
-
-  getAdvisingBanks(): void {
-    this.locService.getPeers().then(advisingBanks => this.advisingBanks = advisingBanks)
   }
 
   getMe(): void {
@@ -84,13 +86,26 @@ export class ApplyForLocComponent implements OnInit {
     this.modalComponent.close();
   }
 
+  lookupIssuer() {
+    let dialogRef = this.dialog.open(PeersComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      this.loc.issuer = this.identityService.peer;
+    })
+  }
+
+  lookupAdvising() {
+    let dialogRef = this.dialog.open(PeersComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      this.loc.advisingBank = this.identityService.peer;
+    })
+  }
+
   autoComplete(): void {
     let d = new Date()
     this.loc.applicationDate = d;
     this.loc.applicationId = this.orderRef[0];
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = 30000;
-    this.loc.issuer = 'Issuing Bank of London';
     this.loc.currency = 'USD';
     let year = d.getFullYear() + 1;
     let month = d.getMonth();
@@ -113,16 +128,15 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.placePresentationState = 'Des Moines';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
-    this.loc.beneficiary = 'Startek Technologies'
-    this.loc.applicant = this.applicant;
-    this.loc.advisingBank = 'Advising Bank of New York'
+
+    this.loc.beneficiary = this.invoice[0].sellerName;
+    this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
   }
 
   ngOnInit() {
     this.getCreditTypes();
     this.getCurrencies();
     this.getWeightUnits();
-    this.getAdvisingBanks();
     this.getMe();
     this.loc.applicant = this.applicant;
     this.loc.applicationId = this.orderRef;

@@ -33,7 +33,7 @@ export class MainMenuComponent implements OnInit {
 
   getPort(): void {
     let id = this.route.snapshot.url[0].toString();
-    this.port = this.locService.getPort(id);
+    //this.port = this.locService.getPort(id);
   }
 
   ngOnInit() {

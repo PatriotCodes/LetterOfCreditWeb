@@ -20,40 +20,31 @@ export class LocService {
   // mock data
   private mockSummary = 'api/locsummary';
 
-  private meBuyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/me';
-  private meIssueUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/me';
-  private meAdvisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/me';
-  private meSellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/me';
+  private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
   private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
   private getLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc';
   private getLocAppUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc-app';
-  private awaitingApprovalLocUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/awaiting-approval';
+  private awaitingApprovalLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
   private awaitingApprovalLocUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
   private activeLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/active';
   private awaitingPaymentLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-payment';
-  private createLocUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/apply-for-loc';
+  private createLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/apply-for-loc';
   private approveLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/approve-loc';
   private statsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/loc-stats';
   private allLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all';
 
-  private cashBalancesBuyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/cash-balances';
-  private cashBalancesSellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/cash-balances';
-  private cashBalancesIssuerUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/cash-balances';
-  private cashBalancesAdvisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/cash-balances';
+  private cashBalancesUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/cash-balances';
 
-  private allLocAppUrlIssuer = this.urlService.url + ':' + this.portService.issuer + '/api/loc/all-app'
-  private allLocAppUrlBuyer = this.urlService.url + ':' + this.portService.buyer + '/api/loc/all-app';
-  private allLocUrlSeller = this.urlService.url + ':' + this.portService.seller + '/api/loc/all';
-  private allLocUrlAdviser = this.urlService.url + ':' + this.portService.advisory + '/api/loc/all';
+  private allLocAppUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all-app'
 
-  private claimFundsUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/claim-funds';
+  private claimFundsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/claim-funds';
 
-  private paySellerUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/pay-seller';
-  private payAdvisoryUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/pay-adviser';
-  private payIssuerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/pay-issuer';
+  private paySellerUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-seller';
+  private payAdvisoryUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-adviser';
+  private payIssuerUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-issuer';
 
-  private shipGoodsUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/ship';
+  private shipGoodsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/ship';
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
@@ -63,6 +54,7 @@ export class LocService {
     let trimmedId = id[0];
     trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocAppUrl}?ref=${trimmedId}`;
+
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Loc)
@@ -73,6 +65,7 @@ export class LocService {
     let trimmedId = id[0];
     trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocUrl}?ref=${trimmedId}`;
+
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as LocState)
@@ -80,23 +73,7 @@ export class LocService {
   }
 
   getAllLocApps(node: string): Promise<LocSummary[]> {
-    let getAllUrl: string;
-    switch (node) {
-      case 'advising':
-        getAllUrl = this.allLocUrlAdviser;
-        break;
-      case 'buyer':
-        getAllUrl = this.allLocAppUrlBuyer;
-        break;
-      case 'seller':
-        getAllUrl = this.allLocUrlSeller;
-        break;
-      case 'issuer':
-        getAllUrl = this.allLocAppUrlIssuer;
-        break;
-      default:
-        break;
-    }
+    let getAllUrl: string = this.allLocAppUrl;
 
     return this.http.get(getAllUrl)
       .toPromise()
@@ -147,23 +124,8 @@ export class LocService {
   }
 
   getCashBalances(node: string): Promise<Cash> {
-    let url: string
-    switch (node) {
-      case 'buyer':
-        url = this.cashBalancesBuyerUrl;
-        break;
-      case 'seller':
-        url = this.cashBalancesSellerUrl;
-        break;
-      case 'issuing':
-        url = this.cashBalancesIssuerUrl;
-        break;
-      case 'advising':
-        url = this.cashBalancesAdvisoryUrl;
-        break;
-      default:
-        url = this.cashBalancesIssuerUrl
-    }
+    let url: string = this.cashBalancesUrl
+
     return this.http.get(url)
       .toPromise()
       .then(response => new Cash().deserialize(response.json()) as Cash)
@@ -171,23 +133,7 @@ export class LocService {
   }
 
   getMe(id: string): Promise<Party> {
-    let url: string
-    switch (id) {
-      case 'buyer':
-        url = this.meBuyerUrl;
-        break;
-      case 'seller':
-        url = this.meSellerUrl;
-        break;
-      case 'issuing':
-        url = this.meIssueUrl;
-        break;
-      case 'advising':
-        url = this.meAdvisoryUrl;
-        break;
-      default:
-        url = this.meBuyerUrl
-    }
+    let url: string = this.meUrl;
 
     return this.http.get(url)
       .toPromise()
@@ -195,7 +141,7 @@ export class LocService {
       .catch(this.handleError);
   }
 
-  getPort(id: string): number {
+  /*getPort(id: string): number {
     let port: number;
     switch (id) {
       case 'buyer':
@@ -215,7 +161,7 @@ export class LocService {
         break;
     }
     return port;
-  }
+  }*/
 
   getPeers(): Promise<Party[]> {
     return this.http.get(this.peersUrl)

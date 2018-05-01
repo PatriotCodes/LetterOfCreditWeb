@@ -7,7 +7,12 @@
   <div class="form inline">
     <div class="form-group">
       <label for="issuer">Issuer Bank</label>
-      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing">
+      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing" (click)="lookupIssuer()">
+    </div>
+
+    <div class="form-group">
+      <label for="advisingBank">Advisory Bank</label>
+      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising" (click)="lookupAdvising()">
     </div>
 
     <div class="form-group">
@@ -19,14 +24,9 @@
       <label for="applicant">Buyer</label>
       <input type="text" class="form-control" id="applicant" [(ngModel)]="loc.applicant" name="applicant" placeholder="Applicant">
     </div>
-
-    <div class="form-group">
-      <label for="advisingBank">Advisory Bank</label>
-      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising">
-    </div>
   </div>
 
-<hr class="modal-hr">
+  <hr class="modal-hr">
 
   <h4>Identification</h4>
   <div class="form-inline">
@@ -169,11 +169,11 @@
   </div>
 
   <hr class="modal-hr">
-    <div class="modal-actions">
-      <span class="cancel" (click)="close()">Cancel</span>
-      <input type="submit" class="submit" value="Apply">
-    </div>
+  <div class="modal-actions">
+    <span class="cancel" (click)="close()">Cancel</span>
+    <input type="submit" class="submit" value="Apply">
+  </div>
 
-<div class="fix"></div>
+  <div class="fix"></div>
 
 </form>
