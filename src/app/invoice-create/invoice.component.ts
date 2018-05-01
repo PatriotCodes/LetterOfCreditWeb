@@ -23,6 +23,7 @@ export class InvoiceCreateComponent implements OnInit {
     bsModalRef: BsModalRef;
     buyerNameArray: SelectItem[];
     error: boolean;
+    glow: boolean;
 
     constructor(
       private docsService: DocsService,
@@ -38,6 +39,7 @@ export class InvoiceCreateComponent implements OnInit {
       let dialogRef = this.dialog.open(PeersComponent)
       dialogRef.afterClosed().subscribe(result => {
         this.inv.buyerName = this.identityService.peer;
+        this.glow = false;
       })
     }
 
@@ -65,6 +67,8 @@ export class InvoiceCreateComponent implements OnInit {
       this.inv.goodsQuantity = 10000,
       this.inv.goodsUnitPrice = 3,
       this.inv.goodsGrossWeight = 30
+
+      this.glow = true;
     }
 
     close(): void {

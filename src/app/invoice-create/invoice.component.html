@@ -35,7 +35,7 @@
   <div class="form-inline">
     <div class="form-group">
       <label for="buyerName">Name</label>
-      <input type="text" class="form-control" id="buyerName" required minlength="5" maxlength="30" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()">
+      <input type="text" class="form-control" id="buyerName" required minlength="5" maxlength="30" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()" [ngClass]="{'glow': glow}">
     </div>
     <div class="form-group">
       <label for="buyerAddress">Address</label>

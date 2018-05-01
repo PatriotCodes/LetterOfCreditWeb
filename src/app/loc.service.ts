@@ -141,28 +141,6 @@ export class LocService {
       .catch(this.handleError);
   }
 
-  /*getPort(id: string): number {
-    let port: number;
-    switch (id) {
-      case 'buyer':
-        port = this.portService.buyer;
-        break;
-      case 'seller':
-        port = this.portService.seller;
-        break;
-      case 'issuing':
-        port = this.portService.issuer;
-        break;
-      case 'advising':
-        port = this.portService.advisory;
-        break;
-      default:
-        port = 0;
-        break;
-    }
-    return port;
-  }*/
-
   getPeers(): Promise<Party[]> {
     return this.http.get(this.peersUrl)
       .toPromise()
