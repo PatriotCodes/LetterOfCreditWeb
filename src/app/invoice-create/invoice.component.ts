@@ -49,9 +49,9 @@ export class InvoiceCreateComponent implements OnInit {
         return;
       }
       this.error = false;
-      this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
-      this.close()
       this.refreshService.loading = true;
+      this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
+      this.close();
     }
 
     autoComplete(): void {
@@ -80,6 +80,7 @@ export class InvoiceCreateComponent implements OnInit {
       this.statusService.status = result;
       this.refreshService.confirmMission();
       this.tourService.sellerTour.show('invoice-created');
+      this.refreshService.loading = false;
     }
 
     ngOnInit() {

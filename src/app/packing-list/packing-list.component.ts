@@ -29,8 +29,9 @@ export class PackingListComponent implements OnInit {
     createpl(): void {
       this.pl.advisingBank = this.loc[0].advisory;
       this.pl.issuingBank = this.loc[0].issuer;
+      this.refreshService.loading = true;
       this.docsService.createPackingList(this.pl).then(result => this.callResponse(result));
-      this.close()
+      this.close();
     }
 
     autoComplete(): void {
@@ -55,6 +56,7 @@ export class PackingListComponent implements OnInit {
     callResponse(result: string): void {
       this.statusService.status = result;
       this.refreshService.confirmMission();
+      this.refreshService.loading = false;
     }
 
     close(): void {

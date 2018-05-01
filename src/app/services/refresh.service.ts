@@ -16,7 +16,6 @@ export class RefreshService {
 
   confirmMission() {
     this.confirmedSource.next(true);
-    this.loading = false;
   }
 
   constructor() {
