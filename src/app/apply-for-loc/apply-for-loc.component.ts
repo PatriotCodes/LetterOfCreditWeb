@@ -36,6 +36,9 @@ export class ApplyForLocComponent implements OnInit {
   applicant: string;
   today: number = Date.now();
   bsModalRef: BsModalRef;
+  error: boolean;
+  issuerGlow: boolean;
+  advisingGlow: boolean;
 
   loc = new Loc();
   @Input() orderRef: string;
@@ -72,6 +75,11 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   createLoc(): void {
+    if(this.loc.issuer == "" || this.loc.advisingBank == "") {
+      this.error = true;
+      return;
+    }
+    this.error = false;
     this.locService.createLoc(this.loc).then(result => this.callResponse(result));
     this.close()
   }
@@ -90,6 +98,7 @@ export class ApplyForLocComponent implements OnInit {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
       this.loc.issuer = this.identityService.peer;
+      this.issuerGlow = false;
     })
   }
 
@@ -97,6 +106,7 @@ export class ApplyForLocComponent implements OnInit {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
       this.loc.advisingBank = this.identityService.peer;
+      this.advisingGlow = false;
     })
   }
 
@@ -131,6 +141,9 @@ export class ApplyForLocComponent implements OnInit {
 
     this.loc.beneficiary = this.invoice[0].sellerName;
     this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
+
+    this.issuerGlow = true;
+    this.advisingGlow = true;
   }
 
   ngOnInit() {

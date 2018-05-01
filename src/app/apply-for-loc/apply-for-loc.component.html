@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit()" #ApplyForLoc="ngForm">
-
+  <label *ngIf="error" class="alert alert-danger">Error: select issuing and advising bank</label>
   <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
   <br>
   <br>
@@ -7,12 +7,12 @@
   <div class="form inline">
     <div class="form-group">
       <label for="issuer">Issuer Bank</label>
-      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing" (click)="lookupIssuer()">
+      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing" (click)="lookupIssuer()" [ngClass]="{'glow': issuerGlow}">
     </div>
 
     <div class="form-group">
       <label for="advisingBank">Advisory Bank</label>
-      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising" (click)="lookupAdvising()">
+      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising" (click)="lookupAdvising()" [ngClass]="{'glow': advisingGlow}">
     </div>
 
     <div class="form-group">

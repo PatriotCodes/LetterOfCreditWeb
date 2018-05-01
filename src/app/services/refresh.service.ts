@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Subject }    from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 import { Subscription } from "rxjs";
 import { TimerObservable } from "rxjs/observable/TimerObservable";
 
 @Injectable()
 export class RefreshService {
+  public loading: boolean;
 
   // Observable sources
   private confirmedSource = new Subject<boolean>();
@@ -15,13 +16,13 @@ export class RefreshService {
 
   confirmMission() {
     this.confirmedSource.next(true);
+    this.loading = false;
   }
 
-constructor() {
+  constructor() {
     let timer = TimerObservable.create(100, 6000);
     this.subscription = timer.subscribe(t => {
       this.confirmMission();
     });
-}
-
+  }
 }

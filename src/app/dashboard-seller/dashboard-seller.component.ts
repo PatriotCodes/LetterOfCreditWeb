@@ -6,6 +6,7 @@ import { IShepherdTourOptions } from '../interfaces';
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 import { StatusService } from '../services/status.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'dashboard-seller',
@@ -16,7 +17,8 @@ export class DashboardSellerComponent implements OnInit {
   bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService, public tourService: TourService,
-    private cookieService: CookieService, public statusService: StatusService) { }
+    private cookieService: CookieService, public statusService: StatusService,
+    public refreshService: RefreshService) { }
 
   ngOnInit() {
     let demoDone = this.cookieService.get('sellerDemoDone');

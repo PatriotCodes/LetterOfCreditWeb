@@ -90,6 +90,7 @@ import { SelectModule } from 'ng2-select';
 import { LaunchComponent } from './launch/launch.component';
 import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
@@ -167,7 +168,8 @@ import { LogoComponent } from './logo/logo.component';
     LaunchComponent,
     PeersComponent
 ,
-    LogoComponent
+    LogoComponent,
+    LoadingComponent
 ],
   providers: [
     LocService,

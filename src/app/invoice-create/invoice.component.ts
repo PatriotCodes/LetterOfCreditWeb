@@ -51,6 +51,7 @@ export class InvoiceCreateComponent implements OnInit {
       this.error = false;
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
       this.close()
+      this.refreshService.loading = true;
     }
 
     autoComplete(): void {
@@ -88,5 +89,4 @@ export class InvoiceCreateComponent implements OnInit {
       this.submitted = true;
       this.createInvoice();
     }
-
   }
