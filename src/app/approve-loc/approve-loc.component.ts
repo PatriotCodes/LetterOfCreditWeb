@@ -37,13 +37,15 @@ export class ApproveLocComponent implements OnChanges {
     public refreshService: RefreshService) { }
 
   approveLoc(): void {
+    this.refreshService.loading = true;
     this.locService.approveLoc(this.loc.txRef).then(result => this.callResponse(result));
-    this.close()
+    this.close();
   }
 
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.refreshService.loading = false;
   }
 
   close(): void {

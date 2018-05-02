@@ -58,6 +58,7 @@ export class AllLocAdvisingComponent implements OnInit {
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.refreshService.loading = false;
   }
 
   public payBeneficiary(id: string) {

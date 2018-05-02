@@ -28,10 +28,11 @@ export class AllInvoiceComponent implements OnInit {
       });
   }
 
-  public openModalWithComponent(ref: string) {
+  public openModalWithComponent(invoice: Invoice) {
     this.bsModalRef = this.modalService.show(ApplyModalComponent);
     this.bsModalRef.content.title = 'Apply';
-    this.bsModalRef.content.id = ref;
+    this.bsModalRef.content.invoice = invoice;
+    this.bsModalRef.content.id = invoice.invoiceId;
   }
 
   public openInvoiceModal(ref: string) {

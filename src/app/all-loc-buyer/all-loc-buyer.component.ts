@@ -55,6 +55,7 @@ export class AllLocBuyerComponent implements OnInit {
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.refreshService.loading = false;
   }
 
   update() {

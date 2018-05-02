@@ -22,6 +22,8 @@ export class InvoiceCreateComponent implements OnInit {
     submitted = false;
     bsModalRef: BsModalRef;
     buyerNameArray: SelectItem[];
+    error: boolean;
+    glow: boolean;
 
     constructor(
       private docsService: DocsService,
@@ -37,12 +39,19 @@ export class InvoiceCreateComponent implements OnInit {
       let dialogRef = this.dialog.open(PeersComponent)
       dialogRef.afterClosed().subscribe(result => {
         this.inv.buyerName = this.identityService.peer;
+        this.glow = false;
       })
     }
 
     createInvoice(): void {
+      if(this.inv.buyerName == "") {
+        this.error = true;
+        return;
+      }
+      this.error = false;
+      this.refreshService.loading = true;
       this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
-      this.close()
+      this.close();
     }
 
     autoComplete(): void {
@@ -59,6 +68,8 @@ export class InvoiceCreateComponent implements OnInit {
       this.inv.goodsQuantity = 10000,
       this.inv.goodsUnitPrice = 3,
       this.inv.goodsGrossWeight = 30
+
+      this.glow = true;
     }
 
     close(): void {
@@ -69,6 +80,7 @@ export class InvoiceCreateComponent implements OnInit {
       this.statusService.status = result;
       this.refreshService.confirmMission();
       this.tourService.sellerTour.show('invoice-created');
+      this.refreshService.loading = false;
     }
 
     ngOnInit() {
@@ -78,5 +90,4 @@ export class InvoiceCreateComponent implements OnInit {
       this.submitted = true;
       this.createInvoice();
     }
-
   }

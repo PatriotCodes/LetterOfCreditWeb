@@ -17,6 +17,10 @@ import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
+import { IdentityService } from '../services/identity.service';
+import { Invoice } from '../invoice';
+import { MatDialog } from '@angular/material';
+import { PeersComponent } from '../peers/peers.component';
 
 @Component({
   selector: 'apply-for-loc',
@@ -29,13 +33,16 @@ export class ApplyForLocComponent implements OnInit {
   creditTypes: CreditType[];
   currencies: Currency[];
   weightunits: WeightUnit[];
-  advisingBanks: Party[];
   applicant: string;
   today: number = Date.now();
   bsModalRef: BsModalRef;
+  error: boolean;
+  issuerGlow: boolean;
+  advisingGlow: boolean;
 
   loc = new Loc();
   @Input() orderRef: string;
+  @Input() invoice: Invoice;
   submitted = false;
 
   constructor(
@@ -44,8 +51,10 @@ export class ApplyForLocComponent implements OnInit {
     private locService: LocService,
     private modalComponent: ApplyModalComponent,
     private modalService: BsModalService,
+    private dialog: MatDialog,
     public statusService: StatusService,
     public refreshService: RefreshService,
+    private identityService: IdentityService,
     private tourService: TourService) {
   }
 
@@ -61,27 +70,46 @@ export class ApplyForLocComponent implements OnInit {
     this.commonService.getWeightUnits().then(weightunits => this.weightunits = weightunits);
   }
 
-  getAdvisingBanks(): void {
-    this.locService.getPeers().then(advisingBanks => this.advisingBanks = advisingBanks)
-  }
-
   getMe(): void {
     this.locService.getMe('').then(me => this.applicant = me.name)
   }
 
   createLoc(): void {
+    if(this.loc.issuer == "" || this.loc.advisingBank == "") {
+      this.error = true;
+      return;
+    }
+    this.error = false;
+    this.refreshService.loading = true;
     this.locService.createLoc(this.loc).then(result => this.callResponse(result));
-    this.close()
+    this.close();
   }
 
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
+    this.refreshService.loading = false;
     this.tourService.buyerTour.show('application-created');
   }
 
   close(): void {
     this.modalComponent.close();
+  }
+
+  lookupIssuer() {
+    let dialogRef = this.dialog.open(PeersComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      this.loc.issuer = this.identityService.peer;
+      this.issuerGlow = false;
+    })
+  }
+
+  lookupAdvising() {
+    let dialogRef = this.dialog.open(PeersComponent)
+    dialogRef.afterClosed().subscribe(result => {
+      this.loc.advisingBank = this.identityService.peer;
+      this.advisingGlow = false;
+    })
   }
 
   autoComplete(): void {
@@ -90,7 +118,6 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.applicationId = this.orderRef[0];
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = 30000;
-    this.loc.issuer = 'Issuing Bank of London';
     this.loc.currency = 'USD';
     let year = d.getFullYear() + 1;
     let month = d.getMonth();
@@ -113,16 +140,18 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.placePresentationState = 'Des Moines';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
-    this.loc.beneficiary = 'Startek Technologies'
-    this.loc.applicant = this.applicant;
-    this.loc.advisingBank = 'Advising Bank of New York'
+
+    this.loc.beneficiary = this.invoice[0].sellerName;
+    this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
+
+    this.issuerGlow = true;
+    this.advisingGlow = true;
   }
 
   ngOnInit() {
     this.getCreditTypes();
     this.getCurrencies();
     this.getWeightUnits();
-    this.getAdvisingBanks();
     this.getMe();
     this.loc.applicant = this.applicant;
     this.loc.applicationId = this.orderRef;
