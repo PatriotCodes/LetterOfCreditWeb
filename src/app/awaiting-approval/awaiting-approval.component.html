@@ -11,7 +11,7 @@
           <th>Description</th>
         </thead>
         <tbody>
-          <tr *ngFor="let loc of locs">
+          <tr *ngFor="let loc of locs" (click)="openLocModal(loc.id)" class="clickable">
             <td hidden>
               <a (click)="openLocModal(loc.id)">{{loc.id}}</a>
             </td>

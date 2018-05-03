@@ -75,7 +75,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   createLoc(): void {
-    if(this.loc.issuer == "" || this.loc.advisingBank == "") {
+    if(!this.loc.issuer || !this.loc.advisingBank) {
       this.error = true;
       return;
     }
@@ -143,6 +143,8 @@ export class ApplyForLocComponent implements OnInit {
 
     this.loc.beneficiary = this.invoice[0].sellerName;
     this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
+    this.loc.issuer = "";
+    this.loc.advisingBank = "";
 
     this.issuerGlow = true;
     this.advisingGlow = true;

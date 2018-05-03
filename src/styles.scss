@@ -175,7 +175,7 @@ nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
-  color: #039be5;
+  //color: #039be5;
   background-color: #CFD8DC;
 }
 nav a.active {
@@ -1309,4 +1309,11 @@ a.dropdown-item {
 }
 .mat-dialog-container {
   background-color: #000;
+}
+.clickable:hover {
+  cursor: pointer;
+}
+tr:hover {
+  background-color: rgb(37, 37, 37) !important;
+  border-bottom-width: 2px;
 }

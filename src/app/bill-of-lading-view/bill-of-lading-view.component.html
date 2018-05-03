@@ -1,4 +1,4 @@
-<form *ngIf="bol">
+<form *ngIf="bol; else not_attached">
     <div class="form-group">
       <label>Owner</label>
       <div class="form-inline">
@@ -77,3 +77,4 @@
           </div>
       </div>
   </form>
+<ng-template #not_attached>Bill of lading not yet created</ng-template>

@@ -91,6 +91,8 @@ import { LaunchComponent } from './launch/launch.component';
 import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DashboardLaunchComponent } from './dashboard-launch/dashboard-launch.component';
+import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 
 @NgModule({
   imports: [
@@ -168,8 +170,11 @@ import { LoadingComponent } from './loading/loading.component';
     LaunchComponent,
     PeersComponent
 ,
-    LogoComponent,
-    LoadingComponent
+    LogoComponent
+,
+    LoadingComponent,
+    DashboardLaunchComponent,
+    PeersWithPortComponent
 ],
   providers: [
     LocService,
@@ -191,7 +196,7 @@ import { LoadingComponent } from './loading/loading.component';
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent,
+                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
   bootstrap: [ AppComponent ]

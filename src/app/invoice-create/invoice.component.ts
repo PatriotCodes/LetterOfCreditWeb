@@ -44,7 +44,7 @@ export class InvoiceCreateComponent implements OnInit {
     }
 
     createInvoice(): void {
-      if(this.inv.buyerName == "") {
+      if(!this.inv.buyerName) {
         this.error = true;
         return;
       }
