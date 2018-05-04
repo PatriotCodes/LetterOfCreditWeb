@@ -57,7 +57,7 @@ export class LocService {
 
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as Loc)
+      .then(response => new Loc().deserialize(response.json()))
       .catch(this.handleError);
   }
 
@@ -68,7 +68,7 @@ export class LocService {
 
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json() as LocState)
+      .then(response => new LocState().deserialize(response.json()))
       .catch(this.handleError);
   }
 

@@ -117,12 +117,13 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.applicationDate = d;
     this.loc.applicationId = this.orderRef[0];
     this.loc.typeCredit = 'SIGHT';
-    this.loc.amount = 30000;
-    this.loc.currency = 'USD';
-    let year = d.getFullYear() + 1;
-    let month = d.getMonth();
-    let day = d.getDay();
-    this.loc.expiryDate = new Date(year, month, day)
+    this.loc.amount = '30000 USD';
+  
+    let year = d.getFullYear() + 1
+    // TODO: Use a real date, instead of padded strings.
+    let month = ("000" + d.getMonth()).slice(-2);
+    let day = ("000" + d.getDay()).slice(-2);
+    this.loc.expiryDate = year + "-" + month + "-" + day
     this.loc.portLoadingAddress = 'The Port';
     this.loc.portLoadingCity = 'Shenzhen';
     this.loc.portLoadingCountry = 'CH'
@@ -159,7 +160,6 @@ export class ApplyForLocComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loc.currency = 'USD'
     this.createLoc();
   }
 }
