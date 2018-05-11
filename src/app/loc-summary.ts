@@ -15,15 +15,15 @@ export class LocSummary implements Serializable<LocSummary> {
 
   deserialize(input: any) {
     this.id = input.first;
-    this.beneficiary = input.second.props.beneficiary.substring(2, input.second.props.beneficiary.indexOf(","));
-    this.applicant = input.second.props.applicant.substring(2, input.second.props.applicant.indexOf(","));
-    this.amount = input.second.props.amount;
-    this.description = input.second.props.descriptionGoods[0].description;
-    this.orderRef = input.second.props.descriptionGoods[0].purchaseOrderRef;
-    this.status = input.second.status;
-    this.advisingPayment = input.second.advisingPayment;
-    this.issuingPayment = input.second.issuingPayment;
-    this.buyerPayment = input.second.buyerPayment;
+    this.beneficiary = input.third.props.beneficiary.substring(2, input.third.props.beneficiary.indexOf(","));
+    this.applicant = input.third.props.applicant.substring(2, input.third.props.applicant.indexOf(","));
+    this.amount = input.third.props.amount;
+    this.description = input.third.props.descriptionGoods[0].description;
+    this.orderRef = input.third.props.descriptionGoods[0].purchaseOrderRef;
+    this.status = input.third.status;
+    this.advisingPayment = input.third.advisingPayment;
+    this.issuingPayment = input.third.issuingPayment;
+    this.buyerPayment = input.third.buyerPayment;
     return this;
   }
 }

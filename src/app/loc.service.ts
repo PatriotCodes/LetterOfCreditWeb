@@ -52,7 +52,6 @@ export class LocService {
 
   getLocApp(id: string): Promise<Loc> {
     let trimmedId = id[0];
-    trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocAppUrl}?ref=${trimmedId}`;
 
     return this.http.get(url)
@@ -63,7 +62,6 @@ export class LocService {
 
   getLoc(id: string): Promise<LocState> {
     let trimmedId = id[0];
-    trimmedId = trimmedId.substring(0, trimmedId.length - 3);
     const url = `${this.getLocUrl}?ref=${trimmedId}`;
 
     return this.http.get(url)
