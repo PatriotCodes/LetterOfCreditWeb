@@ -22,6 +22,9 @@ export class Invoice implements Serializable<Invoice> {
 
   public assigned: Boolean;
 
+  public transactionHash: String;
+  public signatures: String[];
+
   deserialize(input: any) {
     this.invoiceDate = input.third.props.invoiceDate;
     this.invoiceId = input.third.props.invoiceID;
@@ -41,6 +44,9 @@ export class Invoice implements Serializable<Invoice> {
     this.goodsGrossWeight = input.third.props.goods[0].grossWeight.quantity + input.third.props.goods[0].grossWeight.unit;
 
     this.assigned = input.third.assigned;
+
+    this.transactionHash = input.first;
+    this.signatures = input.second;
 
     return this;
   }
