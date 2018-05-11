@@ -38,6 +38,7 @@ export class Loc implements Serializable<Loc> {
   public state: string;
 
   public txRef: string;
+  public signatures: String[];
 
   deserialize(input: any) {
     this.applicationId = input.third.props.letterOfCreditApplicationID;
@@ -78,6 +79,7 @@ export class Loc implements Serializable<Loc> {
     this.state = input.third.status;
   
     this.txRef = input.first;
+    this.signatures = input.second;
 
     return this;
   }
