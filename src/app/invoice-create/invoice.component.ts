@@ -38,7 +38,7 @@ export class InvoiceCreateComponent implements OnInit {
     lookupBuyer() {
       let dialogRef = this.dialog.open(PeersComponent)
       dialogRef.afterClosed().subscribe(result => {
-        this.inv.buyerName = this.identityService.peer;
+        this.inv.buyerName = this.identityService.peer.name;
         this.glow = false;
       })
     }

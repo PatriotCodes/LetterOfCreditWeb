@@ -99,7 +99,7 @@ export class ApplyForLocComponent implements OnInit {
   lookupIssuer() {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
-      this.loc.issuer = this.identityService.peer;
+      this.loc.issuer = this.identityService.peer.name;
       this.issuerGlow = false;
     })
   }
@@ -107,7 +107,7 @@ export class ApplyForLocComponent implements OnInit {
   lookupAdvising() {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
-      this.loc.advisingBank = this.identityService.peer;
+      this.loc.advisingBank = this.identityService.peer.name;
       this.advisingGlow = false;
     })
   }

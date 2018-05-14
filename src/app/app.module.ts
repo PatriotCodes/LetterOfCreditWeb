@@ -91,8 +91,8 @@ import { LaunchComponent } from './launch/launch.component';
 import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
 import { LoadingComponent } from './loading/loading.component';
-import { DashboardLaunchComponent } from './dashboard-launch/dashboard-launch.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
+import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 
 @NgModule({
   imports: [
@@ -168,13 +168,11 @@ import { PeersWithPortComponent } from './peers-with-port/peers-with-port.compon
     FeedbackComponent,
     FooterComponent,
     LaunchComponent,
-    PeersComponent
-,
-    LogoComponent
-,
+    PeersComponent,
+    LogoComponent,
     LoadingComponent,
-    DashboardLaunchComponent,
-    PeersWithPortComponent
+    PeersWithPortComponent,
+    DashboardSetupComponent
 ],
   providers: [
     LocService,

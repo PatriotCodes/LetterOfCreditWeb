@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IdentityService } from '../services/identity.service';
 import { Peer } from '../peer';
 import { MatDialogRef } from '@angular/material';
+import { PeerWithPort } from '../peer-with-port';
 
 @Component({
   selector: 'app-peers',
@@ -21,7 +22,8 @@ export class PeersComponent implements OnInit {
   }
 
   setPeer(name: string) {
-    this.identityService.peer = name;
+    this.identityService.peer = new PeerWithPort();
+    this.identityService.peer.name = name;
     this.dialogRef.close();
   }
 }

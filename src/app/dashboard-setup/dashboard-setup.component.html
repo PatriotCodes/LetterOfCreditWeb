@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <h1 class="mega montserrat bold">
+    Letter of Credit on
+    <span class="color-emphasis-1">Corda.</span>
+  </h1>
+  <h1 class="mega montserrat">
+    Assign roles to your
+    <span class="color-emphasis-1">nodes.</span>
+  </h1>
+</div>
+
+<div class='selector'>
+  <ul>
+    <li (click)="lookupPeer('Buyer')">
+      <input id='1' type='checkbox'>
+      <label for='1'>Buyer</label>
+    </li>
+    <li (click)="lookupPeer('Seller')">
+      <input id='2' type='checkbox'>
+      <label for='2'>Seller</label>
+    </li>
+    <li (click)="lookupPeer('Issuing Bank')">
+      <input id='3' type='checkbox'>
+      <label for='3'>Advising Bank</label>
+    </li>
+    <li (click)="lookupPeer('Advising Bank')">
+      <input id='4' type='checkbox'>
+      <label for='4'>Issuing Bank</label>
+    </li>
+    <li (click)="lookupPeer('Central Bank')">
+      <input id='5' type='checkbox'>
+      <label for='5'>Central Bank</label>
+    </li>
+  </ul>
+  <button (click)="launch($event)" id="launch">{{launchText}}</button>
+</div>
+
+
+<div class='wrap'>
+  <div class='content'>
+    <table class="table table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Port</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let peer of peerMapping">
+        <td>{{peer.name}}</td>
+        <td>{{peer.role}}</td>
+        <td>{{peer.port}}</td>
+        <td>
+          <button (click)="launchPage(peer.role, peer.port, $event)" type="button" class="btn btn-primary btn-info-full next-step">Launch</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
