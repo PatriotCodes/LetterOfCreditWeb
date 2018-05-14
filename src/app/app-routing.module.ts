@@ -35,7 +35,6 @@ const routes: Routes = [
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'test2', component: LoadingComponent },
-  //{ path: '**', component: DashboardLaunchComponent },
   { path: '**', component: DashboardSetupComponent }
 ];
 

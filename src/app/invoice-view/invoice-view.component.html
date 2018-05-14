@@ -74,4 +74,24 @@
       <input type="text" class="form-control" id="term" placeholder="term" [(ngModel)]="inv.term" name="term" disabled>
     </div>
   </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Transaction Info</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label>Hash</label>
+      <input type="text" class="form-control" id="transactionHash" placeholder="Transaction Hash" [(ngModel)]="inv.transactionHash" name="transactionHash" disabled>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4" *ngFor="let signature of inv.signatures; let idx = index">
+      <label>Signature {{idx + 1}}</label>
+      <input type="text" class="form-control" id="signature-{{idx}}" placeholder="Signature" [(ngModel)]="inv.signatures[idx]" name="signature-{{idx}}" disabled>
+    </div>
+  </div>
 </div>
