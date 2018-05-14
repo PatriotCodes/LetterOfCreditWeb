@@ -100,6 +100,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
     let target = event.target as Element;
     if(target.innerHTML == "Launch") {
       $('.wrap').toggleClass('active');
+      $('.wrapper').toggleClass('hidden');
     }
   }
 }

@@ -87,7 +87,6 @@ import { FooterComponent } from './footer/footer.component';
 import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { SelectModule } from 'ng2-select';
-import { LaunchComponent } from './launch/launch.component';
 import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
 import { LoadingComponent } from './loading/loading.component';
@@ -167,7 +166,6 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     ViewBolTimelineModalComponent,
     FeedbackComponent,
     FooterComponent,
-    LaunchComponent,
     PeersComponent,
     LogoComponent,
     LoadingComponent,

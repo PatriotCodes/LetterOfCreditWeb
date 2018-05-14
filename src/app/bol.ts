@@ -1,11 +1,12 @@
 import { Serializable } from './serializable';
+import { Helper } from './helper';
 
 export class Bol implements Serializable<Bol> {
 
   public owner: string;
 
   public billOfLadingId: string;
-  public issueDate: Date;
+  public issueDate: string;
   public carrierOwner: string;
 
   public nameOfVessel: string;
@@ -44,7 +45,7 @@ export class Bol implements Serializable<Bol> {
     this.owner = input.owner;
 
     this.billOfLadingId = input.props.billOfLadingID;
-    this.issueDate = input.props.issueDate;
+    this.issueDate = new Helper().convertToDate(input.props.issueDate);
     this.carrierOwner = input.props.carrierOwner;
 
     this.nameOfVessel = input.props.nameOfVessel;

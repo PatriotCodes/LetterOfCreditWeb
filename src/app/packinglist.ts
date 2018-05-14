@@ -1,10 +1,13 @@
 import { Serializable } from './serializable';
+import { Helper } from './helper';
 
 export class PackingList implements Serializable<PackingList> {
 
-  public issueDate: Date;
+  //for now, the issuer of the packing list is always the seller
+  public plIssuer: string;
+
+  public issueDate: string;
   public orderNumber: string;
-  public sellersOrderNumber: string;
 
   public transportMethod: string;
   public nameOfVessel: string;
@@ -30,9 +33,10 @@ export class PackingList implements Serializable<PackingList> {
   public issuingBank: string;
 
   deserialize(input: any) {
-    this.issueDate = input.props.issueDate;
+    this.plIssuer = input.seller;
+
+    this.issueDate = new Helper().convertToDate(input.props.issueDate);
     this.orderNumber = input.props.orderNumber;
-    this.sellersOrderNumber = input.props.sellersOrderNumber;
 
     this.transportMethod = input.props.transportMethod;
     this.nameOfVessel = input.props.nameOfVessel;
@@ -56,5 +60,4 @@ export class PackingList implements Serializable<PackingList> {
 
     return this;
   }
-
 }

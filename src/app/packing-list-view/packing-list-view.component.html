@@ -1,53 +1,60 @@
 <form *ngIf="pl; else not_attached">
-    <div class="form-group">
-      <label>Issuer</label>
-      <div class="form-inline">
-          <input type="text" class="form-control" id="issueDate" [(ngModel)]="pl.issueDate" name="issueDate">
-      </div>
-      <br>
-      <div class="form-inline">
-        <input type="text" class="form-control" id="orderNumber" placeholder="Order No" required [(ngModel)]="pl.orderNumber" name="orderNumber">
-        <input type="text" class="form-control" id="sellersOrderNumber" placeholder="Sellers Order No" required [(ngModel)]="pl.sellersOrderNumber" name="sellersOrderNumber">
-      </div>
+  <div class="form-group">
+    <label>Packing list issuer</label>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="plIssuer" [(ngModel)]="pl.plIssuer" name="plIssuer">
     </div>
+    <label>Issue date</label>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="issueDate" [(ngModel)]="pl.issueDate" name="issueDate">
+    </div>
+    <label>Order and bill of lading reference</label>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="orderNumber" placeholder="Order No" required [(ngModel)]="pl.orderNumber" name="orderNumber">
+      <input type="text" class="form-control" id="billOfLadingNumber" required [(ngModel)]="pl.billOfLadingNumber" name="billOfLadingNumber">
+    </div>
+  </div>
 
-    <div class="form-group">
-      <div class="form-inline">
+  <div class="form-group">
+    <label>Shipping</label>
+    <div class="form-inline">
       <input type="text" class="form-control" id="transportMethod" required [(ngModel)]="pl.transportMethod" name="transportMethod">
       <input type="text" class="form-control" id="nameOfVessel" required [(ngModel)]="pl.nameOfVessel" name="nameOfVessel">
-      <input type="text" class="form-control" id="billOfLadingNumber" required [(ngModel)]="pl.billOfLadingNumber" name="billOfLadingNumber">
-      </div>
     </div>
+  </div>
 
-    <div class="form-group">
-        <label>Seller</label>
-        <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="pl.sellerName" name="sellerName">
+  <div class="form-group">
+    <label>Seller</label>
+    <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="pl.sellerName" name="sellerName">
 
-        <div class="form-inline">
-          <input type="text" class="form-control" id="sellerAddress" placeholder="Address" [(ngModel)]="pl.sellerAddress" name="sellerAddress">
-          <input type="text" class="form-control" id="sellerPhone" placeholder="Phone" [(ngModel)]="pl.sellerPhone" name="sellerPhone">
-        </div>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="sellerAddress" placeholder="Address" [(ngModel)]="pl.sellerAddress" name="sellerAddress">
+      <input type="text" class="form-control" id="sellerPhone" placeholder="Phone" [(ngModel)]="pl.sellerPhone" name="sellerPhone">
     </div>
+  </div>
 
-    <div class="form-group">
-        <label>Buyer</label>
-        <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="pl.buyerName" name="buyerName">
+  <div class="form-group">
+    <label>Buyer</label>
+    <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="pl.buyerName" name="buyerName">
 
-        <div class="form-inline">
-          <input type="text" class="form-control" id="buyerAddress" placeholder="Address" [(ngModel)]="pl.buyerAddress" name="buyerAddress">
-          <input type="text" class="form-control" id="buyerPhone" placeholder="Phone" [(ngModel)]="pl.buyerPhone" name="buyerPhone">
-        </div>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="buyerAddress" placeholder="Address" [(ngModel)]="pl.buyerAddress" name="buyerAddress">
+      <input type="text" class="form-control" id="buyerPhone" placeholder="Phone" [(ngModel)]="pl.buyerPhone" name="buyerPhone">
     </div>
+  </div>
 
-      <div class="form-group">
-          <label>Goods</label>
-          <div class="form-inline">
-            <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="pl.goodsDescription" name="goodsDescription">
-            <input type="text" class="form-control" id="goodsPurchaseOrderRef" placeholder="Purchase Order Ref" [(ngModel)]="pl.goodsPurchaseOrderRef" name="goodsPurchaseOrderRef">
-            <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="pl.goodsQuantity" name="goodsQuantity">
-            <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="pl.goodsUnitPrice" name="goodsUnitPrice">
-            <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="pl.goodsGrossWeight" name="goodsGrossWeight">
-          </div>
-      </div>
-  </form>
-  <ng-template #not_attached>Packing list not yet created</ng-template>
+  <div class="form-group">
+    <label>Goods</label>
+    <div class="form-inline">
+      <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="pl.goodsDescription"
+        name="goodsDescription">
+      <input type="text" class="form-control" id="goodsPurchaseOrderRef" placeholder="Purchase Order Ref" [(ngModel)]="pl.goodsPurchaseOrderRef"
+        name="goodsPurchaseOrderRef">
+      <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="pl.goodsQuantity" name="goodsQuantity">
+      <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="pl.goodsUnitPrice" name="goodsUnitPrice">
+      <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="pl.goodsGrossWeight"
+        name="goodsGrossWeight">
+    </div>
+  </div>
+</form>
+<ng-template #not_attached>Packing list not yet created</ng-template>
