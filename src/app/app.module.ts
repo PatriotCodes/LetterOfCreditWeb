@@ -19,7 +19,7 @@ import { AppComponent }        from './app.component';
 import { ActiveLocComponent }     from './active-loc/active-loc.component';
 import { ApplyForLocComponent } from './apply-for-loc/apply-for-loc.component';
 import { LocService }         from './loc.service';
-import { DocsService } from './services/docs.service'
+import { DocsService } from './services/docs.service';
 import { CreditTypeService } from './services/credit-types/credit-type.service';
 import { CommonService } from './services/common/common.service';
 import { IssuingBankService } from './services/issuing-bank.service';

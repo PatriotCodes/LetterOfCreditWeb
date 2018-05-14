@@ -1,9 +1,11 @@
-import { Component, AfterViewChecked, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { IdentityService } from '../services/identity.service';
 import { PeerWithPort } from '../peer-with-port';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PeersWithPortComponent } from '../peers-with-port/peers-with-port.component';
+import * as global from './../globals';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 
 @Component({
   selector: 'app-dashboard-setup',
@@ -17,7 +19,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
   scannedPeers: PeerWithPort[];
   launchText = 'Begin';
 
-  constructor(public identityService: IdentityService, private dialog: MatDialog) { }
+  constructor(public identityService: IdentityService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.identityService.scanForPeers();
@@ -25,7 +27,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    var angleStart = -360;
+    const angleStart = -360;
 
     // jquery rotate animation
     function rotate(li, d) {
@@ -42,10 +44,10 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
     // show / hide the options
     function toggleOptions(s) {
       $(s).toggleClass('open');
-      var li = $(s).find('li');
-      var deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / li.length;
-      for (var i = 0; i < li.length; i++) {
-        var d = $(s).hasClass('half') ? (i * deg) - 90 : i * deg;
+      let li = $(s).find('li');
+      let deg = $(s).hasClass('half') ? 180 / (li.length - 1) : 360 / li.length;
+      for (let i = 0; i < li.length; i++) {
+        let d = $(s).hasClass('half') ? (i * deg) - 90 : i * deg;
         $(s).hasClass('open') ? rotate(li[i], d) : rotate(li[i], angleStart);
       }
     }
@@ -58,47 +60,55 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
   }
 
   lookupPeer(role: string) {
-    let dialogRef = this.dialog.open(PeersWithPortComponent)
+    let dialogRef = this.dialog.open(PeersWithPortComponent, {disableClose: true});
     dialogRef.afterClosed().subscribe(result => {
-      if (!this.peerMapping.find(peer => peer.role == role)) {
+      if (!this.peerMapping.find(peer => peer.role === role)) {
         this.peerMapping.push({ role: role, port: this.identityService.peer.port, name: this.identityService.peer.name });
       }
-      if(this.peerMapping.length == 5) {
+      if (this.peerMapping.length === 5) {
         this.launchText = 'Launch';
       }
-    })
+    });
   }
 
-  launchPage(role: string, port: string, event: any) {
+  launchPage(role: string, port: string, event: any, cash = false) {
     let path: string;
 
     switch (role) {
-      case 'Seller':
+      case global.seller:
         path = '/web/loc/seller';
         break;
-      case 'Buyer':
+      case global.buyer:
         path = '/web/loc/buyer';
         break;
-      case 'Advising Bank':
-        path = '/web/loc/advising';
+      case global.advisingBank:
+        if (cash) {
+          path = '/web/dashboard';
+        } else {
+          path = '/web/loc/advising';
+        }
         break;
-      case 'Issuing Bank':
-        path = '/web/loc/issuing';
+      case global.issuingBank:
+        if (cash) {
+          path = '/web/dashboard';
+        } else {
+          path = '/web/loc/issuing';
+        }
         break;
-      case 'Central Bank':
+      case global.centralBank:
         path = '/web/central';
         break;
     }
-    let url = "http://localhost:" + port + path;
-    window.open(url, "_blank")
+    let url = 'http://localhost:' + port + path;
+    window.open(url, '_blank');
     let target = event.target as Element;
-    target.innerHTML = "Launched";
-    target.setAttribute("class", "disabled");
+    target.innerHTML = 'Launched';
+    target.setAttribute('class', 'disabled');
   }
 
-  launch(event:any) {
+  launch(event: any) {
     let target = event.target as Element;
-    if(target.innerHTML == "Launch") {
+    if (target.innerHTML === 'Launch') {
       $('.wrap').toggleClass('active');
       $('.wrapper').toggleClass('hidden');
     }

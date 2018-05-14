@@ -22,25 +22,31 @@ export class Invoice implements Serializable<Invoice> {
 
   public assigned: Boolean;
 
+  public transactionHash: String;
+  public signatures: String[];
+
   deserialize(input: any) {
-    this.invoiceDate = input.props.invoiceDate;
-    this.invoiceId = input.props.invoiceID;
+    this.invoiceDate = input.third.props.invoiceDate;
+    this.invoiceId = input.third.props.invoiceID;
 
-    this.sellerName = input.props.seller.name;
-    this.sellerAddress = input.props.seller.address;
+    this.sellerName = input.third.props.seller.name;
+    this.sellerAddress = input.third.props.seller.address;
 
-    this.buyerName = input.props.buyer.name;
-    this.buyerAddress = input.props.buyer.address;
+    this.buyerName = input.third.props.buyer.name;
+    this.buyerAddress = input.third.props.buyer.address;
 
-    this.term = input.props.term;
+    this.term = input.third.props.term;
 
-    this.goodsDescription = input.props.goods[0].description;
-    this.goodsPurchaseOrderRef = input.props.goods[0].goodsPurchaseOrderRef;
-    this.goodsQuantity = input.props.goods[0].quantity;
-    this.goodsUnitPrice = input.props.goods[0].unitPrice;
-    this.goodsGrossWeight = input.props.goods[0].grossWeight.quantity + input.props.goods[0].grossWeight.unit;
+    this.goodsDescription = input.third.props.goods[0].description;
+    this.goodsPurchaseOrderRef = input.third.props.goods[0].goodsPurchaseOrderRef;
+    this.goodsQuantity = input.third.props.goods[0].quantity;
+    this.goodsUnitPrice = input.third.props.goods[0].unitPrice;
+    this.goodsGrossWeight = input.third.props.goods[0].grossWeight.quantity + input.third.props.goods[0].grossWeight.unit;
 
-    this.assigned = input.assigned;
+    this.assigned = input.third.assigned;
+
+    this.transactionHash = input.first;
+    this.signatures = input.second;
 
     return this;
   }

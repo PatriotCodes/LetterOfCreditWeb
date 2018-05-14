@@ -33,30 +33,29 @@ export class PackingList implements Serializable<PackingList> {
   public issuingBank: string;
 
   deserialize(input: any) {
+    this.issueDate = new Helper().convertToDate(input.third.props.issueDate);
+    this.orderNumber = input.third.props.orderNumber;
     this.plIssuer = input.seller;
 
-    this.issueDate = new Helper().convertToDate(input.props.issueDate);
-    this.orderNumber = input.props.orderNumber;
+    this.transportMethod = input.third.props.transportMethod;
+    this.nameOfVessel = input.third.props.nameOfVessel;
+    this.billOfLadingNumber = input.third.props.billOfLadingNumber;
 
-    this.transportMethod = input.props.transportMethod;
-    this.nameOfVessel = input.props.nameOfVessel;
-    this.billOfLadingNumber = input.props.billOfLadingNumber;
+    this.sellerName = input.third.props.seller.name;
+    this.sellerAddress = input.third.props.seller.address;
+    this.sellerPhone = input.third.props.seller.phone;
 
-    this.sellerName = input.props.seller.name;
-    this.sellerAddress = input.props.seller.address;
-    this.sellerPhone = input.props.seller.phone;
+    this.buyerName = input.third.props.buyer.name;
+    this.buyerAddress = input.third.props.buyer.address;
+    this.buyerPhone = input.third.props.buyer.phone;
 
-    this.buyerName = input.props.buyer.name;
-    this.buyerAddress = input.props.buyer.address;
-    this.buyerPhone = input.props.buyer.phone;
+    this.goodsDescription = input.third.props.descriptionOfGoods[0].description;
+    this.goodsPurchaseOrderRef = input.third.props.descriptionOfGoods[0].purchaseOrderRef;
+    this.goodsQuantity = input.third.props.descriptionOfGoods[0].quantity;
+    this.goodsUnitPrice = input.third.props.descriptionOfGoods[0].unitPrice;
+    this.goodsGrossWeight = input.third.props.descriptionOfGoods[0].grossWeight.quantity + input.third.props.descriptionOfGoods[0].grossWeight.unit;
 
-    this.goodsDescription = input.props.descriptionOfGoods[0].description;
-    this.goodsPurchaseOrderRef = input.props.descriptionOfGoods[0].purchaseOrderRef;
-    this.goodsQuantity = input.props.descriptionOfGoods[0].quantity;
-    this.goodsUnitPrice = input.props.descriptionOfGoods[0].unitPrice;
-    this.goodsGrossWeight = input.props.descriptionOfGoods[0].grossWeight.quantity + input.props.descriptionOfGoods[0].grossWeight.unit;
-
-    this.attachmentHash = input.props.attachmentHash
+    this.attachmentHash = input.third.props.attachmentHash
 
     return this;
   }

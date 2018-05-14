@@ -43,7 +43,8 @@
         <th>Name</th>
         <th>Role</th>
         <th>Port</th>
-        <th></th>
+        <th>Letter of Credit</th>
+        <th>Wildfire</th>
       </thead>
       <tbody>
         <tr *ngFor="let peer of peerMapping">
@@ -51,8 +52,9 @@
           <td>{{peer.role}}</td>
           <td>{{peer.port}}</td>
           <td>
-            <button (click)="launchPage(peer.role, peer.port, $event)" type="button" class="btn btn-primary btn-info-full next-step">Launch</button>
+            <button *ngIf="peer.role !== 'Central Bank'" (click)="launchPage(peer.role, peer.port, $event)" type="button" class="btn btn-primary btn-info-full next-step">Launch</button>
           </td>
+          <td><button *ngIf="peer.role === 'Advising Bank' || peer.role === 'Issuing Bank' || peer.role === 'Central Bank'" (click)="launchPage(peer.role, peer.port, $event, true)" type="button" class="btn btn-primary btn-info-full next-step">Launch</button></td>
         </tr>
       </tbody>
     </table>
