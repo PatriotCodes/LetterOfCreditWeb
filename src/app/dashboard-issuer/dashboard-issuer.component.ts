@@ -12,6 +12,9 @@ export class DashboardIssuerComponent implements OnInit {
   constructor(private cookieService: CookieService, private tourService: TourService) { }
 
   ngOnInit() {
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add('background-image-4');
+
     let demoDone = this.cookieService.get('issuerDemoDone');
     if (demoDone != 'true') {
       this.tourService.issuerTour.start();

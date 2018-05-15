@@ -1,9 +1,7 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
-import { IShepherdTourOptions } from '../interfaces';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
@@ -21,8 +19,11 @@ export class DashboardSellerComponent implements OnInit {
     public refreshService: RefreshService) { }
 
   ngOnInit() {
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add('background-image-1');
+
     let demoDone = this.cookieService.get('sellerDemoDone');
-    if (demoDone != 'true') {
+    if (demoDone !== 'true') {
       this.tourService.sellerTour.start();
       this.cookieService.put('sellerDemoDone', 'true');
     }
