@@ -18,12 +18,14 @@ export class PeersWithPortComponent implements OnInit {
   ngOnInit() {
     this.peers = new Array<PeerWithPort>();
     this.identityService.scanForPeers();
-    this.peers = this.identityService.scannedPeers;
+    this.peers = this.identityService.scannedPeers.filter((item) => {
+      return !this.identityService.removedPeers.has(item);
+    });
   }
 
   setPeer(peer: PeerWithPort) {
     this.identityService.peer = peer;
-    this.identityService.removeScannedPeer(peer)
+    this.identityService.removeScannedPeer(peer);
     this.dialogRef.close();
   }
 }

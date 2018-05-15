@@ -1,11 +1,9 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import { IdentityService } from '../services/identity.service';
-import { PeerWithPort } from '../peer-with-port';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PeersWithPortComponent } from '../peers-with-port/peers-with-port.component';
 import * as global from './../globals';
-import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 
 @Component({
   selector: 'app-dashboard-setup',
@@ -16,14 +14,12 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
 
   angleStart = -360;
   peerMapping = new Array<any>();
-  scannedPeers: PeerWithPort[];
   launchText = 'Begin';
 
-  constructor(public identityService: IdentityService, private dialog: MatDialog) {}
+  constructor(public identityService: IdentityService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.identityService.scanForPeers();
-    this.scannedPeers = this.identityService.scannedPeers;
   }
 
   ngAfterViewInit() {
@@ -55,19 +51,30 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
     $('.selector button').click(function (e) {
       toggleOptions($(this).parent());
     });
-
-    //setTimeout(function () { toggleOptions('.selector'); }, 100);
   }
 
-  lookupPeer(role: string) {
-    let dialogRef = this.dialog.open(PeersWithPortComponent, {disableClose: true});
+  lookupPeer(role: string, event) {
+    let dialogRef = this.dialog.open(PeersWithPortComponent);
     dialogRef.afterClosed().subscribe(result => {
-      if (!this.peerMapping.find(peer => peer.role === role)) {
-        this.peerMapping.push({ role: role, port: this.identityService.peer.port, name: this.identityService.peer.name });
+
+      let mapping = this.peerMapping.find(peer => peer.role === role);
+      if (mapping) {
+        let index = this.peerMapping.indexOf(mapping);
+        if (index > -1) {
+          this.peerMapping.splice(index, 1);
+        }
       }
+
+      this.peerMapping.push({ role: role, port: this.identityService.peer.port, name: this.identityService.peer.name });
+      this.identityService.sync(this.peerMapping);
+
       if (this.peerMapping.length === 5) {
         this.launchText = 'Launch';
       }
+
+      let target = (event.target as Element);
+      $('.' + target.id).addClass('marked');
+      //$('.' + target.id + '-sub').append(this.identityService.peer.name);
     });
   }
 
