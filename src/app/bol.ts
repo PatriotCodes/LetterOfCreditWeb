@@ -41,6 +41,9 @@ export class Bol implements Serializable<Bol> {
   public advisingBank: string;
   public issuingBank: string;
 
+  public transactionHash: string;
+  public signatures: String[];
+
   deserialize(input: any) {
     this.owner = input.third.owner;
 
@@ -77,6 +80,9 @@ export class Bol implements Serializable<Bol> {
     this.placeOfReceiptCity = input.third.props.placeOfReceipt.city;
 
     this.buyer = input.third.beneficiary;
+
+    this.transactionHash = input.first;
+    this.signatures = input.second;
 
     return this;
   }
