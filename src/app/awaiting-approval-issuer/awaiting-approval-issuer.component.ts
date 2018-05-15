@@ -27,7 +27,7 @@ export class AwaitingApprovalIssuerComponent implements OnInit {
 
   public openLocModal(ref: string) {
     this.bsModalRef = this.modalService.show(ApproveLocModalComponent, Object.assign({}, { class: 'gray modal-lg' }));
-    this.bsModalRef.content.title = 'Letter of Credit Approval';
+    this.bsModalRef.content.title = 'Letter of Credit Application';
     this.bsModalRef.content.locId = ref;
     this.bsModalRef.content.readOnly = true;
   }

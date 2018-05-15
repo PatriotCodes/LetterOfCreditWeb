@@ -29,6 +29,9 @@ export class PackingList implements Serializable<PackingList> {
   public advisingBank: string;
   public issuingBank: string;
 
+  public transactionHash: string;
+  public signatures: String[];
+
   deserialize(input: any) {
     this.issueDate = input.third.props.issueDate;
     this.orderNumber = input.third.props.orderNumber;
@@ -52,7 +55,10 @@ export class PackingList implements Serializable<PackingList> {
     this.goodsUnitPrice = input.third.props.descriptionOfGoods[0].unitPrice;
     this.goodsGrossWeight = input.third.props.descriptionOfGoods[0].grossWeight.quantity + input.third.props.descriptionOfGoods[0].grossWeight.unit;
 
-    this.attachmentHash = input.third.props.attachmentHash
+    this.attachmentHash = input.third.props.attachmentHash;
+
+    this.transactionHash = input.first;
+    this.signatures = input.second;
 
     return this;
   }

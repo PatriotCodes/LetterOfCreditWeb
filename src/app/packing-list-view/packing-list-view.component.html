@@ -39,15 +39,33 @@
         </div>
     </div>
 
-      <div class="form-group">
-          <label>Goods</label>
-          <div class="form-inline">
-            <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="pl.goodsDescription" name="goodsDescription">
-            <input type="text" class="form-control" id="goodsPurchaseOrderRef" placeholder="Purchase Order Ref" [(ngModel)]="pl.goodsPurchaseOrderRef" name="goodsPurchaseOrderRef">
-            <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="pl.goodsQuantity" name="goodsQuantity">
-            <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="pl.goodsUnitPrice" name="goodsUnitPrice">
-            <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="pl.goodsGrossWeight" name="goodsGrossWeight">
-          </div>
+    <div class="form-group">
+        <label>Goods</label>
+        <div class="form-inline">
+          <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="pl.goodsDescription" name="goodsDescription">
+          <input type="text" class="form-control" id="goodsPurchaseOrderRef" placeholder="Purchase Order Ref" [(ngModel)]="pl.goodsPurchaseOrderRef" name="goodsPurchaseOrderRef">
+          <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="pl.goodsQuantity" name="goodsQuantity">
+          <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="pl.goodsUnitPrice" name="goodsUnitPrice">
+          <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="pl.goodsGrossWeight" name="goodsGrossWeight">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Transaction Info</label>
+    </div>
+    
+    <div class="form-group">
+      <label>Hash</label>
+      <div class="form-inline">
+        <input type="text" class="form-control" id="transactionHash" placeholder="Transaction Hash" [(ngModel)]="pl.transactionHash" name="transactionHash" disabled>
       </div>
+    </div>
+    
+    <div class="form-group" *ngFor="let signature of pl.signatures; let idx = index">
+      <label>Signature {{idx + 1}}</label>
+      <div class="form-inline">
+        <input type="text" class="form-control" id="signature-{{idx}}" placeholder="Signature" [(ngModel)]="pl.signatures[idx]" name="signature-{{idx}}" disabled>
+      </div>
+    </div>
 
   </form>
