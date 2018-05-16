@@ -70,6 +70,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
 
       if (this.peerMapping.length === 5) {
         this.launchText = 'Launch';
+        $('#launch').addClass('glow');
       }
 
       let target = (event.target as Element);
@@ -118,6 +119,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
     if (target.innerHTML === 'Launch') {
       $('.wrap').toggleClass('active');
       $('.wrapper').toggleClass('hidden');
+      $('.selector').fadeToggle(500);
     }
   }
 }

@@ -12,6 +12,7 @@ body {
   height: 140px !important;
   margin-top: -20px !important;
   margin-left: -70px !important;
+  z-index: 30;
 }
 
 .selector, .selector button {
@@ -128,7 +129,7 @@ label {
 
 //////////////////////////////////////
 
-wrap {
+.wrap {
   position: absolute;
   overflow: hidden;
   top: 10%;
