@@ -30,11 +30,11 @@ h4 {
 }
 body {
   margin: 2em;
-  //background: rgb(67,80,82);
-  //background: -moz-radial-gradient(center, ellipse cover, rgba(67,80,82,1) 0%, rgba(32,41,43,1) 100%);
-  //background: -webkit-radial-gradient(center, ellipse cover, rgba(67,80,82,1) 0%,rgba(32,41,43,1) 100%);
-  //background: radial-gradient(ellipse at center, rgba(67,80,82,1) 0%,rgba(32,41,43,1) 100%);
-  //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#435052', endColorstr='#20292b',GradientType=1 );
+  background: rgb(67,80,82);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(67,80,82,1) 0%, rgba(32,41,43,1) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(67,80,82,1) 0%,rgba(32,41,43,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(67,80,82,1) 0%,rgba(32,41,43,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#435052', endColorstr='#20292b',GradientType=1 );
 }
 body, button {
   color: #888;
