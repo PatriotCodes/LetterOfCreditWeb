@@ -4,6 +4,7 @@ import { IdentityService } from '../services/identity.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PeersWithPortComponent } from '../peers-with-port/peers-with-port.component';
 import * as global from './../globals';
+import { inMemoryBackendServiceFactory } from 'angular-in-memory-web-api';
 
 @Component({
   selector: 'app-dashboard-setup',
@@ -15,6 +16,7 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
   angleStart = -360;
   peerMapping = new Array<any>();
   launchText = 'Begin';
+  backdropClicked: Boolean;
 
   constructor(public identityService: IdentityService, private dialog: MatDialog) { }
 
@@ -55,8 +57,14 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
 
   lookupPeer(role: string, event) {
     let dialogRef = this.dialog.open(PeersWithPortComponent);
+    dialogRef.backdropClick().subscribe(result => {
+      this.backdropClicked = true;
+    });
     dialogRef.afterClosed().subscribe(result => {
-
+      if (this.backdropClicked) {
+        this.backdropClicked = false;
+        return;
+      }
       let mapping = this.peerMapping.find(peer => peer.role === role);
       if (mapping) {
         let index = this.peerMapping.indexOf(mapping);
