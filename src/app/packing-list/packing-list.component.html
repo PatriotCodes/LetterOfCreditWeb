@@ -3,16 +3,18 @@
         <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
         <br>
         <br>
+      <label>Reference values</label>
       <div class="form-inline">
         <input type="text" class="form-control" id="orderNumber" placeholder="Order No" required [(ngModel)]="pl.orderNumber" name="orderNumber">
+        <input type="text" class="form-control" id="billOfLadingNumber" required [(ngModel)]="pl.billOfLadingNumber" name="billOfLadingNumber" placeholder="BoL Id">
       </div>
     </div>
 
     <div class="form-group">
+      <label>Transport</label>
       <div class="form-inline">
       <input type="text" class="form-control" id="transportMethod" required [(ngModel)]="pl.transportMethod" name="transportMethod" placeholder="Transport Method">
       <input type="text" class="form-control" id="nameOfVessel" required [(ngModel)]="pl.nameOfVessel" name="nameOfVessel" placeholder="Name of Vessel">
-      <input type="text" class="form-control" id="billOfLadingNumber" required [(ngModel)]="pl.billOfLadingNumber" name="billOfLadingNumber" placeholder="BoL Id">
       </div>
     </div>
 

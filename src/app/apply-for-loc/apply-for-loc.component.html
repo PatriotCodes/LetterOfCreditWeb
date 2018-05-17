@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit()" #ApplyForLoc="ngForm">
-
+  <label *ngIf="error" class="alert alert-danger">Error: select issuing and advising bank</label>
   <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
   <br>
   <br>
@@ -7,7 +7,12 @@
   <div class="form inline">
     <div class="form-group">
       <label for="issuer">Issuer Bank</label>
-      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing">
+      <input type="text" class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" placeholder="Issuing" (click)="lookupIssuer()" [ngClass]="{'glow': issuerGlow}">
+    </div>
+
+    <div class="form-group">
+      <label for="advisingBank">Advisory Bank</label>
+      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising" (click)="lookupAdvising()" [ngClass]="{'glow': advisingGlow}">
     </div>
 
     <div class="form-group">
@@ -19,14 +24,9 @@
       <label for="applicant">Buyer</label>
       <input type="text" class="form-control" id="applicant" [(ngModel)]="loc.applicant" name="applicant" placeholder="Applicant">
     </div>
-
-    <div class="form-group">
-      <label for="advisingBank">Advisory Bank</label>
-      <input type="text" class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" placeholder="Advising">
-    </div>
   </div>
 
-<hr class="modal-hr">
+  <hr class="modal-hr">
 
   <h4>Identification</h4>
   <div class="form-inline">
@@ -51,12 +51,8 @@
   <h4>Value</h4>
   <div class="form-inline">
     <div class="form-group">
-      <label for="amount">Expiry</label>
+      <label for="amount">Amount ($)</label>
       <input type="text" class="form-control" id="amount" placeholder="Amount" required [(ngModel)]="loc.amount" name="amount">
-    </div>
-    <div class="form-group">
-      <label for="currency">Expiry</label>
-      <input type="text" class="form-control" id="currency" [(ngModel)]="loc.currency" name="currency" placeholder="USD">
     </div>
   </div>
 
@@ -169,11 +165,11 @@
   </div>
 
   <hr class="modal-hr">
-    <div class="modal-actions">
-      <span class="cancel" (click)="close()">Cancel</span>
-      <input type="submit" class="submit" value="Apply">
-    </div>
+  <div class="modal-actions">
+    <span class="cancel" (click)="close()">Cancel</span>
+    <input type="submit" class="submit" value="Apply">
+  </div>
 
-<div class="fix"></div>
+  <div class="fix"></div>
 
 </form>

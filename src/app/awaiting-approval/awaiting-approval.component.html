@@ -11,7 +11,7 @@
           <th>Description</th>
         </thead>
         <tbody>
-          <tr *ngFor="let loc of locs">
+          <tr *ngFor="let loc of locs" (click)="openLocModal(loc.id)" class="clickable">
             <td hidden>
               <a (click)="openLocModal(loc.id)">{{loc.id}}</a>
             </td>
@@ -22,7 +22,7 @@
                 <a (click)="openLocModal(loc.id)">{{loc.beneficiary}}</a>
             </td>
             <td>
-                <a (click)="openLocModal(loc.id)">{{loc.amount + " " + loc.currency}}</a>
+                <a (click)="openLocModal(loc.id)">{{loc.amount}}</a>
             </td>
             <td>
                 <a (click)="openLocModal(loc.id)">{{loc.description}}</a>

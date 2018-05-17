@@ -1,85 +1,74 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http'
-import { Party } from './../party';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs/Rx';
 import { PortProviderService } from './port-provider.service';
 import { UrlProviderService } from './url-provider.service';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { PeerWithPort } from '../peer-with-port';
 
 @Injectable()
 export class IdentityService {
 
-  private buyerUrl = this.urlService.url + ':' + this.portService.buyer + '/api/loc/me';
-  private issuerUrl = this.urlService.url + ':' + this.portService.issuer + '/api/loc/me';
-  private advisoryUrl = this.urlService.url + ':' + this.portService.advisory + '/api/loc/me';
-  private sellerUrl = this.urlService.url + ':' + this.portService.seller + '/api/loc/me';
-
   private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
   private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
 
-  public buyerId: string;
-  public issuerId: string;
-  public advisoryId: string;
-  public sellerId: string;
-  public peer: string;
+  public peer: PeerWithPort;
   public me: string;
+  public seller: string;
+  public buyer: string;
+  public advising: string;
+  public issuing: string;
+  public central: string;
 
-  public peers: string[];
+  public scannedPeers: PeerWithPort[] = new Array<PeerWithPort>();
+  public removedPeers = new Set<PeerWithPort>();
 
   constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {
   }
 
-  getAll() {
-    this.getBuyer();
-    this.getIssuer();
-    this.getAdvisory();
-    this.getSeller();
-  }
-
   getMe() {
     return this.http.get(this.meUrl)
-      .toPromise()
+      .toPromise();
   }
 
   getPeers() {
     return this.http.get(this.peersUrl)
-      .toPromise()
+      .toPromise();
   };
 
-  getBuyer() {
-    if (this.buyerId === undefined) {
-      this.http.get(this.buyerUrl)
-      .toPromise()
-      .then(response => this.buyerId = new Party().deserialize(response.json()).name)
-      .catch(this.handleError)
+  removeScannedPeer(peer: PeerWithPort) {
+    this.removedPeers.add(peer);
+  }
+
+  addPeer(peer: PeerWithPort) {
+    this.removedPeers.delete(peer);
+  }
+
+  sync(peers: any) {
+    this.removedPeers.clear();
+    for (let p of peers) {
+      let peer = this.scannedPeers.filter(s => s.name === p.name)[0];
+      this.removedPeers.add(peer);
     }
   }
 
-  getIssuer() {
-    if (this.issuerId === undefined) {
-      this.http.get(this.issuerId)
-      .toPromise()
-      .then(response => this.issuerId = new Party().deserialize(response.json()).name)
-      .catch(this.handleError)
+  /*removeScannedPeer(peer: PeerWithPort) {
+    var index = this.scannedPeers.indexOf(peer);
+    if (index > -1) {
+      this.scannedPeers.splice(index, 1);
     }
-  }
+  }*/
 
-  getAdvisory() {
-    if (this.advisoryId === undefined) {
-      this.http.get(this.advisoryId)
-      .toPromise()
-      .then(response => this.advisoryId = new Party().deserialize(response.json()).name)
-      .catch(this.handleError)
-    }
-  }
-
-  getSeller() {
-    if (this.sellerId === undefined) {
-      this.http.get(this.sellerId)
-      .toPromise()
-      .then(response => this.sellerId = new Party().deserialize(response.json()).name)
-      .catch(this.handleError)
+  scanForPeers() {
+    if (this.scannedPeers.length === 0) {
+      let i: number;
+      for (i = 10007; i < 10022; i++) {
+        let url = this.urlService.url + ':' + i + '/api/loc/me';
+        let port = i;
+        this.http.get(url)
+          .toPromise()
+          .then(response => this.scannedPeers.push(new PeerWithPort().deserialize(response.json().me + '|' + port)))
+          .catch(this.handleError);
+      }
     }
   }
 
@@ -87,5 +76,4 @@ export class IdentityService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
 }

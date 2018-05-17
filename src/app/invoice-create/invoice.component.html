@@ -1,4 +1,5 @@
 <form (ngSubmit)="onSubmit()" #Invoice="ngForm">
+    <label *ngIf="error" class="alert alert-danger">Error: select buyer</label>
     <button type="button" class="btn pull-right" id="autoComplete" (click)="autoComplete()">✓✓ Autocomplete fields</button>
     <br>
     <br>
@@ -22,7 +23,7 @@
   <div class="form-inline">
     <div class="form-group">
       <label for="sellerName">Name</label>
-      <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="inv.sellerName" name="sellerName">
+      <input type="text" class="form-control" id="sellerName" required placeholder="Name" [(ngModel)]="inv.sellerName" name="sellerName">
     </div>
     <div class="form-group">
       <label for="sellerAddress">Address</label>
@@ -34,7 +35,7 @@
   <div class="form-inline">
     <div class="form-group">
       <label for="buyerName">Name</label>
-      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()">
+      <input type="text" class="form-control" id="buyerName" required minlength="5" maxlength="30" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" (click)="lookupBuyer()" [ngClass]="{'glow': glow}">
     </div>
     <div class="form-group">
       <label for="buyerAddress">Address</label>

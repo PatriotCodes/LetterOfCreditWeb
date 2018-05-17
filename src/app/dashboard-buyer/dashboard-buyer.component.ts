@@ -22,6 +22,9 @@ export class DashboardBuyerComponent implements OnInit {
   }
 
   ngOnInit() {
+    let body = document.getElementsByTagName('body')[0];
+    body.classList.add('background-image-buyer');
+
     let demoDone = this.cookieService.get('buyerDemoDone');
     if (demoDone !== 'true') {
       this.tourService.buyerTour.start();

@@ -14,7 +14,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr *ngFor="let invoice of invoices">
+          <tr *ngFor="let invoice of invoices" class="clickable">
             <td>
                 <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceDate | date}}</a>
             </td>
@@ -34,7 +34,7 @@
                 <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsUnitPrice}}</a>
             </td>
             <td>
-                <span ng-disabled="invoice.assigned" (click)="openModalWithComponent(invoice.invoiceId)" class="action"><img src="assets/hand.png" height="20px" class="action-img">Apply for LOC</span>
+                <span ng-disabled="invoice.assigned" (click)="openModalWithComponent(invoice)" class="action"><img src="assets/hand.png" height="20px" class="action-img">Apply for LOC</span>
             </td>
           </tr>
         </tbody>

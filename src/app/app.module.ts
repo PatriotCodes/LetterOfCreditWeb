@@ -19,7 +19,7 @@ import { AppComponent }        from './app.component';
 import { ActiveLocComponent }     from './active-loc/active-loc.component';
 import { ApplyForLocComponent } from './apply-for-loc/apply-for-loc.component';
 import { LocService }         from './loc.service';
-import { DocsService } from './services/docs.service'
+import { DocsService } from './services/docs.service';
 import { CreditTypeService } from './services/credit-types/credit-type.service';
 import { CommonService } from './services/common/common.service';
 import { IssuingBankService } from './services/issuing-bank.service';
@@ -87,9 +87,11 @@ import { FooterComponent } from './footer/footer.component';
 import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { SelectModule } from 'ng2-select';
-import { LaunchComponent } from './launch/launch.component';
 import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
+import { LoadingComponent } from './loading/loading.component';
+import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
+import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 
 @NgModule({
   imports: [
@@ -164,10 +166,11 @@ import { LogoComponent } from './logo/logo.component';
     ViewBolTimelineModalComponent,
     FeedbackComponent,
     FooterComponent,
-    LaunchComponent,
-    PeersComponent
-,
-    LogoComponent
+    PeersComponent,
+    LogoComponent,
+    LoadingComponent,
+    PeersWithPortComponent,
+    DashboardSetupComponent
 ],
   providers: [
     LocService,
@@ -189,7 +192,7 @@ import { LogoComponent } from './logo/logo.component';
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent,
+                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
   bootstrap: [ AppComponent ]

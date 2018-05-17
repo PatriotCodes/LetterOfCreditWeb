@@ -1,171 +1,191 @@
 <div *ngIf="loc">
-<div class="row">
+  <div class="row">
 
-  <label class="control-label col-sm-2" for="txRef">Transaction Ref</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" id="txRef" required [(ngModel)]="loc.txRef" name="txRef" disabled>
+    <label class="control-label col-sm-2" for="txRef">Transaction Ref</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="txRef" required [(ngModel)]="loc.txRef" name="txRef" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="letterOfCreditId">LoC Id</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="letterOfCreditId" required [(ngModel)]="loc.letterOfCreditId" name="letterOfCreditId"
+        disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="applicationDate">Application Date</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="applicationDate" required [(ngModel)]="loc.applicationDate" name="applicationDate"
+        disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="typeCredit">Credit Type</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="typeCredit" [(ngModel)]="loc.typeCredit" name="typeCredit" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="typeCredit">Applicant</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="applicant" [(ngModel)]="loc.applicant" name="applicant" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="typeCredit">Beneficiary</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="beneficiary" [(ngModel)]="loc.beneficiary" name="beneficiary" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="typeCredit">Issuer</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="typeCredit">Advising Bank</label>
+    <div class="col-sm-10">
+      <input class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" disabled>
+    </div>
+
+    <label class="control-label col-sm-2" for="amount">Amount</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="amount" placeholder="Amount" required [(ngModel)]="loc.amount" name="amount"
+        disabled>
+    </div>
+
+    <label for="expiryDate" class="control-label col-sm-2">Expiry</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" disabled>
+    </div>
+
   </div>
 
-  <label class="control-label col-sm-2" for="letterOfCreditId">LoC Id</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" id="letterOfCreditId" required [(ngModel)]="loc.letterOfCreditId" name="letterOfCreditId"
-      disabled>
+  <div class="row">
+    <label class="control-label col-sm-2">Loading:</label>
+    <br>
   </div>
 
-  <label class="control-label col-sm-2" for="applicationDate">Application Date</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" id="applicationDate" required [(ngModel)]="loc.applicationDate" name="applicationDate"
-      disabled>
+  <div class="row">
+
+    <label class="control-label col-sm-2">Address</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="portLoadingAddress" placeholder="Address" required [(ngModel)]="loc.portLoadingAddress"
+        name="portLoadingAddress" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Country</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="portLoadingCountry" placeholder="Country" required [(ngModel)]="loc.portLoadingCountry"
+        name="portLoadingCountry" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">City</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="portLoadingCity" placeholder="City" required [(ngModel)]="loc.portLoadingCity"
+        name="portLoadingCity" disabled>
+    </div>
+
+  </div>
+  
+  <div class="row">
+    <label class="control-label col-sm-2">Presentation:</label>
+    <br>
   </div>
 
-  <label class="control-label col-sm-2" for="typeCredit">Credit Type</label>
-  <div class="col-sm-10">
-    <input class="form-control" id="typeCredit" [(ngModel)]="loc.typeCredit" name="typeCredit" disabled>
+  <div class="row">
+
+    <label class="control-label col-sm-2">Country</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="placePresentationCountry" placeholder="Country" [(ngModel)]="loc.placePresentationCountry"
+        name="placePresentationCountry" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">City</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="placePresentationCity" placeholder="City" [(ngModel)]="loc.placePresentationCity"
+        name="placePresentationCity" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Period</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="periodPresentation" [(ngModel)]="loc.periodPresentation" name="periodPresentation"
+        disabled>
+    </div>
+
   </div>
 
-  <label class="control-label col-sm-2" for="typeCredit">Applicant</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" id="applicant" [(ngModel)]="loc.applicant" name="applicant" disabled>
+  <div class="row">
+    <label class="control-label col-sm-2">Goods:</label>
+    <br>
   </div>
 
-  <label class="control-label col-sm-2" for="typeCredit">Beneficiary</label>
-  <div class="col-sm-10">
-    <input class="form-control" id="beneficiary" [(ngModel)]="loc.beneficiary" name="beneficiary" disabled>
+  <div class="row">
+
+    <label class="control-label col-sm-2">Description</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="loc.goodsDescription"
+        name="goodsDescription" disabled>
+    </div>
+    <label class="control-label col-sm-2">Quantity</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="loc.goodsQuantity" name="goodsQuantity"
+        disabled>
+    </div>
+    <label class="control-label col-sm-2">Weight</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="goodsWeight" placeholder="Weight" [(ngModel)]="loc.goodsWeight + loc.goodsWeightUnit" name="goodsWeight"
+        disabled>
+    </div>
+    <label class="control-label col-sm-2">Price per Unit</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Price per Unit" [(ngModel)]="loc.goodsUnitPrice"
+        name="goodsUnitPrice" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Last Shipment</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipmentDate"
+        disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Issuer Paid</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="issuerPaid" [(ngModel)]="loc.issuerPaid" name="issuerPaid" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Beneficiary Paid</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="beneficiaryPaid" [(ngModel)]="loc.beneficiaryPaid" name="beneficiaryPaid" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Advisory Paid</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="advisoryPaid" [(ngModel)]="loc.advisoryPaid" name="advisoryPaid" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Issued</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="issued" [(ngModel)]="loc.issued" name="issued" disabled>
+    </div>
+
+    <label class="control-label col-sm-2">Terminated</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="terminated" [(ngModel)]="loc.terminated" name="terminated" disabled>
+    </div>
   </div>
 
-  <label class="control-label col-sm-2" for="typeCredit">Issuer</label>
-  <div class="col-sm-10">
-    <input class="form-control" id="issuer" [(ngModel)]="loc.issuer" name="issuer" disabled>
+  <div class="row">
+      <label class="control-label col-sm-2">Transaction Info:</label>
+      <br>
+    </div>
+
+  <div class="row">
+    <label class="control-label col-sm-2">Hash</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="transactionHash" placeholder="Transaction Hash" [(ngModel)]="loc.txRef" name="transactionHash" disabled>
+    </div>
+  
+    <div *ngFor="let signature of loc.signatures; let idx = index">
+      <label class="control-label col-sm-2">Signature {{idx + 1}}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="signature-{{idx}}" placeholder="Signature" [(ngModel)]="loc.signatures[idx]" name="signature-{{idx}}" disabled>
+      </div>
+    </div>
   </div>
-
-  <label class="control-label col-sm-2" for="typeCredit">Advising Bank</label>
-  <div class="col-sm-10">
-    <input class="form-control" id="advisingBank" [(ngModel)]="loc.advisingBank" name="advisingBank" disabled>
-  </div>
-
-  <label class="control-label col-sm-2" for="amount">Amount</label>
-  <div class="col-sm-10">
-    <input type="text" class="form-control" id="amount" placeholder="Amount" required [(ngModel)]="loc.amount" name="amount"
-      disabled>
-  </div>
-
-  <label class="control-label col-sm-2" for="currency">Currency</label>
-  <div class="col-sm-10">
-    <input class="form-control" id="currency" [(ngModel)]="loc.currency" name="currency" disabled>
-  </div>
-
-  <label for="expiryDate" class="control-label col-sm-2">Expiry</label>
-  <div class="col-sm-10">
-    <input type="date" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" disabled>
-  </div>
-
-</div>
-<div class="row">
-<label class="control-label col-sm-2">Loading:</label>
-<br>
-</div>
-<div class="row">
-
-<label class="control-label col-sm-2">Address</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="portLoadingAddress" placeholder="Address" required [(ngModel)]="loc.portLoadingAddress"
-    name="portLoadingAddress" disabled>
-</div>
-
-<label class="control-label col-sm-2">Country</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="portLoadingCountry" placeholder="Country" required [(ngModel)]="loc.portLoadingCountry"
-    name="portLoadingCountry" disabled>
-</div>
-
-<label class="control-label col-sm-2">City</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="portLoadingCity" placeholder="City" required [(ngModel)]="loc.portLoadingCity"
-    name="portLoadingCity" disabled>
-</div>
-
-</div>
-<div class="row">
-<label class="control-label col-sm-2">Presentation:</label>
-<br>
-</div>
-<div class="row">
-
-<label class="control-label col-sm-2">Country</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="placePresentationCountry" placeholder="Country" [(ngModel)]="loc.placePresentationCountry"
-    name="placePresentationCountry" disabled>
-</div>
-
-<label class="control-label col-sm-2">City</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="placePresentationCity" placeholder="City" [(ngModel)]="loc.placePresentationCity"
-    name="placePresentationCity" disabled>
-</div>
-
-<label class="control-label col-sm-2">Period</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="periodPresentation" [(ngModel)]="loc.periodPresentation" name="periodPresentation"
-    disabled>
-</div>
-
-</div>
-<div class="row">
-<label class="control-label col-sm-2">Goods:</label>
-<br>
-</div>
-<div class="row">
-
-<label class="control-label col-sm-2">Description</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="loc.goodsDescription"
-    name="goodsDescription" disabled>
-</div>
-<label class="control-label col-sm-2">Quantity</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="loc.goodsQuantity" name="goodsQuantity"
-    disabled>
-</div>
-<label class="control-label col-sm-2">Weight</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="goodsWeight" placeholder="Weight" [(ngModel)]="loc.goodsWeight + loc.goodsWeightUnit" name="goodsWeight"
-    disabled>
-</div>
-<label class="control-label col-sm-2">Price per Unit</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Price per Unit" [(ngModel)]="loc.goodsUnitPrice"
-    name="goodsUnitPrice" disabled>
-</div>
-
-<label class="control-label col-sm-2">Last Shipment</label>
-<div class="col-sm-10">
-  <input type="date" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipmentDate"
-    disabled>
-</div>
-
-<label class="control-label col-sm-2">Issuer Paid</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="issuerPaid" [(ngModel)]="loc.issuerPaid" name="issuerPaid" disabled>
-</div>
-
-<label class="control-label col-sm-2">Beneficiary Paid</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="beneficiaryPaid" [(ngModel)]="loc.beneficiaryPaid" name="beneficiaryPaid" disabled>
-</div>
-
-<label class="control-label col-sm-2">Advisory Paid</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="advisoryPaid" [(ngModel)]="loc.advisoryPaid" name="advisoryPaid" disabled>
-</div>
-
-<label class="control-label col-sm-2">Issued</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="issued" [(ngModel)]="loc.issued" name="issued" disabled>
-</div>
-
-<label class="control-label col-sm-2">Terminated</label>
-<div class="col-sm-10">
-  <input type="text" class="form-control" id="terminated" [(ngModel)]="loc.terminated" name="terminated" disabled>
-</div>
-</div>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { Invoice } from '../invoice';
 
 @Component({
   selector: 'modal-content',
@@ -13,13 +14,14 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
       </button>
     </div>
     <div class="modal-body">
-    <apply-for-loc [orderRef]="[id]"></apply-for-loc>
+    <apply-for-loc [orderRef]="[id]" [invoice]="[invoice]"></apply-for-loc>
     </div>
     </div>
   `
 })
 export class ApplyModalComponent {
   public title: string;
+  public invoice: Invoice;
   public id: string;
   constructor(public bsModalRef: BsModalRef) {}
 
