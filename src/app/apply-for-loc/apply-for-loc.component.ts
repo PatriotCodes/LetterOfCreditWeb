@@ -75,7 +75,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   createLoc(): void {
-    if(!this.loc.issuer || !this.loc.advisingBank) {
+    if (!this.loc.issuer || !this.loc.advisingBank) {
       this.error = true;
       return;
     }
@@ -101,7 +101,7 @@ export class ApplyForLocComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.loc.issuer = this.identityService.peer.name;
       this.issuerGlow = false;
-    })
+    });
   }
 
   lookupAdvising() {
@@ -118,7 +118,7 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.applicationId = this.orderRef[0];
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = '30000 USD';
-  
+
     let year = d.getFullYear() + 1
     // TODO: Use a real date, instead of padded strings.
     let month = ("000" + d.getMonth()).slice(-2);
