@@ -40,6 +40,18 @@ body, button {
   color: #888;
   font-family: Roboto, "Open Sans";
 }
+.background-image-seller {
+  background-image: url("assets/test2.jpg");
+}
+.background-image-buyer {
+  background-image: url("assets/test4.jpg");
+}
+.background-image-advising {
+  background-image: url("assets/test3.jpg");
+}
+.background-image-issuing {
+  background-image: url("assets/test.jpg");
+}
 
 mat-toolbar {
   position: absolute;
@@ -175,7 +187,7 @@ nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
-  color: #039be5;
+  //color: #039be5;
   background-color: #CFD8DC;
 }
 nav a.active {
@@ -1003,9 +1015,9 @@ html,body {
  }
 }
 .owner {
-    -moz-box-shadow: 0px 0px 10px Red !important;
-    -webkit-box-shadow: 0px 0px 10px Red !important;
-    box-shadow: 0px 0px 10px Red !important;
+    -moz-box-shadow: 0px 0px 10px #3498db !important;
+    -webkit-box-shadow: 0px 0px 10px #3498db !important;
+    box-shadow: 0px 0px 10px #3498db !important;
   }
   .paid {
     color: #00c27a !important;
@@ -1309,4 +1321,14 @@ a.dropdown-item {
 }
 .mat-dialog-container {
   background-color: #000;
+}
+.clickable:hover {
+  cursor: pointer;
+}
+tr:hover {
+  background-color: rgb(37, 37, 37) !important;
+  border-bottom-width: 2px;
+}
+.hidden {
+  visibility: hidden;
 }

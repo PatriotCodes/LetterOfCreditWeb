@@ -14,7 +14,7 @@
           <th>Actions</th>
         </thead>
         <tbody>
-          <tr *ngFor="let invoice of invoices">
+          <tr *ngFor="let invoice of invoices" class="clickable">
             <td>
                 <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceDate | date}}</a>
             </td>

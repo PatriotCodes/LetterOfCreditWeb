@@ -36,9 +36,8 @@ export class PackingListComponent implements OnInit {
 
     autoComplete(): void {
       let d = new Date()
-      this.pl.issueDate = d;
+      this.pl.issueDate = d.toDateString();
       this.pl.orderNumber = this.loc[0].orderRef;
-      this.pl.sellersOrderNumber = this.loc[0].orderRef;
       this.pl.transportMethod = 'Ship';
       this.pl.nameOfVessel = 'SurfRider';
       this.pl.billOfLadingNumber = this.loc[0].orderRef;

@@ -75,7 +75,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   createLoc(): void {
-    if(this.loc.issuer == "" || this.loc.advisingBank == "") {
+    if(!this.loc.issuer || !this.loc.advisingBank) {
       this.error = true;
       return;
     }
@@ -99,7 +99,7 @@ export class ApplyForLocComponent implements OnInit {
   lookupIssuer() {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
-      this.loc.issuer = this.identityService.peer;
+      this.loc.issuer = this.identityService.peer.name;
       this.issuerGlow = false;
     })
   }
@@ -107,7 +107,7 @@ export class ApplyForLocComponent implements OnInit {
   lookupAdvising() {
     let dialogRef = this.dialog.open(PeersComponent)
     dialogRef.afterClosed().subscribe(result => {
-      this.loc.advisingBank = this.identityService.peer;
+      this.loc.advisingBank = this.identityService.peer.name;
       this.advisingGlow = false;
     })
   }
@@ -124,6 +124,7 @@ export class ApplyForLocComponent implements OnInit {
     let month = ("000" + d.getMonth()).slice(-2);
     let day = ("000" + d.getDay()).slice(-2);
     this.loc.expiryDate = year + "-" + month + "-" + day
+
     this.loc.portLoadingAddress = 'The Port';
     this.loc.portLoadingCity = 'Shenzhen';
     this.loc.portLoadingCountry = 'CH'
@@ -144,6 +145,9 @@ export class ApplyForLocComponent implements OnInit {
 
     this.loc.beneficiary = this.invoice[0].sellerName;
     this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
+
+    this.loc.issuer = "";
+    this.loc.advisingBank = "";
 
     this.issuerGlow = true;
     this.advisingGlow = true;

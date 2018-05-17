@@ -17,6 +17,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { LoginComponent } from './login/login.component';
 import { TimelineComponent } from'./timeline/timeline.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 
 const routes: Routes = [
   { path: 'approve/:id', component: ApproveLocComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'test2', component: LoadingComponent },
+  { path: '**', component: DashboardSetupComponent }
 ];
 
 @NgModule({

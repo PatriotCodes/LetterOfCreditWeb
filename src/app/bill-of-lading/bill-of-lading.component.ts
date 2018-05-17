@@ -37,7 +37,7 @@ export class BillOfLadingComponent {
   autoComplete(): void {
     let d = new Date()
     this.bol.billOfLadingId = this.loc[0].orderRef;
-    this.bol.issueDate = d;
+    this.bol.issueDate = d.toDateString();
     this.bol.carrierOwner = 'Alice Shipping';
 
     this.bol.nameOfVessel = 'SurfRider';
