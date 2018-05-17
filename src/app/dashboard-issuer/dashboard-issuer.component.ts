@@ -13,7 +13,7 @@ export class DashboardIssuerComponent implements OnInit {
 
   ngOnInit() {
     let body = document.getElementsByTagName('body')[0];
-    body.classList.add('background-image-4');
+    body.classList.add('background-image-issuing');
 
     let demoDone = this.cookieService.get('issuerDemoDone');
     if (demoDone != 'true') {

@@ -13,10 +13,10 @@ export class DashboardAdvisingComponent implements OnInit {
 
   ngOnInit() {
     let body = document.getElementsByTagName('body')[0];
-    body.classList.add('background-image-3');
+    body.classList.add('background-image-advising');
 
     let demoDone = this.cookieService.get('advisingDemoDone');
-    if (demoDone != 'true') {
+    if (demoDone !== 'true') {
       this.tourService.advisingTour.start();
       this.cookieService.put('advisingDemoDone', 'true');
     }

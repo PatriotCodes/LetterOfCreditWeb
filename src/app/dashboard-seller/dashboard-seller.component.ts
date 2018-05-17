@@ -20,7 +20,7 @@ export class DashboardSellerComponent implements OnInit {
 
   ngOnInit() {
     let body = document.getElementsByTagName('body')[0];
-    body.classList.add('background-image-1');
+    body.classList.add('background-image-seller');
 
     let demoDone = this.cookieService.get('sellerDemoDone');
     if (demoDone !== 'true') {
