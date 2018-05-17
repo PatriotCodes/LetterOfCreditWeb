@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "css/fonts.css";
 
 /* Master Styles */
 @mixin disable{
@@ -38,6 +39,18 @@ body {
 body, button {
   color: #888;
   font-family: Roboto, "Open Sans";
+}
+.background-image-seller {
+  background-image: url("assets/test2.jpg");
+}
+.background-image-buyer {
+  background-image: url("assets/test4.jpg");
+}
+.background-image-advising {
+  background-image: url("assets/test3.jpg");
+}
+.background-image-issuing {
+  background-image: url("assets/test.jpg");
 }
 
 mat-toolbar {
@@ -174,7 +187,7 @@ nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
-  color: #039be5;
+  //color: #039be5;
   background-color: #CFD8DC;
 }
 nav a.active {
@@ -860,19 +873,26 @@ html,body {
 }
 
 .glow {
-  -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon2 1.5s ease-in-out infinite alternate;
-  animation: neon2 1.5s ease-in-out infinite alternate;
+  animation: glow 800ms ease-out infinite alternate;
+	background: #222922;
+	background: linear-gradient(#333933, #222922);
+	border-color: #393;
+	box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+	color: #efe;
+	outline: none;
 }
 
-@-webkit-keyframes neon2 {
-  from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #F00, 0 0 35px #F00, 0 0 40px #F00, 0 0 50px #F00, 0 0 75px #F00;
+@keyframes glow {
+  0% {
+  border-color: #393;
+  box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
   }
-  to {
-    text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px #F00, 0 0 17px #F00, 0 0 20px #F00, 0 0 25px #F00, 0 0 37px #F00;
+  100% {
+  border-color: #6f6;
+  box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
   }
 }
+
 
 /////////////////////////////////////////////////
 .module {
@@ -995,9 +1015,9 @@ html,body {
  }
 }
 .owner {
-    -moz-box-shadow: 0px 0px 10px Red !important;
-    -webkit-box-shadow: 0px 0px 10px Red !important;
-    box-shadow: 0px 0px 10px Red !important;
+    -moz-box-shadow: 0px 0px 10px #3498db !important;
+    -webkit-box-shadow: 0px 0px 10px #3498db !important;
+    box-shadow: 0px 0px 10px #3498db !important;
   }
   .paid {
     color: #00c27a !important;
@@ -1301,4 +1321,14 @@ a.dropdown-item {
 }
 .mat-dialog-container {
   background-color: #000;
+}
+.clickable:hover {
+  cursor: pointer;
+}
+tr:hover {
+  background-color: rgb(37, 37, 37) !important;
+  border-bottom-width: 2px;
+}
+.hidden {
+  visibility: hidden;
 }
