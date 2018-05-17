@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ApplyModalComponent } from './../modals/apply-modal.component';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
-import { ShepherdService } from '../services/shepherd.service';
+import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 
 @Component({
@@ -24,7 +23,7 @@ export class DashboardBuyerComponent implements OnInit {
 
   ngOnInit() {
     let demoDone = this.cookieService.get('buyerDemoDone');
-    if (demoDone != 'true') {
+    if (demoDone !== 'true') {
       this.tourService.buyerTour.start();
       this.cookieService.put('buyerDemoDone', 'true');
     }
