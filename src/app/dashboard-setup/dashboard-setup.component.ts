@@ -119,7 +119,6 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
     window.open(url, '_blank');
     let target = event.target as Element;
     target.innerHTML = 'Launched';
-    target.setAttribute('class', 'disabled');
   }
 
   launch(event: any) {
