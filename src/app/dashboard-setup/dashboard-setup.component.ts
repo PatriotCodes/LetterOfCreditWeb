@@ -116,7 +116,15 @@ export class DashboardSetupComponent implements AfterViewInit, OnInit {
         break;
     }
     let url = 'http://localhost:' + port + path;
-    window.open(url, '_blank');
+
+    let a = document.createElement('a');
+    a.href = url;
+    let evt = document.createEvent('MouseEvents');
+    evt.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0,
+                                true, false, false, false, 0, null);
+    a.dispatchEvent(evt);
+
+    // window.open(url, '_blank');
     let target = event.target as Element;
     target.innerHTML = 'Launched';
   }
