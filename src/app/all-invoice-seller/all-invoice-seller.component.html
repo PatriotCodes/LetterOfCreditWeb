@@ -5,18 +5,15 @@
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
-            <th>Date</th>
             <th>ID</th>
-            <th>Counterparty</th>
-            <th>Description</th>
+            <th>Buyer</th>
+            <th>Seller</th>
             <th>Quantity</th>
-            <th>Unit Price</th>
+            <th>Unit price</th>
+            <th>Description</th>
         </thead>
         <tbody>
           <tr *ngFor="let invoice of invoices" (click)="openInvoiceModal(invoice.invoiceId)" class="clickable">
-            <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceDate | date}}</a>
-            </td>
             <td>
               <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceId}}</a>
             </td>
@@ -24,13 +21,16 @@
               <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.buyerName}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsDescription}}</a>
+              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.sellerName}}</a>
             </td>
             <td>
               <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsQuantity}}</a>
             </td>
             <td>
               <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsUnitPrice}}</a>
+            </td>
+            <td>
+              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsDescription}}</a>
             </td>
           </tr>
         </tbody>
