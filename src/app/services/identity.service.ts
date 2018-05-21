@@ -51,13 +51,6 @@ export class IdentityService {
     }
   }
 
-  /*removeScannedPeer(peer: PeerWithPort) {
-    var index = this.scannedPeers.indexOf(peer);
-    if (index > -1) {
-      this.scannedPeers.splice(index, 1);
-    }
-  }*/
-
   scanForPeers() {
     if (this.scannedPeers.length === 0) {
       let i: number;

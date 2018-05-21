@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Cash } from './../cash'
-import { LocService } from './../loc.service'
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Cash } from './../cash';
+import { LocService } from './../loc.service';
+import { ActivatedRoute } from '@angular/router';
 import { RefreshService } from './../services/refresh.service';
 declare var $: any;
 
@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class CashBalanceComponent implements OnInit {
   @Input() node: string;
-  cashBalances: Cash
+  cashBalances: Cash;
 
   constructor(private locService: LocService,
               private route: ActivatedRoute,

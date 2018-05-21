@@ -52,6 +52,11 @@ body, button {
 .background-image-issuing {
   background-image: url("assets/test.jpg");
 }
+.background-image-map {
+  background-image: url("assets/map.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
 mat-toolbar {
   position: absolute;

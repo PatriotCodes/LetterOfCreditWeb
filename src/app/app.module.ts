@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { MatToolbarModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module'
 
@@ -24,7 +25,6 @@ import { CreditTypeService } from './services/credit-types/credit-type.service';
 import { CommonService } from './services/common/common.service';
 import { IssuingBankService } from './services/issuing-bank.service';
 import { AdvisingBankService } from './services/advising-bank.service';
-import { RouterModule } from '@angular/router';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { HeaderComponent } from './header/header.component';
 import { AwaitingApprovalComponent } from './awaiting-approval/awaiting-approval.component';
@@ -62,8 +62,6 @@ import { GoodsShippedComponent } from './goods-shipped/goods-shipped.component';
 import { AllLocBuyerComponent } from './all-loc-buyer/all-loc-buyer.component';
 import { DocsComponent } from './docs/docs.component';
 import { AllLocAdvisingComponent } from './all-loc-advising/all-loc-advising.component';
-//import { DocumentUploadComponent } from './document-upload/document-upload.component';
-//import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload';
 import { AllInvoiceComponent } from './all-invoice/all-invoice.component';
 import { AllInvoiceSellerComponent } from './all-invoice-seller/all-invoice-seller.component';
 import { LocStateViewComponent } from './loc-state-view/loc-state-view.component';
@@ -92,6 +90,10 @@ import { LogoComponent } from './logo/logo.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
+import { MapComponent } from './map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { StaticMapComponent } from './static-map/static-map.component';
+import { MapLegendComponent } from './map-legend/map-legend.component';
 
 @NgModule({
   imports: [
@@ -109,7 +111,11 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     Ng2OdometerModule.forRoot(),
     MatToolbarModule,
     MatDialogModule,
-    SelectModule
+    MatSidenavModule,
+    SelectModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC9ZVhbnLQZnVGpM-2kQOxu4jZgSYy_KNc'
+    })
   ],
   declarations: [
     AppComponent,
@@ -149,9 +155,6 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     AllLocBuyerComponent,
     DocsComponent,
     AllLocAdvisingComponent,
-    //DocumentUploadComponent,
-    //FileSelectDirective,
-    //FileDropDirective,
     AllInvoiceComponent,
     AllInvoiceSellerComponent,
     LocStateViewComponent,
@@ -170,7 +173,10 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     LogoComponent,
     LoadingComponent,
     PeersWithPortComponent,
-    DashboardSetupComponent
+    DashboardSetupComponent,
+    MapComponent,
+    StaticMapComponent,
+    MapLegendComponent
 ],
   providers: [
     LocService,
