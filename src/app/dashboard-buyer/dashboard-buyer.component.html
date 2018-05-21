@@ -8,6 +8,10 @@
   <div class="col-md-8">
 
     <div class="row">
+      <all-loc-buyer [getAllUrl]="'buyer'" id="live"></all-loc-buyer>
+    </div>
+
+    <div class="row">
       <all-invoice id="invoices"></all-invoice>
     </div>
 
@@ -15,19 +19,15 @@
       <awaiting-approval id="applications"></awaiting-approval>
     </div>
 
-    <div class="row">
-      <all-loc-buyer [getAllUrl]="'buyer'" id="live"></all-loc-buyer>
-    </div>
-
   </div>
 
   <div class="col-md-2">
   </div>
 
-<div class="col-md-12">
-  <div class="row">
+  <div class="col-md-12">
+    <div class="row">
       <app-footer></app-footer>
+    </div>
   </div>
-</div>
 
 </div>
