@@ -9,9 +9,7 @@
             <th>Beneficiary</th>
             <th>Amount</th>
             <th>Description</th>
-            <th>Seller Paid</th>
-            <th>Advisory Paid</th>
-            <th>Issuer Paid</th>
+            <th>Status</th>
             <th>Actions</th>
             <th></th>
             <th></th>
@@ -34,19 +32,7 @@
               <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
             </td>
             <td>
-              <div *ngIf="loc.beneficiaryPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
-            </td>
-            <td>
-              <div *ngIf="loc.advisoryPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
-            </td>
-            <td>
-              <div *ngIf="loc.issuerPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
+              <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
             </td>
             <td>
               <span (click)="openBol(loc.orderRef)" class="action">
