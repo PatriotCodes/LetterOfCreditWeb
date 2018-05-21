@@ -79,7 +79,7 @@ export class DocsService {
     .toPromise()
     .then(
       response => new Bol().deserialize(response.json()) as Bol,
-      err => this.handleError(err)
+      err => Promise.reject("Bill of lading not yet created.")
     );
   }
 
@@ -122,7 +122,7 @@ export class DocsService {
     .toPromise()
     .then(
       response => new Invoice().deserialize(response.json()) as Invoice,
-      err => this.handleError(err)
+      err => Promise.reject(err)
     );
   }
 
