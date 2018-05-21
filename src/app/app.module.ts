@@ -166,7 +166,6 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     ViewBolTimelineModalComponent,
     FeedbackComponent,
     FooterComponent,
-    LaunchComponent,
     ErrorFeedbackComponent,
     LoadingComponent,
     LogoComponent,

@@ -78,8 +78,6 @@ export class LocService {
         res => this.createLocSummaryArray(res.json()) as LocSummary[],
         err => this.handleError(err)
       );
-      .then(response => this.createLocSummaryArray(response.json()) as LocSummary[])
-      .catch(this.handleError);
   }
 
   getAwaitingApprovalLocs(): Promise<LocSummary[]> {
