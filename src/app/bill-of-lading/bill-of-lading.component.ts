@@ -30,7 +30,9 @@ export class BillOfLadingComponent {
     this.bol.advisingBank = this.loc[0].advisory;
     this.bol.issuingBank = this.loc[0].issuer;
     this.refreshService.loading = true;
-    this.docsService.createBol(this.bol).then(result => this.callResponse(result));
+    this.docsService.createBol(this.bol)
+    .then(result => this.callResponse(result))
+    .catch(err => this.refreshService.loading = false);
     this.close();
   }
 

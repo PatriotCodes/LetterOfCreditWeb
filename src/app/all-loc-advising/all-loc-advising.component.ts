@@ -62,7 +62,9 @@ export class AllLocAdvisingComponent implements OnInit {
   }
 
   public payBeneficiary(id: string) {
-    this.locService.paySeller(id).then(response => this.callResponse(response));
+    this.locService.paySeller(id)
+    .then(response => this.callResponse(response))
+    .catch(err => err);
   }
 
   public claimFunds(id: string) {

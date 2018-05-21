@@ -87,8 +87,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { SelectModule } from 'ng2-select';
-import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
+import { ErrorFeedbackComponent } from './error-feedback/error-feedback.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
@@ -166,9 +166,10 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     ViewBolTimelineModalComponent,
     FeedbackComponent,
     FooterComponent,
-    PeersComponent,
-    LogoComponent,
+    LaunchComponent,
+    ErrorFeedbackComponent,
     LoadingComponent,
+    LogoComponent,
     PeersWithPortComponent,
     DashboardSetupComponent
 ],
@@ -191,8 +192,8 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
-                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
+                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent, 
+                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
   bootstrap: [ AppComponent ]

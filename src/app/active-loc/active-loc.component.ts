@@ -36,7 +36,9 @@ export class ActiveLocComponent implements OnInit {
               }
 
   public payAdvisory(id: string) {
-    this.locService.payAdviser(id).then(response => this.callResponse(response));
+    this.locService.payAdviser(id)
+    .then(response => this.callResponse(response))
+    .catch(err => err);
     this.disabled = true;
   }
 
@@ -70,7 +72,6 @@ export class ActiveLocComponent implements OnInit {
   update() {
     this.locService.getActiveLocs().then(locs => this.locs = locs);
   }
-
 
   ngOnInit(): void {
     this.update();

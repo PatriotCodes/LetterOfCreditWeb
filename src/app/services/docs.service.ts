@@ -10,6 +10,8 @@ import { Tx } from './../tx'
 import 'rxjs/add/operator/toPromise';
 import { PortProviderService } from './port-provider.service';
 import { UrlProviderService } from './url-provider.service';
+import { MatDialog } from '@angular/material';
+import { ErrorFeedbackComponent } from '../error-feedback/error-feedback.component';
 
 @Injectable()
 export class DocsService {
@@ -40,30 +42,36 @@ export class DocsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {}
+  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService, private dialog: MatDialog) {}
 
   createBol(bol: Bol): Promise<string> {
     return this.http
     .post(this.createBolUrl, JSON.stringify(bol), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse)
-    .catch(this.handleError);
+    .then(
+      res => new Tx().deserialize(res).txResponse,
+      err => this.handleError(err)
+    );
   }
 
   createPackingList(packingList: PackingList): Promise<string> {
     return this.http
     .post(this.createPackingListUrl, JSON.stringify(packingList), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse)
-    .catch(this.handleError);
+    .then(
+      res => new Tx().deserialize(res).txResponse,
+      err => this.handleError(err)
+    );
   }
 
   createInvoice(invoice: Invoice): Promise<string> {
     return this.http
     .post(this.createInvoiceUrl, JSON.stringify(invoice), { headers: this.headers })
     .toPromise()
-    .then(res => new Tx().deserialize(res).txResponse)
-    .catch(this.handleError);
+    .then(
+      res => new Tx().deserialize(res).txResponse,
+      err => this.handleError(err)
+    );
   }
 
   getBol(id: string, requestor: string): Promise<Bol> {
@@ -84,8 +92,10 @@ export class DocsService {
 
     return this.http.get(url)
     .toPromise()
-    .then(response => new Bol().deserialize(response.json()) as Bol)
-    .catch(this.handleError);
+    .then(
+      response => new Bol().deserialize(response.json()) as Bol,
+      err => this.handleError(err)
+    );
   }
 
   getBolEvents(id: string, requestor: string): Promise<BolEvents> {
@@ -106,8 +116,10 @@ export class DocsService {
 
     return this.http.get(url)
     .toPromise()
-    .then(response => new BolEvents().deserialize(response.json()) as BolEvents)
-    .catch(this.handleError);
+    .then(
+      response => new BolEvents().deserialize(response.json()) as BolEvents,
+      err => this.handleError(err)
+    );
   }
 
   getPackingList(id: string, requestor: string): Promise<PackingList> {
@@ -128,23 +140,29 @@ export class DocsService {
 
     return this.http.get(url)
     .toPromise()
-    .then(response => new PackingList().deserialize(response.json()) as PackingList)
-    .catch(this.handleError);
+    .then(
+      response => new PackingList().deserialize(response.json()) as PackingList,
+      err => this.handleError(err)
+    );
   }
 
   getInvoices(): Promise<Invoice[]> {
     return this.http.get(this.invoicesUrl)
-               .toPromise()
-               .then(response => this.createInvoiceArray(response.json()) as Invoice[])
-               .catch(this.handleError)
+    .toPromise()
+    .then(
+      response => this.createInvoiceArray(response.json()) as Invoice[],
+      err => this.handleError(err)
+    );
   }
 
   getInvoice(id: string): Promise<Invoice> {
     const url = `${this.invoiceUrl}?ref=${id}`;
     return this.http.get(url)
     .toPromise()
-    .then(response => new Invoice().deserialize(response.json()) as Invoice)
-    .catch(this.handleError);
+    .then(
+      response => new Invoice().deserialize(response.json()) as Invoice,
+      err => this.handleError(err)
+    );
   }
 
   private createInvoiceArray(input: any): Invoice[] {
@@ -156,8 +174,9 @@ export class DocsService {
     return invoices;
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError(response: Response): Promise<any> {
+    this.dialog.open(ErrorFeedbackComponent,
+      { data: { error: response.text()}});
+    return Promise.reject(response);
   }
 }

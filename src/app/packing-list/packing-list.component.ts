@@ -30,7 +30,9 @@ export class PackingListComponent implements OnInit {
       this.pl.advisingBank = this.loc[0].advisory;
       this.pl.issuingBank = this.loc[0].issuer;
       this.refreshService.loading = true;
-      this.docsService.createPackingList(this.pl).then(result => this.callResponse(result));
+      this.docsService.createPackingList(this.pl)
+      .then(result => this.callResponse(result))
+      .catch(err => this.refreshService.loading = false);
       this.close();
     }
 
