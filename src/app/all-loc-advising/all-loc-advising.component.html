@@ -41,10 +41,7 @@
                 <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
               </td>
               <td>
-                <span (click)="openPackingList(loc.orderRef)" class="action"><img src="assets/box.png" height="20px" class="action-img">Packing List</span>
-              </td>
-              <td>
-                <span (click)="payBeneficiary(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Seller</span>
+                <span (click)="paySeller(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Seller</span>
               </td>
             </tr>
           </ng-container>

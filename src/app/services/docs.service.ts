@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http'
 import { Bol } from './../bol'
 import { BolEvents } from './../bol-events'
-import { PackingList } from './../packinglist'
 import { Invoice } from './../invoice'
 import { LocSummary } from './../loc-summary'
 import { Party } from './../party'
@@ -23,7 +22,6 @@ export class DocsService {
   private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
 
   private createBolUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/submit-bol';
-  private createPackingListUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/submit-pl';
   private createInvoiceUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/create-trade';
 
   private invoicesUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/invoices';
@@ -32,9 +30,6 @@ export class DocsService {
   private bolUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
   private bolUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
   private bolUrlBuyer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol';
-  private packingListUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
-  private packingListUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
-  private packingListUrlBuyer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-packing-list';
 
   private bolEventsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol-events';
   private bolEventsUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/get-bol-events';
@@ -47,16 +42,6 @@ export class DocsService {
   createBol(bol: Bol): Promise<string> {
     return this.http
     .post(this.createBolUrl, JSON.stringify(bol), { headers: this.headers })
-    .toPromise()
-    .then(
-      res => new Tx().deserialize(res).txResponse,
-      err => this.handleError(err)
-    );
-  }
-
-  createPackingList(packingList: PackingList): Promise<string> {
-    return this.http
-    .post(this.createPackingListUrl, JSON.stringify(packingList), { headers: this.headers })
     .toPromise()
     .then(
       res => new Tx().deserialize(res).txResponse,
@@ -118,30 +103,6 @@ export class DocsService {
     .toPromise()
     .then(
       response => new BolEvents().deserialize(response.json()) as BolEvents,
-      err => this.handleError(err)
-    );
-  }
-
-  getPackingList(id: string, requestor: string): Promise<PackingList> {
-    let url: string;
-    switch (requestor) {
-      case 'buyer': {
-        url = `${this.packingListUrlBuyer}?ref=${id}`;
-        break;
-      }
-      case 'issuing': {
-        url = `${this.packingListUrlIssuer}?ref=${id}`;
-        break;
-      }
-      default:
-      url = `${this.packingListUrl}?ref=${id}`;
-      break;
-    }
-
-    return this.http.get(url)
-    .toPromise()
-    .then(
-      response => new PackingList().deserialize(response.json()) as PackingList,
       err => this.handleError(err)
     );
   }

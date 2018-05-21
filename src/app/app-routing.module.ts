@@ -9,7 +9,6 @@ import { ActiveLocComponent }      from './active-loc/active-loc.component';
 import { ApplyForLocComponent }  from './apply-for-loc/apply-for-loc.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
 import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component';
-import { PackingListComponent } from './packing-list/packing-list.component';
 import { InvoiceCreateComponent } from './invoice-create/invoice.component';
 import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: 'advising', component: DashboardAdvisingComponent},
   { path: 'applyforloc', component: ApplyForLocComponent },
   { path: 'billoflading', component: BillOfLadingComponent },
-  { path: 'packinglist', component: PackingListComponent },
   { path: 'invoice', component: InvoiceCreateComponent },
   { path: 'invoice/:id', component: InvoiceCreateComponent },
   { path: 'ship/:id', component: ShipComponent },

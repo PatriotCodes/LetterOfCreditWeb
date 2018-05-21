@@ -40,9 +40,6 @@
                 <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
               </td>
               <td>
-                <span (click)="openPackingList(loc.orderRef)" class="action"><img src="assets/box.png" height="20px" class="action-img">Packing List</span>
-              </td>
-              <td>
                 <span (click)="payIssuer(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.status == 'Issuer Paid'}"><img src="assets/hand.png" height="20px" class="action-img">Settle</span>
               </td>
             </tr>

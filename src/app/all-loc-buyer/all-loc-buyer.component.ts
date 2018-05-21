@@ -6,7 +6,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
-import { ViewPlModalComponent } from './../modals/view-pl-modal.component';
 import { RefreshService } from '../services/refresh.service';
 import { StatusService } from '../services/status.service';
 
@@ -40,12 +39,6 @@ export class AllLocBuyerComponent implements OnInit {
     this.bsModalRef = this.modalService.show(ViewBolModalComponent);
     this.bsModalRef.content.id = id;
     this.bsModalRef.content.title = 'Bill of Lading';
-  }
-
-  public openPackingList(id: string) {
-    this.bsModalRef = this.modalService.show(ViewPlModalComponent);
-    this.bsModalRef.content.id = id;
-    this.bsModalRef.content.title = 'Packing List';
   }
 
   public payIssuer(id: string) {

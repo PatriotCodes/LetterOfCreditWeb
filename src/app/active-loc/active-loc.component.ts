@@ -4,7 +4,6 @@ import { LocService } from './../loc.service';
 import { DocsService } from './../services/docs.service'
 import { CurrencyPipe } from '@angular/common';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
-import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
@@ -46,13 +45,6 @@ export class ActiveLocComponent implements OnInit {
     this.bsModalRef = this.modalService.show(ViewBolModalComponent);
     this.bsModalRef.content.id = id;
     this.bsModalRef.content.title = 'Bill of Lading';
-    this.bsModalRef.content.requestor = this.route.snapshot.url[0].toString();
-  }
-
-  public openPackingList(id: string) {
-    this.bsModalRef = this.modalService.show(ViewPlModalComponent);
-    this.bsModalRef.content.id = id;
-    this.bsModalRef.content.title = 'Packing List';
     this.bsModalRef.content.requestor = this.route.snapshot.url[0].toString();
   }
 
