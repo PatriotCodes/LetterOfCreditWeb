@@ -5,14 +5,14 @@
         <table class="table table-condensed table-striped">
           <thead>
           <tr>
-            <th>Id</th>
-            <th>Applicant</th>
-            <th>Beneficiary</th>
+            <th>ID</th>
+            <th>Buyer</th>
+            <th>Seller</th>
             <th>Amount</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Bill of Lading</th>
             <th>Actions</th>
-            <th></th>
             <th></th>
             <th></th>
           </thead>
@@ -38,7 +38,7 @@
                 <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
               </td>
               <td>
-                <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
+                <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">View</span>
               </td>
               <td>
                 <span (click)="paySeller(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Seller</span>
