@@ -32,6 +32,17 @@ export class AwaitingApprovalIssuerComponent implements OnInit {
     this.bsModalRef.content.readOnly = true;
   }
 
+  public approveLoc(ref: string) {
+    this.locService.approveLoc(ref)
+    .then(response => this.callResponse(response))
+    .catch(err => err);
+  }
+
+  callResponse(result: string): void {
+    this.refreshService.confirmMission();
+    this.refreshService.loading = false;
+  }
+
   update() {
     this.locService.getAwaitingApprovalLocsIssuer().then(locs => this.locs = locs);
   }

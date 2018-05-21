@@ -36,25 +36,8 @@ export class ApproveLocComponent implements OnChanges {
     public statusService: StatusService,
     public refreshService: RefreshService) { }
 
-  approveLoc(): void {
-    this.refreshService.loading = true;
-    this.locService.approveLoc(this.loc.txRef).then(result => this.callResponse(result));
-    this.close();
-  }
-
-  callResponse(result: string): void {
-    this.statusService.status = result;
-    this.refreshService.confirmMission();
-    this.refreshService.loading = false;
-  }
-
   close(): void {
     this.modalComponent.close();
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    this.approveLoc();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
