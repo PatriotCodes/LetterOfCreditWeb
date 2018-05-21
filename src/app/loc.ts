@@ -38,6 +38,7 @@ export class Loc implements Serializable<Loc> {
   public state: string;
 
   public txRef: string;
+  public signers: String[];
   public signatures: String[];
 
   deserialize(input: any) {
@@ -79,6 +80,7 @@ export class Loc implements Serializable<Loc> {
     this.state = input.third.status;
   
     this.txRef = input.first;
+    this.signers = input.fourth;
     this.signatures = input.second;
 
     return this;

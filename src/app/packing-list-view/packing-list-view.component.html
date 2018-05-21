@@ -57,24 +57,28 @@
     </div>
   </div>
 
-    <div class="form-group">
-        <label>Transaction Info</label>
+  <hr>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-12">
+      <h4>Transaction Info</h4>
     </div>
-    
-    <div class="form-group">
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-12">
       <label>Hash</label>
-      <div class="form-inline">
-        <input type="text" class="form-control" id="transactionHash" placeholder="Transaction Hash" [(ngModel)]="pl.transactionHash" name="transactionHash" disabled>
-      </div>
+      <div>{{pl.transactionHash}}</div>
     </div>
-    
-    <div class="form-group" *ngFor="let signature of pl.signatures; let idx = index">
+  </div>
+
+  <div class="row" *ngFor="let signature of pl.signatures; let idx = index">
+    <div class="form-group col-xs-4 col-md-12">
       <label>Signature {{idx + 1}}</label>
-      <div class="form-inline">
-        <input type="text" class="form-control" id="signature-{{idx}}" placeholder="Signature" [(ngModel)]="pl.signatures[idx]" name="signature-{{idx}}" disabled>
-      </div>
+      <div>{{pl.signers[idx]}}</div>
+      <div>{{pl.signatures[idx].substring(0, 64)}}</div>
     </div>
+  </div>
 
-  </form>
+</form>
 <ng-template #not_attached>Packing list not yet created</ng-template>
-

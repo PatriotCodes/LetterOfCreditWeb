@@ -75,23 +75,26 @@
     </div>
   </div>
 
+  <hr>
+
   <div class="row">
-    <div class="form-group col-xs-4 col-md-4">
-      <label>Transaction Info</label>
+    <div class="form-group col-xs-4 col-md-12">
+      <h4>Transaction Info</h4>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-4 col-md-4">
+    <div class="form-group col-xs-4 col-md-12">
       <label>Hash</label>
-      <input type="text" class="form-control" id="transactionHash" placeholder="Transaction Hash" [(ngModel)]="inv.transactionHash" name="transactionHash" disabled>
+      <div>{{inv.transactionHash}}</div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="form-group col-xs-4 col-md-4" *ngFor="let signature of inv.signatures; let idx = index">
+  <div class="row" *ngFor="let signature of inv.signatures; let idx = index">
+    <div class="form-group col-xs-4 col-md-12">
       <label>Signature {{idx + 1}}</label>
-      <input type="text" class="form-control" id="signature-{{idx}}" placeholder="Signature" [(ngModel)]="inv.signatures[idx]" name="signature-{{idx}}" disabled>
+      <div>{{inv.signers[idx]}}</div>
+      <div>{{inv.signatures[idx].substring(0, 64)}}</div>
     </div>
   </div>
 </div>
