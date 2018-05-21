@@ -90,6 +90,7 @@ import { SelectModule } from 'ng2-select';
 import { LogoComponent } from './logo/logo.component';
 import { ErrorFeedbackComponent } from './error-feedback/error-feedback.component';
 import { LoadingComponent } from './loading/loading.component';
+import { PeersComponent } from './peers/peers.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 
@@ -169,6 +170,7 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     ErrorFeedbackComponent,
     LoadingComponent,
     LogoComponent,
+    PeersComponent,
     PeersWithPortComponent,
     DashboardSetupComponent
 ],
@@ -192,7 +194,7 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent, 
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersWithPortComponent,
+                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
   bootstrap: [ AppComponent ]
