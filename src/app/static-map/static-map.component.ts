@@ -2,7 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { expand } from 'rxjs/operator/expand';
 import { BsModalRef } from 'ngx-bootstrap';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
 import { PortProviderService } from '../services/port-provider.service';
 import { IdentityService } from '../services/identity.service';
@@ -84,7 +84,7 @@ export class StaticMapComponent implements OnInit, DoCheck {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
     this.dialog.open(DashboardSellerComponent, {
-      maxHeight: '100%'
+      //maxHeight: '100%'
     });
   }
 

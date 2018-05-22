@@ -88,7 +88,6 @@ import { LogoComponent } from './logo/logo.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
-import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { StaticMapComponent } from './static-map/static-map.component';
 import { MapLegendComponent } from './map-legend/map-legend.component';
@@ -170,7 +169,6 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     LoadingComponent,
     PeersWithPortComponent,
     DashboardSetupComponent,
-    MapComponent,
     StaticMapComponent
     ,
     MapLegendComponent
