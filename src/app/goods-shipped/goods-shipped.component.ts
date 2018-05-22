@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common'
 import { LocSummary } from './../loc-summary';
 import { LocService } from './../loc.service';
 
@@ -14,7 +13,7 @@ export class GoodsShippedComponent implements OnInit {
   constructor(private locService: LocService) { }
 
     ngOnInit(): void {
-      this.locService.getDummySummary().then(locs => this.locs = locs);
+
     }
 
 }

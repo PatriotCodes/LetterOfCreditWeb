@@ -60,10 +60,6 @@ export class AllLocAdvisingComponent implements OnInit {
     .catch(err => err);
   }
 
-  public claimFunds(id: string) {
-    this.locService.claimFunds(id);
-  }
-
   update() {
     this.locService.getActiveLocs().then(locs => this.locs = locs);
   }

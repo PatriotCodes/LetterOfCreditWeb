@@ -8,9 +8,6 @@ import { PeerWithPort } from '../peer-with-port';
 @Injectable()
 export class IdentityService {
 
-  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
-  private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
-
   public peer: PeerWithPort;
   public me: string;
   public seller: string;
@@ -18,6 +15,7 @@ export class IdentityService {
   public advising: string;
   public issuing: string;
   public central: string;
+  public current: string;
 
   public scannedPeers: PeerWithPort[] = new Array<PeerWithPort>();
   public removedPeers = new Set<PeerWithPort>();
@@ -25,13 +23,19 @@ export class IdentityService {
   constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {
   }
 
+  getUrl(path: string) {
+    return this.urlService.url + ':' + this.portService.current + path;
+  }
+
   getMe() {
-    return this.http.get(this.meUrl)
+    let url = this.getUrl('/api/loc/me');
+    return this.http.get(url)
       .toPromise();
   }
 
   getPeers() {
-    return this.http.get(this.peersUrl)
+    let url = this.getUrl('/api/loc/peers');
+    return this.http.get(url)
       .toPromise();
   };
 
@@ -50,13 +54,6 @@ export class IdentityService {
       this.removedPeers.add(peer);
     }
   }
-
-  /*removeScannedPeer(peer: PeerWithPort) {
-    var index = this.scannedPeers.indexOf(peer);
-    if (index > -1) {
-      this.scannedPeers.splice(index, 1);
-    }
-  }*/
 
   scanForPeers() {
     if (this.scannedPeers.length === 0) {

@@ -12,11 +12,9 @@ import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component
 import { InvoiceCreateComponent } from './invoice-create/invoice.component';
 import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { LoginComponent } from './login/login.component';
-import { TimelineComponent } from'./timeline/timeline.component';
-import { LoadingComponent } from './loading/loading.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
+import { StaticMapComponent } from './static-map/static-map.component';
 
 const routes: Routes = [
   { path: 'approve/:id', component: ApproveLocComponent },
@@ -32,7 +30,7 @@ const routes: Routes = [
   { path: 'ship/:id', component: ShipComponent },
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'test2', component: LoadingComponent },
+  { path: 'map', component: StaticMapComponent },
   { path: '**', component: DashboardSetupComponent }
 ];
 

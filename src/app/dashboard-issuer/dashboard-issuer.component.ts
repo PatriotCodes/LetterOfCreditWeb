@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class DashboardIssuerComponent implements OnInit {
     body.classList.add('background-image-issuing');
 
     let demoDone = this.cookieService.get('issuerDemoDone');
-    if (demoDone != 'true') {
+    if (demoDone !== 'true') {
       this.tourService.issuerTour.start();
       this.cookieService.put('issuerDemoDone', 'true');
     }

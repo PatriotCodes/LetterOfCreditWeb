@@ -52,6 +52,11 @@ body, button {
 .background-image-issuing {
   background-image: url("assets/test.jpg");
 }
+.background-image-map {
+  background-image: url("assets/map.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
 mat-toolbar {
   position: absolute;
@@ -1309,9 +1314,6 @@ a.dropdown-item {
 .ui-select-toggle {
   width: 195px !important;
   overflow: hidden !important;
-}
-.cdk-overlay-container {
-  z-index: 999999;
 }
 .mat-dialog-container {
   background-color: #000;

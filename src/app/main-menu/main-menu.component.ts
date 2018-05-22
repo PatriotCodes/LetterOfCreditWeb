@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplyForLocComponent } from './../apply-for-loc/apply-for-loc.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ApplyModalComponent } from './../modals/apply-modal.component';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { LocService } from '../loc.service';
 
 @Component({
@@ -27,13 +25,7 @@ export class MainMenuComponent implements OnInit {
               private locService: LocService) { }
 
   getMe(): void {
-    let id = this.route.snapshot.url[0].toString();
-    this.locService.getMe(id).then(me => this.me = me.name)
-  }
-
-  getPort(): void {
-    let id = this.route.snapshot.url[0].toString();
-    //this.port = this.locService.getPort(id);
+    this.locService.getMe().then(me => this.me = me.name)
   }
 
   ngOnInit() {
@@ -51,12 +43,11 @@ export class MainMenuComponent implements OnInit {
         break;
     }
     this.getMe();
-    this.getPort();
 
     this.nodes = new Array<string>(4);
-    this.nodes[0] = 'buyer'
-    this.nodes[1] = 'issuing'
-    this.nodes[2] = 'advising'
-    this.nodes[3] = 'seller'
+    this.nodes[0] = 'buyer';
+    this.nodes[1] = 'issuing';
+    this.nodes[2] = 'advising';
+    this.nodes[3] = 'seller';
   }
 }

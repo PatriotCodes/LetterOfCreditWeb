@@ -18,36 +18,15 @@ import { ErrorFeedbackComponent } from './error-feedback/error-feedback.componen
 @Injectable()
 export class LocService {
 
-  // mock data
-  private mockSummary = 'api/locsummary';
-
-  private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
-  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
-  private getLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc';
-  private getLocAppUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/get-loc-app';
-  private awaitingApprovalLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
-  private awaitingApprovalLocUrlIssuer = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-approval';
-  private activeLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/active';
-  private awaitingPaymentLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/awaiting-payment';
-  private createLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/apply-for-loc';
-  private approveLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/approve-loc';
-  private statsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/loc-stats';
-  private allLocUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all';
-  private cashBalancesUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/cash-balances';
-  private allLocAppUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/all-app';
-  private claimFundsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/claim-funds';
-  private paySellerUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-seller';
-  private payAdvisoryUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-adviser';
-  private payIssuerUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/pay-issuer';
-  private shipGoodsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/ship';
-
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService, private dialog: MatDialog) { }
+  constructor(private http: Http, private portService: PortProviderService,
+    private urlService: UrlProviderService, private dialog: MatDialog) { }
 
   getLocApp(id: string): Promise<Loc> {
+    let _url = this.getUrl('/api/loc/get-loc-app');
     let trimmedId = id[0];
-    const url = `${this.getLocAppUrl}?ref=${trimmedId}`;
+    const url = `${_url}?ref=${trimmedId}`;
 
     return this.http.get(url)
       .toPromise()
@@ -57,9 +36,14 @@ export class LocService {
       );
   }
 
+  getUrl(path: string) {
+    return this.urlService.url + ':' + this.portService.current + path;
+  }
+
   getLoc(id: string): Promise<LocState> {
+    let _url = this.getUrl('/api/loc/get-loc');
     let trimmedId = id[0];
-    const url = `${this.getLocUrl}?ref=${trimmedId}`;
+    const url = `${_url}?ref=${trimmedId}`;
 
     return this.http.get(url)
       .toPromise()
@@ -70,9 +54,8 @@ export class LocService {
   }
 
   getAllLocApps(node: string): Promise<LocSummary[]> {
-    let getAllUrl: string = this.allLocAppUrl;
-
-    return this.http.get(getAllUrl)
+    let url = this.getUrl('/api/loc/all-app');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createLocSummaryArray(res.json()) as LocSummary[],
@@ -81,7 +64,8 @@ export class LocService {
   }
 
   getAwaitingApprovalLocs(): Promise<LocSummary[]> {
-    return this.http.get(this.awaitingApprovalLocUrl)
+    let url = this.getUrl('/api/loc/awaiting-approval');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createLocSummaryArray(res.json()) as LocSummary[],
@@ -90,7 +74,8 @@ export class LocService {
   }
 
   getAwaitingApprovalLocsIssuer(): Promise<LocSummary[]> {
-    return this.http.get(this.awaitingApprovalLocUrlIssuer)
+    let url = this.getUrl('/api/loc/awaiting-approval');
+    return this.http.get(url)
       .toPromise()
       .then(
         response => this.createLocSummaryArray(response.json()) as LocSummary[],
@@ -99,7 +84,8 @@ export class LocService {
   }
 
   getActiveLocsApps(): Promise<LocSummary[]> {
-    return this.http.get(this.activeLocUrl)
+    let url =  this.getUrl('/api/loc/active');
+    return this.http.get(url)
       .toPromise()
       .then(
         response => this.createLocSummaryArray(response.json()) as LocSummary[],
@@ -108,7 +94,8 @@ export class LocService {
   }
 
   getActiveLocs(): Promise<LocStateSummary[]> {
-    return this.http.get(this.allLocUrl)
+    let url = this.getUrl('/api/loc/all');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createLocStateSummaryArray(res.json()) as LocStateSummary[],
@@ -117,7 +104,8 @@ export class LocService {
   }
 
   getAllLocs(): Promise<LocSummary[]> {
-    return this.http.get(this.allLocUrl)
+    let url = this.getUrl('/api/loc/all');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createLocSummaryArray(res.json()) as LocSummary[],
@@ -126,7 +114,8 @@ export class LocService {
   }
 
   getAwaitingPaymentLocs(): Promise<LocSummary[]> {
-    return this.http.get(this.awaitingPaymentLocUrl)
+    let url = this.getUrl('/api/loc/awaiting-payment');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createLocSummaryArray(res.json()) as LocSummary[],
@@ -134,9 +123,8 @@ export class LocService {
       );
   }
 
-  getCashBalances(node: string): Promise<Cash> {
-    let url: string = this.cashBalancesUrl;
-
+  getCashBalances(): Promise<Cash> {
+    let url = this.getUrl('/api/loc/cash-balances');
     return this.http.get(url)
       .toPromise()
       .then(
@@ -145,9 +133,8 @@ export class LocService {
       );
   }
 
-  getMe(id: string): Promise<Party> {
-    let url: string = this.meUrl;
-
+  getMe(): Promise<Party> {
+    let url = this.getUrl('/api/loc/me');
     return this.http.get(url)
       .toPromise()
       .then(
@@ -157,7 +144,8 @@ export class LocService {
   }
 
   getPeers(): Promise<Party[]> {
-    return this.http.get(this.peersUrl)
+    let url = this.getUrl('/api/loc/peers');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createPartyArray(res.json()) as Party[],
@@ -166,7 +154,8 @@ export class LocService {
   }
 
   getStats(): Promise<Stats> {
-    return this.http.get(this.statsUrl)
+    let url = this.getUrl('/api/loc/loc-stats');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => new Stats().deserialize(res.json()) as Stats,
@@ -175,8 +164,9 @@ export class LocService {
   }
 
   createLoc(loc: Loc): Promise<string> {
+    let url = this.getUrl('/api/loc/apply-for-loc');
     return this.http
-      .post(this.createLocUrl, JSON.stringify(loc), { headers: this.headers })
+      .post(url, JSON.stringify(loc), { headers: this.headers })
       .toPromise()
       .then(
         res => new Tx().deserialize(res).txResponse,
@@ -185,7 +175,8 @@ export class LocService {
   }
 
   approveLoc(ref: string): Promise<string> {
-    const url = `${this.approveLocUrl}?ref=${ref}`;
+    let _url = this.getUrl('/api/loc/approve-loc');
+    const url = `${_url}?ref=${ref}`;
     return this.http.get(url)
       .toPromise()
       .then(
@@ -195,7 +186,8 @@ export class LocService {
   }
 
   paySeller(ref: string): Promise<string> {
-    const url = `${this.paySellerUrl}?locId=${ref}`;
+    let _url = this.getUrl('/api/loc/pay-seller');
+    const url = `${_url}?locId=${ref}`;
     return this.http.get(url).toPromise()
       .then(
         res => new Tx().deserialize(res).txResponse,
@@ -204,7 +196,8 @@ export class LocService {
   }
 
   payAdviser(ref: string): Promise<string> {
-    const url = `${this.payAdvisoryUrl}?locId=${ref}`;
+    let _url = this.getUrl('/api/loc/pay-adviser');
+    const url = `${_url}?locId=${ref}`;
     return this.http.get(url)
       .toPromise()
       .then(
@@ -214,7 +207,8 @@ export class LocService {
   }
 
   payIssuer(ref: string): Promise<string> {
-    const url = `${this.payIssuerUrl}?locId=${ref}`;
+    let _url = this.getUrl('/api/loc/pay-issuer');
+    const url = `${_url}?locId=${ref}`;
     return this.http.get(url)
       .toPromise()
       .then(
@@ -223,23 +217,11 @@ export class LocService {
       )
   }
 
-  claimFunds(ref: string) {
-    this.getMe('issuing').then(result => {
-      let claimFund = new ClaimFund(ref, result.name);
-      this.http.post(this.claimFundsUrl, JSON.stringify(claimFund), { headers: this.headers })
-        .toPromise()
-        .then(
-          res => new Tx().text(res).txResponse as string,
-          err => this.handleError(err)
-        )
-    })
-  }
-
   private createPartyArray(input: any): Party[] {
     let parties = new Array<Party>();
     input.peers.forEach((element: string) => {
       let party = new Party().deserializeName(element);
-      parties.push(party)
+      parties.push(party);
     });
     return parties;
   }
@@ -248,7 +230,7 @@ export class LocService {
     let locSummaries = new Array<LocSummary>();
     input.forEach((element: string[]) => {
       let locSummary = new LocSummary().deserialize(element);
-      locSummaries.push(locSummary)
+      locSummaries.push(locSummary);
     });
     return locSummaries;
   }
@@ -257,22 +239,14 @@ export class LocService {
     let locStateSummaries = new Array<LocStateSummary>();
     input.forEach((element: string[]) => {
       let locStateSummary = new LocStateSummary().deserialize(element);
-      locStateSummaries.push(locStateSummary)
+      locStateSummaries.push(locStateSummary);
     });
     return locStateSummaries;
   }
 
-  getDummySummary(): Promise<LocSummary[]> {
-    return this.http.get(this.mockSummary)
-      .toPromise()
-      .then(
-        response => this.createLocSummaryArray(response.json().data) as LocSummary[],
-        err => this.handleError(err)
-      )
-  }
-
   shipGoods(ref: string): Promise<LocSummary> {
-    const url = `${this.shipGoodsUrl}?ref=${ref}`;
+    let _url = this.getUrl('/api/loc/ship');
+    const url = `${_url}?ref=${ref}`;
     return this.http.get(url)
       .toPromise()
       .then(

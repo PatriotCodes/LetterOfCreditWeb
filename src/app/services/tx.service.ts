@@ -10,17 +10,16 @@ import { ErrorFeedbackComponent } from '../error-feedback/error-feedback.compone
 @Injectable()
 export class TxService {
 
-  // mock data
-  private mockSummary = 'api/locsummary';
+  constructor(private http: Http, private portService: PortProviderService,
+    private urlService: UrlProviderService, private dialog: MatDialog) { }
 
-  private transactionsUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/transactions';
-
-  private headers = new Headers({ 'Content-Type': 'application/json' });
-
-  constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService, private dialog: MatDialog) { }
+  getUrl(path: string) {
+    return this.urlService.url + ':' + this.portService.current + path;
+  }
 
   getTransactions(): Promise<TxSummary[]> {
-    return this.http.get(this.transactionsUrl)
+    let url = this.getUrl('/api/loc/transactions');
+    return this.http.get(url)
       .toPromise()
       .then(
         res => this.createTransactionSummaryArray(res.json()) as TxSummary[],
@@ -39,7 +38,7 @@ export class TxService {
 
   private handleError(response: Response): Promise<any> {
     this.dialog.open(ErrorFeedbackComponent,
-      { data: { error: response.text()}});
+      { data: { error: response.text() } });
     return Promise.reject(response);
   }
 }

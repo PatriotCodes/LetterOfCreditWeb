@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Party } from './../party'
-import { LocService } from './../loc.service'
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { LocService } from './../loc.service';
+import { ActivatedRoute } from '@angular/router';
 import { ShepherdService } from '../services/shepherd.service';
 import { IShepherdTourOptions, IShepherdTourStep } from '../interfaces';
 import { Title } from '@angular/platform-browser';
@@ -19,12 +19,12 @@ export class HeaderComponent implements OnInit {
   step: IShepherdTourStep;
 
   constructor(private locService: LocService, private route: ActivatedRoute,
-              private shepherdService: ShepherdService, private titleService: Title) {
+              private shepherdService: ShepherdService, private titleService: Title,
+              @Inject(DOCUMENT) private document: Document) {
    }
 
   getMe(): void {
-    let id = this.route.snapshot.url[0].toString();
-    this.locService.getMe(id).then(me => this.setup(me.name))
+    this.locService.getMe().then(me => this.setup(me.name));
   }
 
   setup(me: string) {

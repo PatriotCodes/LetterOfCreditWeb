@@ -5,11 +5,12 @@ import { CurrencyPipe } from '@angular/common';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ShipModalComponent } from './../modals/ship-modal.component';
-import { CreateBolModalComponent } from './../modals/create-bol-modal.component'
-import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component'
-import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
+import { CreateBolModalComponent } from './../modals/create-bol-modal.component';
+import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { TourService } from '../services/tour.service';
 import { RefreshService } from '../services/refresh.service';
+import { MatDialog } from '@angular/material';
+import { InvoiceCreateComponent } from '../invoice-create/invoice.component';
 
 @Component({
   selector: 'all-loc-seller',
@@ -22,22 +23,15 @@ export class AllLocSellerComponent implements OnInit {
   locs: LocStateSummary[] = [];
 
   constructor(private locService: LocService, private modalService: BsModalService,
-    public tourService: TourService, private refreshService: RefreshService) {
+    public tourService: TourService, private refreshService: RefreshService, private dialog: MatDialog) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
       });
   }
 
-  /*shipGoods(loc: LocSummary): void {
-    if (confirm('Confirm you want to ship ' + loc.id)) {
-      this.locService.shipGoods(loc);
-    }
-  }*/
-
   createInvoice() {
-    this.bsModalRef = this.modalService.show(CreateInvoiceModalComponent);
-    this.bsModalRef.content.title = 'Create Invoice';
+    this.dialog.open(InvoiceCreateComponent);
   }
 
   shipGoods(id: string) {

@@ -1,13 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ApplyModalComponent } from './../modals/apply-modal.component';
-import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component'
-import { CommaSeperatedNumberPipe } from './../comma-seperated-number.pipe';
+import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component';
 import { RefreshService } from '../services/refresh.service';
 import { ShepherdService } from '../services/shepherd.service';
+import { MatDialog } from '@angular/material';
+import { ApplyForLocComponent } from '../apply-for-loc/apply-for-loc.component';
 
 @Component({
   selector: 'all-invoice',
@@ -16,10 +15,10 @@ import { ShepherdService } from '../services/shepherd.service';
 })
 export class AllInvoiceComponent implements OnInit {
   bsModalRef: BsModalRef;
-  invoices: Invoice[] = []
+  invoices: Invoice[] = [];
 
   constructor(private docService: DocsService,
-    private modalService: BsModalService,
+    private dialog: MatDialog,
     private refreshService: RefreshService,
     private shepService: ShepherdService) {
     refreshService.missionConfirmed$.subscribe(
@@ -29,14 +28,14 @@ export class AllInvoiceComponent implements OnInit {
   }
 
   public openModalWithComponent(invoice: Invoice) {
-    this.bsModalRef = this.modalService.show(ApplyModalComponent);
-    this.bsModalRef.content.title = 'Apply';
-    this.bsModalRef.content.invoice = invoice;
-    this.bsModalRef.content.id = invoice.invoiceId;
+    this.dialog.open(ApplyForLocComponent, {
+      height: '500px',
+      data: { invoice: invoice }
+    });
   }
 
   public openInvoiceModal(ref: string) {
-    this.bsModalRef = this.modalService.show(ViewInvoiceModalComponent);
+    this.dialog.open(ViewInvoiceModalComponent);
     this.bsModalRef.content.title = 'Invoice';
     this.bsModalRef.content.invoiceId = ref;
   }
