@@ -4,6 +4,11 @@ import { expand } from 'rxjs/operator/expand';
 import { BsModalRef } from 'ngx-bootstrap';
 import { MatDialog } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
+import { PortProviderService } from '../services/port-provider.service';
+import { IdentityService } from '../services/identity.service';
+import { DashboardBuyerComponent } from '../dashboard-buyer/dashboard-buyer.component';
+import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advising.component';
+import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
 
 @Component({
   selector: 'app-static-map',
@@ -24,7 +29,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
     body.classList.remove('background-image-advising');
   }
 
-  constructor(private router: Router, private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog,
+    private portService: PortProviderService, private identityService: IdentityService) { }
 
   ngOnInit() {
 
@@ -74,7 +80,31 @@ export class StaticMapComponent implements OnInit, DoCheck {
     }
   }
 
-  test() {
-    let dialogRef = this.dialog.open(DashboardSellerComponent);
+  launchSeller() {
+    this.portService.current = 10016;
+    this.identityService.current = 'seller';
+    this.dialog.open(DashboardSellerComponent);
+  }
+
+  launchBuyer() {
+    this.portService.current = 10013;
+    this.identityService.current = 'buyer';
+    this.dialog.open(DashboardBuyerComponent);
+  }
+
+  launchAdvising() {
+    this.portService.current = 10010;
+    this.identityService.current = 'advising';
+    this.dialog.open(DashboardAdvisingComponent);
+  }
+
+  launchIssuing() {
+    this.portService.current = 10007;
+    this.identityService.current = 'issuing';
+    this.dialog.open(DashboardIssuerComponent);
+  }
+
+  launchCentral() {
+    this.portService.current = 10019;
   }
 }

@@ -114,19 +114,15 @@ export class LocService {
       .catch(this.handleError);
   }
 
-  getCashBalances(node: string): Promise<Cash> {
-    let url: string = this.cashBalancesUrl;
-
-    return this.http.get(url)
+  getCashBalances(): Promise<Cash> {
+    return this.http.get(this.cashBalancesUrl)
       .toPromise()
       .then(response => new Cash().deserialize(response.json()) as Cash)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
-  getMe(id: string): Promise<Party> {
-    let url: string = this.meUrl;
-
-    return this.http.get(url)
+  getMe(): Promise<Party> {
+    return this.http.get(this.meUrl)
       .toPromise()
       .then(response => new Party().deserialize(response.json()) as Party)
       .catch(this.handleError);
@@ -184,16 +180,6 @@ export class LocService {
       .toPromise()
       .then(res => new Tx().deserialize(res).txResponse)
       .catch(this.handleError)
-  }
-
-  claimFunds(ref: string) {
-    this.getMe('issuing').then(result => {
-      let claimFund = new ClaimFund(ref, result.name);
-      this.http.post(this.claimFundsUrl, JSON.stringify(claimFund), { headers: this.headers })
-        .toPromise()
-        .then(res => new Tx().text(res).txResponse as string)
-        .catch(this.handleError)
-    })
   }
 
   private createPartyArray(input: any): Party[] {

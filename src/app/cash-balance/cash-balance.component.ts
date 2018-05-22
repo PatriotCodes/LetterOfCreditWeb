@@ -24,8 +24,7 @@ export class CashBalanceComponent implements OnInit {
                }
 
   getCashBalances() {
-    let id = this.route.snapshot.url[0].toString();
-    this.locService.getCashBalances(id).then(cashBalances => this.cashBalances = cashBalances);
+    this.locService.getCashBalances().then(cashBalances => this.cashBalances = cashBalances);
   }
 
   ngOnInit() {

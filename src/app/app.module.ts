@@ -36,7 +36,6 @@ import { DocsModalComponent } from './modals/docs-modal.component';
 import { ShipModalComponent } from './modals/ship-modal.component';
 import { CreatePlModalComponent } from './modals/create-pl-modal.component';
 import { CreateBolModalComponent } from './modals/create-bol-modal.component';
-import { CreateInvoiceModalComponent } from './modals/create-invoice-modal.component';
 import { ViewInvoiceModalComponent } from './modals/view-invoice-modal.component';
 import { ApproveLocModalComponent } from './modals/approve-loc-modal.component';
 import { ViewLocStateModalComponent } from './modals/view-loc-state-modal.component';
@@ -131,7 +130,6 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     ShipModalComponent,
     CreatePlModalComponent,
     CreateBolModalComponent,
-    CreateInvoiceModalComponent,
     ViewInvoiceModalComponent,
     ApproveLocModalComponent,
     ViewLocStateModalComponent,
@@ -175,7 +173,8 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     PeersWithPortComponent,
     DashboardSetupComponent,
     MapComponent,
-    StaticMapComponent,
+    StaticMapComponent
+,
     MapLegendComponent
 ],
   providers: [
@@ -196,7 +195,7 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     { provide: CookieOptions, useValue: {} }
   ],
   entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
-                    CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
+                    CreateBolModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
                     ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,

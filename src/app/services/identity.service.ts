@@ -8,9 +8,6 @@ import { PeerWithPort } from '../peer-with-port';
 @Injectable()
 export class IdentityService {
 
-  private peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
-  private meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
-
   public peer: PeerWithPort;
   public me: string;
   public seller: string;
@@ -18,6 +15,7 @@ export class IdentityService {
   public advising: string;
   public issuing: string;
   public central: string;
+  public current: string;
 
   public scannedPeers: PeerWithPort[] = new Array<PeerWithPort>();
   public removedPeers = new Set<PeerWithPort>();
@@ -26,12 +24,14 @@ export class IdentityService {
   }
 
   getMe() {
-    return this.http.get(this.meUrl)
+    let meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
+    return this.http.get(meUrl)
       .toPromise();
   }
 
   getPeers() {
-    return this.http.get(this.peersUrl)
+    let peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
+    return this.http.get(peersUrl)
       .toPromise();
   };
 

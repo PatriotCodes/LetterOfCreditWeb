@@ -11,6 +11,8 @@ import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.com
 import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
 import { TourService } from '../services/tour.service';
 import { RefreshService } from '../services/refresh.service';
+import { MatDialog } from '@angular/material';
+import { InvoiceCreateComponent } from '../invoice-create/invoice.component';
 
 @Component({
   selector: 'all-loc-seller',
@@ -23,7 +25,7 @@ export class AllLocSellerComponent implements OnInit {
   locs: LocStateSummary[] = [];
 
   constructor(private locService: LocService, private modalService: BsModalService,
-    public tourService: TourService, private refreshService: RefreshService) {
+    public tourService: TourService, private refreshService: RefreshService, private dialog: MatDialog) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
@@ -37,8 +39,10 @@ export class AllLocSellerComponent implements OnInit {
   }*/
 
   createInvoice() {
-    this.bsModalRef = this.modalService.show(CreateInvoiceModalComponent);
-    this.bsModalRef.content.title = 'Create Invoice';
+    this.dialog.open(InvoiceCreateComponent);
+
+    //this.bsModalRef = this.modalService.show(CreateInvoiceModalComponent);
+    //this.bsModalRef.content.title = 'Create Invoice';
   }
 
   shipGoods(id: string) {

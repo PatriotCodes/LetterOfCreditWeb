@@ -71,7 +71,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   getMe(): void {
-    this.locService.getMe('').then(me => this.applicant = me.name)
+    this.locService.getMe().then(me => this.applicant = me.name);
   }
 
   createLoc(): void {

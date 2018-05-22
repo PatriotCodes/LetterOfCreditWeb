@@ -1,15 +1,15 @@
 <div class="sidenav">
   <ul class="rolldown-list" id="myList">
-    <li>Create invoice from seller to buyer</li>
-    <li>Buyer applies for Letter of Credit</li>
-    <li>Issuing Bank accepts application</li>
-    <li>Seller adds bill of lading</li>
-    <li>Seller ships</li>
-    <li>Banks post collateral to Central Bank</li>
-    <li>Central bank issues cash to banks</li>
-    <li>Advising Bank pays seller</li>
-    <li>Issuing Bank pays advising bank</li>
-    <li>Buyer pays issuing bank</li>
+    <li>1 - Create invoice from seller to buyer</li>
+    <li>2 - Buyer applies for Letter of Credit</li>
+    <li>3 - Issuing Bank accepts application</li>
+    <li>4 - Seller adds bill of lading</li>
+    <li>5 - Seller ships</li>
+    <li>6 - Banks post collateral to Central Bank</li>
+    <li>7 - Central bank issues cash to banks</li>
+    <li>8 - Advising Bank pays seller</li>
+    <li>9 - Issuing Bank pays advising bank</li>
+    <li>10 - Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
     {{buttonTxt}}
@@ -32,7 +32,7 @@
         style="top:50.98999767%;left:75.46972153%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-seller" style="top:50.98999767%;left:75.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="test()">
+      <button id="marker-seller" style="top:50.98999767%;left:75.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchSeller()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -45,7 +45,7 @@
         style="top:46.98999767%;left:70.46972153%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-advising" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" routerLink="/advising">
+      <button id="marker-advising" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchAdvising()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -58,7 +58,7 @@
         style="top:32%;left:47.2%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-buyer" style="top:32%;left:47.2%;width:50px;height:50px;margin:-40px 0 0 -25px" routerLink="/issuing">
+      <button id="marker-buyer" style="top:32%;left:47.2%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchBuyer()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -71,7 +71,7 @@
         style="top:33.3%;left:45.55%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-issuing" style="top:33.3%;left:45.55%;width:50px;height:50px;margin:-40px 0 0 -25px" routerLink="/buyer">
+      <button id="marker-issuing" style="top:33.3%;left:45.55%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchIssuing()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -84,7 +84,7 @@
         style="top:33.3%;left:31%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-central" style="top:33.3%;left:31%;width:50px;height:50px;margin:-40px 0 0 -25px">
+      <button id="marker-central" style="top:33.3%;left:31%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchCentral()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"

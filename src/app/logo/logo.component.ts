@@ -29,6 +29,8 @@ export class LogoComponent implements OnInit {
       case '/issuing':
             this.logoImagePath = this.folder + 'issuing.png';
             break;
+      default:
+            this.logoImagePath = this.folder + this.identityService.current + '.png';
     }
   }
 
