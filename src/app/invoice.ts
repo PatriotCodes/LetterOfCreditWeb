@@ -23,6 +23,7 @@ export class Invoice implements Serializable<Invoice> {
   public assigned: Boolean;
 
   public transactionHash: String;
+  public signers: String[];
   public signatures: String[];
 
   deserialize(input: any) {
@@ -46,6 +47,7 @@ export class Invoice implements Serializable<Invoice> {
     this.assigned = input.third.assigned;
 
     this.transactionHash = input.first;
+    this.signers = input.fourth;
     this.signatures = input.second;
 
     return this;

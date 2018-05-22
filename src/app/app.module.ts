@@ -33,14 +33,12 @@ import { DatePickerComponent } from './helpers/date-picker/date-picker.component
 import { ModalModule } from 'ngx-bootstrap';
 import { DocsModalComponent } from './modals/docs-modal.component';
 import { ShipModalComponent } from './modals/ship-modal.component';
-import { CreatePlModalComponent } from './modals/create-pl-modal.component';
 import { CreateBolModalComponent } from './modals/create-bol-modal.component';
 import { ViewInvoiceModalComponent } from './modals/view-invoice-modal.component';
 import { ApproveLocModalComponent } from './modals/approve-loc-modal.component';
 import { ViewLocStateModalComponent } from './modals/view-loc-state-modal.component';
 import { ViewLocAppModalComponent } from './modals/view-loc-app-modal.component';
 import { ViewBolModalComponent } from './modals/view-bol-modal.component';
-import { ViewPlModalComponent } from './modals/view-pl-modal.component';
 import { FinancesComponent } from './finances/finances.component';
 import { CashBalanceComponent } from './cash-balance/cash-balance.component';
 import { ChartsModule } from 'ng2-charts';
@@ -48,7 +46,6 @@ import { AllLocComponent } from './all-loc/all-loc.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
 import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component';
-import { PackingListComponent } from './packing-list/packing-list.component';
 import { InvoiceCreateComponent } from './invoice-create/invoice.component';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component'
 import { DashboardIssuerComponent } from './dashboard-issuer/dashboard-issuer.component';
@@ -67,7 +64,6 @@ import { LocAppViewComponent } from './loc-app-view/loc-app-view.component';
 import { AwaitingApprovalIssuerComponent } from './awaiting-approval-issuer/awaiting-approval-issuer.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { BillOfLadingViewComponent } from './bill-of-lading-view/bill-of-lading-view.component';
-import { PackingListViewComponent } from './packing-list-view/packing-list-view.component';
 import { LoginComponent } from './login/login.component';
 import { CommaSeperatedNumberPipe } from './comma-seperated-number.pipe';
 import { IdentityService } from './services/identity.service'
@@ -76,6 +72,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { ViewBolTimelineModalComponent } from './modals/view-bol-timeline-modal.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { StatusService } from './services/status.service';
+import { TxService } from './services/tx.service';
 import { ShepherdService } from './services/shepherd.service';
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from './services/tour.service';
@@ -83,14 +80,16 @@ import { FooterComponent } from './footer/footer.component';
 import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { SelectModule } from 'ng2-select';
-import { PeersComponent } from './peers/peers.component';
 import { LogoComponent } from './logo/logo.component';
+import { ErrorFeedbackComponent } from './error-feedback/error-feedback.component';
 import { LoadingComponent } from './loading/loading.component';
+import { PeersComponent } from './peers/peers.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 import { AgmCoreModule } from '@agm/core';
 import { StaticMapComponent } from './static-map/static-map.component';
 import { MapLegendComponent } from './map-legend/map-legend.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   imports: [
@@ -125,20 +124,17 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     DatePickerComponent,
     DocsModalComponent,
     ShipModalComponent,
-    CreatePlModalComponent,
     CreateBolModalComponent,
     ViewInvoiceModalComponent,
     ApproveLocModalComponent,
     ViewLocStateModalComponent,
     ViewLocAppModalComponent,
-    ViewPlModalComponent,
     ViewBolModalComponent,
     CashBalanceComponent,
     AllLocComponent,
     AllLocSellerComponent,
     ApproveLocComponent,
     BillOfLadingComponent,
-    PackingListComponent,
     InvoiceCreateComponent,
     InvoiceViewComponent,
     DashboardIssuerComponent,
@@ -157,21 +153,21 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     AwaitingApprovalIssuerComponent,
     SpinnerComponent,
     BillOfLadingViewComponent,
-    PackingListViewComponent,
     LoginComponent,
     CommaSeperatedNumberPipe,
     TimelineComponent,
     ViewBolTimelineModalComponent,
     FeedbackComponent,
     FooterComponent,
-    PeersComponent,
-    LogoComponent,
+    ErrorFeedbackComponent,
     LoadingComponent,
+    LogoComponent,
+    PeersComponent,
     PeersWithPortComponent,
     DashboardSetupComponent,
-    StaticMapComponent
-    ,
-    MapLegendComponent
+    StaticMapComponent,
+    MapLegendComponent,
+    TransactionsComponent
   ],
   providers: [
     LocService,
@@ -183,6 +179,7 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     RefreshService,
     IdentityService,
     StatusService,
+    TxService,
     ShepherdService,
     CookieService,
     TourService,
@@ -190,12 +187,12 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     UrlProviderService,
     { provide: CookieOptions, useValue: {} }
   ],
-  entryComponents: [DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
-    CreateBolModalComponent, ViewInvoiceModalComponent,
-    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
-    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
-    AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
+  entryComponents: [DocsModalComponent, ShipModalComponent,
+                    CreateBolModalComponent, ViewInvoiceModalComponent,
+                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent,
+                    ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
+                    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
+                    AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,9 +35,10 @@ export class Loc implements Serializable<Loc> {
   public applicant: string;
   public advisingBank: string;
 
-  public state: string;
+  public status: string;
 
   public txRef: string;
+  public signers: String[];
   public signatures: String[];
 
   deserialize(input: any) {
@@ -76,9 +77,10 @@ export class Loc implements Serializable<Loc> {
     this.applicant = input.third.props.applicant.substring(2, input.third.props.applicant.indexOf(","));
     this.advisingBank = input.third.props.advisingBank.substring(2, input.third.props.advisingBank.indexOf(","));
   
-    this.state = input.third.status;
+    this.status = input.third.status;
   
     this.txRef = input.first;
+    this.signers = input.fourth;
     this.signatures = input.second;
 
     return this;

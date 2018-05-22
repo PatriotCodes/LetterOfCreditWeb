@@ -6,7 +6,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { DocsModalComponent } from './../modals/docs-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
-import { ViewPlModalComponent } from './../modals/view-pl-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
 import { Observable } from 'rxjs/Observable';
@@ -49,20 +48,16 @@ export class AllLocAdvisingComponent implements OnInit {
     this.bsModalRef.content.title = 'Bill of Lading';
   }
 
-  public openPackingList(id: string) {
-    this.bsModalRef = this.modalService.show(ViewPlModalComponent);
-    this.bsModalRef.content.id = id;
-    this.bsModalRef.content.title = 'Packing List';
-  }
-
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
     this.refreshService.loading = false;
   }
 
-  public payBeneficiary(id: string) {
-    this.locService.paySeller(id).then(response => this.callResponse(response));
+  public paySeller(id: string) {
+    this.locService.paySeller(id)
+    .then(response => this.callResponse(response))
+    .catch(err => err);
   }
 
   update() {

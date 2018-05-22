@@ -42,7 +42,10 @@ export class LocState implements Serializable<LocState> {
   public issued: Boolean;
   public terminated: Boolean;
 
+  public status: string;
+
   public txRef: string;
+  public signers: String[];
   public signatures: String[];
 
   deserialize(input: any) {
@@ -88,8 +91,11 @@ export class LocState implements Serializable<LocState> {
     this.issuerPaid = input.third.issuerPaid;
     this.issued = input.third.issued;
     this.terminated = input.third.terminated;
+
+    this.status = input.third.status;
   
     this.txRef = input.first;
+    this.signers = input.fourth;
     this.signatures = input.second;
     
     return this;

@@ -1,24 +1,23 @@
 <div class="component">
-  <div class="panel-heading">Active Letters of Credit</div>
+  <div class="panel-heading">Letters Of Credit</div>
   <div class="panel-body">
     <div class="grid grid-pad">
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
-            <th>Applicant</th>
-            <th>Beneficiary</th>
+            <th>ID</th>
+            <th>Buyer</th>
+            <th>Seller</th>
             <th>Amount</th>
             <th>Description</th>
-            <th>Seller Paid</th>
-            <th>Advisory Paid</th>
-            <th>Issuer Paid</th>
+            <th>Status</th>
+            <th>Bill of Lading</th>
             <th>Actions</th>
-            <th></th>
             <th></th>
         </thead>
         <tbody>
           <tr *ngFor="let loc of locs">
-            <td hidden>
+            <td>
               <a (click)="openLocModal(loc.id)">{{loc.orderRef}}</a>
             </td>
             <td>
@@ -34,27 +33,11 @@
               <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
             </td>
             <td>
-              <div *ngIf="loc.beneficiaryPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
-            </td>
-            <td>
-              <div *ngIf="loc.advisoryPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
-            </td>
-            <td>
-              <div *ngIf="loc.issuerPaid;else not_paid">
-                <a (click)="openLocModal(loc.id)" class="paid">True</a>
-              </div>
+              <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
             </td>
             <td>
               <span (click)="openBol(loc.orderRef)" class="action">
-                <img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
-            </td>
-            <td>
-              <span (click)="openPackingList(loc.orderRef)" class="action">
-                <img src="assets/box.png" height="20px" class="action-img">Packing List</span>
+                <img src="assets/bill.png" height="20px" class="action-img">View</span>
             </td>
             <td>
               <span (click)="payAdvisory(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.advisoryPaid == true}">
