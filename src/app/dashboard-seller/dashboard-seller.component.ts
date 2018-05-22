@@ -5,6 +5,7 @@ import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dashboard-seller',
@@ -16,7 +17,7 @@ export class DashboardSellerComponent implements OnInit {
 
   constructor(private modalService: BsModalService, public tourService: TourService,
     private cookieService: CookieService, public statusService: StatusService,
-    public refreshService: RefreshService) { }
+    public refreshService: RefreshService, public dialogRef: MatDialogRef<DashboardSellerComponent>) { }
 
   ngOnInit() {
     let body = document.getElementsByTagName('body')[0];

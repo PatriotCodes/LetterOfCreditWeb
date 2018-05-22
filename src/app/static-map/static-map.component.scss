@@ -289,8 +289,9 @@ button {
   position: fixed;
   left: -300px;
   width: 300px;
-  height: calc(100% - 5em);
-  background-color: #fff;
+  height: 80%;
+  padding-top: 2.5%;
+  background-color: #000;
   transition: all 0.6s;
 }
 .sidenav a {

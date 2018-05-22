@@ -1,6 +1,9 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { expand } from 'rxjs/operator/expand';
+import { BsModalRef } from 'ngx-bootstrap';
+import { MatDialog } from '@angular/material';
+import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
 
 @Component({
   selector: 'app-static-map',
@@ -21,7 +24,7 @@ export class StaticMapComponent implements OnInit, DoCheck {
     body.classList.remove('background-image-advising');
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -69,5 +72,9 @@ export class StaticMapComponent implements OnInit, DoCheck {
     } else {
       this.buttonTxt = this.expandTxt;
     }
+  }
+
+  test() {
+    let dialogRef = this.dialog.open(DashboardSellerComponent);
   }
 }
