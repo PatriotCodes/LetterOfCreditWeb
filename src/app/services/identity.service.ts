@@ -23,15 +23,19 @@ export class IdentityService {
   constructor(private http: Http, private portService: PortProviderService, private urlService: UrlProviderService) {
   }
 
+  getUrl(path: string) {
+    return this.urlService.url + ':' + this.portService.current + path;
+  }
+
   getMe() {
-    let meUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/me';
-    return this.http.get(meUrl)
+    let url = this.getUrl('/api/loc/me');
+    return this.http.get(url)
       .toPromise();
   }
 
   getPeers() {
-    let peersUrl = this.urlService.url + ':' + this.portService.current + '/api/loc/peers';
-    return this.http.get(peersUrl)
+    let url = this.getUrl('/api/loc/peers');
+    return this.http.get(url)
       .toPromise();
   };
 
