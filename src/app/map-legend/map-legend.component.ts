@@ -10,14 +10,10 @@ import { IdentityService } from '../services/identity.service';
 export class MapLegendComponent implements OnInit {
   peers: PeerWithPort[];
 
-  constructor(
-    private identityService: IdentityService) { }
+  constructor(public identityService: IdentityService) { }
 
   ngOnInit() {
     this.peers = new Array<PeerWithPort>();
     this.identityService.scanForPeers();
-    this.peers = this.identityService.scannedPeers.filter((item) => {
-      return !this.identityService.removedPeers.has(item);
-    });
   }
 }

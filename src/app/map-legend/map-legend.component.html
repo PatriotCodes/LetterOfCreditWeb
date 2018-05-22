@@ -7,7 +7,7 @@
           <th>Port</th>
       </thead>
       <tbody>
-        <ng-container *ngFor="let peer of peers">
+        <ng-container *ngFor="let peer of identityService.scannedPeers">
           <tr>
             <td>
               <a>{{peer.name}}</a>
