@@ -76,6 +76,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { StatusService } from './services/status.service';
+import { TxService } from './services/tx.service';
 import { ShepherdService } from './services/shepherd.service';
 import { CookieService, CookieOptions } from 'angular2-cookie/core';
 import { TourService } from './services/tour.service';
@@ -89,6 +90,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { PeersComponent } from './peers/peers.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   imports: [
@@ -165,6 +167,8 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     PeersComponent,
     PeersWithPortComponent,
     DashboardSetupComponent
+,
+    TransactionsComponent
 ],
   providers: [
     LocService,
@@ -176,6 +180,7 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     RefreshService,
     IdentityService,
     StatusService,
+    TxService,
     ShepherdService,
     CookieService,
     TourService,
@@ -183,9 +188,9 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
     UrlProviderService,
     { provide: CookieOptions, useValue: {} }
   ],
-  entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, 
+  entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent,
                     CreateBolModalComponent, CreateInvoiceModalComponent, ViewInvoiceModalComponent,
-                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent, 
+                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent,
                     ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent],
