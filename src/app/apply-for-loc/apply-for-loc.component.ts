@@ -1,25 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Loc } from './../loc';
-import { Party } from './../party'
 import { CreditType } from './../services/credit-types/credit-type';
 import { CreditTypeService } from './../services/credit-types/credit-type.service';
 import { Currency } from './../services/common/currency';
 import { WeightUnit } from './../services/common/weight-unit';
 import { CommonService } from './../services/common/common.service';
 import { LocService } from './../loc.service';
-import { DatePipe } from '@angular/common';
-import { DatepickerModule } from 'ngx-bootstrap';
-import { ApplyModalComponent } from './../modals/apply-modal.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import './../../assets/modal.js'
 import { StatusService } from '../services/status.service';
-import { Observable } from 'rxjs/Observable';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
 import { IdentityService } from '../services/identity.service';
 import { Invoice } from '../invoice';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PeersComponent } from '../peers/peers.component';
 
 @Component({
@@ -41,21 +35,21 @@ export class ApplyForLocComponent implements OnInit {
   advisingGlow: boolean;
 
   loc = new Loc();
-  @Input() orderRef: string;
-  @Input() invoice: Invoice;
+  invoice: Invoice;
   submitted = false;
 
   constructor(
     private creditTypesService: CreditTypeService,
     private commonService: CommonService,
     private locService: LocService,
-    private modalComponent: ApplyModalComponent,
     private modalService: BsModalService,
     private dialog: MatDialog,
+    private dialogRef: MatDialogRef<ApplyForLocComponent>,
     public statusService: StatusService,
     public refreshService: RefreshService,
     private identityService: IdentityService,
-    private tourService: TourService) {
+    private tourService: TourService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   getCreditTypes(): void {
@@ -93,7 +87,7 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   close(): void {
-    this.modalComponent.close();
+    this.dialogRef.close();
   }
 
   lookupIssuer() {
@@ -115,7 +109,7 @@ export class ApplyForLocComponent implements OnInit {
   autoComplete(): void {
     let d = new Date()
     this.loc.applicationDate = d;
-    this.loc.applicationId = this.orderRef[0];
+    this.loc.applicationId = this.data.invoice.invoiceId;
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = '30000 USD';
 
@@ -136,18 +130,18 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.goodsWeight = 1000;
     this.loc.goodsWeightUnit = 'KG';
     this.loc.goodsUnitPrice = 400;
-    this.loc.goodsPurchaseOrderRef = this.orderRef[0];
+    this.loc.goodsPurchaseOrderRef = this.data.invoice.invoiceId;
     this.loc.placePresentationCountry = 'US';
     this.loc.placePresentationCity = 'Des Moines';
     this.loc.placePresentationState = 'Des Moines';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
 
-    this.loc.beneficiary = this.invoice[0].sellerName;
+    this.loc.beneficiary = this.data.invoice.sellerName;
     this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
 
-    this.loc.issuer = "";
-    this.loc.advisingBank = "";
+    this.loc.issuer = '';
+    this.loc.advisingBank = '';
 
     this.issuerGlow = true;
     this.advisingGlow = true;
@@ -159,7 +153,8 @@ export class ApplyForLocComponent implements OnInit {
     this.getWeightUnits();
     this.getMe();
     this.loc.applicant = this.applicant;
-    this.loc.applicationId = this.orderRef;
+    this.loc.applicationId = this.data.invoice.invoiceId;
+    this.invoice = this.data;
   }
 
   onSubmit() {

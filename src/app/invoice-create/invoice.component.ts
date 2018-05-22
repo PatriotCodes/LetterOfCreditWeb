@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
-import { CreateInvoiceModalComponent } from './../modals/create-invoice-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { StatusService } from '../services/status.service';
@@ -18,7 +17,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceCreateComponent implements OnInit {
-  @ViewChild('Invoice', {read: ViewContainerRef}) vc: ViewContainerRef;
+  @ViewChild('Invoice', { read: ViewContainerRef }) vc: ViewContainerRef;
   inv = new Invoice();
   submitted = false;
   bsModalRef: BsModalRef;
@@ -28,7 +27,6 @@ export class InvoiceCreateComponent implements OnInit {
 
   constructor(
     private docsService: DocsService,
-    //private invoiceModalComponent: CreateInvoiceModalComponent,
     private dialog: MatDialog,
     private modalService: BsModalService,
     public statusService: StatusService,
@@ -53,29 +51,25 @@ export class InvoiceCreateComponent implements OnInit {
     this.error = false;
     this.refreshService.loading = true;
     this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
-    this.close();
+    this.dialog2.close();
   }
 
   autoComplete(): void {
     this.identityService.getMe().then(response => this.inv.sellerName = response.json().me);
     let d = new Date()
-    this.inv.invoiceDate = d,
-      this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
-    this.inv.sellerAddress = '123 Main St. Shenzhen, China',
-      this.inv.buyerName = '',
-      this.inv.buyerAddress = '123 Street. Iowa, US',
-      this.inv.term = 5,
-      this.inv.goodsDescription = 'OLED 6" Screens',
-      this.inv.goodsPurchaseOrderRef = 'Mock1',
-      this.inv.goodsQuantity = 10000,
-      this.inv.goodsUnitPrice = 3,
-      this.inv.goodsGrossWeight = 30
+    this.inv.invoiceDate = d;
+    this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
+    this.inv.sellerAddress = '123 Main St. Shenzhen, China';
+    this.inv.buyerName = '';
+    this.inv.buyerAddress = '123 Street. Iowa, US';
+    this.inv.term = 5;
+    this.inv.goodsDescription = 'OLED 6" Screens';
+    this.inv.goodsPurchaseOrderRef = 'Mock1';
+    this.inv.goodsQuantity = 10000;
+    this.inv.goodsUnitPrice = 3;
+    this.inv.goodsGrossWeight = 30;
 
     this.glow = true;
-  }
-
-  close(): void {
-    //this.invoiceModalComponent.close();
   }
 
   callResponse(result: string): void {

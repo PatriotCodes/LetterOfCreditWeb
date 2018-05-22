@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplyForLocComponent } from './../apply-for-loc/apply-for-loc.component'
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ApplyModalComponent } from './../modals/apply-modal.component';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { LocService } from '../loc.service';
 
 @Component({

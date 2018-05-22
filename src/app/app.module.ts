@@ -1,7 +1,7 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { MatToolbarModule } from '@angular/material';
@@ -12,14 +12,14 @@ import { AppRoutingModule } from './app-routing.module'
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { RefreshService } from './services/refresh.service';
 
-import { AppComponent }        from './app.component';
-import { ActiveLocComponent }     from './active-loc/active-loc.component';
+import { AppComponent } from './app.component';
+import { ActiveLocComponent } from './active-loc/active-loc.component';
 import { ApplyForLocComponent } from './apply-for-loc/apply-for-loc.component';
-import { LocService }         from './loc.service';
+import { LocService } from './loc.service';
 import { DocsService } from './services/docs.service';
 import { CreditTypeService } from './services/credit-types/credit-type.service';
 import { CommonService } from './services/common/common.service';
@@ -31,7 +31,6 @@ import { AwaitingApprovalComponent } from './awaiting-approval/awaiting-approval
 import { DatepickerModule } from 'ngx-bootstrap';
 import { DatePickerComponent } from './helpers/date-picker/date-picker.component';
 import { ModalModule } from 'ngx-bootstrap';
-import { ApplyModalComponent } from './modals/apply-modal.component';
 import { DocsModalComponent } from './modals/docs-modal.component';
 import { ShipModalComponent } from './modals/ship-modal.component';
 import { CreatePlModalComponent } from './modals/create-pl-modal.component';
@@ -74,7 +73,7 @@ import { CommaSeperatedNumberPipe } from './comma-seperated-number.pipe';
 import { IdentityService } from './services/identity.service'
 import { Ng2OdometerModule } from 'ng2-odometer';
 import { TimelineComponent } from './timeline/timeline.component';
-import { ViewBolTimelineModalComponent } from'./modals/view-bol-timeline-modal.component'
+import { ViewBolTimelineModalComponent } from './modals/view-bol-timeline-modal.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 import { StatusService } from './services/status.service';
 import { ShepherdService } from './services/shepherd.service';
@@ -125,7 +124,6 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     AwaitingApprovalComponent,
     FinancesComponent,
     DatePickerComponent,
-    ApplyModalComponent,
     DocsModalComponent,
     ShipModalComponent,
     CreatePlModalComponent,
@@ -174,9 +172,9 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     DashboardSetupComponent,
     MapComponent,
     StaticMapComponent
-,
+    ,
     MapLegendComponent
-],
+  ],
   providers: [
     LocService,
     DocsService,
@@ -194,12 +192,12 @@ import { MapLegendComponent } from './map-legend/map-legend.component';
     UrlProviderService,
     { provide: CookieOptions, useValue: {} }
   ],
-  entryComponents: [ApplyModalComponent, DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
-                    CreateBolModalComponent, ViewInvoiceModalComponent,
-                    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
-                    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
-                    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
-                    AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
-  bootstrap: [ AppComponent ]
+  entryComponents: [DocsModalComponent, ShipModalComponent, CreatePlModalComponent,
+    CreateBolModalComponent, ViewInvoiceModalComponent,
+    ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent,
+    ViewPlModalComponent, ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
+    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
+    AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent, PackingListComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

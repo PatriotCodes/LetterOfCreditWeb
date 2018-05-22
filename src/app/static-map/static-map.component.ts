@@ -83,7 +83,9 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent);
+    this.dialog.open(DashboardSellerComponent, {
+      maxHeight: '100%'
+    });
   }
 
   launchBuyer() {
