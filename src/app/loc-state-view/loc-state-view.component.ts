@@ -23,7 +23,7 @@ export class LocStateViewComponent implements OnChanges {
   submitted = false;
   txResponse: string;
   bsModalRef: BsModalRef;
-  public title: string
+  public title: string;
 
   constructor(private commonService: CommonService,
     private locService: LocService,

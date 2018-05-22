@@ -6,7 +6,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { ShipModalComponent } from './../modals/ship-modal.component';
 import { CreateBolModalComponent } from './../modals/create-bol-modal.component';
-import { CreatePlModalComponent } from './../modals/create-pl-modal.component';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { TourService } from '../services/tour.service';
 import { RefreshService } from '../services/refresh.service';
@@ -44,12 +43,6 @@ export class AllLocSellerComponent implements OnInit {
   addBol(loc: LocStateSummary) {
     this.bsModalRef = this.modalService.show(CreateBolModalComponent);
     this.bsModalRef.content.title = 'Bill of Lading';
-    this.bsModalRef.content.locSummary = loc;
-  }
-
-  addPl(loc: LocStateSummary) {
-    this.bsModalRef = this.modalService.show(CreatePlModalComponent);
-    this.bsModalRef.content.title = 'Packing List';
     this.bsModalRef.content.locSummary = loc;
   }
 

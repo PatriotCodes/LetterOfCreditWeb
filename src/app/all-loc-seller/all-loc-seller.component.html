@@ -1,6 +1,6 @@
 <div class="component">
   <div class="panel-heading">
-    Live Orders/Letter Of Credit
+    Letters Of Credit
     <button class="btn pull-right invoice-btn" (click)="createInvoice()" id="create-invoice" [ngClass]="{'button-glow': tourService.invoiceGlow}">Create Invoice</button>
   </div>
   <div class="panel-body">
@@ -8,14 +8,13 @@
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
-            <th>Order Ref</th>
+            <th>ID</th>
             <th>Buyer</th>
-            <th>Advising Bank</th>
+            <th>Seller</th>
             <th>Amount</th>
-            <th>Quantity</th>
             <th>Description</th>
             <th>Status</th>
-            <th></th>
+            <th>Actions</th>
             <th></th>
             <th></th>
         </thead>
@@ -35,13 +34,10 @@
                 <a (click)="openLocModal(loc.id)">{{loc.applicant}}</a>
               </td>
               <td>
-                <a (click)="openLocModal(loc.id)">{{loc.advisory}}</a>
+                <a (click)="openLocModal(loc.id)">{{loc.beneficiary}}</a>
               </td>
               <td>
                 <a (click)="openLocModal(loc.id)">{{loc.amount}}</a>
-              </td>
-              <td>
-                  <a (click)="openLocModal(loc.id)">{{loc.quantity}}</a>
               </td>
               <td>
                 <a (click)="openLocModal(loc.id)">{{loc.description}}</a>
@@ -51,9 +47,6 @@
               </td>
               <td>
                 <span (click)="addBol(loc)" class="action" id="bol"><img src="assets/bill.png" height="20px" class="action-img">Create Bill of Lading</span>
-              </td>
-              <td>
-                <span (click)="addPl(loc); isClickedOnce = true" class="action"><img src="assets/box.png" height="20px" class="action-img">Create Packing List</span>
               </td>
               <td>
                 <span (click)="shipGoods(loc.orderRef)" class="action" id="ship"><img src="assets/ship.png" height="20px" class="action-img" [class.disabled]="loc.status == 'Shipped'">Ship</span>

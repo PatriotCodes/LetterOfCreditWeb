@@ -30,14 +30,16 @@ export class BillOfLadingComponent {
     this.bol.advisingBank = this.loc[0].advisory;
     this.bol.issuingBank = this.loc[0].issuer;
     this.refreshService.loading = true;
-    this.docsService.createBol(this.bol).then(result => this.callResponse(result));
+    this.docsService.createBol(this.bol)
+    .then(result => this.callResponse(result))
+    .catch(err => this.refreshService.loading = false);
     this.close();
   }
 
   autoComplete(): void {
     let d = new Date()
     this.bol.billOfLadingId = this.loc[0].orderRef;
-    this.bol.issueDate = d.toDateString();
+    this.bol.issueDate = d;
     this.bol.carrierOwner = 'Alice Shipping';
 
     this.bol.nameOfVessel = 'SurfRider';

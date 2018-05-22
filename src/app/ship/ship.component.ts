@@ -16,12 +16,15 @@ export class ShipComponent {
   constructor(private locService: LocService, private modalComponent: ShipModalComponent, private statusService: StatusService) { }
 
   confirm() {
-    this.locService.shipGoods(this.id);
-    this.statusService.shipAnimation = true;
-    Observable.interval(1300).subscribe(x => {
-      this.statusService.shipAnimation = false;
-      this.modalComponent.close();
-    });
+    this.locService.shipGoods(this.id)
+    .then(result => {
+      this.statusService.shipAnimation = true;
+      Observable.interval(1300).subscribe(x => {
+        this.statusService.shipAnimation = false;
+        this.modalComponent.close();
+      });
+    })
+    .catch(err => this.modalComponent.close());
   }
 
 }

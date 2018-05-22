@@ -1,18 +1,18 @@
 <div class="component">
-    <div class="panel-heading">Active Letters of Credit</div>
+    <div class="panel-heading">Letters Of Credit</div>
     <div class="panel-body">
       <div class="grid grid-pad">
         <table class="table table-condensed table-striped">
           <thead>
           <tr>
-            <th>Id</th>
-            <th>Applicant</th>
-            <th>Beneficiary</th>
+            <th>ID</th>
+            <th>Buyer</th>
+            <th>Seller</th>
             <th>Amount</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Bill of Lading</th>
             <th>Actions</th>
-            <th></th>
             <th></th>
             <th></th>
           </thead>
@@ -38,13 +38,10 @@
                 <a (click)="openLocModal(loc.id)">{{loc.status}}</a>
               </td>
               <td>
-                <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">Bill of Lading</span>
+                <span (click)="openBol(loc.orderRef)" class="action"><img src="assets/bill.png" height="20px" class="action-img">View</span>
               </td>
               <td>
-                <span (click)="openPackingList(loc.orderRef)" class="action"><img src="assets/box.png" height="20px" class="action-img">Packing List</span>
-              </td>
-              <td>
-                <span (click)="payBeneficiary(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Seller</span>
+                <span (click)="paySeller(loc.orderRef)" class="action" [ngClass]="{'disabled': loc.beneficiaryPaid == true}"><img src="assets/hand.png" height="20px" class="action-img">Pay Seller</span>
               </td>
             </tr>
           </ng-container>
