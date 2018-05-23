@@ -8,6 +8,7 @@
             <th>Hash</th>
             <th>Inputs</th>
             <th>Outputs</th>
+            <th>Signers</th>
         </thead>
         <tbody>
           <tr *ngFor="let tx of txs">
@@ -34,6 +35,16 @@
                     N/A
                   </div>
             </td>
+            <td>
+              <div *ngIf="tx.signers.length > 0">
+                  <div *ngFor="let signer of tx.signers">
+                    {{signer}}
+                  </div>
+                </div>
+                <div *ngIf="tx.signers.length == 0">
+                  N/A
+                </div>
+          </td>
           </tr>
         </tbody>
       </table>
