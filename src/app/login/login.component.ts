@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+/*import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import * as TweenMax from './../../../node_modules/gsap/TweenLite.js';
 import * as Sine from './../../../node_modules/gsap/TweenLite.js';
 declare var $: any;
@@ -32,7 +32,7 @@ $('.close-btn').click(function(){
 });
 
 /* Forgotten Password */
-$('#forgotten').click(function(){
+/*$('#forgotten').click(function(){
   $('#container').fadeOut(function(){
     $('#forgotten-container').fadeIn();
   });
@@ -45,3 +45,4 @@ $('#forgotten').click(function(){
   }
 
 }
+*/
