@@ -20,8 +20,10 @@ export class DashboardSellerComponent implements OnInit {
     public refreshService: RefreshService, public dialogRef: MatDialogRef<DashboardSellerComponent>) { }
 
   ngOnInit() {
-    let body = document.getElementsByTagName('body')[0];
-    body.classList.add('background-image-seller');
+    // let body = document.getElementsByTagName('body')[0];
+    // body.classList.add('background-image-seller');
+    let bodyWrapper = document.getElementsByClassName('body-wrapper')[0];
+    bodyWrapper.classList.add('background-image-seller');
 
     let demoDone = this.cookieService.get('sellerDemoDone');
     if (demoDone !== 'true') {

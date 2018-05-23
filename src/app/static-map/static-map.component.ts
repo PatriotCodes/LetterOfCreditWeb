@@ -60,6 +60,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
         dropDownHeight = 0;
       }
     });
+
+    this.expandMenu();
   }
 
   expandMenu() {
@@ -83,9 +85,7 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent, {
-      //maxHeight: '100%'
-    });
+    this.dialog.open(DashboardSellerComponent);
   }
 
   launchBuyer() {
