@@ -49,7 +49,7 @@ button {
 }
 #container {
   padding-top: 51.56646615%;
-  overflow: hidden;
+
 }
 .map {
 	fill: #ddd;
@@ -294,7 +294,7 @@ button {
   position: fixed;
   left: -300px;
   width: 300px;
-  height: 80%;
+  height: 90%;
   padding-top: 0.5%;
   background-color: #000;
   transition: all 0.6s;
@@ -441,14 +441,86 @@ h2 {
   margin-bottom: 20px;
 }
 
-/////////////////
+
+
+///////////////////////////
+
+.centered-y {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.map-point {
+  cursor: pointer;
+  outline: none;
+  z-index: 0;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 20px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -moz-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+  -o-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+  -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out, z-index 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
+  transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+}
+.map-point .content {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  overflow: overlay;
+  background-color: #000;
+}
+.map-point:active, .map-point:focus {
+  cursor: default;
+  background: rgba(26, 26, 26, 0.85);
+  border: 5px solid #7fcff7;
+  margin: 0;
+  padding: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  width: 250px !important;
+  height: 180px !important;
+  color: #e5e5e5;
+  z-index: 1;
+  transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+.map-point:active .content, .map-point:focus .content {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s, 0s, 0s;
+  transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  overflow: hidden;
+}
+.map-point:active .content a:hover, .map-point:active .content a:active, .map-point:focus .content a:hover, .map-point:focus .content a:active {
+  color: #afe1fa;
+}
+.content li {
+  height: 60px;
+  font-size: 16px;
+}
+
+/////////////////GLOW/////////////////////
 
 body {
   background: #111;
   background: black;
 }
-
-
 
 .glow2 {
   position: absolute;
@@ -613,7 +685,6 @@ body {
 }
 
 
-
 .rotate .angle:nth-child(1){
   /* change the angle every 2 seconds */
   -webkit-animation: angle 10s steps(5) 0s infinite;
@@ -630,7 +701,6 @@ body {
   /* animate the fly out of the particle and its fade out at the end */
   -webkit-animation: position 2s linear 0s infinite;
 }
-
 
 
 .rotate .angle:nth-child(2){

@@ -9,6 +9,7 @@ import { IdentityService } from '../services/identity.service';
 import { DashboardBuyerComponent } from '../dashboard-buyer/dashboard-buyer.component';
 import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advising.component';
 import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
+import { CashIssuanceComponent } from '../cash-issuance/cash-issuance.component';
 
 @Component({
   selector: 'app-static-map',
@@ -85,28 +86,43 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent);
+    this.dialog.open(DashboardSellerComponent, { width: "80%" });
   }
 
   launchBuyer() {
     this.portService.current = 10013;
     this.identityService.current = 'buyer';
-    this.dialog.open(DashboardBuyerComponent);
+    this.dialog.open(DashboardBuyerComponent, { width: "80%" });
   }
 
   launchAdvising() {
     this.portService.current = 10010;
     this.identityService.current = 'advising';
-    this.dialog.open(DashboardAdvisingComponent);
+    this.dialog.open(DashboardAdvisingComponent, { width: "80%" });
   }
 
   launchIssuing() {
     this.portService.current = 10007;
     this.identityService.current = 'issuing';
-    this.dialog.open(DashboardIssuerComponent);
+    this.dialog.open(DashboardIssuerComponent, { width: "80%" });
   }
 
   launchCentral() {
+    this.portService.current = 10019;
+    this.dialog.open(CashIssuanceComponent, { width: "80%", height: "80%" });
+  }
+
+  launchAdvisingCash() {
+    this.portService.current = 10010;
+    this.dialog.open(CashIssuanceComponent, { width: "80%", height: "80%" });
+  }
+
+  launchIssuingCash() {
+    this.portService.current = 10007;
+    this.dialog.open(CashIssuanceComponent, { width: "80%", height: "80%" });
+  }
+
+  launchNotary() {
     this.portService.current = 10019;
   }
 }

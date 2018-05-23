@@ -2,15 +2,16 @@
   <h2>Steps</h2>
   <ul class="rolldown-list" id="myList">
     <li (click)="launchSeller()">1 - Create invoice from seller to buyer</li>
-    <li (click)="launchBuyer()">2 - Buyer applies for Letter of Credit</li>
-    <li (click)="launchIssuing()">3 - Issuing Bank accepts application</li>
+    <li (click)="launchBuyer()">2 - Buyer applies for letter of credit</li>
+    <li (click)="launchIssuing()">3 - Issuing bank accepts application</li>
     <li (click)="launchSeller()">4 - Seller adds bill of lading</li>
     <li (click)="launchSeller()">5 - Seller ships</li>
-    <li (click)="launchCentral()">6 - Banks post collateral to Central Bank</li>
-    <li (click)="launchCentral()">7 - Central bank issues cash to banks</li>
-    <li (click)="launchAdvising()">8 - Advising Bank pays seller</li>
-    <li (click)="launchIssuing()">9 - Issuing Bank pays advising bank</li>
-    <li (click)="launchBuyer()">10 - Buyer pays issuing bank</li>
+    <li (click)="launchCentral()">6 - Issuing bank posts collateral to central bank</li>
+    <li (click)="launchCentral()">7 - Advising bank posts collateral to central bank</li>
+    <li (click)="launchCentral()">8 - Central bank issues cash to bankss</li>
+    <li (click)="launchAdvising()">9 - Advising bank pays seller</li>
+    <li (click)="launchIssuing()">10 - Issuing bank pays advising bank</li>
+    <li (click)="launchBuyer()">11 - Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
     {{buttonTxt}}
@@ -46,12 +47,20 @@
         style="top:46.98999767%;left:70.46972153%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-advising" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchAdvising()">
+      <button id="marker-advising" class="map-point" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
           />
         </svg>
+        <div class="content">
+            <div class="centered-y">
+                <ul>
+                  <li class="clickable" (click)="launchAdvising()">Letter of Credit</li>
+                  <li class="clickable" (click)="launchAdvisingCash()">Cash Issuance</li>
+                </ul>
+            </div>
+        </div>
       </button>
 
 
@@ -72,12 +81,20 @@
         style="top:33.3%;left:44.55%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-issuing" style="top:33.3%;left:44.55%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchIssuing()">
+      <button id="marker-issuing" class="map-point" style="top:33.3%;left:44.55%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
           />
         </svg>
+        <div class="content">
+            <div class="centered-y">
+                <ul>
+                  <li class="clickable" (click)="launchIssuing()">Letter of Credit</li>
+                  <li class="clickable" (click)="launchIssuingCash()">Cash Issuance</li>
+                </ul>
+            </div>
+        </div>
       </button>
 
 
@@ -97,17 +114,14 @@
         style="top:70.3%;left:34%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-notary" style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px">
+      <button id="marker-notary" style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchNotary()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
           />
         </svg>
       </button>
-
     </div>
-
-
 
 
     <div class="glow2"></div>
@@ -145,19 +159,13 @@
             <div class="position">
               <div class="pulse">
                 <div class="particle">
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-
-
-
 
   </div>
 </div>
