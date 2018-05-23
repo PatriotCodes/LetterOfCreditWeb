@@ -12,7 +12,7 @@ import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component
 import { InvoiceCreateComponent } from './invoice-create/invoice.component';
 import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 import { StaticMapComponent } from './static-map/static-map.component';
 
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'invoice/:id', component: InvoiceCreateComponent },
   { path: 'ship/:id', component: ShipComponent },
   { path: 'locsummary/:first', component: AllLocSellerComponent },
-  { path: 'login', component: LoginComponent },
+  //{ path: 'login', component: LoginComponent },
   { path: 'map', component: StaticMapComponent },
   { path: '**', component: DashboardSetupComponent }
 ];

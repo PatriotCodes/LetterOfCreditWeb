@@ -64,7 +64,7 @@ import { LocAppViewComponent } from './loc-app-view/loc-app-view.component';
 import { AwaitingApprovalIssuerComponent } from './awaiting-approval-issuer/awaiting-approval-issuer.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { BillOfLadingViewComponent } from './bill-of-lading-view/bill-of-lading-view.component';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 import { CommaSeperatedNumberPipe } from './comma-seperated-number.pipe';
 import { IdentityService } from './services/identity.service'
 import { Ng2OdometerModule } from 'ng2-odometer';
@@ -153,7 +153,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
     AwaitingApprovalIssuerComponent,
     SpinnerComponent,
     BillOfLadingViewComponent,
-    LoginComponent,
+    //LoginComponent,
     CommaSeperatedNumberPipe,
     TimelineComponent,
     ViewBolTimelineModalComponent,
