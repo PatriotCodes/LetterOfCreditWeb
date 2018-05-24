@@ -8,6 +8,7 @@ import { DashboardBuyerComponent } from '../dashboard-buyer/dashboard-buyer.comp
 import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advising.component';
 import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
 import { CashIssuanceComponent } from '../cash-issuance/cash-issuance.component';
+declare var $:JQueryStatic;
 
 @Component({
   selector: 'app-static-map',
@@ -60,6 +61,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
       }
     });
 
+    //$('[data-toggle="tooltip"]').tooltip();
+
     this.expandMenu();
   }
 
@@ -84,25 +87,25 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent, { width: '80%' });
+    this.dialog.open(DashboardSellerComponent, { width: '85%', height: '85%' });
   }
 
   launchBuyer() {
     this.portService.current = 10013;
     this.identityService.current = 'buyer';
-    this.dialog.open(DashboardBuyerComponent, { width: '80%' });
+    this.dialog.open(DashboardBuyerComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvising() {
     this.portService.current = 10010;
     this.identityService.current = 'advising';
-    this.dialog.open(DashboardAdvisingComponent, { width: '80%' });
+    this.dialog.open(DashboardAdvisingComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuing() {
     this.portService.current = 10007;
     this.identityService.current = 'issuing';
-    this.dialog.open(DashboardIssuerComponent, { width: '80%' });
+    this.dialog.open(DashboardIssuerComponent, { width: '85%', height: '85%' });
   }
 
   launchCentral() {

@@ -291,10 +291,11 @@ button {
 
 .sidenav {
   z-index: 1;
-  position: fixed;
+  position: absolute;
+  top: 0;
   left: -300px;
   width: 300px;
-  height: 88%;
+  height: 100%;
   padding-top: 0.4%;
   background-color: #000;
   transition: all 0.6s;
@@ -435,13 +436,14 @@ li {
   background-color: rgba(0, 0, 0, 0.7);
   font-weight: bolder;
 }
+h4 {
+  margin-left: 8px;
+  margin-bottom: 15px !important;
+}
 h2 {
   color: #fff;
-  margin-left: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 25px !important;
 }
-
-
 
 ///////////////////////////
 

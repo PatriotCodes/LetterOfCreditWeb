@@ -98,15 +98,15 @@
   <div class="row">
     <div class="form-group col-xs-4 col-md-12">
       <label>Hash</label>
-      <div>{{bol.transactionHash}}</div>
+      <div class="txInfo">{{bol.transactionHash}}</div>
     </div>
   </div>
 
   <div class="row" *ngFor="let signature of bol.signatures; let idx = index">
     <div class="form-group col-xs-4 col-md-12">
       <label>Signature {{idx + 1}}</label>
-      <div>{{bol.signers[idx]}}</div>
-      <div>{{bol.signatures[idx].substring(0, 64)}}</div>
+      <div class="txInfo">{{bol.signers[idx]}}</div>
+      <div class="txInfo">{{bol.signatures[idx].substring(0, 64)}}</div>
     </div>
   </div>
 

@@ -7,6 +7,7 @@ import { RefreshService } from '../services/refresh.service';
 import { ShepherdService } from '../services/shepherd.service';
 import { MatDialog } from '@angular/material';
 import { ApplyForLocComponent } from '../apply-for-loc/apply-for-loc.component';
+import { BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'all-invoice',
@@ -18,6 +19,7 @@ export class AllInvoiceComponent implements OnInit {
   invoices: Invoice[] = [];
 
   constructor(private docService: DocsService,
+    private modalService: BsModalService,
     private dialog: MatDialog,
     private refreshService: RefreshService,
     private shepService: ShepherdService) {
@@ -35,7 +37,7 @@ export class AllInvoiceComponent implements OnInit {
   }
 
   public openInvoiceModal(ref: string) {
-    this.dialog.open(ViewInvoiceModalComponent);
+    this.bsModalRef = this.modalService.show(ViewInvoiceModalComponent, Object.assign({}, { class: 'gray modal-lg' }));
     this.bsModalRef.content.title = 'Invoice';
     this.bsModalRef.content.invoiceId = ref;
   }

@@ -160,14 +160,14 @@
 
     <div class="row form-group col-sm-12">
       <label>Hash</label>
-      <div>{{loc.txRef}}</div>
+      <div class="txInfo">{{loc.txRef}}</div>
     </div>
 
     <div *ngFor="let signature of loc.signatures; let idx = index">
       <div class="form-group col-sm-12">
         <label>Signature {{idx + 1}}</label>
-        <div>{{loc.signers[idx]}}</div>
-        <div>{{loc.signatures[idx].substring(0, 64)}}</div>
+        <div class="txInfo">{{loc.signers[idx]}}</div>
+        <div class="txInfo">{{loc.signatures[idx].substring(0, 64)}}</div>
       </div>
 
       <div class="row"></div>
