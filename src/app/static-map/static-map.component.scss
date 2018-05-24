@@ -49,7 +49,7 @@ button {
 }
 #container {
   padding-top: 51.56646615%;
-  overflow: hidden;
+
 }
 .map {
 	fill: #ddd;
@@ -70,10 +70,13 @@ button {
 	fill: #f70626;
 }
 #marker-issuing > svg {
-	fill: #ff6bdf;
+	fill: #f798e2;
 }
 #marker-central > svg {
 	fill: #6cfd9c;
+}
+#marker-notary > svg {
+	fill: #ffee00;
 }
 
 [id^="marker-"] {
@@ -291,8 +294,8 @@ button {
   position: fixed;
   left: -300px;
   width: 300px;
-  height: 80%;
-  padding-top: 2.5%;
+  height: 88%;
+  padding-top: 0.4%;
   background-color: #000;
   transition: all 0.6s;
 }
@@ -372,6 +375,11 @@ button {
   background-color: #333;
 }
 
+.rolldown-list li:hover {
+  cursor: pointer;
+  background-color: #666
+}
+
 #myList {
   position: absolute;
   width: 95%;
@@ -412,18 +420,328 @@ li {
 
 #expand {
   position: relative;
-  top: 45%;
+  top: 36.8%;
   left: 99%;
   background-color: #000;
   width: 50px;
-  height: 100px;
-  writing-mode: tb-rl;
-  font-size: 1.5em;
+  height: 80px;
+  font-size: 50px;
   color: #fff;
-  padding: 10px;
+  padding: 5px 10px;
   border-radius: 5px;
 }
 #expand:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+  font-weight: bolder;
+}
+h2 {
+  color: #fff;
+  margin-left: 8px;
+  margin-bottom: 20px;
+}
+
+
+
+///////////////////////////
+
+.centered-y {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.map-point {
+  cursor: pointer;
+  outline: none;
+  z-index: 0;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 20px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -moz-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+  -o-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+  -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out, z-index 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
+  transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+}
+.map-point .content {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  overflow: overlay;
+  background-color: #000;
+}
+.map-point:active, .map-point:focus {
+  cursor: default;
+  background: rgba(26, 26, 26, 0.85);
+  border: 5px solid #7fcff7;
+  margin: 0;
+  padding: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  width: 240px !important;
+  height: 150px !important;
+  color: #e5e5e5;
+  z-index: 1;
+  transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+.map-point:active .content, .map-point:focus .content {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  -webkit-transition-delay: 0.25s, 0s, 0s;
+  transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+  overflow: hidden;
+}
+.map-point:active .content a:hover, .map-point:active .content a:active, .map-point:focus .content a:hover, .map-point:focus .content a:active {
+  color: #afe1fa;
+}
+.content li {
+  height: 40px;
+  font-size: 16px;
+}
+.content li:hover {
+  color: rgb(240, 63, 18);
+}
+
+/////////////////GLOW/////////////////////
+
+body {
+  background: #111;
+  background: black;
+}
+
+.glow2 {
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -webkit-animation: glow2 15s linear 0s infinite forwards;
+  background: url('https://t0.rbxcdn.com/182160a5d7d68c6d4be14a6d9f9e5598');
+  background-size: contain;
+}
+
+.particles {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+
+}
+
+.rotate {
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+}
+
+.angle {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.size {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.position {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.particle {
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5px);
+  width: 30px;
+  height: 30px;
+/*   background: url('https://t0.rbxcdn.com/182160a5d7d68c6d4be14a6d9f9e5598'); */
+  background: url('http://www.officialpsds.com/images/thumbs/shine-light-bright-psd43123.png');
+
+  background-size: contain;
+}
+
+.rotate {
+  -webkit-animation: rotate 20s linear 0s infinite alternate;
+}
+
+.pulse{
+  -webkit-animation: pulse 1.5s linear 0s infinite alternate;
+}
+
+
+@-webkit-keyframes glow2 {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(150%) saturate(50%) hue-rotate(0deg) opacity(100%);
+
+  }
+  25% {
+    transform: scale(0.8) rotate(90deg);
+    filter: brightness(100%) saturate(50%) hue-rotate(50deg) opacity(100%);
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    filter: brightness(100%) saturate(100%) hue-rotate(0deg) opacity(100%);
+  }
+  75% {
+    transform: scale(0.8) rotate(270deg);
+    filter: brightness(100%) saturate(50%) hue-rotate(50deg) opacity(100%);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    filter: brightness(150%) saturate(100%) hue-rotate(0deg) opacity(100%);
+
+  }
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes angle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes size {
+  0% {
+    -webkit-transform: scale(.2);
+  }
+  100% {
+    -webkit-transform: scale(.6);
+  }
+}
+
+@-webkit-keyframes position {
+  0% {
+    -webkit-transform: translate3d(0,0,0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(100px,100px,0);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(.5);
+  }
+}
+
+@-webkit-keyframes particle {
+  from {
+    transform: scale(1);
+    filter: brightness(200%) hue-rotate(0deg);
+
+  }
+  to {
+    transform: scale(1.1);
+    filter: brightness(100%) hue-rotate(50deg);
+
+  }
+}
+
+
+.rotate .angle:nth-child(1){
+  /* change the angle every 2 seconds */
+  -webkit-animation: angle 10s steps(5) 0s infinite;
+}
+.rotate .angle:nth-child(1) .size{
+  /* change the size of the particle every 2 seconds */
+  -webkit-animation: size 10s steps(5) 0s infinite;
+}
+.rotate .angle:nth-child(1) .particle{
+  /* animate the glow2 and change the color every 2 seconds */
+  -webkit-animation: particle 6s linear infinite alternate;
+}
+.rotate .angle:nth-child(1) .position{
+  /* animate the fly out of the particle and its fade out at the end */
+  -webkit-animation: position 2s linear 0s infinite;
+}
+
+
+.rotate .angle:nth-child(2){
+  /* change the angle every 2 seconds */
+  -webkit-animation: angle 4.95s steps(3) -1.65s infinite;
+}
+.rotate .angle:nth-child(2) .size{
+  /* change the size of the particle every 2 seconds */
+  -webkit-animation: size 4.95s steps(3) -1.65s infinite alternate;
+}
+.rotate .angle:nth-child(2) .particle{
+  /* animate the glow2 and change the color every 2 seconds */
+  -webkit-animation: particle 4.95s linear -3.3s infinite alternate;
+}
+.rotate .angle:nth-child(2) .position{
+  /* animate the fly out of the particle and its fade out at the end */
+  -webkit-animation: position 1.65s linear 0s infinite;
+}
+
+
+.rotate .angle:nth-child(3){
+  /* change the angle every 2 seconds */
+  -webkit-animation: angle 13.76s steps(8) -6.88s infinite;
+}
+.rotate .angle:nth-child(3) .size{
+  /* change the size of the particle every 2 seconds */
+  -webkit-animation: size 6.88s steps(4) -5.16s infinite alternate;
+}
+.rotate .angle:nth-child(3) .particle{
+  /* animate the glow2 and change the color every 2 seconds */
+  -webkit-animation: particle 5.16s linear -1.72 infinite alternate;
+}
+.rotate .angle:nth-child(3) .position{
+  /* animate the fly out of the particle and its fade out at the end */
+  -webkit-animation: position 1.72s linear 0s infinite;
+}
+
+.rotate .angle:nth-child(5) .position{
+  /* animate the fly out of the particle and its fade out at the end */
+  -webkit-animation: position 2.45s linear 0s infinite;
 }

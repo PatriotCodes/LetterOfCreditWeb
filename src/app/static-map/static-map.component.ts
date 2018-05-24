@@ -1,14 +1,13 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
-import { expand } from 'rxjs/operator/expand';
-import { BsModalRef } from 'ngx-bootstrap';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
 import { PortProviderService } from '../services/port-provider.service';
 import { IdentityService } from '../services/identity.service';
 import { DashboardBuyerComponent } from '../dashboard-buyer/dashboard-buyer.component';
 import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advising.component';
 import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
+import { CashIssuanceComponent } from '../cash-issuance/cash-issuance.component';
 
 @Component({
   selector: 'app-static-map',
@@ -16,8 +15,8 @@ import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.c
   styleUrls: ['./static-map.component.scss']
 })
 export class StaticMapComponent implements OnInit, DoCheck {
-  expandTxt = 'EXPAND';
-  shrinkTxt = 'SHRINK';
+  expandTxt = '>';
+  shrinkTxt = '<';
   buttonTxt = this.expandTxt;
   unfolded = false;
 
@@ -60,6 +59,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
         dropDownHeight = 0;
       }
     });
+
+    this.expandMenu();
   }
 
   expandMenu() {
@@ -83,30 +84,43 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent, {
-      //maxHeight: '100%'
-    });
+    this.dialog.open(DashboardSellerComponent, { width: '80%' });
   }
 
   launchBuyer() {
     this.portService.current = 10013;
     this.identityService.current = 'buyer';
-    this.dialog.open(DashboardBuyerComponent);
+    this.dialog.open(DashboardBuyerComponent, { width: '80%' });
   }
 
   launchAdvising() {
     this.portService.current = 10010;
     this.identityService.current = 'advising';
-    this.dialog.open(DashboardAdvisingComponent);
+    this.dialog.open(DashboardAdvisingComponent, { width: '80%' });
   }
 
   launchIssuing() {
     this.portService.current = 10007;
     this.identityService.current = 'issuing';
-    this.dialog.open(DashboardIssuerComponent);
+    this.dialog.open(DashboardIssuerComponent, { width: '80%' });
   }
 
   launchCentral() {
+    this.portService.current = 10019;
+    this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
+  }
+
+  launchAdvisingCash() {
+    this.portService.current = 10010;
+    this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
+  }
+
+  launchIssuingCash() {
+    this.portService.current = 10007;
+    this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
+  }
+
+  launchNotary() {
     this.portService.current = 10019;
   }
 }

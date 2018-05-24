@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, ViewContainerRef, ViewChild } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -16,7 +16,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css']
 })
-export class InvoiceCreateComponent implements OnInit {
+export class InvoiceCreateComponent {
   @ViewChild('Invoice', { read: ViewContainerRef }) vc: ViewContainerRef;
   inv = new Invoice();
   submitted = false;
@@ -51,7 +51,7 @@ export class InvoiceCreateComponent implements OnInit {
     this.error = false;
     this.refreshService.loading = true;
     this.docsService.createInvoice(this.inv).then(result => this.callResponse(result));
-    this.dialog2.close();
+    this.close();
   }
 
   autoComplete(): void {
@@ -79,7 +79,8 @@ export class InvoiceCreateComponent implements OnInit {
     this.refreshService.loading = false;
   }
 
-  ngOnInit() {
+  close() {
+    this.dialog2.close();
   }
 
   onSubmit() {

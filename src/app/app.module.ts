@@ -90,6 +90,8 @@ import { AgmCoreModule } from '@agm/core';
 import { StaticMapComponent } from './static-map/static-map.component';
 import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { CashIssuanceComponent } from './cash-issuance/cash-issuance.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   imports: [
@@ -167,8 +169,10 @@ import { TransactionsComponent } from './transactions/transactions.component';
     DashboardSetupComponent,
     StaticMapComponent,
     MapLegendComponent,
-    TransactionsComponent
-  ],
+    TransactionsComponent,
+    CashIssuanceComponent,
+    SafePipe
+],
   providers: [
     LocService,
     DocsService,
@@ -191,7 +195,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
                     CreateBolModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent,
                     ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
-                    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent,
+                    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent, CashIssuanceComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent],
   bootstrap: [AppComponent]
 })
