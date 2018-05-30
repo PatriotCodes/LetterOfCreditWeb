@@ -14,7 +14,7 @@
 
     <label class="control-label col-sm-2" for="applicationDate">Application Date</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="applicationDate" required [(ngModel)]="loc.applicationDate" name="applicationDate"
+      <input type="text" class="form-control" id="applicationDate" required [ngModel]="loc.applicationDate | date" name="applicationDate"
         disabled>
     </div>
 
@@ -51,7 +51,7 @@
 
     <label for="expiryDate" class="control-label col-sm-2">Expiry</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" disabled>
+      <input type="text" class="form-control" id="expiryDate" required [ngModel]="loc.expiryDate | date" name="expiryDate" disabled>
     </div>
 
   </div>
@@ -140,7 +140,7 @@
 
     <label class="control-label col-sm-2">Last Shipment</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipmentDate"
+      <input type="text" class="form-control" id="lastShipmentDate" [ngModel]="loc.lastShipmentDate | date" name="lastShipmentDate"
         disabled>
     </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -25,7 +25,7 @@ export class AllInvoiceSellerComponent implements OnInit {
   }
 
   public openInvoiceModal(ref: string) {
-    this.bsModalRef = this.modalService.show(ViewInvoiceModalComponent);
+    this.bsModalRef = this.modalService.show(ViewInvoiceModalComponent, Object.assign({}, {class: 'gray modal-lg'}));
     this.bsModalRef.content.title = 'Invoice';
     this.bsModalRef.content.invoiceId = ref;
   }

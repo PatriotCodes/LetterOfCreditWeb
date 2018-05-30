@@ -3,7 +3,7 @@ import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component'
+import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component';
 
 @Component({
   selector: 'invoice-view',

@@ -61,22 +61,22 @@ button {
 }
 .pulse,
 #marker-seller > svg {
-	fill: #068bf7;
+  fill: #068bf7;
 }
 #marker-advising > svg {
-	fill: #97aaff;
+  fill: #97aaff;
 }
 #marker-buyer > svg {
-	fill: #f70626;
+  fill: #f70626;
 }
 #marker-issuing > svg {
-	fill: #f798e2;
+  fill: #f798e2;
 }
 #marker-central > svg {
-	fill: #6cfd9c;
+  fill: #6cfd9c;
 }
 #marker-notary > svg {
-	fill: #ffee00;
+  fill: #ffee00;
 }
 
 [id^="marker-"] {
@@ -746,4 +746,22 @@ body {
 .rotate .angle:nth-child(5) .position{
   /* animate the fly out of the particle and its fade out at the end */
   -webkit-animation: position 2.45s linear 0s infinite;
+}
+
+.line {
+  height: 3px;
+  background-color: #aaa;
+  transform-origin: left center;
+  position: absolute;
+  z-index: 1;
+}
+.marker-label {
+  position: absolute;
+  height: 20px;
+  width: auto;
+  background-color: #000;
+  padding: 5px 10px;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 100;
 }

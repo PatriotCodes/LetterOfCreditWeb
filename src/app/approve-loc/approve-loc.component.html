@@ -1,5 +1,5 @@
 <div *ngIf="loc">
-  <form (ngSubmit)="onSubmit()" #ApproveLoc="ngForm" class="form-horizontal">
+  <form #ApproveLoc="ngForm" class="form-horizontal">
     <div class="form-group">
       <label class="control-label col-sm-3" for="applicationId">Application Id</label>
       <div class="col-sm-9">
@@ -46,7 +46,7 @@
     <div class="form-group">
       <label for="expiryDate" class="control-label col-sm-3">Expiry</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" disabled>
+        <input type="text" class="form-control" id="expiryDate" [ngModel]="loc.expiryDate | date" name="expiryDate" disabled>
       </div>
     </div>
 
@@ -139,7 +139,7 @@
     <div class="form-group">
       <label class="control-label col-sm-3">Last Shipment Date</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipmentDate"
+        <input type="text" class="form-control" id="lastShipmentDate" [ngModel]="loc.lastShipmentDate | date" name="lastShipmentDate"
           disabled>
       </div>
     </div>

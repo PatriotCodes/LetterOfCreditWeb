@@ -1,18 +1,16 @@
 <div class="sidenav">
   <h4>Steps</h4>
   <ul class="rolldown-list" id="myList">
-    <li (click)="launchSeller()">1 - Create invoice from seller to buyer</li>
-    <li (click)="launchBuyer()">2 - Buyer applies for letter of credit</li>
-    <li (click)="launchIssuing()">3 - Issuing bank accepts application</li>
-    <li (click)="launchSeller()">4 - Seller adds bill of lading</li>
-    <li (click)="launchSeller()">5 - Seller ships</li>
-    <li (click)="launchIssuingCash()">6 - Issuing bank posts collateral to central bank</li>
-    <li (click)="launchAdvisingCash()">7 - Advising bank posts collateral to central bank</li>
-    <li (click)="launchCentral()">8 - Central bank issues cash to banks</li>
-    <li (click)="launchIssuingCash()">9 - Issuing bank loans cash to buyer</li>
-    <li (click)="launchAdvising()">10 - Advising bank pays seller</li>
-    <li (click)="launchIssuing()">11 - Issuing bank pays advising bank</li>
-    <li (click)="launchBuyer()">12 - Buyer pays issuing bank</li>
+    <li id="1" (click)="launchSeller()">1 - Create invoice from seller to buyer</li>
+    <li id="2" (click)="launchBuyer()">2 - Buyer applies for letter of credit</li>
+    <li id="3" (click)="launchIssuing()">3 - Issuing bank accepts application</li>
+    <li id="4" (click)="launchSeller()">4 - Seller adds bill of lading</li>
+    <li id="5" (click)="launchSeller()">5 - Seller ships</li>
+    <li id="8" (click)="launchCentral()">6 - Central bank issues cash to banks</li>
+    <li id="9" (click)="launchIssuingCash()">7 - Issuing bank loans cash to buyer</li>
+    <li id="10" (click)="launchAdvising()">8 - Advising bank pays seller</li>
+    <li id="11" (click)="launchIssuing()">9 - Issuing bank pays advising bank</li>
+    <li id="12" (click)="launchBuyer()">10 - Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
     {{buttonTxt}}
@@ -35,7 +33,7 @@
         style="top:50.98999767%;left:75.46972153%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-seller" style="top:50.98999767%;left:75.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchSeller()">
+      <button id="marker-seller" class='marker' style="top:50.98999767%;left:75.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchSeller()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -48,7 +46,7 @@
         style="top:46.98999767%;left:70.46972153%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-advising" class="map-point" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px">
+      <button id="marker-advising" class="map-point marker" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -70,7 +68,7 @@
         style="top:31%;left:47.2%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-buyer" style="top:31%;left:47.2%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchBuyer()">
+      <button id="marker-buyer" class='marker' style="top:31%;left:47.2%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchBuyer()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -83,7 +81,7 @@
         style="top:33.3%;left:44.55%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-issuing" class="map-point" style="top:33.3%;left:44.55%;width:50px;height:50px;margin:-40px 0 0 -25px">
+      <button id="marker-issuing" class="map-point marker" style="top:33.3%;left:44.55%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -105,7 +103,7 @@
         style="top:33.3%;left:31%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-central" style="top:33.3%;left:31%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchCentral()">
+      <button id="marker-central" class='marker' style="top:33.3%;left:31%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchCentral()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
           <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
@@ -113,16 +111,15 @@
         </svg>
       </button>
 
+
+
+
       <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
         style="top:70.3%;left:34%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
-      <button id="marker-notary" data-toggle="tooltip" title="Hooray!" class="map-point" style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchNotary()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
-          style="right:0;bottom:0;margin:auto">
-          <path d="M9.375 0A9.375 9.375 0 0 0 0 9.375c0 1.398.308 2.729.855 3.918L7.996 28.79c.342.745.833 1.21 1.379 1.21s1.036-.465 1.379-1.209l7.141-15.498a9.333 9.333 0 0 0 .854-3.918A9.374 9.374 0 0 0 9.375 0zm0 15C6.27 15 3.75 12.48 3.75 9.375S6.27 3.75 9.375 3.75 15 6.27 15 9.375 12.48 15 9.375 15z"
-          />
-        </svg>
+      <button id="marker-notary" class='marker map-point' style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchNotary()">
+        <img src="../../assets/notary.png" width="30" height="30" preserveAspectRatio="xMidYMin meet" style="right:0;bottom:0;margin:auto">
 
         <div class="content">
             <div class="centered-y">
@@ -131,6 +128,7 @@
             </div>
         </div>
       </button>
+
     </div>
 
     <div class="glow2"></div>
@@ -179,4 +177,7 @@
   </div>
 </div>
 
+
+
 <app-footer></app-footer>
+

@@ -37,38 +37,38 @@ export class BillOfLadingComponent {
   }
 
   autoComplete(): void {
-    let d = new Date()
+    let d = new Date();
     this.bol.billOfLadingId = this.loc[0].orderRef;
     this.bol.issueDate = d;
     this.bol.carrierOwner = 'Alice Shipping';
 
     this.bol.nameOfVessel = 'SurfRider';
     this.bol.goodsDescription = this.loc[0].description;
-    this.bol.goodsQuantity = 10000;
+    this.bol.goodsQuantity = this.loc[0].quantity;
     this.bol.dateOfShipment = d;
 
     this.bol.portOfLoadingCountry = 'China';
     this.bol.portOfLoadingCity = 'Shenzhen';
-    this.bol.portOfLoadingAddress = '123 Street';
+    this.bol.portOfLoadingAddress = 'Dong Men Street';
 
-    this.bol.portOfDischargeCountry = 'USA';
-    this.bol.portOfDischargeCity = 'Des Moines';
-    this.bol.portOfDischargeAddress = 'ABC Street';
+    this.bol.portOfDischargeCountry = 'UK';
+    this.bol.portOfDischargeCity = 'Liverpool';
+    this.bol.portOfDischargeAddress = 'Maritime Centre';
 
     this.bol.shipper = this.loc[0].beneficiary;
-    this.bol.notifyName = 'Foo Bar';
-    this.bol.notifyAddress = '123 Street, London';
-    this.bol.notifyPhone = '+442076909856';
+    this.bol.notifyName = 'Analog Importers';
+    this.bol.notifyAddress = '3 Smithdown Road. Liverpool, L2 6RE';
+    this.bol.notifyPhone = '+447590043622';
 
     this.bol.consigneeName = this.loc[0].applicant;
-    this.bol.consigneeAddress = '123 Main St. Awesome Town, ZZ 11111';
-    this.bol.consigneePhone = '+0027590043622';
+    this.bol.consigneeAddress = '3 Smithdown Road. Liverpool, L2 6RE';
+    this.bol.consigneePhone = '+447590043622';
 
     this.bol.grossWeight = 1000;
     this.bol.grossWeightUnit = 'KG';
 
-    this.bol.placeOfReceiptCountry = 'USA';
-    this.bol.placeOfReceiptCity = 'Des Moines';
+    this.bol.placeOfReceiptCountry = 'UK';
+    this.bol.placeOfReceiptCity = 'Liverpool';
 
     this.bol.buyer = this.bol.consigneeName;
     this.bol.advisingBank = this.loc[0].advisingBank;

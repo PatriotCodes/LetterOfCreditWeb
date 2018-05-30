@@ -155,7 +155,6 @@ import { SafePipe } from './safe.pipe';
     AwaitingApprovalIssuerComponent,
     SpinnerComponent,
     BillOfLadingViewComponent,
-    //LoginComponent,
     CommaSeperatedNumberPipe,
     TimelineComponent,
     ViewBolTimelineModalComponent,
@@ -171,7 +170,7 @@ import { SafePipe } from './safe.pipe';
     MapLegendComponent,
     TransactionsComponent,
     CashIssuanceComponent,
-    SafePipe
+    SafePipe,
 ],
   providers: [
     LocService,

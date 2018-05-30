@@ -1,68 +1,71 @@
 <div *ngIf="inv">
-  <div class="row">
+    <form class="form-horizontal">
+
 
     <label class="control-label col-sm-2" for="invoiceDate">Date</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="invoiceDate" [(ngModel)]="inv.invoiceDate" name="invoiceDate" disabled>
+      <input type="text" class="form-control" id="invoiceDate" [ngModel]="inv.invoiceDate | date" name="invoiceDate" disabled>
     </div>
 
     <label class="control-label col-sm-2" for="invoiceId">ID</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="invoiceId" placeholder="Invoice Id" required [(ngModel)]="inv.invoiceId" name="invoiceId"
+      <input type="text" class="form-control" id="invoiceId" [(ngModel)]="inv.invoiceId" name="invoiceId"
         disabled>
     </div>
 
     <label class="control-label col-sm-2" for="sellerName">Seller Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sellerName" placeholder="Name" [(ngModel)]="inv.sellerName" name="sellerName"
+      <input type="text" class="form-control" id="sellerName" [(ngModel)]="inv.sellerName" name="sellerName"
         disabled>
     </div>
 
     <label class="control-label col-sm-2" for="sellerAddress">Seller Address</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sellerAddress" placeholder="Address" [(ngModel)]="inv.sellerAddress" name="sellerAddress"
+      <input type="text" class="form-control" id="sellerAddress" [(ngModel)]="inv.sellerAddress" name="sellerAddress"
         disabled>
     </div>
 
     <label class="control-label col-sm-2" for="buyerName">Buyer Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="buyerName" placeholder="Name" [(ngModel)]="inv.buyerName" name="buyerName" disabled>
+      <input type="text" class="form-control" id="buyerName" [(ngModel)]="inv.buyerName" name="buyerName" disabled>
     </div>
 
-    <label class="control-label col-sm-2" for="buyerAddress">Address</label>
+    <label class="control-label col-sm-2" for="buyerAddress">Buyer Address</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="buyerAddress" placeholder="Address" [(ngModel)]="inv.buyerAddress" name="buyerAddress"
+      <input type="text" class="form-control" id="buyerAddress" [(ngModel)]="inv.buyerAddress" name="buyerAddress"
         disabled>
     </div>
 
-    <label class="control-label col-sm-2" for="goodsDescription">Description</label>
+    <label class="control-label col-sm-2" for="goodsDescription">Goods Desc</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="goodsDescription" placeholder="Description" [(ngModel)]="inv.goodsDescription"
+      <input type="text" class="form-control" id="goodsDescription" [(ngModel)]="inv.goodsDescription"
         name="goodsDescription" disabled>
     </div>
 
     <label class="control-label col-sm-2" for="goodsQuantity">Quantity</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="goodsQuantity" placeholder="Quantity" [(ngModel)]="inv.goodsQuantity" name="goodsQuantity"
+      <input type="text" class="form-control" id="goodsQuantity" [(ngModel)]="inv.goodsQuantity" name="goodsQuantity"
         disabled>
     </div>
 
     <label class="control-label col-sm-2" for="goodsUnitPrice">Unit Price</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="goodsUnitPrice" placeholder="Unit Price" [(ngModel)]="inv.goodsUnitPrice" name="goodsUnitPrice"
+      <input type="text" class="form-control" id="goodsUnitPrice" [(ngModel)]="inv.goodsUnitPrice" name="goodsUnitPrice"
         disabled>
     </div>
 
     <label class="control-label col-sm-2" for="goodsGrossWeight">Gross Weight</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="goodsGrossWeight" placeholder="Gross Weight" [(ngModel)]="inv.goodsGrossWeight"
+      <input type="text" class="form-control" id="goodsGrossWeight" [(ngModel)]="inv.goodsGrossWeight"
         name="goodsGrossWeight" disabled>
     </div>
 
     <label class="control-label col-sm-2" for="term">Term</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="term" placeholder="term" [(ngModel)]="inv.term" name="term" disabled>
+      <input type="text" class="form-control" id="term" [(ngModel)]="inv.term" name="term" disabled>
     </div>
+
+  </form>
 
     <hr>
 
@@ -85,5 +88,7 @@
       </div>
 
       <div class="row"></div>
+
+
     </div>
-  </div>
+
