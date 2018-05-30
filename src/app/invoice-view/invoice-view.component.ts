@@ -24,6 +24,8 @@ export class InvoiceViewComponent implements OnChanges {
     this.modalComponent.close();
   }
 
+  isArray(val) { return val instanceof Array; }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.ref[0] !== undefined) {
       this.docsService.getInvoice(this.ref).then(invoice => this.inv = invoice);
