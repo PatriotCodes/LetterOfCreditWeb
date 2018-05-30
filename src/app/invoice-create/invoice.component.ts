@@ -64,7 +64,7 @@ export class InvoiceCreateComponent {
     this.inv.buyerAddress = '3 Smithdown Road. Liverpool, L2 6RE';
     this.inv.term = 5;
     this.inv.goodsDescription = 'OLED 6" Screens';
-    this.inv.goodsPurchaseOrderRef = this.inv.goodsPurchaseOrderRef;
+    this.inv.goodsPurchaseOrderRef = 'REF' + Math.round(Math.random() * 1000000).toString();
     this.inv.goodsQuantity = 100000;
     this.inv.goodsUnitPrice = 13;
     this.inv.goodsGrossWeight = 1000;

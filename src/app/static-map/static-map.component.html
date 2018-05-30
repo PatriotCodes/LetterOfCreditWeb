@@ -1,16 +1,14 @@
 <div class="sidenav">
   <h4>Steps</h4>
   <ul class="rolldown-list" id="myList">
-    <li id="1" (click)="launchSeller()">1 - Create invoice from seller to buyer</li>
-    <li id="2" (click)="launchBuyer()">2 - Buyer applies for letter of credit</li>
-    <li id="3" (click)="launchIssuing()">3 - Issuing bank accepts application</li>
-    <li id="4" (click)="launchSeller()">4 - Seller adds bill of lading</li>
-    <li id="5" (click)="launchSeller()">5 - Seller ships</li>
-    <li id="8" (click)="launchCentral()">6 - Central bank issues cash to banks</li>
-    <li id="9" (click)="launchIssuingCash()">7 - Issuing bank loans cash to buyer</li>
-    <li id="10" (click)="launchAdvising()">8 - Advising bank pays seller</li>
-    <li id="11" (click)="launchIssuing()">9 - Issuing bank pays advising bank</li>
-    <li id="12" (click)="launchBuyer()">10 - Buyer pays issuing bank</li>
+    <li id="1" (click)="launchSeller()">- Create invoice from seller to buyer</li>
+    <li id="2" (click)="launchBuyer()">- Buyer applies for letter of credit</li>
+    <li id="3" (click)="launchIssuing()">- Issuing bank accepts application</li>
+    <li id="4" (click)="launchSeller()">- Seller adds bill of lading and ships</li>
+    <li id="7" (click)="launchAdvising()">- Advising bank pays seller</li>
+    <li id="8" (click)="launchIssuing()">- Issuing bank pays advising bank</li>
+    <li id="6" (click)="launchIssuingCash()">- Issuing bank loans cash to buyer</li>
+    <li id="9" (click)="launchBuyer()">- Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
     {{buttonTxt}}
