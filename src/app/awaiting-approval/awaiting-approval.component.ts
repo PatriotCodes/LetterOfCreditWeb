@@ -3,7 +3,6 @@ import { LocSummary } from './../loc-summary';
 import { LocService } from './../loc.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ApproveLocModalComponent } from './../modals/approve-loc-modal.component';
 import { ViewLocAppModalComponent } from './../modals/view-loc-app-modal.component';
 import { RefreshService } from './../services/refresh.service';
 declare var $: any;

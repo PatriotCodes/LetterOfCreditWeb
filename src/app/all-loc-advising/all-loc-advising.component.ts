@@ -55,6 +55,7 @@ export class AllLocAdvisingComponent implements OnInit {
   }
 
   public paySeller(id: string) {
+    this.refreshService.loading = true;
     this.locService.paySeller(id)
     .then(response => this.callResponse(response))
     .catch(err => err);

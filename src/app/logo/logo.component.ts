@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-  folder = '../../assets/';
+  folder = './../../assets/';
   logoImagePath: string;
   me: string;
 
@@ -16,7 +16,7 @@ export class LogoComponent implements OnInit {
 
   ngOnInit() {
     this.identityService.getMe().then(response => this.me = response.json().me);
-    switch(this.router.url) {
+    switch (this.router.url) {
       case '/seller':
             this.logoImagePath = this.folder + 'seller.png';
             break;

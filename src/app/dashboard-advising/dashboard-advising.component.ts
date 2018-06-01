@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 
 @Component({
@@ -9,13 +9,11 @@ import { TourService } from '../services/tour.service';
 })
 export class DashboardAdvisingComponent implements OnInit {
 
+
   constructor(private cookieService: CookieService, private tourService: TourService) { }
 
   ngOnInit() {
-    // let body = document.getElementsByTagName('body')[0];
-    // body.classList.add('background-image-advising');
-
-    let bodyWrapper = document.getElementsByClassName('body-wrapper')[0];
+    let bodyWrapper = document.getElementsByClassName('mat-dialog-container')[0];
     bodyWrapper.classList.add('background-image-advising');
 
     let demoDone = this.cookieService.get('advisingDemoDone');

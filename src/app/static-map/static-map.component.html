@@ -1,3 +1,4 @@
+<app-loading *ngIf="refreshService.loading"></app-loading>
 <div class="sidenav">
   <h4>Steps</h4>
   <ul class="rolldown-list" id="myList">
@@ -113,14 +114,12 @@
       </button>
 
 
-
-
       <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
         style="top:70.3%;left:34%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
       </svg>
       <button id="marker-notary" class='marker map-point' style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchNotary()">
-        <img src="../../assets/notary.png" width="30" height="30" preserveAspectRatio="xMidYMin meet" style="right:0;bottom:0;margin:auto">
+        <img src="./../../assets/notary.png" width="30" height="30" preserveAspectRatio="xMidYMin meet" style="right:0;bottom:0;margin:auto">
 
         <div class="content">
             <div class="centered-y">

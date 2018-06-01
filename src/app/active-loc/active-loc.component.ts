@@ -35,6 +35,7 @@ export class ActiveLocComponent implements OnInit {
               }
 
   public payAdvisory(id: string) {
+    this.refreshService.loading = true;
     this.disabled = true;
     this.locService.payAdviser(id)
     .then(response => this.callResponse(response))

@@ -33,6 +33,7 @@ export class AwaitingApprovalIssuerComponent implements OnInit {
   }
 
   public approveLoc(ref: string) {
+    this.refreshService.loading = true;
     this.locService.approveLoc(ref)
     .then(response => this.callResponse(response))
     .catch(err => err);

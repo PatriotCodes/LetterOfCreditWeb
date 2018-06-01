@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChildren, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
@@ -8,6 +8,7 @@ import { DashboardBuyerComponent } from '../dashboard-buyer/dashboard-buyer.comp
 import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advising.component';
 import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
 import { CashIssuanceComponent } from '../cash-issuance/cash-issuance.component';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'app-static-map',
@@ -31,7 +32,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
   }
 
   constructor(private router: Router, private dialog: MatDialog,
-    private portService: PortProviderService, private identityService: IdentityService) { }
+    private portService: PortProviderService, private identityService: IdentityService,
+    public refreshService: RefreshService) { }
 
   ngOnInit() {
 

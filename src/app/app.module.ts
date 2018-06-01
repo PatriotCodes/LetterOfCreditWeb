@@ -89,9 +89,9 @@ import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.compo
 import { StaticMapComponent } from './static-map/static-map.component';
 import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { TestComponent } from './test/test.component';
 import { CashIssuanceComponent } from './cash-issuance/cash-issuance.component';
 import { SafePipe } from './safe.pipe';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   imports: [

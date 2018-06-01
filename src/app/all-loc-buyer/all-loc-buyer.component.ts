@@ -42,6 +42,7 @@ export class AllLocBuyerComponent implements OnInit {
   }
 
   public payIssuer(id: string) {
+    this.refreshService.loading = true;
     this.locService.payIssuer(id)
     .then(response => this.callResponse(response))
     .catch(err => err);
