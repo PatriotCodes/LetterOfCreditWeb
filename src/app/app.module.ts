@@ -86,10 +86,10 @@ import { LoadingComponent } from './loading/loading.component';
 import { PeersComponent } from './peers/peers.component';
 import { PeersWithPortComponent } from './peers-with-port/peers-with-port.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
-import { AgmCoreModule } from '@agm/core';
 import { StaticMapComponent } from './static-map/static-map.component';
 import { MapLegendComponent } from './map-legend/map-legend.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { TestComponent } from './test/test.component';
 import { CashIssuanceComponent } from './cash-issuance/cash-issuance.component';
 import { SafePipe } from './safe.pipe';
 
@@ -111,9 +111,6 @@ import { SafePipe } from './safe.pipe';
     MatDialogModule,
     MatSidenavModule,
     SelectModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC9ZVhbnLQZnVGpM-2kQOxu4jZgSYy_KNc'
-    })
   ],
   declarations: [
     AppComponent,
@@ -169,10 +166,10 @@ import { SafePipe } from './safe.pipe';
     StaticMapComponent,
     MapLegendComponent,
     TransactionsComponent,
-    CashIssuanceComponent,
+	  CashIssuanceComponent,
     SafePipe
-],
-  providers: [
+  ],
+    providers: [
     LocService,
     DocsService,
     CreditTypeService,

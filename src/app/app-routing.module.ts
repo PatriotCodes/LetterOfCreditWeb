@@ -15,6 +15,7 @@ import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component
 //import { LoginComponent } from './login/login.component';
 import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 import { StaticMapComponent } from './static-map/static-map.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   { path: 'approve/:id', component: ApproveLocComponent },
@@ -29,9 +30,10 @@ const routes: Routes = [
   { path: 'invoice/:id', component: InvoiceCreateComponent },
   { path: 'ship/:id', component: ShipComponent },
   { path: 'locsummary/:first', component: AllLocSellerComponent },
+  { path: 'test', component: TestComponent },
   //{ path: 'login', component: LoginComponent },
   { path: 'map', component: StaticMapComponent },
-  { path: '**', component: DashboardSetupComponent }
+  { path: '**', component: StaticMapComponent }
 ];
 
 @NgModule({
