@@ -166,9 +166,9 @@ import { SafePipe } from './safe.pipe';
     StaticMapComponent,
     MapLegendComponent,
     TransactionsComponent,
-	  CashIssuanceComponent,
-    SafePipe
-  ],
+	CashIssuanceComponent,
+	SafePipe
+
     providers: [
     LocService,
     DocsService,
