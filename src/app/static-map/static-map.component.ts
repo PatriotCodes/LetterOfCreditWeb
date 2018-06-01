@@ -63,8 +63,6 @@ export class StaticMapComponent implements OnInit, DoCheck {
     });
 
     this.expandMenu();
-
-    /////////////////////////////////////////////////////////
   }
 
   expandMenu() {

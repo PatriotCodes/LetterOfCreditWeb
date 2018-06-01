@@ -170,7 +170,7 @@ import { SafePipe } from './safe.pipe';
     MapLegendComponent,
     TransactionsComponent,
     CashIssuanceComponent,
-    SafePipe,
+    SafePipe
 ],
   providers: [
     LocService,

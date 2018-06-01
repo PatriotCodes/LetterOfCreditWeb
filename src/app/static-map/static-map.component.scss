@@ -78,6 +78,9 @@ button {
 #marker-notary > svg {
   fill: #ffee00;
 }
+#marker-notary > svg {
+	fill: #ffee00;
+}
 
 [id^="marker-"] {
 	animation: fall 1000ms ease-in both;
@@ -436,6 +439,7 @@ li {
   background-color: rgba(0, 0, 0, 0.7);
   font-weight: bolder;
 }
+
 h4 {
   margin-left: 8px;
   margin-bottom: 15px !important;
