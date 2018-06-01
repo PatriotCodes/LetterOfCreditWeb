@@ -30,6 +30,7 @@
   "main": "main.js",
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
+    "@amcharts/amcharts3-angular": "github:amcharts/amcharts3-angular2",
     "@angular/animations": "^4.3.6",
     "@angular/cdk": "^2.0.0-beta.12",
     "@angular/common": "~4.3.1",
@@ -46,6 +47,7 @@
     "@angular/tsc-wrapped": "~4.3.1",
     "@angular/upgrade": "~4.3.1",
     "@types/googlemaps": "^3.30.8",
+    "@types/snapsvg": "^0.4.32",
     "angular-in-memory-web-api": "^0.3.2",
     "angular2-cookie": "^1.2.6",
     "angular2-fontawesome": "^0.9.3",
@@ -62,6 +64,7 @@
     "ng2-timeline": "^0.1.1",
     "ngx-bootstrap": "^1.9.1",
     "rxjs": "^5.1.0",
+    "snapsvg": "^0.5.1",
     "systemjs": "0.19.39",
     "tether-shepherd": "^1.8.1",
     "zone.js": "^0.8.4"

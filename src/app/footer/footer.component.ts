@@ -14,4 +14,8 @@ export class FooterComponent {
     this.cookieService.removeAll();
   }
 
+  reveal() {
+    $('#loan').toggle();
+  }
+
 }

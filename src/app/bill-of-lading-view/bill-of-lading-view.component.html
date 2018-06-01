@@ -18,7 +18,7 @@
       <label for="issueDate">Issue Date</label>
       <input type="text" class="form-control" id="issueDate" required [ngModel]="bol.issueDate | date" name="issueDate">
       <label for="dateOfShipment">Shipment Date</label>
-      <input type="text" class="form-control" id="dateOfShipment" required [(ngModel)]="bol.dateOfShipment" name="dateOfShipment">
+      <input type="text" class="form-control" id="dateOfShipment" required [ngModel]="bol.dateOfShipment | date" name="dateOfShipment">
     </div>
   </div>
 

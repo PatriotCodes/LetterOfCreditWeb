@@ -35,10 +35,10 @@ export class ActiveLocComponent implements OnInit {
               }
 
   public payAdvisory(id: string) {
+    this.disabled = true;
     this.locService.payAdviser(id)
     .then(response => this.callResponse(response))
     .catch(err => err);
-    this.disabled = true;
   }
 
   public openBol(id: string) {

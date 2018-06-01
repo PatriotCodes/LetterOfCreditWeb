@@ -5,10 +5,10 @@
     <li id="2" (click)="launchBuyer()">- Buyer applies for letter of credit</li>
     <li id="3" (click)="launchIssuing()">- Issuing bank accepts application</li>
     <li id="4" (click)="launchSeller()">- Seller adds bill of lading and ships</li>
-    <li id="7" (click)="launchAdvising()">- Advising bank pays seller</li>
-    <li id="8" (click)="launchIssuing()">- Issuing bank pays advising bank</li>
-    <li id="6" (click)="launchIssuingCash()">- Issuing bank loans cash to buyer</li>
-    <li id="9" (click)="launchBuyer()">- Buyer pays issuing bank</li>
+    <li id="5" (click)="launchAdvising()">- Advising bank pays seller</li>
+    <li id="6" (click)="launchIssuing()">- Issuing bank pays advising bank</li>
+    <li id="loan" (click)="launchIssuingCash()" hidden>- Issuing bank loans cash to buyer</li>
+    <li id="8" (click)="launchBuyer()">- Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
     {{buttonTxt}}
@@ -121,8 +121,8 @@
 
         <div class="content">
             <div class="centered-y">
-              <h2>Notary view</h2>
-              <h2>Coming soon</h2>
+              <h4>Notary view</h4>
+              <h4>Coming soon</h4>
             </div>
         </div>
       </button>
