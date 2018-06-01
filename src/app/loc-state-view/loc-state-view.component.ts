@@ -1,13 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LocState } from './../loc-state';
-import { Party } from './../party'
-import { CreditType } from './../services/credit-types/credit-type';
-import { Currency } from './../services/common/currency';
-import { WeightUnit } from './../services/common/weight-unit';
 import { CommonService } from './../services/common/common.service';
 import { LocService } from './../loc.service';
-import { DatePipe } from '@angular/common';
-import { DatepickerModule } from 'ngx-bootstrap';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';

@@ -111,7 +111,7 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.applicationDate = d;
     this.loc.applicationId = this.data.invoice.invoiceId;
     this.loc.typeCredit = 'SIGHT';
-    this.loc.amount = '30000 USD';
+    this.loc.amount = '1300000 USD';
 
     let year = d.getFullYear() + 1
     // TODO: Use a real date, instead of padded strings.
@@ -121,19 +121,19 @@ export class ApplyForLocComponent implements OnInit {
 
     this.loc.portLoadingAddress = 'The Port';
     this.loc.portLoadingCity = 'Shenzhen';
-    this.loc.portLoadingCountry = 'CH'
-    this.loc.portDischargeAddress = '3 Sea Way';
-    this.loc.portDischargeCity = 'Des Moines';
-    this.loc.portDischargeCountry = 'US';
+    this.loc.portLoadingCountry = 'CN';
+    this.loc.portDischargeAddress = 'Maritime Centre';
+    this.loc.portDischargeCity = 'Liverpool';
+    this.loc.portDischargeCountry = 'UK';
     this.loc.goodsDescription = 'OLED 6" Screens';
-    this.loc.goodsQuantity = 10000;
+    this.loc.goodsQuantity = 100000;
     this.loc.goodsWeight = 1000;
     this.loc.goodsWeightUnit = 'KG';
-    this.loc.goodsUnitPrice = 400;
+    this.loc.goodsUnitPrice = 13;
     this.loc.goodsPurchaseOrderRef = this.data.invoice.invoiceId;
-    this.loc.placePresentationCountry = 'US';
-    this.loc.placePresentationCity = 'Des Moines';
-    this.loc.placePresentationState = 'Des Moines';
+    this.loc.placePresentationCountry = 'UK';
+    this.loc.placePresentationCity = 'Liverpool';
+    this.loc.placePresentationState = 'Liverpool';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
@@ -19,6 +19,8 @@ export class StaticMapComponent implements OnInit, DoCheck {
   shrinkTxt = '<';
   buttonTxt = this.expandTxt;
   unfolded = false;
+
+  @ViewChildren('marker') el: QueryList<any>;
 
   ngDoCheck(): void {
     let body = document.getElementsByTagName('body')[0];
@@ -84,25 +86,25 @@ export class StaticMapComponent implements OnInit, DoCheck {
   launchSeller() {
     this.portService.current = 10016;
     this.identityService.current = 'seller';
-    this.dialog.open(DashboardSellerComponent, { width: '80%' });
+    this.dialog.open(DashboardSellerComponent, { width: '85%', height: '85%' });
   }
 
   launchBuyer() {
     this.portService.current = 10013;
     this.identityService.current = 'buyer';
-    this.dialog.open(DashboardBuyerComponent, { width: '80%' });
+    this.dialog.open(DashboardBuyerComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvising() {
     this.portService.current = 10010;
     this.identityService.current = 'advising';
-    this.dialog.open(DashboardAdvisingComponent, { width: '80%' });
+    this.dialog.open(DashboardAdvisingComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuing() {
     this.portService.current = 10007;
     this.identityService.current = 'issuing';
-    this.dialog.open(DashboardIssuerComponent, { width: '80%' });
+    this.dialog.open(DashboardIssuerComponent, { width: '85%', height: '85%' });
   }
 
   launchCentral() {

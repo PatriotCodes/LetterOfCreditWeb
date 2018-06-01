@@ -66,9 +66,9 @@ mat-toolbar {
 }
 
 .body-wrapper {
-  margin-top: 100px;
-  max-height: 100vh !important;
-  overflow-x: hidden;
+  // margin-top: 100px;
+  // max-height: 100vh !important;
+  // overflow-x: hidden;
 }
 
 input {
@@ -1360,4 +1360,17 @@ tr:hover {
 .force-overflow
 {
 	min-height: 450px;
+}
+.red {
+  color: rgb(222, 32, 38);
+  font-weight: bolder;
+}
+.white {
+  color: #fff;
+}
+.txInfo {
+  color: #fff;
+}
+.transactions {
+  padding: 10px;
 }

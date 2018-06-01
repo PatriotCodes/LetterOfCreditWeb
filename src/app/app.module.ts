@@ -155,7 +155,6 @@ import { SafePipe } from './safe.pipe';
     AwaitingApprovalIssuerComponent,
     SpinnerComponent,
     BillOfLadingViewComponent,
-    //LoginComponent,
     CommaSeperatedNumberPipe,
     TimelineComponent,
     ViewBolTimelineModalComponent,

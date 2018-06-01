@@ -15,22 +15,22 @@
         <tbody>
           <tr *ngFor="let invoice of invoices" (click)="openInvoiceModal(invoice.invoiceId)" class="clickable">
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.invoiceId}}</a>
+              <a>{{invoice.invoiceId}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.buyerName}}</a>
+              <a>{{invoice.buyerName}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.sellerName}}</a>
+              <a>{{invoice.sellerName}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsQuantity}}</a>
+              <a>{{invoice.goodsQuantity}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsUnitPrice}}</a>
+              <a>{{invoice.goodsUnitPrice}}</a>
             </td>
             <td>
-              <a (click)="openInvoiceModal(invoice.invoiceId)">{{invoice.goodsDescription}}</a>
+              <a>{{invoice.goodsDescription}}</a>
             </td>
           </tr>
         </tbody>

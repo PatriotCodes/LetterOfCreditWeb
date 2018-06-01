@@ -56,18 +56,18 @@ export class InvoiceCreateComponent {
 
   autoComplete(): void {
     this.identityService.getMe().then(response => this.inv.sellerName = response.json().me);
-    let d = new Date()
+    let d = new Date();
     this.inv.invoiceDate = d;
     this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
-    this.inv.sellerAddress = '123 Main St. Shenzhen, China';
-    this.inv.buyerName = '';
-    this.inv.buyerAddress = '123 Street. Iowa, US';
+    this.inv.sellerAddress = 'Dong Men Street';
+    this.inv.buyerName = 'Analog Importers';
+    this.inv.buyerAddress = '3 Smithdown Road. Liverpool, L2 6RE';
     this.inv.term = 5;
     this.inv.goodsDescription = 'OLED 6" Screens';
-    this.inv.goodsPurchaseOrderRef = 'Mock1';
-    this.inv.goodsQuantity = 10000;
-    this.inv.goodsUnitPrice = 3;
-    this.inv.goodsGrossWeight = 30;
+    this.inv.goodsPurchaseOrderRef = 'REF' + Math.round(Math.random() * 1000000).toString();
+    this.inv.goodsQuantity = 100000;
+    this.inv.goodsUnitPrice = 13;
+    this.inv.goodsGrossWeight = 1000;
 
     this.glow = true;
   }

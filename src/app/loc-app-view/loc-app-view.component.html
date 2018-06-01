@@ -46,7 +46,7 @@
     <div class="form-group">
       <label for="expiryDate" class="control-label col-sm-3">Expiry</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="expiryDate" required [(ngModel)]="loc.expiryDate" name="expiryDate" disabled>
+        <input type="text" class="form-control" id="expiryDate" required [ngModel]="loc.expiryDate | date" name="expiryDate" disabled>
       </div>
     </div>
 
@@ -139,7 +139,7 @@
     <div class="form-group">
       <label class="control-label col-sm-3">Last Shipment Date</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="lastShipmentDate" [(ngModel)]="loc.lastShipmentDate" name="lastShipmentDate"
+        <input type="text" class="form-control" id="lastShipmentDate" [ngModel]="loc.lastShipmentDate | date" name="lastShipmentDate"
           disabled>
       </div>
     </div>
@@ -160,14 +160,14 @@
 
     <div class="row form-group col-sm-12">
       <label>Hash</label>
-      <div>{{loc.txRef}}</div>
+      <div class="txInfo">{{loc.txRef}}</div>
     </div>
 
     <div *ngFor="let signature of loc.signatures; let idx = index">
       <div class="form-group col-sm-12">
         <label>Signature {{idx + 1}}</label>
-        <div>{{loc.signers[idx]}}</div>
-        <div>{{loc.signatures[idx].substring(0, 64)}}</div>
+        <div class="txInfo">{{loc.signers[idx]}}</div>
+        <div class="txInfo">{{loc.signatures[idx].substring(0, 64)}}</div>
       </div>
 
       <div class="row"></div>

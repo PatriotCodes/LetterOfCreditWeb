@@ -61,19 +61,22 @@ button {
 }
 .pulse,
 #marker-seller > svg {
-	fill: #068bf7;
+  fill: #068bf7;
 }
 #marker-advising > svg {
-	fill: #97aaff;
+  fill: #97aaff;
 }
 #marker-buyer > svg {
-	fill: #f70626;
+  fill: #f70626;
 }
 #marker-issuing > svg {
-	fill: #f798e2;
+  fill: #f798e2;
 }
 #marker-central > svg {
-	fill: #6cfd9c;
+  fill: #6cfd9c;
+}
+#marker-notary > svg {
+  fill: #ffee00;
 }
 #marker-notary > svg {
 	fill: #ffee00;
@@ -291,10 +294,11 @@ button {
 
 .sidenav {
   z-index: 1;
-  position: fixed;
+  position: absolute;
+  top: 0;
   left: -300px;
   width: 300px;
-  height: 88%;
+  height: 100%;
   padding-top: 0.4%;
   background-color: #000;
   transition: all 0.6s;
@@ -435,13 +439,15 @@ li {
   background-color: rgba(0, 0, 0, 0.7);
   font-weight: bolder;
 }
+
+h4 {
+  margin-left: 8px;
+  margin-bottom: 15px !important;
+}
 h2 {
   color: #fff;
-  margin-left: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 25px !important;
 }
-
-
 
 ///////////////////////////
 
@@ -744,4 +750,22 @@ body {
 .rotate .angle:nth-child(5) .position{
   /* animate the fly out of the particle and its fade out at the end */
   -webkit-animation: position 2.45s linear 0s infinite;
+}
+
+.line {
+  height: 3px;
+  background-color: #aaa;
+  transform-origin: left center;
+  position: absolute;
+  z-index: 1;
+}
+.marker-label {
+  position: absolute;
+  height: 20px;
+  width: auto;
+  background-color: #000;
+  padding: 5px 10px;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 100;
 }
