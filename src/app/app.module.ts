@@ -166,7 +166,7 @@ import { SafePipe } from './safe.pipe';
     StaticMapComponent,
     MapLegendComponent,
     TransactionsComponent,
-	  CashIssuanceComponent,
+    CashIssuanceComponent,
     SafePipe,
     TestComponent
   ],
