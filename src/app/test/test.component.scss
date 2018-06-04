@@ -1,23 +1,6 @@
-.col4 {
-  width: 33%;
-  float: left;
-  display: inline;
-  padding: 5px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-
 svg {
   float: left;
   display: inline;
-  background: rgba(255, 255, 255, 0.1);
   width: 100%;
-  max-width: 580px;
-  height: 200px;
-  padding: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  height: 100%;
 }
