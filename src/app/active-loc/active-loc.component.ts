@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LocStateSummary } from './../loc-state-summary';
 import { LocService } from './../loc.service';
-import { DocsService } from './../services/docs.service'
-import { CurrencyPipe } from '@angular/common';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ActivatedRoute } from '@angular/router';
 import { RefreshService } from './../services/refresh.service';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'active-loc',

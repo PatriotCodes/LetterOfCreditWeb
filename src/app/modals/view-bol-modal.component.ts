@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { LocSummary } from './../loc-summary'
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ViewBolTimelineModalComponent } from './view-bol-timeline-modal.component'
 

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { LocSummary } from './../loc-summary'
-
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'modal-content',

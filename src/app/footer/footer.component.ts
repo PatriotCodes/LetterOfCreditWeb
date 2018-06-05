@@ -16,7 +16,6 @@ export class FooterComponent {
 
   reveal() {
     $('#loan').toggle();
-    $('#other-markers').fadeToggle({duration: 1000});
   }
 
 }

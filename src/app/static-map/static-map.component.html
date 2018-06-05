@@ -8,7 +8,7 @@
     <li id="4" (click)="launchSeller()">- Seller adds bill of lading and ships</li>
     <li id="5" (click)="launchAdvising()">- Advising bank pays seller</li>
     <li id="6" (click)="launchIssuing()">- Issuing bank pays advising bank</li>
-    <li id="loan" (click)="launchIssuingCash()" hidden>- Issuing bank loans cash to buyer</li>
+    <li id="loan" (click)="launchIssuingCash()">- Issuing bank loans cash to buyer</li>
     <li id="8" (click)="launchBuyer()">- Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
@@ -135,7 +135,7 @@
     </div>
 
     <div class="glow2"></div>
-    <div class="particles">
+    <div class="particles" (click)="launch()">
 
       <div class="rotate">
 
@@ -180,7 +180,5 @@
   </div>
 
 </div>
-
-<button id="launch" (click)="launch()" value="launch"></button>
 
 <app-footer></app-footer>

@@ -62,8 +62,10 @@ export class StaticMapComponent implements OnInit, DoCheck {
   }
 
   launch() {
-    this.expandMenu();
-    $('#map-legend').fadeToggle();
+    $('#loan').toggle();
+    setTimeout(() => this.expandMenu(), 300);
+    setTimeout(() => $('#map-legend').fadeToggle({duration: 1000}), 1500);
+    setTimeout(() => $('#other-markers').fadeToggle({duration: 1500}), 2000);
   }
 
   expandMenu() {

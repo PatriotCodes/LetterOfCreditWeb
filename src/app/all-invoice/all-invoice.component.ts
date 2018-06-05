@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component';
 import { RefreshService } from '../services/refresh.service';
 import { ShepherdService } from '../services/shepherd.service';

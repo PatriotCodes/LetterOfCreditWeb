@@ -1,14 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocStateSummary } from './../loc-state-summary';
 import { LocService } from './../loc.service';
-import { CurrencyPipe } from '@angular/common';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DocsModalComponent } from './../modals/docs-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
-import { Observable } from 'rxjs/Observable';
 import { RefreshService } from '../services/refresh.service';
 
 @Component({

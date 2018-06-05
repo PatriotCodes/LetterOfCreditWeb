@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TxSummary } from './../tx-summary';
 import { TxService } from './../services/tx.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { RefreshService } from './../services/refresh.service';
 
 @Component({
