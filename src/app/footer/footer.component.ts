@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CookieService, CookieOptions } from 'angular2-cookie/core';
+import { CookieService } from 'angular2-cookie/core';
 
 @Component({
   selector: 'app-footer',
@@ -16,6 +16,7 @@ export class FooterComponent {
 
   reveal() {
     $('#loan').toggle();
+    $('#other-markers').fadeToggle({duration: 1000});
   }
 
 }

@@ -1,0 +1,14 @@
+.other-marker {
+  position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	-webkit-contain: strict;
+	-moz-contain: strict;
+	-ms-contain: strict;
+	-o-contain: strict;
+	contain: strict;
+}

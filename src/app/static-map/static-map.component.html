@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div>
+<div id="map-legend" hidden>
   <app-map-legend></app-map-legend>
 </div>
 
@@ -100,7 +100,6 @@
         </div>
       </button>
 
-
       <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
         style="top:33.3%;left:31%;margin:-10px 0 0 -10px">
         <circle cx="9.7" cy="10.5" r="3.3" class="me" />
@@ -128,6 +127,10 @@
             </div>
         </div>
       </button>
+
+
+    <app-rest-of-network></app-rest-of-network>
+
 
     </div>
 
@@ -177,5 +180,7 @@
   </div>
 
 </div>
+
+<button id="launch" (click)="launch()" value="launch"></button>
 
 <app-footer></app-footer>

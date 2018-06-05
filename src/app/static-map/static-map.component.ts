@@ -24,11 +24,6 @@ export class StaticMapComponent implements OnInit, DoCheck {
   @ViewChildren('marker') el: QueryList<any>;
 
   ngDoCheck(): void {
-    let body = document.getElementsByTagName('body')[0];
-    body.classList.remove('background-image-seller');
-    body.classList.remove('background-image-buyer');
-    body.classList.remove('background-image-issuing');
-    body.classList.remove('background-image-advising');
   }
 
   constructor(private router: Router, private dialog: MatDialog,
@@ -64,7 +59,11 @@ export class StaticMapComponent implements OnInit, DoCheck {
       }
     });
 
+  }
+
+  launch() {
     this.expandMenu();
+    $('#map-legend').fadeToggle();
   }
 
   expandMenu() {
