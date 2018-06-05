@@ -27,10 +27,10 @@ export class LocStateSummary implements Serializable<LocStateSummary> {
     this.issued = input.third.issued;
     this.terminated = input.third.terminated;
 
-    this.beneficiary = input.third.props.beneficiary.substring(2, input.third.props.beneficiary.indexOf(","));
-    this.applicant = input.third.props.applicant.substring(2, input.third.props.applicant.indexOf(","));
-    this.advisory = input.third.props.advisingBank.substring(2, input.third.props.advisingBank.indexOf(","));
-    this.issuer = input.third.props.issuingBank.substring(2, input.third.props.issuingBank.indexOf(","));
+    this.beneficiary = input.third.beneficiary.substring(2, input.third.beneficiary.indexOf(","));
+    this.applicant = input.third.applicant.substring(2, input.third.applicant.indexOf(","));
+    this.advisory = input.third.advisingBank.substring(2, input.third.advisingBank.indexOf(","));
+    this.issuer = input.third.issuingBank.substring(2, input.third.issuingBank.indexOf(","));
     this.amount = input.third.props.amount;
     this.quantity = input.third.props.descriptionGoods[0].quantity;
     this.orderRef = input.third.props.descriptionGoods[0].purchaseOrderRef;
