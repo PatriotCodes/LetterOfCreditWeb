@@ -60,7 +60,7 @@ export class InvoiceCreateComponent {
     this.inv.invoiceDate = d;
     this.inv.invoiceId = Math.round(Math.random() * 1000000).toString();
     this.inv.sellerAddress = 'Dong Men Street';
-    this.inv.buyerName = 'Analog Importers';
+    this.inv.buyerName = '';
     this.inv.buyerAddress = '3 Smithdown Road. Liverpool, L2 6RE';
     this.inv.term = 5;
     this.inv.goodsDescription = 'OLED 6" Screens';
