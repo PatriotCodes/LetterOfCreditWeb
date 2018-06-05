@@ -49,7 +49,7 @@ export class LocState implements Serializable<LocState> {
   public signatures: String[];
 
   deserialize(input: any) {
-    this.letterOfCreditId = input.third.props.letterOfCreditID;
+    this.letterOfCreditId = input.third.props.letterOfCreditApplicationID;
     this.applicationDate = input.third.props.applicationDate;
     this.issueDate = input.third.props.issueDate;
     this.typeCredit = input.third.props.typeCredit;

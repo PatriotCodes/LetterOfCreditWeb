@@ -20,7 +20,7 @@ export class LocStateSummary implements Serializable<LocStateSummary> {
   plAdded: boolean;
 
   deserialize(input: any) {
-    this.id = input.third.props.letterOfCreditID;
+    this.id = input.third.props.letterOfCreditApplicationID;
     this.beneficiaryPaid = input.third.beneficiaryPaid;
     this.advisoryPaid = input.third.advisoryPaid;
     this.issuerPaid = input.third.issuerPaid;
