@@ -4,7 +4,6 @@ import { Loc } from './loc';
 import { LocState } from './loc-state';
 import { LocSummary } from './loc-summary';
 import { LocStateSummary } from './loc-state-summary';
-import { ClaimFund } from './claim-fund';
 import { Cash } from './cash';
 import { Party } from './party';
 import { Stats } from './stats';

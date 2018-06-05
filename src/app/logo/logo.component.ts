@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-  folder = './../../assets/';
+  folder = 'assets/';
   logoImagePath: string;
   me: string;
 
