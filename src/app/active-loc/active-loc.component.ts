@@ -53,6 +53,7 @@ export class ActiveLocComponent implements OnInit {
 
   callResponse(result: string): void {
     this.statusService.status = result;
+    this.update();
     this.refreshService.confirmMission();
     this.refreshService.loading = false;
     this.disabled = false;

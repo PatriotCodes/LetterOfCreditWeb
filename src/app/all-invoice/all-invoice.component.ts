@@ -43,7 +43,7 @@ export class AllInvoiceComponent implements OnInit {
   }
 
   update() {
-    this.docService.getInvoices().then(invoices => this.invoices = invoices)
+    this.docService.getInvoices().then(invoices => this.invoices = invoices);
   }
 
   ngOnInit() {

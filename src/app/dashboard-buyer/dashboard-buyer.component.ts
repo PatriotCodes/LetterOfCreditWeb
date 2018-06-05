@@ -18,7 +18,7 @@ export class DashboardBuyerComponent implements OnInit {
     // let body = document.getElementsByTagName('body')[0];
     // body.classList.add('background-image-buyer');
 
-    let bodyWrapper = document.getElementsByClassName('body-wrapper')[0];
+    let bodyWrapper = document.getElementsByClassName('mat-dialog-container')[0];
     bodyWrapper.classList.add('background-image-buyer');
 
     let demoDone = this.cookieService.get('buyerDemoDone');

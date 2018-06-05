@@ -17,10 +17,10 @@ export class AllInvoiceSellerComponent implements OnInit {
   constructor(private docService: DocsService,
     private modalService: BsModalService,
     private refreshService: RefreshService) {
-    refreshService.missionConfirmed$.subscribe(
-      result => {
-        this.update();
-      });
+      refreshService.missionConfirmed$.subscribe(
+        result => {
+          this.update();
+        });
   }
 
   public openInvoiceModal(ref: string) {
