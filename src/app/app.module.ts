@@ -94,6 +94,7 @@ import { SafePipe } from './safe.pipe';
 import { TestComponent } from './test/test.component';
 import { RestOfNetworkComponent } from './rest-of-network/rest-of-network.component';
 import { LaunchComponent } from './launch/launch.component';
+import { GraphicalTransactionsComponent } from './graphical-transactions/graphical-transactions.component';
 
 @NgModule({
   imports: [
@@ -172,7 +173,8 @@ import { LaunchComponent } from './launch/launch.component';
     SafePipe,
     TestComponent,
     RestOfNetworkComponent,
-    LaunchComponent
+    LaunchComponent,
+    GraphicalTransactionsComponent
 ],
     providers: [
     LocService,
