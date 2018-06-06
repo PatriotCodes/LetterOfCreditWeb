@@ -1,8 +1,7 @@
 import { Component, ViewContainerRef, ViewChild } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';

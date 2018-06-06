@@ -16,7 +16,8 @@
 	-webkit-animation:floating-ship 3s aletrnate ;
 	-webkit-transition-timing-function: cubic-bezier(0,.5,.99,.54);
 	-moz-animation:floating-ship 3s aletrnate ;
-	-moz-transition-timing-function: cubic-bezier(0,.5,.99,.54);
+  -moz-transition-timing-function: cubic-bezier(0,.5,.99,.54);
+  z-index: 9999999;
 }
  @-webkit-keyframes floating-ship {
 	 from {-webkit-transform:rotate(4deg);}
@@ -510,7 +511,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 	}
 }
 .here-there {
-  z-index: 9999;
+  z-index: 9999999;
 	-webkit-animation:movenow 2s infinite ;
 	-moz-animation:movenow 2s infinite ;
 	position:absolute;

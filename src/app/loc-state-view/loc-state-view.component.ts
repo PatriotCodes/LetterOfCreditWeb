@@ -3,8 +3,7 @@ import { LocState } from './../loc-state';
 import { CommonService } from './../services/common/common.service';
 import { LocService } from './../loc.service';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'loc-state-view',

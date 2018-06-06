@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LocSummary } from './../loc-summary';
 import { LocService } from './../loc.service';
-import { CurrencyPipe } from '@angular/common';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
 import { RefreshService } from '../services/refresh.service';

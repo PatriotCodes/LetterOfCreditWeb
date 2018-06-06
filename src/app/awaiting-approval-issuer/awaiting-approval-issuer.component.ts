@@ -1,8 +1,7 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocSummary } from './../loc-summary';
 import { LocService } from './../loc.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ApproveLocModalComponent } from './../modals/approve-loc-modal.component';
 import { RefreshService } from './../services/refresh.service';
 

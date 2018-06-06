@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { LocStateSummary } from './../loc-state-summary'
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { LocStateSummary } from './../loc-state-summary';
 
 @Component({
   selector: 'modal-content',
@@ -21,7 +21,7 @@ import { LocStateSummary } from './../loc-state-summary'
 })
 export class CreateBolModalComponent {
   public title: string;
-  public locSummary: LocStateSummary
+  public locSummary: LocStateSummary;
   constructor(public bsModalRef: BsModalRef) {}
 
   public close() {

@@ -8,7 +8,7 @@
     <li id="4" (click)="launchSeller()">- Seller adds bill of lading and ships</li>
     <li id="5" (click)="launchAdvising()">- Advising bank pays seller</li>
     <li id="6" (click)="launchIssuing()">- Issuing bank pays advising bank</li>
-    <li id="loan" (click)="launchIssuingCash()" hidden>- Issuing bank loans cash to buyer</li>
+    <li id="loan" (click)="launchIssuingCash()">- Issuing bank loans cash to buyer</li>
     <li id="8" (click)="launchBuyer()">- Buyer pays issuing bank</li>
   </ul>
   <div id="expand" (click)="expandMenu()">
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div>
+<div id="map-legend" hidden>
   <app-map-legend></app-map-legend>
 </div>
 
@@ -28,10 +28,6 @@
         />
       </svg>
 
-      <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
-        style="top:50.98999767%;left:75.46972153%;margin:-10px 0 0 -10px">
-        <circle cx="9.7" cy="10.5" r="3.3" class="me" />
-      </svg>
       <button id="marker-seller" class='marker' style="top:50.98999767%;left:75.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchSeller()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
@@ -39,12 +35,6 @@
           />
         </svg>
       </button>
-
-
-      <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
-        style="top:46.98999767%;left:70.46972153%;margin:-10px 0 0 -10px">
-        <circle cx="9.7" cy="10.5" r="3.3" class="me" />
-      </svg>
 
       <button id="marker-advising" class="map-point marker" style="top:46.98999767%;left:70.46972153%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
@@ -63,12 +53,6 @@
         </div>
       </button>
 
-
-      <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
-        style="top:31%;left:47.2%;margin:-10px 0 0 -10px">
-        <circle cx="9.7" cy="10.5" r="3.3" class="me" />
-      </svg>
-
       <button id="marker-buyer" class='marker' style="top:31%;left:47.2%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchBuyer()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
           style="right:0;bottom:0;margin:auto">
@@ -77,11 +61,6 @@
         </svg>
       </button>
 
-
-      <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
-        style="top:33.3%;left:44.55%;margin:-10px 0 0 -10px">
-        <circle cx="9.7" cy="10.5" r="3.3" class="me" />
-      </svg>
 
       <button id="marker-issuing" class="map-point marker" style="top:33.3%;left:44.55%;width:50px;height:50px;margin:-40px 0 0 -25px">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.75 30" width="20" height="30" preserveAspectRatio="xMidYMin meet"
@@ -100,10 +79,6 @@
         </div>
       </button>
 
-      <svg class="pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" preserveAspectRatio="xMidYMid slice"
-        style="top:70.3%;left:34%;margin:-10px 0 0 -10px">
-        <circle cx="9.7" cy="10.5" r="3.3" class="me" />
-      </svg>
       <button id="marker-notary" class='marker map-point' style="top:70.3%;left:34%;width:50px;height:50px;margin:-40px 0 0 -25px" (click)="launchNotary()">
         <img src="assets/notary.png" width="30" height="30" preserveAspectRatio="xMidYMin meet" style="right:0;bottom:0;margin:auto">
 
@@ -115,10 +90,14 @@
         </div>
       </button>
 
+
+    <app-rest-of-network></app-rest-of-network>
+
+
     </div>
 
     <div class="glow2"></div>
-    <div class="particles">
+    <div class="particles" (click)="launch()">
 
       <div class="rotate">
 

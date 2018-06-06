@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Loc } from './../loc';
 import { CreditType } from './../services/credit-types/credit-type';
 import { CreditTypeService } from './../services/credit-types/credit-type.service';
@@ -6,8 +6,7 @@ import { Currency } from './../services/common/currency';
 import { WeightUnit } from './../services/common/weight-unit';
 import { CommonService } from './../services/common/common.service';
 import { LocService } from './../loc.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';

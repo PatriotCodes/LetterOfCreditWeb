@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CookieService } from 'angular2-cookie/core';
 import { TourService } from '../services/tour.service';
 import { StatusService } from '../services/status.service';
@@ -22,7 +21,7 @@ export class DashboardSellerComponent implements OnInit {
   ngOnInit() {
     // let body = document.getElementsByTagName('body')[0];
     // body.classList.add('background-image-seller');
-    let bodyWrapper = document.getElementsByClassName('body-wrapper')[0];
+    let bodyWrapper = document.getElementsByClassName('mat-dialog-container')[0];
     bodyWrapper.classList.add('background-image-seller');
 
     let demoDone = this.cookieService.get('sellerDemoDone');

@@ -92,6 +92,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { CashIssuanceComponent } from './cash-issuance/cash-issuance.component';
 import { SafePipe } from './safe.pipe';
 import { TestComponent } from './test/test.component';
+import { RestOfNetworkComponent } from './rest-of-network/rest-of-network.component';
+import { LaunchComponent } from './launch/launch.component';
 
 @NgModule({
   imports: [
@@ -168,8 +170,10 @@ import { TestComponent } from './test/test.component';
     TransactionsComponent,
     CashIssuanceComponent,
     SafePipe,
-    TestComponent
-  ],
+    TestComponent,
+    RestOfNetworkComponent,
+    LaunchComponent
+],
     providers: [
     LocService,
     DocsService,

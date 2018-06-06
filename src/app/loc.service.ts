@@ -13,6 +13,7 @@ import { PortProviderService } from './services/port-provider.service';
 import { UrlProviderService } from './services/url-provider.service';
 import { MatDialog } from '@angular/material';
 import { ErrorFeedbackComponent } from './error-feedback/error-feedback.component';
+import { RefreshService } from './services/refresh.service';
 
 @Injectable()
 export class LocService {
@@ -20,7 +21,8 @@ export class LocService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http, private portService: PortProviderService,
-    private urlService: UrlProviderService, private dialog: MatDialog) { }
+    private urlService: UrlProviderService, private dialog: MatDialog,
+    private refreshService: RefreshService) { }
 
   getLocApp(id: string): Promise<Loc> {
     let _url = this.getUrl('/api/loc/get-loc-app');
@@ -257,6 +259,7 @@ export class LocService {
   private handleError(response: Response): Promise<any> {
     this.dialog.open(ErrorFeedbackComponent,
       { data: { error: response.text()}});
+      this.refreshService.loading = false;
     return Promise.reject(response);
   }
 }

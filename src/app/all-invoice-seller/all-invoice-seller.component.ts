@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Invoice } from './../invoice';
 import { DocsService } from './../services/docs.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { RefreshService } from './../services/refresh.service';
 import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.component'
 
@@ -13,15 +12,15 @@ import { ViewInvoiceModalComponent } from './../modals/view-invoice-modal.compon
 })
 export class AllInvoiceSellerComponent implements OnInit {
   bsModalRef: BsModalRef;
-  invoices: Invoice[] = []
+  invoices: Invoice[] = [];
 
   constructor(private docService: DocsService,
     private modalService: BsModalService,
     private refreshService: RefreshService) {
-    refreshService.missionConfirmed$.subscribe(
-      result => {
-        this.update();
-      });
+      refreshService.missionConfirmed$.subscribe(
+        result => {
+          this.update();
+        });
   }
 
   public openInvoiceModal(ref: string) {

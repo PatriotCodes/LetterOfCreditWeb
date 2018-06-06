@@ -1,9 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Bol } from './../bol'
-import { DocsService } from './../services/docs.service'
-import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
+import { Bol } from './../bol';
+import { DocsService } from './../services/docs.service';
+import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 @Component({
   selector: 'bill-of-lading-view',
@@ -11,8 +10,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
   styleUrls: ['./bill-of-lading-view.component.scss']
 })
 export class BillOfLadingViewComponent implements OnChanges {
-  @Input() id: string
-  @Input() requestor: string
+  @Input() id: string;
+  @Input() requestor: string;
   bol: Bol;
 
   constructor(

@@ -11,6 +11,7 @@ import { PortProviderService } from './port-provider.service';
 import { UrlProviderService } from './url-provider.service';
 import { MatDialog } from '@angular/material';
 import { ErrorFeedbackComponent } from '../error-feedback/error-feedback.component';
+import { RefreshService } from './refresh.service';
 
 @Injectable()
 export class DocsService {
@@ -18,7 +19,8 @@ export class DocsService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http, private portService: PortProviderService,
-    private urlService: UrlProviderService, private dialog: MatDialog) { }
+    private urlService: UrlProviderService, private dialog: MatDialog,
+    private refreshService: RefreshService) { }
 
   getUrl(path: string) {
     return this.urlService.url + ':' + this.portService.current + path;
@@ -101,6 +103,7 @@ export class DocsService {
   private handleError(response: Response): Promise<any> {
     this.dialog.open(ErrorFeedbackComponent,
       { data: { error: response.text() } });
+      this.refreshService.loading = false;
     return Promise.reject(response);
   }
 }

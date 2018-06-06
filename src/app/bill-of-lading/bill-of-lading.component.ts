@@ -1,10 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Bol } from './../bol';
-import { Party } from './../party';
 import { DocsService } from './../services/docs.service';
 import { CreateBolModalComponent } from './../modals/create-bol-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { LocStateSummary } from './../loc-state-summary';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';

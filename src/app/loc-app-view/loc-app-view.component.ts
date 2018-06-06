@@ -1,9 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Loc } from './../loc';
 import { LocService } from './../loc.service';
-import { DatePipe } from '@angular/common';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewLocAppModalComponent } from './../modals/view-loc-app-modal.component';
 
 @Component({
@@ -15,7 +13,7 @@ export class LocAppViewComponent implements OnChanges {
   @Input() ref: string;
   loc: Loc;
   bsModalRef: BsModalRef;
-  public title: string
+  public title: string;
 
   constructor(
     private locService: LocService,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from "rxjs";
-import { TimerObservable } from "rxjs/observable/TimerObservable";
+import { Subscription } from 'rxjs';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
 @Injectable()
 export class RefreshService {
@@ -19,9 +19,9 @@ export class RefreshService {
   }
 
   constructor() {
-    let timer = TimerObservable.create(100, 6000);
+    /*let timer = TimerObservable.create(100, 5000);
     this.subscription = timer.subscribe(t => {
       this.confirmMission();
-    });
+    });*/
   }
 }
