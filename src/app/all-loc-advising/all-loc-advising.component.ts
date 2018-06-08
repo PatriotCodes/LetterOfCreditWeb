@@ -6,8 +6,8 @@ import { ViewBolModalComponent } from './../modals/view-bol-modal.component'
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
-import * as global from '../globals';
 import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
+import * as global from '../globals';
 
 @Component({
   selector: 'all-loc-advising',

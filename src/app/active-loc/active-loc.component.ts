@@ -37,6 +37,7 @@ export class ActiveLocComponent implements OnInit {
     this.refreshService.loading = true;
     this.disabled = true;
     this.gtService.setMarkers(global.issuingBankName, global.advisingBankName);
+    this.gtService.cash = true;
     this.locService.payAdviser(id)
     .then(response => this.callResponse(response))
     .catch(err => err);
