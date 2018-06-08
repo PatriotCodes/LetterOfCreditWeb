@@ -95,40 +95,36 @@ export class StaticMapComponent implements OnInit {
   }
 
   launchSeller() {
-    this.portService.current = 10016;
+    this.portService.current = 10014;
     this.identityService.current = 'seller';
     this.dialog.open(DashboardSellerComponent, { width: '85%', height: '85%' });
   }
 
   launchBuyer() {
-    this.portService.current = 10013;
+    this.portService.current = 10017;
     this.identityService.current = 'buyer';
     this.dialog.open(DashboardBuyerComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvising() {
-    this.portService.current = 10010;
+    this.portService.current = 10020;
     this.identityService.current = 'advising';
     this.dialog.open(DashboardAdvisingComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuing() {
-    this.portService.current = 10007;
+    this.portService.current = 10023;
     this.identityService.current = 'issuing';
     this.dialog.open(DashboardIssuerComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvisingCash() {
-    this.portService.current = 10010;
+    this.portService.current = 10020;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuingCash() {
-    this.portService.current = 10007;
+    this.portService.current = 10023;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
-  }
-
-  launchNotary() {
-    this.portService.current = 10004;
   }
 }
