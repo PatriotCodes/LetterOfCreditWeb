@@ -14,6 +14,7 @@ import { IdentityService } from '../services/identity.service';
 import { Invoice } from '../invoice';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PeersComponent } from '../peers/peers.component';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'apply-for-loc',
@@ -48,6 +49,7 @@ export class ApplyForLocComponent implements OnInit {
     public refreshService: RefreshService,
     private identityService: IdentityService,
     private tourService: TourService,
+    private gtService: GraphicalTransactionsService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -147,9 +149,6 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCreditTypes();
-    this.getCurrencies();
-    this.getWeightUnits();
     this.getMe();
     this.loc.applicant = this.applicant;
     this.loc.applicationId = this.data.invoice.invoiceId;
@@ -158,6 +157,7 @@ export class ApplyForLocComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.gtService.setMarkers(this.loc.applicant, this.loc.issuer);
     this.createLoc();
   }
 }

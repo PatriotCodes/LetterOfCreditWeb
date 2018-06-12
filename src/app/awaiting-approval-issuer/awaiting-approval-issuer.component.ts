@@ -4,6 +4,8 @@ import { LocService } from './../loc.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ApproveLocModalComponent } from './../modals/approve-loc-modal.component';
 import { RefreshService } from './../services/refresh.service';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
+import * as global from '../globals';
 
 @Component({
   selector: 'awaiting-approval-issuer',
@@ -17,7 +19,8 @@ export class AwaitingApprovalIssuerComponent implements OnInit {
 
   constructor(private locService: LocService,
     private modalService: BsModalService,
-    private refreshService: RefreshService) {
+    private refreshService: RefreshService,
+    private gtService: GraphicalTransactionsService) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
@@ -33,6 +36,7 @@ export class AwaitingApprovalIssuerComponent implements OnInit {
 
   public approveLoc(ref: string) {
     this.refreshService.loading = true;
+    this.gtService.setMarkers(global.advisingBankName, global.issuingBankName, global.buyerName, global.sellerName);
     this.locService.approveLoc(ref)
     .then(response => this.callResponse(response))
     .catch(err => err);

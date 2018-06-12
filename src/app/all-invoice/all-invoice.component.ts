@@ -31,7 +31,7 @@ export class AllInvoiceComponent implements OnInit {
 
   public openModalWithComponent(invoice: Invoice) {
     this.dialog.open(ApplyForLocComponent, {
-      height: '500px',
+      height: '80%',
       data: { invoice: invoice }
     });
   }

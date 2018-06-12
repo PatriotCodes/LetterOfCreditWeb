@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LocSummary } from './../loc-summary';
+import { LocStateSummary } from './../loc-state-summary';
 import { LocService } from './../loc.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { ViewBolModalComponent } from './../modals/view-bol-modal.component';
 import { RefreshService } from '../services/refresh.service';
 import { StatusService } from '../services/status.service';
+import * as global from '../globals';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'all-loc-buyer',
@@ -14,13 +16,14 @@ import { StatusService } from '../services/status.service';
 })
 export class AllLocBuyerComponent implements OnInit {
   @Input() getAllUrl: string;
-  locs: LocSummary[] = []
+  locs: LocStateSummary[] = []
   bsModalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,
     private locService: LocService,
     private refreshService: RefreshService,
-    public statusService: StatusService) {
+    public statusService: StatusService,
+    private gtService: GraphicalTransactionsService) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
@@ -41,6 +44,8 @@ export class AllLocBuyerComponent implements OnInit {
 
   public payIssuer(id: string) {
     this.refreshService.loading = true;
+    this.gtService.setMarkers(global.buyerName, global.issuingBankName);
+    this.gtService.cash = true;
     this.locService.payIssuer(id)
     .then(response => this.callResponse(response))
     .catch(err => err);
@@ -53,7 +58,7 @@ export class AllLocBuyerComponent implements OnInit {
   }
 
   update() {
-    this.locService.getAllLocs().then(locs => this.locs = locs);
+    this.locService.getActiveLocs().then(locs => this.locs = locs);
   }
 
   ngOnInit(): void {

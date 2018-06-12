@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { RefreshService } from './../services/refresh.service';
 import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.component';
 import { StatusService } from '../services/status.service';
+import * as global from '../globals';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'active-loc',
@@ -17,13 +19,14 @@ export class ActiveLocComponent implements OnInit {
   bsModalRef: BsModalRef;
   disabled = false;
 
-  locs: LocStateSummary[] = []
+  locs: LocStateSummary[] = [];
 
   constructor(private modalService: BsModalService,
               private locService: LocService,
               private refreshService: RefreshService,
               private route: ActivatedRoute,
-              public statusService: StatusService) {
+              public statusService: StatusService,
+              private gtService: GraphicalTransactionsService) {
                 refreshService.missionConfirmed$.subscribe(
                   result => {
                     this.update();
@@ -33,6 +36,8 @@ export class ActiveLocComponent implements OnInit {
   public payAdvisory(id: string) {
     this.refreshService.loading = true;
     this.disabled = true;
+    this.gtService.setMarkers(global.issuingBankName, global.advisingBankName);
+    this.gtService.cash = true;
     this.locService.payAdviser(id)
     .then(response => this.callResponse(response))
     .catch(err => err);

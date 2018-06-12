@@ -8,11 +8,7 @@ import { MatToolbarModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { MatSidenavModule } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module'
-
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { AppRoutingModule } from './app-routing.module';
 
 import { RefreshService } from './services/refresh.service';
 
@@ -25,7 +21,6 @@ import { CreditTypeService } from './services/credit-types/credit-type.service';
 import { CommonService } from './services/common/common.service';
 import { IssuingBankService } from './services/issuing-bank.service';
 import { AdvisingBankService } from './services/advising-bank.service';
-import { MainMenuComponent } from './main-menu/main-menu.component';
 import { HeaderComponent } from './header/header.component';
 import { AwaitingApprovalComponent } from './awaiting-approval/awaiting-approval.component';
 import { DatepickerModule } from 'ngx-bootstrap';
@@ -39,9 +34,7 @@ import { ApproveLocModalComponent } from './modals/approve-loc-modal.component';
 import { ViewLocStateModalComponent } from './modals/view-loc-state-modal.component';
 import { ViewLocAppModalComponent } from './modals/view-loc-app-modal.component';
 import { ViewBolModalComponent } from './modals/view-bol-modal.component';
-import { FinancesComponent } from './finances/finances.component';
 import { CashBalanceComponent } from './cash-balance/cash-balance.component';
-import { ChartsModule } from 'ng2-charts';
 import { AllLocComponent } from './all-loc/all-loc.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
@@ -64,7 +57,6 @@ import { LocAppViewComponent } from './loc-app-view/loc-app-view.component';
 import { AwaitingApprovalIssuerComponent } from './awaiting-approval-issuer/awaiting-approval-issuer.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { BillOfLadingViewComponent } from './bill-of-lading-view/bill-of-lading-view.component';
-//import { LoginComponent } from './login/login.component';
 import { CommaSeperatedNumberPipe } from './comma-seperated-number.pipe';
 import { IdentityService } from './services/identity.service'
 import { Ng2OdometerModule } from 'ng2-odometer';
@@ -94,6 +86,8 @@ import { SafePipe } from './safe.pipe';
 import { TestComponent } from './test/test.component';
 import { RestOfNetworkComponent } from './rest-of-network/rest-of-network.component';
 import { LaunchComponent } from './launch/launch.component';
+import { GraphicalTransactionsComponent } from './graphical-transactions/graphical-transactions.component';
+import { GraphicalTransactionsService } from './services/graphical-transactions.service';
 
 @NgModule({
   imports: [
@@ -101,13 +95,9 @@ import { LaunchComponent } from './launch/launch.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService, {
-      passThruUnknownUrl: true
-    }),
     AppRoutingModule,
     DatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    ChartsModule,
     Ng2OdometerModule.forRoot(),
     MatToolbarModule,
     MatDialogModule,
@@ -118,10 +108,8 @@ import { LaunchComponent } from './launch/launch.component';
     AppComponent,
     ActiveLocComponent,
     ApplyForLocComponent,
-    MainMenuComponent,
     HeaderComponent,
     AwaitingApprovalComponent,
-    FinancesComponent,
     DatePickerComponent,
     DocsModalComponent,
     ShipModalComponent,
@@ -170,9 +158,10 @@ import { LaunchComponent } from './launch/launch.component';
     TransactionsComponent,
     CashIssuanceComponent,
     SafePipe,
-    TestComponent,
+    TestComponent,
     RestOfNetworkComponent,
-    LaunchComponent
+    LaunchComponent,
+    GraphicalTransactionsComponent
 ],
     providers: [
     LocService,
@@ -190,13 +179,14 @@ import { LaunchComponent } from './launch/launch.component';
     TourService,
     PortProviderService,
     UrlProviderService,
+    GraphicalTransactionsService,
     { provide: CookieOptions, useValue: {} }
   ],
   entryComponents: [DocsModalComponent, ShipModalComponent,
                     CreateBolModalComponent, ViewInvoiceModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent,
                     ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
-                    MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent, CashIssuanceComponent,
+                    AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent, CashIssuanceComponent,
                     AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent],
   bootstrap: [AppComponent]
 })
