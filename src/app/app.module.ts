@@ -1,3 +1,4 @@
+import * as $ from 'jquery'
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -94,7 +95,6 @@ import { SafePipe } from './safe.pipe';
 import { TestComponent } from './test/test.component';
 import { RestOfNetworkComponent } from './rest-of-network/rest-of-network.component';
 import { LaunchComponent } from './launch/launch.component';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -170,7 +170,8 @@ import { LaunchComponent } from './launch/launch.component';
     TransactionsComponent,
     CashIssuanceComponent,
     SafePipe,
-    TestComponent,
+    TestComponent
+,
     RestOfNetworkComponent,
     LaunchComponent
 ],
