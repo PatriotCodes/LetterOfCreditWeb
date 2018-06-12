@@ -34,7 +34,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { DocsModalComponent } from './modals/docs-modal.component';
 import { ShipModalComponent } from './modals/ship-modal.component';
 import { CreateBolModalComponent } from './modals/create-bol-modal.component';
-import { ViewInvoiceModalComponent } from './modals/view-invoice-modal.component';
+import { ViewPurchaseOrderModalComponent } from './modals/view-purchase-order-modal.component';
 import { ApproveLocModalComponent } from './modals/approve-loc-modal.component';
 import { ViewLocStateModalComponent } from './modals/view-loc-state-modal.component';
 import { ViewLocAppModalComponent } from './modals/view-loc-app-modal.component';
@@ -46,8 +46,8 @@ import { AllLocComponent } from './all-loc/all-loc.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
 import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component';
-import { InvoiceCreateComponent } from './invoice-create/invoice.component';
-import { InvoiceViewComponent } from './invoice-view/invoice-view.component'
+import { PurchaseOrderCreateComponent } from './purchase-order-create/purchase-order.component';
+import { PurchaseOrderViewComponent } from './purchase-order-view/purchase-order-view.component';
 import { DashboardIssuerComponent } from './dashboard-issuer/dashboard-issuer.component';
 import { DashboardAdvisingComponent } from './dashboard-advising/dashboard-advising.component';
 import { DashboardBuyerComponent } from './dashboard-buyer/dashboard-buyer.component';
@@ -57,8 +57,8 @@ import { GoodsShippedComponent } from './goods-shipped/goods-shipped.component';
 import { AllLocBuyerComponent } from './all-loc-buyer/all-loc-buyer.component';
 import { DocsComponent } from './docs/docs.component';
 import { AllLocAdvisingComponent } from './all-loc-advising/all-loc-advising.component';
-import { AllInvoiceComponent } from './all-invoice/all-invoice.component';
-import { AllInvoiceSellerComponent } from './all-invoice-seller/all-invoice-seller.component';
+import { AllPurchaseOrderComponent } from './all-purchase-order/all-purchase-order.component';
+import { AllPurchaseOrderSellerComponent } from './all-purchase-order-seller/all-purchase-order-seller.component';
 import { LocStateViewComponent } from './loc-state-view/loc-state-view.component';
 import { LocAppViewComponent } from './loc-app-view/loc-app-view.component';
 import { AwaitingApprovalIssuerComponent } from './awaiting-approval-issuer/awaiting-approval-issuer.component';
@@ -126,7 +126,7 @@ import { LaunchComponent } from './launch/launch.component';
     DocsModalComponent,
     ShipModalComponent,
     CreateBolModalComponent,
-    ViewInvoiceModalComponent,
+    ViewPurchaseOrderModalComponent,
     ApproveLocModalComponent,
     ViewLocStateModalComponent,
     ViewLocAppModalComponent,
@@ -136,8 +136,8 @@ import { LaunchComponent } from './launch/launch.component';
     AllLocSellerComponent,
     ApproveLocComponent,
     BillOfLadingComponent,
-    InvoiceCreateComponent,
-    InvoiceViewComponent,
+    PurchaseOrderCreateComponent,
+    PurchaseOrderViewComponent,
     DashboardIssuerComponent,
     DashboardAdvisingComponent,
     DashboardBuyerComponent,
@@ -147,8 +147,8 @@ import { LaunchComponent } from './launch/launch.component';
     AllLocBuyerComponent,
     DocsComponent,
     AllLocAdvisingComponent,
-    AllInvoiceComponent,
-    AllInvoiceSellerComponent,
+    AllPurchaseOrderComponent,
+    AllPurchaseOrderSellerComponent,
     LocStateViewComponent,
     LocAppViewComponent,
     AwaitingApprovalIssuerComponent,
@@ -170,7 +170,7 @@ import { LaunchComponent } from './launch/launch.component';
     TransactionsComponent,
     CashIssuanceComponent,
     SafePipe,
-    TestComponent,
+    TestComponent,
     RestOfNetworkComponent,
     LaunchComponent
 ],
@@ -193,11 +193,11 @@ import { LaunchComponent } from './launch/launch.component';
     { provide: CookieOptions, useValue: {} }
   ],
   entryComponents: [DocsModalComponent, ShipModalComponent,
-                    CreateBolModalComponent, ViewInvoiceModalComponent,
+                    CreateBolModalComponent, ViewPurchaseOrderModalComponent,
                     ApproveLocModalComponent, ViewLocStateModalComponent, ViewLocAppModalComponent, ErrorFeedbackComponent,
                     ViewBolModalComponent, ViewBolTimelineModalComponent, PeersComponent, PeersWithPortComponent,
                     MainMenuComponent, AllLocBuyerComponent, AllLocSellerComponent, DashboardSellerComponent, CashIssuanceComponent,
-                    AllInvoiceComponent, AwaitingApprovalComponent, BillOfLadingComponent],
+                    AllPurchaseOrderComponent, AwaitingApprovalComponent, BillOfLadingComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
