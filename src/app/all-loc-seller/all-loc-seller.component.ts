@@ -34,7 +34,7 @@ export class AllLocSellerComponent implements OnInit {
 
   shipGoods(id: string) {
     this.bsModalRef = this.modalService.show(ShipModalComponent);
-    this.bsModalRef.content.title = 'Confirm Shipped - ' + this.locs.filter(x => x.orderRef == id)[0].description;
+    this.bsModalRef.content.title = 'Confirm Shipped - ' + this.locs.filter(x => x.orderRef === id)[0].description;
     this.bsModalRef.content.orderId = id;
   }
 

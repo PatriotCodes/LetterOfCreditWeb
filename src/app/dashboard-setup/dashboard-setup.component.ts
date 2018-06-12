@@ -4,7 +4,6 @@ import { IdentityService } from '../services/identity.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PeersWithPortComponent } from '../peers-with-port/peers-with-port.component';
 import * as global from './../globals';
-import { inMemoryBackendServiceFactory } from 'angular-in-memory-web-api';
 
 @Component({
   selector: 'app-dashboard-setup',

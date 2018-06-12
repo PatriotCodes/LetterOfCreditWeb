@@ -58,8 +58,7 @@ export class IdentityService {
   scanForPeers() {
     if (this.scannedPeers.length === 0) {
       let i: number;
-      for (i = 10011; i <= 10023; i++) {
-        let url = this.urlService.url + ':' + i + '/api/loc/me';
+      for (i = 10004; i < 10022; i++) {        let url = this.urlService.url + ':' + i + '/api/loc/me';
         let port = i;
         this.http.get(url)
           .toPromise()

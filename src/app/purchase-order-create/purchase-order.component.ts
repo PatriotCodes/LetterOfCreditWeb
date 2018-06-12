@@ -9,6 +9,7 @@ import { IdentityService } from '../services/identity.service';
 import { SelectItem } from 'ng2-select';
 import { PeersComponent } from '../peers/peers.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'create-purchase-order',
@@ -32,7 +33,8 @@ export class PurchaseOrderCreateComponent {
     public refreshService: RefreshService,
     public identityService: IdentityService,
     private tourService: TourService,
-    private dialog2: MatDialogRef<PurchaseOrderCreateComponent>) { }
+    private dialog2: MatDialogRef<PurchaseOrderCreateComponent>,
+    private gtService: GraphicalTransactionsService) { }
 
   lookupBuyer() {
     let dialogRef = this.dialog.open(PeersComponent, { viewContainerRef: this.vc });
@@ -50,6 +52,7 @@ export class PurchaseOrderCreateComponent {
     this.error = false;
     this.refreshService.loading = true;
     this.docsService.createPurchaseOrder(this.purchaseOrder).then(result => this.callResponse(result));
+    this.gtService.setMarkers(this.purchaseOrder.sellerName, this.purchaseOrder.buyerName);
     this.close();
   }
 
@@ -74,7 +77,7 @@ export class PurchaseOrderCreateComponent {
   callResponse(result: string): void {
     this.statusService.status = result;
     this.refreshService.confirmMission();
-    this.tourService.sellerTour.show('purchase-order-created');
+    setTimeout(() => this.tourService.sellerTour.show('purchase-order-created'), 5000);
     this.refreshService.loading = false;
   }
 
