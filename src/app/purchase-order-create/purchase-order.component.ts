@@ -28,7 +28,6 @@ export class PurchaseOrderCreateComponent {
   constructor(
     private docsService: DocsService,
     private dialog: MatDialog,
-    private modalService: BsModalService,
     public statusService: StatusService,
     public refreshService: RefreshService,
     public identityService: IdentityService,
