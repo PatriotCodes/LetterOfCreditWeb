@@ -48,16 +48,17 @@ export class AllLocAdvisingComponent implements OnInit {
   }
 
   callResponse(result: string): void {
-    this.statusService.status = result;
-    this.refreshService.confirmMission();
     this.refreshService.loading = false;
+    this.statusService.status = result;
+    this.gtService.setMarkers(global.advisingBankName, global.sellerName);
+    // TODO make more generic
+    this.gtService.cash = true;
+    this.refreshService.confirmMission();
+    this.update();
   }
 
   public paySeller(id: string) {
     this.refreshService.loading = true;
-    this.gtService.setMarkers(global.advisingBankName, global.sellerName);
-    // TODO make more generic
-    this.gtService.cash = true;
     this.locService.paySeller(id)
       .then(response => this.callResponse(response))
       .catch(err => err);

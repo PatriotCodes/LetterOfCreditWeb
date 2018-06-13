@@ -22,7 +22,7 @@ export class AllPurchaseOrderComponent implements OnInit {
     private modalService: BsModalService,
     private dialog: MatDialog,
     private refreshService: RefreshService,
-    private shepService: ShepherdService) {
+    private sfhepService: ShepherdService) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
