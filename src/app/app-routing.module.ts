@@ -9,7 +9,7 @@ import { ActiveLocComponent }      from './active-loc/active-loc.component';
 import { ApplyForLocComponent }  from './apply-for-loc/apply-for-loc.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
 import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component';
-import { InvoiceCreateComponent } from './invoice-create/invoice.component';
+import { PurchaseOrderCreateComponent } from './purchase-order-create/purchase-order.component';
 import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
 import { StaticMapComponent } from './static-map/static-map.component';
@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'advising', component: DashboardAdvisingComponent},
   { path: 'applyforloc', component: ApplyForLocComponent },
   { path: 'billoflading', component: BillOfLadingComponent },
-  { path: 'invoice', component: InvoiceCreateComponent },
-  { path: 'invoice/:id', component: InvoiceCreateComponent },
+  { path: 'purchase-order', component: PurchaseOrderCreateComponent },
+  { path: 'purchase-order/:id', component: PurchaseOrderCreateComponent },
   { path: 'ship/:id', component: ShipComponent },
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'test', component: GraphicalTransactionsComponent },

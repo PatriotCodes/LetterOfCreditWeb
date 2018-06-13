@@ -118,6 +118,11 @@ export class StaticMapComponent implements OnInit {
     this.dialog.open(DashboardIssuerComponent, { width: '85%', height: '85%' });
   }
 
+  launchCentral() {
+    this.portService.current = 10011;
+    this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
+  }
+
   launchAdvisingCash() {
     this.portService.current = 10020;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
@@ -126,5 +131,8 @@ export class StaticMapComponent implements OnInit {
   launchIssuingCash() {
     this.portService.current = 10023;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
+  }
+  launchNotary() {
+    this.portService.current = 10004;
   }
 }

@@ -215,7 +215,7 @@ export class LocService {
       .then(
         res => new Tx().deserialize(res).txResponse,
         err => this.handleError(err)
-      )
+      );
   }
 
   private createPartyArray(input: any): Party[] {
