@@ -6,6 +6,7 @@
   "scripts": {
     "test:once": "karma start karma.conf.js --single-run",
     "build": "tsc -p src/",
+    "dist": "ng build --prod && build --mac",
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run build",
     "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
@@ -22,8 +23,16 @@
     "i18n": "ng-xi18n",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "electron-build": "ng build --prod && electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
+  "files": [
+    "*.js",
+    "build",
+    "node_modules"
+  ],
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -84,6 +93,7 @@
     "canonical-path": "0.0.2",
     "concurrently": "^3.0.0",
     "electron": "^1.8.2",
+    "electron-packager": "^12.1.0",
     "http-server": "^0.11.1",
     "jasmine": "~2.4.1",
     "jasmine-core": "~2.4.1",
