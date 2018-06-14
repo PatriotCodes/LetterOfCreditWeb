@@ -77,10 +77,10 @@ export class ApplyForLocComponent implements OnInit {
     this.error = false;
     this.refreshService.loading = true;
     this.locService.createLoc(this.loc).then(result => this.callResponse(result));
-    this.close();
   }
 
   callResponse(result: string): void {
+    this.close();
     this.statusService.status = result;
     this.refreshService.confirmMission();
     this.refreshService.loading = false;

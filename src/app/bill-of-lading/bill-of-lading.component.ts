@@ -35,7 +35,6 @@ export class BillOfLadingComponent {
     this.docsService.createBol(this.bol)
     .then(result => this.callResponse(result))
     .catch(err => this.refreshService.loading = false);
-    this.close();
   }
 
   autoComplete(): void {
@@ -77,6 +76,7 @@ export class BillOfLadingComponent {
   }
 
   callResponse(result: string): void {
+    this.close();
     this.statusService.status = result;
     this.refreshService.confirmMission();
     this.refreshService.loading = false;

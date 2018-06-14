@@ -253,7 +253,7 @@ export class LocService {
       .then(
         res => new Tx().deserialize(res).txResponse,
         err => this.handleError(err)
-      )
+      );
   }
 
   private handleError(response: Response): Promise<any> {
