@@ -1,7 +1,7 @@
 /* SystemJS module definition */
 declare var module: NodeModule;
 interface NodeModule {
-  id: string;
+id: string;
 }
 
 // Type definitions for Tether-Shepherd v1.2.0
@@ -11,14 +11,14 @@ interface NodeModule {
 
 
 declare module 'tether-shepherd' {
-  export = TetherShepherd.Shepherd;
+export = TetherShepherd.Shepherd;
 }
 
 declare namespace TetherShepherd {
-    export var Shepherd: ShepherdStatic;
+export var Shepherd: ShepherdStatic;
 
-    export interface ShepherdStatic {
-        on(eventName: string, handler: Function, context?: any): any;
+export interface ShepherdStatic {
+on(eventName: string, handler: Function, context?: any): any;
         off(eventName: string, handler?: Function): any;
         once(eventName: string, handler: Function, context?: any): any;
 
