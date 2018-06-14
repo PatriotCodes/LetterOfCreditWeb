@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron')
-
+const url = require('url')
+const path = require('path')
 let win;
 
 function createWindow () {
@@ -11,11 +12,16 @@ function createWindow () {
     icon: `file://${__dirname}/dist/assets/logo.png`
   })
 
-  win.loadURL(`http://localhost:4200`)
-  //win.loadURL(`file://${__dirname}/dist/index.html`)
 
-  //// uncomment below to open the DevTools.
-  // win.webContents.openDevTools()
+   win.loadURL(url.format({
+               pathname: path.join(__dirname, 'build', 'index.html'),
+               protocol: 'file:',
+               slashes: true
+   }));
+  //make window open full screen
+   win.maximize()
+   //// uncomment below to open the DevTools.
+   //win.webContents.openDevTools()
 
   // Event when the window is closed.
   win.on('closed', function () {
