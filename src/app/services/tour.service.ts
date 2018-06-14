@@ -44,9 +44,9 @@ export class TourService {
     /*
     * Seller tour
     */
-    this.sellerTour.addStep('welcome1', { text: '<b>Welcome to the Corda Letter of Credit demo</b><br><br> This demonstrates a simplified letter of credit scenario between four nodes<br> A buyer, seller, issuing bank and advising bank.<br><br><img src="assets/tf.jpg" width="800px" height="222px">' })
-    this.sellerTour.addStep('welcome2', { text: "<b>The flow between nodes is as follows</b><br><br><img src='assets/flow.jpg' width='900px' height='450px'>" })
-    this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used at https://docs.corda.net/" })
+    //this.sellerTour.addStep('welcome1', { text: '<b>Welcome to the Corda Letter of Credit demo</b><br><br> This demonstrates a simplified letter of credit scenario between four nodes<br> A buyer, seller, issuing bank and advising bank.<br><br><img src="assets/tf.jpg" width="800px" height="222px">' })
+    //this.sellerTour.addStep('welcome2', { text: "<b>The flow between nodes is as follows</b><br><br><img src='assets/flow.jpg' width='900px' height='450px'>" })
+    //this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used at https://docs.corda.net/" })
     //this.sellerTour.addStep('wallet', { text: 'This is your cash balance', attachTo: '#cash-balance right' })
     //this.sellerTour.addStep('orders', { text: 'Here you will find all the sellers orders that have <br> been funded through a letter of credit.', attachTo: '#orders right' })
     //this.sellerTour.addStep('purchaseOrders', { text: 'Purchase orders raised that are still awaiting funding appear here', attachTo: '#purchaseOrders right' })

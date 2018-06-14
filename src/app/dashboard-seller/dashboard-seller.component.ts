@@ -26,7 +26,7 @@ export class DashboardSellerComponent implements OnInit {
 
     let demoDone = this.cookieService.get('sellerDemoDone');
     if (demoDone !== 'true') {
-      this.tourService.sellerTour.start();
+      //this.tourService.sellerTour.start();
       this.cookieService.put('sellerDemoDone', 'true');
     }
   }
