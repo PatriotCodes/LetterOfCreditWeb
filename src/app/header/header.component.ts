@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LocService } from './../loc.service';
 import { IShepherdTourOptions, IShepherdTourStep } from '../interfaces';
 import { Title } from '@angular/platform-browser';
