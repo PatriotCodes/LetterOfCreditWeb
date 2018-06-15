@@ -14,6 +14,7 @@ import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
 import { StaticMapComponent } from './static-map/static-map.component';
 import { GraphicalTransactionsComponent } from './graphical-transactions/graphical-transactions.component';
+import { StartupCheckComponent } from './startup-check/startup-check.component';
 
 const routes: Routes = [
   { path: 'approve/:id', component: ApproveLocComponent },
@@ -30,7 +31,7 @@ const routes: Routes = [
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'test', component: GraphicalTransactionsComponent },
   { path: 'map', component: StaticMapComponent },
-  { path: '**', component: StaticMapComponent }
+  { path: '**', component: StartupCheckComponent }
 ];
 
 @NgModule({

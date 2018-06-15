@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 export class PortProviderService {
 
   public current: number;
+  public nodes: Array<Number> = [10014, 10017, 10020, 10023];
 
   constructor() {
     if (location.port !== '4200') {
