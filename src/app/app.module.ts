@@ -88,7 +88,10 @@ import { TestComponent } from './test/test.component';
 import { RestOfNetworkComponent } from './rest-of-network/rest-of-network.component';
 import { LaunchComponent } from './launch/launch.component';
 import { GraphicalTransactionsComponent } from './graphical-transactions/graphical-transactions.component';
-import { GraphicalTransactionsService } from './services/graphical-transactions.service';@NgModule({
+import { GraphicalTransactionsService } from './services/graphical-transactions.service';
+import { StartupCheckComponent } from './startup-check/startup-check.component';
+
+@NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -160,7 +163,8 @@ import { GraphicalTransactionsService } from './services/graphical-transactions.
     TestComponent,
     RestOfNetworkComponent,
     LaunchComponent,
-    GraphicalTransactionsComponent
+    GraphicalTransactionsComponent,
+    StartupCheckComponent
 ],
     providers: [
     LocService,
