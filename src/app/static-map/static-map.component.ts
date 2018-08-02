@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DashboardSellerComponent } from '../dashboard-seller/dashboard-seller.component';
@@ -9,29 +9,33 @@ import { DashboardAdvisingComponent } from '../dashboard-advising/dashboard-advi
 import { DashboardIssuerComponent } from '../dashboard-issuer/dashboard-issuer.component';
 import { CashIssuanceComponent } from '../cash-issuance/cash-issuance.component';
 import { RefreshService } from '../services/refresh.service';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
+import * as global from './../globals';
 
 @Component({
   selector: 'app-static-map',
   templateUrl: './static-map.component.html',
   styleUrls: ['./static-map.component.scss']
 })
-export class StaticMapComponent implements OnInit, DoCheck {
+export class StaticMapComponent implements OnInit {
   expandTxt = '>';
   shrinkTxt = '<';
   buttonTxt = this.expandTxt;
   unfolded = false;
+  names = global;
 
-  @ViewChildren('marker') el: QueryList<any>;
-
-  ngDoCheck(): void {
-  }
+  @ViewChild('map') map;
+  @ViewChild('markerBuyer') markerBuyer;
+  @ViewChild('markerSeller') markerSeller;
+  @ViewChild('markerAdvising') markerAdvising;
+  @ViewChild('markerIssuing') markerIssuing;
+  @ViewChild('markerNotary') markerNotary;
 
   constructor(private router: Router, private dialog: MatDialog,
     private portService: PortProviderService, private identityService: IdentityService,
-    public refreshService: RefreshService) { }
+    public refreshService: RefreshService, private gtService: GraphicalTransactionsService) {}
 
   ngOnInit() {
-
     // Increments the delay on each item.
     $('.rolldown-list li').each(function () {
       let delay = ($(this).index() / 4) + 's';
@@ -59,6 +63,10 @@ export class StaticMapComponent implements OnInit, DoCheck {
       }
     });
 
+    this.gtService.allNodes[this.names.buyerName] = this.markerBuyer;
+    this.gtService.allNodes[this.names.sellerName] = this.markerSeller;
+    this.gtService.allNodes[this.names.issuingBankName] = this.markerIssuing;
+    this.gtService.allNodes[this.names.advisingBankName] = this.markerAdvising;
   }
 
   launch() {
@@ -87,45 +95,44 @@ export class StaticMapComponent implements OnInit, DoCheck {
   }
 
   launchSeller() {
-    this.portService.current = 10016;
+    this.portService.current = 10014;
     this.identityService.current = 'seller';
     this.dialog.open(DashboardSellerComponent, { width: '85%', height: '85%' });
   }
 
   launchBuyer() {
-    this.portService.current = 10013;
+    this.portService.current = 10017;
     this.identityService.current = 'buyer';
     this.dialog.open(DashboardBuyerComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvising() {
-    this.portService.current = 10010;
+    this.portService.current = 10020;
     this.identityService.current = 'advising';
     this.dialog.open(DashboardAdvisingComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuing() {
-    this.portService.current = 10007;
+    this.portService.current = 10023;
     this.identityService.current = 'issuing';
     this.dialog.open(DashboardIssuerComponent, { width: '85%', height: '85%' });
   }
 
   launchCentral() {
-    this.portService.current = 10019;
+    this.portService.current = 10011;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
   }
 
   launchAdvisingCash() {
-    this.portService.current = 10010;
+    this.portService.current = 10020;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
   }
 
   launchIssuingCash() {
-    this.portService.current = 10007;
+    this.portService.current = 10023;
     this.dialog.open(CashIssuanceComponent, { width: '85%', height: '85%' });
   }
-
   launchNotary() {
-    this.portService.current = 10019;
+    this.portService.current = 10004;
   }
 }

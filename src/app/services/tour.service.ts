@@ -5,13 +5,14 @@ import { IShepherdTour } from '../interfaces';
 @Injectable()
 export class TourService {
 
-sellerTour: IShepherdTour;
-buyerTour: IShepherdTour;
-issuerTour: IShepherdTour;
-advisingTour: IShepherdTour;
-invoiceGlow: false;
 
-constructor(private shepherdService: ShepherdService) {
+  sellerTour: IShepherdTour;
+  buyerTour: IShepherdTour;
+  issuerTour: IShepherdTour;
+  advisingTour: IShepherdTour;
+  purchaseOrderGlow: false;
+
+  constructor(private shepherdService: ShepherdService) {
 
     let defaultOptions = {
       classes: 'shepherd-theme-arrows',
@@ -39,39 +40,35 @@ constructor(private shepherdService: ShepherdService) {
     });
 
     let sellerTour = this.sellerTour;
-    let invoiceGlow = this.invoiceGlow;
+    let purchaseOrderGlow = this.purchaseOrderGlow;
 
     /*
     * Seller tour
     */
-    //this.sellerTour.addStep('welcome1', { text: '<b>Welcome to the Corda Letter of Credit demo</b><br><br> This demonstrates a simplified letter of credit scenario between four nodes<br> A buyer, seller, issuing bank and advising bank.<br><br><img src="assets/tf.jpg" width="800px" height="222px">' })
-    //this.sellerTour.addStep('welcome2', { text: "<b>The flow between nodes is as follows</b><br><br><img src='assets/flow.jpg' width='900px' height='450px'>" })
-    //this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used at https://docs.corda.net/" })
+    this.sellerTour.addStep('welcome2', { text: "You can find documentation on all the features used at https://docs.corda.net/" })
     //this.sellerTour.addStep('wallet', { text: 'This is your cash balance', attachTo: '#cash-balance right' })
     //this.sellerTour.addStep('orders', { text: 'Here you will find all the sellers orders that have <br> been funded through a letter of credit.', attachTo: '#orders right' })
     //this.sellerTour.addStep('purchaseOrders', { text: 'Purchase orders raised that are still awaiting funding appear here', attachTo: '#purchaseOrders right' })
     //this.sellerTour.addStep('goods', { text: 'Finally, goods shipped are added here', attachTo: '#goods-shipped right' })
-   /* this.sellerTour.addStep('purchase-order', {
+
+    this.sellerTour.addStep('purchase-order', {
       text: 'Lets begin the demo by creating a purchase order to the buyer', attachTo: '#create-purchase-order top',
       buttons: [{
         text: 'ready', action: function () {
           sellerTour.hide();
-          invoiceGlow = true;
+          purchaseOrderGlow = true;
         }
       }]
     })
-    */
-   /*
     this.sellerTour.addStep('purchase-order-created', {
       text: "<b>So what just happened</b>?<br><br>The seller created a new purchase order state on Corda and sent this to the buyer node as part of a signed transaction.<br>The buyer, happy with the terms, agrees and signs.<br>This is now stored as a shared fact across both nodes",
       buttons: [{
         text: 'next', action: function () {
           sellerTour.next();
-          invoiceGlow = false;
+          purchaseOrderGlow = false;
         }
       }]
     })
-    */
 
     /*this.sellerTour.addStep('status', { text: 'The transaction id you see here is a unique hash of the transaction we just created', attachTo: '#status top' })
     this.sellerTour.addStep('switch1', { text: "Let's switch to the buyer node and see what they see" })

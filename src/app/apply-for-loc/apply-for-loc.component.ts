@@ -11,9 +11,10 @@ import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
 import { TourService } from '../services/tour.service';
 import { IdentityService } from '../services/identity.service';
-import { Invoice } from '../invoice';
+import { PurchaseOrder } from '../purchase-order';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PeersComponent } from '../peers/peers.component';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'apply-for-loc',
@@ -34,7 +35,7 @@ export class ApplyForLocComponent implements OnInit {
   advisingGlow: boolean;
 
   loc = new Loc();
-  invoice: Invoice;
+  purchaseOrder: PurchaseOrder;
   submitted = false;
 
   constructor(
@@ -48,6 +49,7 @@ export class ApplyForLocComponent implements OnInit {
     public refreshService: RefreshService,
     private identityService: IdentityService,
     private tourService: TourService,
+    private gtService: GraphicalTransactionsService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
@@ -75,10 +77,10 @@ export class ApplyForLocComponent implements OnInit {
     this.error = false;
     this.refreshService.loading = true;
     this.locService.createLoc(this.loc).then(result => this.callResponse(result));
-    this.close();
   }
 
   callResponse(result: string): void {
+    this.close();
     this.statusService.status = result;
     this.refreshService.confirmMission();
     this.refreshService.loading = false;
@@ -108,7 +110,7 @@ export class ApplyForLocComponent implements OnInit {
   autoComplete(): void {
     let d = new Date()
     this.loc.applicationDate = d;
-    this.loc.applicationId = this.data.invoice.invoiceId;
+    this.loc.applicationId = this.data.purchaseOrder.purchaseOrderID;
     this.loc.typeCredit = 'SIGHT';
     this.loc.amount = '1300000 USD';
 
@@ -129,14 +131,14 @@ export class ApplyForLocComponent implements OnInit {
     this.loc.goodsWeight = 1000;
     this.loc.goodsWeightUnit = 'KG';
     this.loc.goodsUnitPrice = 13;
-    this.loc.goodsPurchaseOrderRef = this.data.invoice.invoiceId;
+    this.loc.goodsPurchaseOrderRef = this.data.purchaseOrder.purchaseOrderID;
     this.loc.placePresentationCountry = 'UK';
     this.loc.placePresentationCity = 'Liverpool';
     this.loc.placePresentationState = 'Liverpool';
     this.loc.lastShipmentDate = this.loc.expiryDate;
     this.loc.periodPresentation = 1;
 
-    this.loc.beneficiary = this.data.invoice.sellerName;
+    this.loc.beneficiary = this.data.purchaseOrder.sellerName;
     this.identityService.getMe().then(response => this.loc.applicant = response.json().me);
 
     this.loc.issuer = '';
@@ -147,17 +149,15 @@ export class ApplyForLocComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCreditTypes();
-    this.getCurrencies();
-    this.getWeightUnits();
     this.getMe();
     this.loc.applicant = this.applicant;
-    this.loc.applicationId = this.data.invoice.invoiceId;
-    this.invoice = this.data;
+    this.loc.applicationId = this.data.purchaseOrder.purchaseOrderID;
+    this.purchaseOrder = this.data;
   }
 
   onSubmit() {
     this.submitted = true;
+    this.gtService.setMarkers(this.loc.applicant, this.loc.issuer);
     this.createLoc();
   }
 }

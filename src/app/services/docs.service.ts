@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http'
-import { Bol } from './../bol'
-import { BolEvents } from './../bol-events'
-import { Invoice } from './../invoice'
-import { LocSummary } from './../loc-summary'
-import { Party } from './../party'
-import { Tx } from './../tx'
+import { Headers, Http } from '@angular/http';
+import { Bol } from './../bol';
+import { BolEvents } from './../bol-events';
+import { PurchaseOrder } from './../purchase-order';
+import { Tx } from './../tx';
 import 'rxjs/add/operator/toPromise';
 import { PortProviderService } from './port-provider.service';
 import { UrlProviderService } from './url-provider.service';
@@ -37,10 +35,10 @@ export class DocsService {
       );
   }
 
-  createInvoice(invoice: Invoice): Promise<string> {
+  createPurchaseOrder(purchaseOrder: PurchaseOrder): Promise<string> {
     let url = this.getUrl('/api/loc/create-trade');
     return this.http
-      .post(url, JSON.stringify(invoice), { headers: this.headers })
+      .post(url, JSON.stringify(purchaseOrder), { headers: this.headers })
       .toPromise()
       .then(
         res => new Tx().deserialize(res).txResponse,
@@ -70,34 +68,34 @@ export class DocsService {
       );
   }
 
-  getInvoices(): Promise<Invoice[]> {
+  getPurchaseOrders(): Promise<PurchaseOrder[]> {
     let url = this.getUrl('/api/loc/invoices');
     return this.http.get(url)
       .toPromise()
       .then(
-        response => this.createInvoiceArray(response.json()) as Invoice[],
+        response => this.createPurchaseOrderArray(response.json()) as PurchaseOrder[],
         err => this.handleError(err)
       );
   }
 
-  getInvoice(id: string): Promise<Invoice> {
+  getPurchaseOrder(id: string): Promise<PurchaseOrder> {
     let _url = this.getUrl('/api/loc/get-invoice');
     const url = `${_url}?ref=${id}`;
     return this.http.get(url)
       .toPromise()
       .then(
-        response => new Invoice().deserialize(response.json()) as Invoice,
+        response => new PurchaseOrder().deserialize(response.json()) as PurchaseOrder,
         err => Promise.reject(err)
       );
   }
 
-  private createInvoiceArray(input: any): Invoice[] {
-    let invoices = new Array<Invoice>();
+  private createPurchaseOrderArray(input: any): PurchaseOrder[] {
+    let purchaseOrders = new Array<PurchaseOrder>();
     input.forEach((element: string[]) => {
-      let invoice = new Invoice().deserialize(element);
-      invoices.push(invoice)
+      let purchaseOrder = new PurchaseOrder().deserialize(element);
+      purchaseOrders.push(purchaseOrder)
     });
-    return invoices;
+    return purchaseOrders;
   }
 
   private handleError(response: Response): Promise<any> {

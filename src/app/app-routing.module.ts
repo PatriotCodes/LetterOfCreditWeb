@@ -9,13 +9,12 @@ import { ActiveLocComponent }      from './active-loc/active-loc.component';
 import { ApplyForLocComponent }  from './apply-for-loc/apply-for-loc.component';
 import { ApproveLocComponent } from './approve-loc/approve-loc.component';
 import { BillOfLadingComponent } from './bill-of-lading/bill-of-lading.component';
-import { InvoiceCreateComponent } from './invoice-create/invoice.component';
+import { PurchaseOrderCreateComponent } from './purchase-order-create/purchase-order.component';
 import { ShipComponent } from './ship/ship.component';
 import { AllLocSellerComponent } from './all-loc-seller/all-loc-seller.component';
-//import { LoginComponent } from './login/login.component';
-import { DashboardSetupComponent } from './dashboard-setup/dashboard-setup.component';
 import { StaticMapComponent } from './static-map/static-map.component';
-import { TestComponent } from './test/test.component';
+import { GraphicalTransactionsComponent } from './graphical-transactions/graphical-transactions.component';
+import { StartupCheckComponent } from './startup-check/startup-check.component';
 
 const routes: Routes = [
   { path: 'approve/:id', component: ApproveLocComponent },
@@ -26,12 +25,11 @@ const routes: Routes = [
   { path: 'advising', component: DashboardAdvisingComponent},
   { path: 'applyforloc', component: ApplyForLocComponent },
   { path: 'billoflading', component: BillOfLadingComponent },
-  { path: 'invoice', component: InvoiceCreateComponent },
-  { path: 'invoice/:id', component: InvoiceCreateComponent },
+  { path: 'purchase-order', component: PurchaseOrderCreateComponent },
+  { path: 'purchase-order/:id', component: PurchaseOrderCreateComponent },
   { path: 'ship/:id', component: ShipComponent },
   { path: 'locsummary/:first', component: AllLocSellerComponent },
-  { path: 'test', component: TestComponent },
-  //{ path: 'login', component: LoginComponent },
+  { path: 'test', component: GraphicalTransactionsComponent },
   { path: 'map', component: StaticMapComponent },
   { path: '**', component: StaticMapComponent }
 ];

@@ -8,7 +8,7 @@ import { ViewLocStateModalComponent } from './../modals/view-loc-state-modal.com
 import { TourService } from '../services/tour.service';
 import { RefreshService } from '../services/refresh.service';
 import { MatDialog } from '@angular/material';
-import { InvoiceCreateComponent } from '../invoice-create/invoice.component';
+import { PurchaseOrderCreateComponent } from '../purchase-order-create/purchase-order.component';
 
 @Component({
   selector: 'all-loc-seller',
@@ -28,13 +28,13 @@ export class AllLocSellerComponent implements OnInit {
       });
   }
 
-  createInvoice() {
-    this.dialog.open(InvoiceCreateComponent);
+  createPurchaseOrder() {
+    this.dialog.open(PurchaseOrderCreateComponent);
   }
 
   shipGoods(id: string) {
     this.bsModalRef = this.modalService.show(ShipModalComponent);
-    this.bsModalRef.content.title = 'Confirm Shipped - ' + this.locs.filter(x => x.orderRef == id)[0].description;
+    this.bsModalRef.content.title = 'Confirm Shipped - ' + this.locs.filter(x => x.orderRef === id)[0].description;
     this.bsModalRef.content.orderId = id;
   }
 

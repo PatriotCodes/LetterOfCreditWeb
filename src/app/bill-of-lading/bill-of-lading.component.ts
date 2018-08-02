@@ -6,6 +6,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { LocStateSummary } from './../loc-state-summary';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
+import * as global from '../globals';
+import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
 
 @Component({
   selector: 'bill-of-lading',
@@ -22,16 +24,17 @@ export class BillOfLadingComponent {
     private modalComponent: CreateBolModalComponent,
     private modalService: BsModalService,
     public statusService: StatusService,
-    public refreshService: RefreshService) { }
+    public refreshService: RefreshService,
+    private gtService: GraphicalTransactionsService) { }
 
   createBol(): void {
     this.bol.advisingBank = this.loc[0].advisory;
     this.bol.issuingBank = this.loc[0].issuer;
     this.refreshService.loading = true;
+    this.gtService.setMarkers(global.sellerName, global.advisingBankName, global.issuingBankName, global.buyerName);
     this.docsService.createBol(this.bol)
     .then(result => this.callResponse(result))
     .catch(err => this.refreshService.loading = false);
-    this.close();
   }
 
   autoComplete(): void {
@@ -73,6 +76,7 @@ export class BillOfLadingComponent {
   }
 
   callResponse(result: string): void {
+    this.close();
     this.statusService.status = result;
     this.refreshService.confirmMission();
     this.refreshService.loading = false;

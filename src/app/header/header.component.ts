@@ -1,8 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { LocService } from './../loc.service';
-import { ActivatedRoute } from '@angular/router';
-import { ShepherdService } from '../services/shepherd.service';
 import { IShepherdTourOptions, IShepherdTourStep } from '../interfaces';
 import { Title } from '@angular/platform-browser';
 
@@ -18,10 +15,7 @@ export class HeaderComponent implements OnInit {
   options: IShepherdTourOptions;
   step: IShepherdTourStep;
 
-  constructor(private locService: LocService, private route: ActivatedRoute,
-              private shepherdService: ShepherdService, private titleService: Title,
-              @Inject(DOCUMENT) private document: Document) {
-   }
+  constructor(private locService: LocService, private titleService: Title) {}
 
   getMe(): void {
     this.locService.getMe().then(me => this.setup(me.name));
