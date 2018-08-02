@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'locsummary/:first', component: AllLocSellerComponent },
   { path: 'test', component: GraphicalTransactionsComponent },
   { path: 'map', component: StaticMapComponent },
-  { path: '**', component: StartupCheckComponent }
+  { path: '**', component: StaticMapComponent }
 ];
 
 @NgModule({
