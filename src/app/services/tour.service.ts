@@ -51,6 +51,7 @@ export class TourService {
     //this.sellerTour.addStep('purchaseOrders', { text: 'Purchase orders raised that are still awaiting funding appear here', attachTo: '#purchaseOrders right' })
     //this.sellerTour.addStep('goods', { text: 'Finally, goods shipped are added here', attachTo: '#goods-shipped right' })
 
+    /*
     this.sellerTour.addStep('purchase-order', {
       text: 'Lets begin the demo by creating a purchase order to the buyer', attachTo: '#create-purchase-order top',
       buttons: [{
@@ -69,6 +70,7 @@ export class TourService {
         }
       }]
     })
+    */
 
     /*this.sellerTour.addStep('status', { text: 'The transaction id you see here is a unique hash of the transaction we just created', attachTo: '#status top' })
     this.sellerTour.addStep('switch1', { text: "Let's switch to the buyer node and see what they see" })

@@ -4,6 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import { ShipModalComponent } from '../modals/ship-modal.component';
 import { StatusService } from '../services/status.service';
 import { RefreshService } from '../services/refresh.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'ship',
@@ -18,13 +19,15 @@ export class ShipComponent {
 
   confirm() {
     this.locService.shipGoods(this.id)
-      .then(result => {
+      .then(() => {
         this.statusService.shipAnimation = true;
-        this.statusService.shipAnimation = false;
-        this.modalComponent.close();
-        this.refreshService.confirmMission();
+        Observable.timer(1300).subscribe(x => {
+          this.statusService.shipAnimation = false;
+          this.modalComponent.close();
+          this.refreshService.confirmMission();
+        });
       })
-      .catch(err => this.modalComponent.close());
+      .catch(() => this.modalComponent.close());
   }
 
 }

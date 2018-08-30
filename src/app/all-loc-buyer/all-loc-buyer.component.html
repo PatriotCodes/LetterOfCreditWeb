@@ -1,5 +1,7 @@
 <div class="component">
-    <div class="panel-heading">Letters Of Credit</div>
+    <div class="panel-heading">Letters Of Credit
+      <button class="btn pull-right purchase-order-btn" (click)="createPurchaseOrder()" id="create-purchase-order" [ngClass]="{'button-glow': tourService.purchaseOrderGlow}">Create Purchase Order</button>
+    </div>
     <div class="panel-body">
       <div class="grid grid-pad">
         <table class="table table-condensed table-striped">

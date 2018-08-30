@@ -35,10 +35,10 @@ export class PurchaseOrderCreateComponent {
     private dialog2: MatDialogRef<PurchaseOrderCreateComponent>,
     private gtService: GraphicalTransactionsService) { }
 
-  lookupBuyer() {
+  lookupSeller() {
     let dialogRef = this.dialog.open(PeersComponent, { viewContainerRef: this.vc });
     dialogRef.afterClosed().subscribe(result => {
-      this.purchaseOrder.buyerName = this.identityService.peer.name;
+      this.purchaseOrder.sellerName = this.identityService.peer.name;
       this.glow = false;
     });
   }
@@ -51,17 +51,17 @@ export class PurchaseOrderCreateComponent {
     this.error = false;
     this.refreshService.loading = true;
     this.docsService.createPurchaseOrder(this.purchaseOrder).then(result => this.callResponse(result));
-    this.gtService.setMarkers(this.purchaseOrder.sellerName, this.purchaseOrder.buyerName);
+    this.gtService.setMarkers(this.purchaseOrder.buyerName, this.purchaseOrder.sellerName);
     this.close();
   }
 
   autoComplete(): void {
-    this.identityService.getMe().then(response => this.purchaseOrder.sellerName = response.json().me);
+    this.identityService.getMe().then(response => this.purchaseOrder.buyerName = response.json().me);
     let d = new Date();
     this.purchaseOrder.purchaseOrderDate = d;
     this.purchaseOrder.purchaseOrderID = Math.round(Math.random() * 1000000).toString();
+    this.purchaseOrder.sellerName = '';
     this.purchaseOrder.sellerAddress = 'Dong Men Street';
-    this.purchaseOrder.buyerName = '';
     this.purchaseOrder.buyerAddress = '3 Smithdown Road. Liverpool, L2 6RE';
     this.purchaseOrder.term = 5;
     this.purchaseOrder.goodsDescription = 'OLED 6" Screens';

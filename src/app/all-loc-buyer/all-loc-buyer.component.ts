@@ -8,6 +8,9 @@ import { RefreshService } from '../services/refresh.service';
 import { StatusService } from '../services/status.service';
 import * as global from '../globals';
 import { GraphicalTransactionsService } from '../services/graphical-transactions.service';
+import { PurchaseOrderCreateComponent } from '../purchase-order-create/purchase-order.component';
+import { MatDialog } from '@angular/material';
+import { TourService } from '../services/tour.service';
 
 @Component({
   selector: 'all-loc-buyer',
@@ -23,11 +26,15 @@ export class AllLocBuyerComponent implements OnInit {
     private locService: LocService,
     private refreshService: RefreshService,
     public statusService: StatusService,
-    private gtService: GraphicalTransactionsService) {
+    private gtService: GraphicalTransactionsService, private dialog: MatDialog, public tourService: TourService) {
     refreshService.missionConfirmed$.subscribe(
       result => {
         this.update();
       });
+  }
+
+  createPurchaseOrder() {
+    this.dialog.open(PurchaseOrderCreateComponent);
   }
 
   public openLocModal(ref: string) {
@@ -45,8 +52,8 @@ export class AllLocBuyerComponent implements OnInit {
   public payIssuer(id: string) {
     this.refreshService.loading = true;
     this.locService.payIssuer(id)
-    .then(response => this.callResponse(response))
-    .catch(err => err);
+      .then(response => this.callResponse(response))
+      .catch(err => err);
   }
 
   callResponse(result: string): void {
