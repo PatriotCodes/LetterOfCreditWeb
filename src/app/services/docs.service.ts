@@ -69,7 +69,7 @@ export class DocsService {
   }
 
   getPurchaseOrders(): Promise<PurchaseOrder[]> {
-    let url = this.getUrl('/api/loc/invoices');
+    let url = this.getUrl('/api/loc/purchase-orders');
     return this.http.get(url)
       .toPromise()
       .then(
@@ -79,7 +79,7 @@ export class DocsService {
   }
 
   getPurchaseOrder(id: string): Promise<PurchaseOrder> {
-    let _url = this.getUrl('/api/loc/get-invoice');
+    let _url = this.getUrl('/api/loc/get-purchase-order');
     const url = `${_url}?ref=${id}`;
     return this.http.get(url)
       .toPromise()
