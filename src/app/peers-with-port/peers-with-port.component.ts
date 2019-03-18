@@ -5,8 +5,8 @@ import { PeerWithPort } from '../peer-with-port';
 
 @Component({
   selector: 'app-peers-with-Port',
-  templateUrl: './peers-with-Port.component.html',
-  styleUrls: ['./peers-with-Port.component.scss']
+  templateUrl: './peers-with-port.component.html',
+  styleUrls: ['./peers-with-port.component.scss']
 })
 export class PeersWithPortComponent implements OnInit {
   peers: PeerWithPort[];
