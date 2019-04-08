@@ -12,10 +12,6 @@ export class CashIssuanceComponent {
   constructor(public dialogRef: MatDialogRef<CashIssuanceComponent>, private portService: PortProviderService) { }
 
   getUrl() {
-    // TODO remove hardcoded port
-    if (this.portService.current === 10019) {
-      return 'http://localhost:' + this.portService.current + '/web/central/';
-    }
-    return 'http://localhost:' + this.portService.current + '/web/dashboard/';
+    return 'https://localhost:' + this.portService.current + '/webserver/loc' + '/web/dashboard/';
   }
 }

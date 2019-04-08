@@ -24,7 +24,7 @@ export class IdentityService {
   }
 
   getUrl(path: string) {
-    return this.urlService.url + ':' + this.portService.current + path;
+    return this.urlService.url + ':' + this.portService.current + '/webserver/loc' + path;
   }
 
   getMe() {

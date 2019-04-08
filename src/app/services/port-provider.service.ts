@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class PortProviderService {
 
   public current: number;
-  public nodes: Array<Number> = [10014, 10017, 10020, 10023];
+  public nodes: Array<Number> = [8898, 8898, 8898, 8898];
 
   constructor() {
     if (location.port !== '4200') {
@@ -13,16 +13,16 @@ export class PortProviderService {
     } else {
       switch (location.pathname) {
         case '/issuing':
-          this.current = 10023;
+          this.current = 8898;
           break;
         case '/advising':
-          this.current = 10020;
+          this.current = 8898;
           break;
         case '/buyer':
-          this.current = 10017;
+          this.current = 8898;
           break;
         case '/seller':
-          this.current = 10014;
+          this.current = 8898;
           break;
       }
     }

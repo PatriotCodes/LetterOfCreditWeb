@@ -10,7 +10,7 @@ export class UrlProviderService {
 
   constructor() {
     if (this.production) {
-      this.url = "http://51.141.225.140";
+      this.url = "http://localhost";
     }
   }
 }

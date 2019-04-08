@@ -20,7 +20,7 @@ export class StartupCheckComponent implements OnInit {
     let index = 0;
     console.log('running');
     for (let i of this.portProvider.nodes) {
-      let url = 'http://localhost:' + i + '/api/loc/me';
+      let url = 'https://localhost:' + i + '/webserver/loc/api/loc/me';
       this.http.get(url)
         .toPromise()
         .then(response => this.portProvider.nodes = this.portProvider.nodes.splice(index, 1));

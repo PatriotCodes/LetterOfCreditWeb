@@ -14,7 +14,7 @@ export class TxService {
     private urlService: UrlProviderService, private dialog: MatDialog) { }
 
   getUrl(path: string) {
-    return this.urlService.url + ':' + this.portService.current + path;
+    return this.urlService.url + ':' + this.portService.current + '/webserver/loc' + path;
   }
 
   getTransactions(): Promise<TxSummary[]> {
