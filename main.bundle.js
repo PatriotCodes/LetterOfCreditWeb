@@ -5977,12 +5977,12 @@ var StaticMapComponent = (function () {
         }
     };
     StaticMapComponent.prototype.launchSeller = function () {
-        this.portService.current = 10014;
+        this.portService.current = 8898;
         this.identityService.current = 'seller';
         this.dialog.open(__WEBPACK_IMPORTED_MODULE_3__dashboard_seller_dashboard_seller_component__["a" /* DashboardSellerComponent */], { width: '85%', height: '85%' });
     };
     StaticMapComponent.prototype.launchBuyer = function () {
-        this.portService.current = 10017;
+        this.portService.current = 8898;
         this.identityService.current = 'buyer';
         this.dialog.open(__WEBPACK_IMPORTED_MODULE_6__dashboard_buyer_dashboard_buyer_component__["a" /* DashboardBuyerComponent */], { width: '85%', height: '85%' });
     };
@@ -5997,7 +5997,7 @@ var StaticMapComponent = (function () {
         this.dialog.open(__WEBPACK_IMPORTED_MODULE_8__dashboard_issuer_dashboard_issuer_component__["a" /* DashboardIssuerComponent */], { width: '85%', height: '85%' });
     };
     StaticMapComponent.prototype.launchCentral = function () {
-        this.portService.current = 10011;
+        this.portService.current = 8898;
         this.dialog.open(__WEBPACK_IMPORTED_MODULE_9__cash_issuance_cash_issuance_component__["a" /* CashIssuanceComponent */], { width: '85%', height: '85%' });
     };
     StaticMapComponent.prototype.launchAdvisingCash = function () {
