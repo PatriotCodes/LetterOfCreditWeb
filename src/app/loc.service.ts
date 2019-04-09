@@ -38,7 +38,7 @@ export class LocService {
   }
 
   getUrl(path: string) {
-    return this.urlService.url + ':' + this.portService.current + '/webserver/loc' + path;
+    return this.urlService.url + this.portService.current + '/webserver/loc' + path;
   }
 
   getLoc(id: string): Promise<LocState> {

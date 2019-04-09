@@ -24,7 +24,7 @@ export class IdentityService {
   }
 
   getUrl(path: string) {
-    return this.urlService.url + ':' + this.portService.current + '/webserver/loc' + path;
+    return this.urlService.url + this.portService.current + '/webserver/loc' + path;
   }
 
   getMe() {
@@ -57,9 +57,8 @@ export class IdentityService {
 
   scanForPeers() {
     if (this.scannedPeers.length === 0) {
-      let i: number;
-      for (i = 8898; i < 8899; i++) {
-        let url = this.urlService.url + ':' + i + '/webserver/loc/api/loc/me';
+      for (let i of this.portService.nodes) {
+        let url = this.urlService.url + i + '/webserver/loc/api/loc/me';
         let port = i;
         this.http.get(url)
           .toPromise()

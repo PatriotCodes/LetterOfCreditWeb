@@ -21,7 +21,7 @@ export class DocsService {
     private refreshService: RefreshService) { }
 
   getUrl(path: string) {
-    return this.urlService.url + ':' + this.portService.current + '/webserver/loc' + path;
+    return this.urlService.url + this.portService.current + '/webserver/loc' + path;
   }
 
   createBol(bol: Bol): Promise<string> {
